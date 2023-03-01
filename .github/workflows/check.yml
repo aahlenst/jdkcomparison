@@ -30,3 +30,13 @@ jobs:
 
       - name: Build and test
         run: npm run build
+
+      # For reliable results, E2E tests should run on the actual build. That requires a running NextJS server.
+      # Because the NextJS server can only run in the foreground, we put it forcefully into the background, capture its
+      # PID, run the E2E tests, before terminating the NextJS server using the captured PID.
+      - name: Run E2E tests
+        run: >
+          npm run start > /tmp/nextjs-e2e.txt 2>&1 &
+          PID=$!
+          npm run e2e:headless
+          kill -TERM $PID
