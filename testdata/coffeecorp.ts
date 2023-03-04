@@ -8,7 +8,6 @@ export const data: Vendor = {
 		{
 			id: "coffeecorp-jdk-17",
 			information: {
-
 				name: "Coffeecorp JDK 17",
 				version: 17,
 				downloadSite: "https://coffeecorp.com/",
