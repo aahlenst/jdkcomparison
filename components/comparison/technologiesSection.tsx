@@ -1,18 +1,27 @@
-import {FeaturePresence, FeatureText, ProductData} from "@/src/comparisonTypes";
 import React from "react";
 import {Feature} from "@/components/comparison/feature";
-
+import {Comparison} from "@/src/comparisonTypes";
 
 type TechnologiesSectionProps = {
-	productData: ProductData[]
+	productData: Comparison.FeatureComparison[]
 }
 
-function extractValue(feature: FeaturePresence | FeatureText): string {
+function extractValue(feature: Comparison.FeaturePresence | Comparison.FeatureDescription): string {
 	if ("present" in feature) {
-		return feature.present;
+		switch (feature.present) {
+			case Comparison.Present.YES:
+				return "yes";
+			case Comparison.Present.PARTIALLY:
+				return "partially";
+			case Comparison.Present.NO:
+				return "no";
+			case Comparison.Present.UNKNOWN:
+				return "unknown";
+		}
 	} else if ("text" in feature) {
 		return feature.text;
 	}
+
 	throw Error("Unknown feature type");
 }
 
@@ -20,7 +29,7 @@ export function TechnologiesSection({productData}: TechnologiesSectionProps) {
 	const jfx = productData.map(product => ({...product.jfx, id: product.id}));
 	const jfr = productData.map(product => ({...product.jfr, id: product.id}));
 
-	function hasDifferences(values: FeaturePresence[] | FeatureText[]): boolean {
+	function hasDifferences(values: Comparison.FeaturePresence[] | Comparison.FeatureDescription[]): boolean {
 		return new Set(values.map(v => extractValue(v))).size > 1;
 	}
 

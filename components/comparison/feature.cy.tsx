@@ -1,12 +1,13 @@
 import {Feature} from "./feature";
-import {FeaturePresence} from "@/src/comparisonTypes";
-import {Keyable} from "@/src/keyable";
+import {Comparison} from "../../src/comparisonTypes";
+import {Keyable} from "../../src/keyable";
+import Present = Comparison.Present;
 
 describe("<Feature/>", () => {
 	it("renders feature's presence per product", () => {
-		const data: (FeaturePresence & Keyable)[] = [
-			{id: "coffeecorp-jdk-11", present: "yes"},
-			{id: "dukecorp-jdk-11", present: "no"},
+		const data: (Comparison.FeaturePresence & Keyable)[] = [
+			{id: "coffeecorp-jdk-11", present: Present.YES},
+			{id: "dukecorp-jdk-11", present: Present.NO},
 		];
 
 		cy.mount(<Feature name="JavaFX" values={data}/>);

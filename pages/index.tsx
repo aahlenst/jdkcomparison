@@ -2,14 +2,17 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import {GetStaticProps} from "next";
 import React from "react";
-import {ProductData} from "@/src/comparisonTypes";
 import {ComparisonTable} from "@/components/comparison/comparisonTable";
+import {Vendor} from "@/src/vendorDataTypes";
+import {extractComparisonData} from "@/src/comparison";
+import {Comparison} from "@/src/comparisonTypes";
 
 type ComparisonProps = {
-	productData: ProductData[]
+	productData: Comparison.FeatureComparison[],
+	footnotes: Comparison.Footnote[]
 }
 
-export default function Comparison({productData}: ComparisonProps) {
+export default function ComparisonPage({productData}: ComparisonProps) {
 	return (
 		<>
 			<Head>
@@ -25,27 +28,20 @@ export default function Comparison({productData}: ComparisonProps) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-
-	const productData: ProductData[] = [
-		{
-			id: "coffeecorp-jdk-20",
-			jfx: {present: "yes"},
-			jfr: {present: "no"},
-			paidSupport: {present: "yes"},
-			eolDate: {text: "2023-10"}
-		},
-		{
-			id: "dukecorp-jdk-20",
-			jfx: {present: "no"},
-			jfr: {present: "yes"},
-			paidSupport: {present: "no"},
-			eolDate: {text: "2023-10"}
-		}
+	// Next.js 13 only supports dynamic imports with string literals. There is currently no way to trick it into
+	// accepting any kind of variables. Therefore, dynamic data loading is not possible. For details, see
+	// https://nextjs.org/docs/advanced-features/dynamic-import.
+	const vendorData: Vendor[] = [
+		(await import("@/testdata/coffeecorp")).default,
+		(await import("@/testdata/dukecorp")).default,
 	];
+
+	const {productsInComparison,footnotes} = extractComparisonData(vendorData);
 
 	return {
 		props: {
-			productData: productData
+			productData: productsInComparison,
+			footnotes: footnotes
 		}
 	};
 };

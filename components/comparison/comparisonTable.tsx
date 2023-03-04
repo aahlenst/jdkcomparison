@@ -1,9 +1,9 @@
 import React from "react";
-import {ProductData} from "@/src/comparisonTypes";
+import {Comparison} from "@/src/comparisonTypes";
 import {TechnologiesSection} from "@/components/comparison/technologiesSection";
 
 type ComparisonTableProps = {
-	productData: ProductData[]
+	productData: Comparison.FeatureComparison[]
 }
 
 export function ComparisonTable({productData}: ComparisonTableProps) {
