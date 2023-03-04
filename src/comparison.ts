@@ -25,7 +25,14 @@ export function extractComparisonData(vendors: Vendor[]): Comparison.Comparison 
 	for (const vendor of vendors) {
 		aggregatedFeatureComparisons.push(...extractFeatureComparisons(vendor, aggregatedFootnotes));
 	}
-	return { productsInComparison: aggregatedFeatureComparisons, footnotes: aggregatedFootnotes};
+	return {productsInComparison: aggregatedFeatureComparisons, footnotes: aggregatedFootnotes};
+}
+
+export function deriveFilters(vendors: Vendor[]): Comparison.Filters {
+	return {
+		vendors: deriveVendorFilter(vendors),
+		versions: deriveVersionFilter(vendors)
+	};
 }
 
 function extractFootnotes(vendor: Vendor, counter: FootnoteCounter) {
@@ -97,5 +104,43 @@ function mapPresent(present: Present): Comparison.Present {
 		default:
 			throw new Error(`Unknown presence: ${present}`);
 	}
+}
+
+function deriveVersionFilter(vendors: Vendor[]) {
+	const id = "versions";
+
+	const versions = new Set<number>();
+	for (const vendor of vendors) {
+		for (const jdk of vendor.jdks) {
+			versions.add(jdk.information.version);
+		}
+	}
+
+	const sortedVersions: number[] = [...versions];
+	sortedVersions.sort((a, b) => a - b);
+
+	const options = sortedVersions.map((version, index) => {
+		return {id: `${id}-${index}`, label: `${version}`, checked: false};
+	});
+
+	return {id: id, options: options};
+}
+
+function deriveVendorFilter(vendors: Vendor[]) {
+	const id = "vendors";
+
+	const names = new Set<string>();
+	for (const vendor of vendors) {
+		names.add(vendor.vendor);
+	}
+
+	const sortedNames: string[] = [...names];
+	sortedNames.sort((a, b) => a.localeCompare(b, "en"));
+
+	const options = sortedNames.map((name, index) => {
+		return {id: `${id}-${index}`, label: `${name}`, checked: false};
+	});
+
+	return {id: id, options: options};
 }
 

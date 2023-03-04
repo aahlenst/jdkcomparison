@@ -34,4 +34,20 @@ export namespace Comparison {
 		text: string
 		footnoteNumber?: number
 	}
+
+	export type Filters = {
+		vendors: Filter
+		versions: Filter
+	}
+
+	export type Filter = {
+		id: string,
+		options: FilterOption[]
+	}
+
+	export type FilterOption = {
+		id: string,
+		label: string,
+		checked: boolean
+	}
 }

@@ -4,10 +4,11 @@ import {GetStaticProps} from "next";
 import React from "react";
 import {ComparisonTable} from "@/components/comparison/comparisonTable";
 import {Vendor} from "@/src/vendorDataTypes";
-import {extractComparisonData} from "@/src/comparison";
+import {deriveFilters, extractComparisonData} from "@/src/comparison";
 import {Comparison} from "@/src/comparisonTypes";
 
 type ComparisonProps = {
+	filters: Comparison.Filters,
 	productData: Comparison.FeatureComparison[],
 	footnotes: Comparison.Footnote[]
 }
@@ -36,10 +37,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 		(await import("@/testdata/dukecorp")).default,
 	];
 
-	const {productsInComparison,footnotes} = extractComparisonData(vendorData);
+	const {productsInComparison, footnotes} = extractComparisonData(vendorData);
+	const filters = deriveFilters(vendorData);
 
 	return {
 		props: {
+			filters: filters,
 			productData: productsInComparison,
 			footnotes: footnotes
 		}

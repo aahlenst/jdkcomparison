@@ -1,6 +1,6 @@
 import {beforeAll, describe, expect} from "@jest/globals";
 import {Vendor} from "@/src/vendorDataTypes";
-import {extractComparisonData} from "@/src/comparison";
+import {deriveFilters, extractComparisonData} from "@/src/comparison";
 import {Comparison} from "@/src/comparisonTypes";
 
 describe("comparison module", () => {
@@ -12,7 +12,7 @@ describe("comparison module", () => {
 		testData.push((await import("@/testdata/coffeecorp")).default);
 	});
 
-	test("transform numbers all footnotes", () => {
+	test("extractComparisonData() numbers all footnotes", () => {
 		const {footnotes} = extractComparisonData(testData);
 
 		expect(footnotes.length).toEqual(2);
@@ -24,7 +24,7 @@ describe("comparison module", () => {
 		expect(footnotes[1].html).toEqual("<p>Some <em>remark</em> regarding paid support.</p>");
 	});
 
-	test("transform extracts comparisons", async () => {
+	test("extractComparisonData() extracts all JDKs", async () => {
 		const dukecorp = (await import("@/testdata/dukecorp")).default;
 		const {productsInComparison} = extractComparisonData([dukecorp]);
 
@@ -37,5 +37,23 @@ describe("comparison module", () => {
 		expect(jdk.jfr).toEqual({present: Comparison.Present.YES});
 		expect(jdk.paidSupport).toEqual({present: Comparison.Present.NO, footnoteNumber: 1});
 		expect(jdk.eolDate).toEqual({text: "2027-10"});
+	});
+
+	test("deriveFilters() produces a filter with all JDK versions", () => {
+		const {versions} = deriveFilters(testData);
+
+		expect(versions.id).toEqual("versions");
+		expect(versions.options.length).toEqual(2);
+		expect(versions.options[0]).toEqual({id: "versions-0", label: "8", checked: false});
+		expect(versions.options[1]).toEqual({id: "versions-1", label: "17", checked: false});
+	});
+
+	test("deriveFilters() produces a filter with all JDK vendors", () => {
+		const {vendors} = deriveFilters(testData);
+
+		expect(vendors.id).toEqual("vendors");
+		expect(vendors.options.length).toEqual(2);
+		expect(vendors.options[0]).toEqual({id: "vendors-0", label: "Coffeecorp", checked: false});
+		expect(vendors.options[1]).toEqual({id: "vendors-1", label: "Dukecorp", checked: false});
 	});
 });
