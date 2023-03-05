@@ -5,12 +5,12 @@ import React from "react";
 import {ComparisonTable} from "@/components/comparison/comparisonTable";
 import {Vendor} from "@/src/vendorDataTypes";
 import {deriveFilters, extractComparisonData} from "@/src/comparison";
-import {Comparison} from "@/src/comparisonTypes";
+import {Model} from "@/src/modelTypes";
 
 type ComparisonProps = {
-	filters: Comparison.Filters,
-	productData: Comparison.FeatureComparison[],
-	footnotes: Comparison.Footnote[]
+	filters: Model.Filters,
+	productData: Model.FeatureComparison[],
+	footnotes: Model.Footnote[]
 }
 
 export default function ComparisonPage({productData}: ComparisonProps) {

@@ -1,6 +1,6 @@
 import {FeatureDescription, FeaturePresence, Present, Vendor} from "@/src/vendorDataTypes";
 import {micromark} from "micromark";
-import {Comparison} from "@/src/comparisonTypes";
+import {Model} from "@/src/modelTypes";
 
 class FootnoteCounter {
 	#counter: number = 1;
@@ -12,23 +12,23 @@ class FootnoteCounter {
 	}
 }
 
-export function extractComparisonData(vendors: Vendor[]): Comparison.Comparison {
+export function extractComparisonData(vendors: Vendor[]): Model.Comparison {
 	vendors.sort((a, b) => a.vendor.localeCompare(b.vendor, "en"));
 
 	let footnoteCounter: FootnoteCounter = new FootnoteCounter();
-	const aggregatedFootnotes: Comparison.Footnote[] = [];
+	const aggregatedFootnotes: Model.Footnote[] = [];
 	for (const vendor of vendors) {
 		aggregatedFootnotes.push(...extractFootnotes(vendor, footnoteCounter));
 	}
 
-	const aggregatedFeatureComparisons: Comparison.FeatureComparison[] = [];
+	const aggregatedFeatureComparisons: Model.FeatureComparison[] = [];
 	for (const vendor of vendors) {
 		aggregatedFeatureComparisons.push(...extractFeatureComparisons(vendor, aggregatedFootnotes));
 	}
 	return {productsInComparison: aggregatedFeatureComparisons, footnotes: aggregatedFootnotes};
 }
 
-export function deriveFilters(vendors: Vendor[]): Comparison.Filters {
+export function deriveFilters(vendors: Vendor[]): Model.Filters {
 	return {
 		vendors: deriveVendorFilter(vendors),
 		versions: deriveVersionFilter(vendors)
@@ -41,7 +41,7 @@ function extractFootnotes(vendor: Vendor, counter: FootnoteCounter) {
 	});
 }
 
-function extractFeatureComparisons(vendor: Vendor, footnotes: Comparison.Footnote[]): Comparison.FeatureComparison[] {
+function extractFeatureComparisons(vendor: Vendor, footnotes: Model.Footnote[]): Model.FeatureComparison[] {
 	return vendor.jdks.map(jdk => {
 		return {
 			id: jdk.id,
@@ -53,7 +53,7 @@ function extractFeatureComparisons(vendor: Vendor, footnotes: Comparison.Footnot
 	});
 }
 
-function resolveFootnote(id: string | undefined, footnotes: Comparison.Footnote[]): number | undefined {
+function resolveFootnote(id: string | undefined, footnotes: Model.Footnote[]): number | undefined {
 	if (id === undefined) {
 		return undefined;
 	}
@@ -65,8 +65,8 @@ function resolveFootnote(id: string | undefined, footnotes: Comparison.Footnote[
 	throw Error(`Unresolvable footnote: ${id}`);
 }
 
-function mapFeaturePresence(presence: FeaturePresence, footnotes: Comparison.Footnote[]): Comparison.FeaturePresence {
-	const retVal: Comparison.FeaturePresence = {
+function mapFeaturePresence(presence: FeaturePresence, footnotes: Model.Footnote[]): Model.FeaturePresence {
+	const retVal: Model.FeaturePresence = {
 		present: mapPresent(presence.present)
 	};
 
@@ -78,8 +78,8 @@ function mapFeaturePresence(presence: FeaturePresence, footnotes: Comparison.Foo
 	return retVal;
 }
 
-function mapFeatureDescription(description: FeatureDescription, footnotes: Comparison.Footnote[]): Comparison.FeatureDescription {
-	const retVal: Comparison.FeatureDescription = {
+function mapFeatureDescription(description: FeatureDescription, footnotes: Model.Footnote[]): Model.FeatureDescription {
+	const retVal: Model.FeatureDescription = {
 		text: description.text
 	};
 
@@ -91,16 +91,16 @@ function mapFeatureDescription(description: FeatureDescription, footnotes: Compa
 	return retVal;
 }
 
-function mapPresent(present: Present): Comparison.Present {
+function mapPresent(present: Present): Model.Present {
 	switch (present) {
 		case Present.YES:
-			return Comparison.Present.YES;
+			return Model.Present.YES;
 		case Present.PARTIALLY:
-			return Comparison.Present.PARTIALLY;
+			return Model.Present.PARTIALLY;
 		case Present.NO:
-			return Comparison.Present.NO;
+			return Model.Present.NO;
 		case Present.UNKNOWN:
-			return Comparison.Present.UNKNOWN;
+			return Model.Present.UNKNOWN;
 		default:
 			throw new Error(`Unknown presence: ${present}`);
 	}

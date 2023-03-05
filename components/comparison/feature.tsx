@@ -1,29 +1,29 @@
 import React, {PropsWithChildren} from "react";
-import {Comparison} from "../../src/comparisonTypes";
+import {Model} from "../../src/modelTypes";
 import {Keyable} from "../../src/keyable";
 
 type FeaturePresenceProps = {
-	present: Comparison.Present
+	present: Model.Present
 }
 
 type FeatureProps = {
 	name: string,
-	values: (Comparison.FeaturePresence & Keyable)[] | (Comparison.FeatureDescription & Keyable)[],
+	values: (Model.FeaturePresence & Keyable)[] | (Model.FeatureDescription & Keyable)[],
 }
 
 function FeaturePresence({present}: FeaturePresenceProps) {
 	let presentText: string;
 	switch (present) {
-		case Comparison.Present.YES:
+		case Model.Present.YES:
 			presentText = "yes";
 			break;
-		case Comparison.Present.PARTIALLY:
+		case Model.Present.PARTIALLY:
 			presentText = "partially";
 			break;
-		case Comparison.Present.NO:
+		case Model.Present.NO:
 			presentText = "no";
 			break;
-		case Comparison.Present.UNKNOWN:
+		case Model.Present.UNKNOWN:
 			presentText = "unknown";
 			break;
 		default:

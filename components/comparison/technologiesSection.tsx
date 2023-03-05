@@ -1,21 +1,21 @@
 import React from "react";
 import {Feature} from "@/components/comparison/feature";
-import {Comparison} from "@/src/comparisonTypes";
+import {Model} from "@/src/modelTypes";
 
 type TechnologiesSectionProps = {
-	productData: Comparison.FeatureComparison[]
+	productData: Model.FeatureComparison[]
 }
 
-function extractValue(feature: Comparison.FeaturePresence | Comparison.FeatureDescription): string {
+function extractValue(feature: Model.FeaturePresence | Model.FeatureDescription): string {
 	if ("present" in feature) {
 		switch (feature.present) {
-			case Comparison.Present.YES:
+			case Model.Present.YES:
 				return "yes";
-			case Comparison.Present.PARTIALLY:
+			case Model.Present.PARTIALLY:
 				return "partially";
-			case Comparison.Present.NO:
+			case Model.Present.NO:
 				return "no";
-			case Comparison.Present.UNKNOWN:
+			case Model.Present.UNKNOWN:
 				return "unknown";
 		}
 	} else if ("text" in feature) {
@@ -29,7 +29,7 @@ export function TechnologiesSection({productData}: TechnologiesSectionProps) {
 	const jfx = productData.map(product => ({...product.jfx, id: product.id}));
 	const jfr = productData.map(product => ({...product.jfr, id: product.id}));
 
-	function hasDifferences(values: Comparison.FeaturePresence[] | Comparison.FeatureDescription[]): boolean {
+	function hasDifferences(values: Model.FeaturePresence[] | Model.FeatureDescription[]): boolean {
 		return new Set(values.map(v => extractValue(v))).size > 1;
 	}
 

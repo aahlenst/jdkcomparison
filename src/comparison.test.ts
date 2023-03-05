@@ -1,7 +1,7 @@
 import {beforeAll, describe, expect} from "@jest/globals";
 import {Vendor} from "@/src/vendorDataTypes";
 import {deriveFilters, extractComparisonData} from "@/src/comparison";
-import {Comparison} from "@/src/comparisonTypes";
+import {Model} from "@/src/modelTypes";
 
 describe("comparison module", () => {
 	const testData: Vendor[] = [];
@@ -33,9 +33,9 @@ describe("comparison module", () => {
 		const jdk = productsInComparison[0];
 
 		expect(jdk.id).toEqual("dukecorp-jdk-17");
-		expect(jdk.jfx).toEqual({present: Comparison.Present.NO});
-		expect(jdk.jfr).toEqual({present: Comparison.Present.YES});
-		expect(jdk.paidSupport).toEqual({present: Comparison.Present.NO, footnoteNumber: 1});
+		expect(jdk.jfx).toEqual({present: Model.Present.NO});
+		expect(jdk.jfr).toEqual({present: Model.Present.YES});
+		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteNumber: 1});
 		expect(jdk.eolDate).toEqual({text: "2027-10"});
 	});
 

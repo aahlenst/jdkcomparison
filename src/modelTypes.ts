@@ -1,4 +1,4 @@
-export namespace Comparison {
+export namespace Model {
 	export type Comparison = {
 		productsInComparison: FeatureComparison[]
 		footnotes: Footnote[]
