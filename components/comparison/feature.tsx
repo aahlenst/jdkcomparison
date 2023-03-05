@@ -1,6 +1,5 @@
 import React, {PropsWithChildren} from "react";
 import {Model} from "../../src/modelTypes";
-import {Keyable} from "../../src/keyable";
 
 type FeaturePresenceProps = {
 	present: Model.Present
@@ -8,7 +7,7 @@ type FeaturePresenceProps = {
 
 type FeatureProps = {
 	name: string,
-	values: (Model.FeaturePresence & Keyable)[] | (Model.FeatureDescription & Keyable)[],
+	values: (Model.FeaturePresence & Model.Keyable)[] | (Model.FeatureDescription & Model.Keyable)[],
 }
 
 function FeaturePresence({present}: FeaturePresenceProps) {

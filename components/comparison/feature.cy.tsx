@@ -1,10 +1,9 @@
 import {Feature} from "./feature";
 import {Model} from "../../src/modelTypes";
-import {Keyable} from "../../src/keyable";
 
 describe("<Feature/>", () => {
 	it("renders feature's presence per product", () => {
-		const data: (Model.FeaturePresence & Keyable)[] = [
+		const data: (Model.FeaturePresence & Model.Keyable)[] = [
 			{id: "coffeecorp-jdk-11", present: Model.Present.YES},
 			{id: "dukecorp-jdk-11", present: Model.Present.NO},
 		];

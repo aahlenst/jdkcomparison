@@ -50,4 +50,8 @@ export namespace Model {
 		label: string,
 		checked: boolean
 	}
+
+	export type Keyable = {
+		id: string
+	}
 }
