@@ -6,14 +6,15 @@ import {ComparisonTable} from "@/components/comparison/comparisonTable";
 import {Vendor} from "@/src/vendorDataTypes";
 import {deriveFilters, extractComparisonData} from "@/src/comparison";
 import {Model} from "@/src/modelTypes";
+import {ComparisonProvider} from "@/components/comparison/comparisonContext";
 
 type ComparisonProps = {
-	filters: Model.Filters,
-	productData: Model.FeatureComparison[],
+	filters: Model.Filter[],
+	data: Model.FeatureComparison[],
 	footnotes: Model.Footnote[]
 }
 
-export default function ComparisonPage({productData}: ComparisonProps) {
+export default function ComparisonPage({filters, data, footnotes}: ComparisonProps) {
 	return (
 		<>
 			<Head>
@@ -22,7 +23,9 @@ export default function ComparisonPage({productData}: ComparisonProps) {
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 			<main className={styles.main}>
-				<ComparisonTable productData={productData}/>
+				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>
+					<ComparisonTable/>
+				</ComparisonProvider>
 			</main>
 		</>
 	);
@@ -38,12 +41,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	];
 
 	const {productsInComparison, footnotes} = extractComparisonData(vendorData);
-	const filters = deriveFilters(vendorData);
+	const filters: Model.Filter[] = deriveFilters(vendorData);
 
 	return {
 		props: {
 			filters: filters,
-			productData: productsInComparison,
+			data: productsInComparison,
 			footnotes: footnotes
 		}
 	};

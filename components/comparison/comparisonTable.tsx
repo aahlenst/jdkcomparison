@@ -1,15 +1,13 @@
 import React from "react";
-import {Model} from "@/src/modelTypes";
 import {TechnologiesSection} from "@/components/comparison/technologiesSection";
+import {useComparison} from "@/components/comparison/comparisonContext";
 
-type ComparisonTableProps = {
-	productData: Model.FeatureComparison[]
-}
+export function ComparisonTable() {
+	const comparison = useComparison();
 
-export function ComparisonTable({productData}: ComparisonTableProps) {
 	return (
 		<>
-			<TechnologiesSection productData={productData}/>
+			<TechnologiesSection productData={comparison.filteredData}/>
 		</>
 	);
 }

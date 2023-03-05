@@ -1,6 +1,6 @@
 import {beforeAll, describe, expect} from "@jest/globals";
 import {Vendor} from "@/src/vendorDataTypes";
-import {deriveFilters, extractComparisonData} from "@/src/comparison";
+import {deriveFilters, deriveVendorFilter, deriveVersionFilter, extractComparisonData} from "@/src/comparison";
 import {Model} from "@/src/modelTypes";
 
 describe("comparison module", () => {
@@ -39,21 +39,26 @@ describe("comparison module", () => {
 		expect(jdk.eolDate).toEqual({text: "2027-10"});
 	});
 
-	test("deriveFilters() produces a filter with all JDK versions", () => {
-		const {versions} = deriveFilters(testData);
-
-		expect(versions.id).toEqual("versions");
-		expect(versions.options.length).toEqual(2);
-		expect(versions.options[0]).toEqual({id: "versions-0", label: "8", checked: false});
-		expect(versions.options[1]).toEqual({id: "versions-1", label: "17", checked: false});
+	test("deriveFilters() includes all filters", () => {
+		const filters = deriveFilters(testData).map(filter => filter.id);
+		expect(filters).toEqual(["vendors", "versions"]);
 	});
 
-	test("deriveFilters() produces a filter with all JDK vendors", () => {
-		const {vendors} = deriveFilters(testData);
+	test("deriveVersionFilter() produces a filter with all JDK versions", () => {
+		const versionFilter = deriveVersionFilter(testData);
 
-		expect(vendors.id).toEqual("vendors");
-		expect(vendors.options.length).toEqual(2);
-		expect(vendors.options[0]).toEqual({id: "vendors-0", label: "Coffeecorp", checked: false});
-		expect(vendors.options[1]).toEqual({id: "vendors-1", label: "Dukecorp", checked: false});
+		expect(versionFilter.id).toEqual("versions");
+		expect(versionFilter.options.length).toEqual(2);
+		expect(versionFilter.options[0]).toEqual({id: "versions-0", label: "8", checked: false});
+		expect(versionFilter.options[1]).toEqual({id: "versions-1", label: "17", checked: false});
+	});
+
+	test("deriveVendorFilter() produces a filter with all JDK vendors", () => {
+		const vendorFilter = deriveVendorFilter(testData);
+
+		expect(vendorFilter.id).toEqual("vendors");
+		expect(vendorFilter.options.length).toEqual(2);
+		expect(vendorFilter.options[0]).toEqual({id: "vendors-0", label: "Coffeecorp", checked: false});
+		expect(vendorFilter.options[1]).toEqual({id: "vendors-1", label: "Dukecorp", checked: false});
 	});
 });

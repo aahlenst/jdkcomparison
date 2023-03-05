@@ -28,13 +28,6 @@ export function extractComparisonData(vendors: Vendor[]): Model.Comparison {
 	return {productsInComparison: aggregatedFeatureComparisons, footnotes: aggregatedFootnotes};
 }
 
-export function deriveFilters(vendors: Vendor[]): Model.Filters {
-	return {
-		vendors: deriveVendorFilter(vendors),
-		versions: deriveVersionFilter(vendors)
-	};
-}
-
 function extractFootnotes(vendor: Vendor, counter: FootnoteCounter) {
 	return vendor.footnotes.map(footnote => {
 		return {id: footnote.id, number: counter.getAndAdd(), html: micromark(footnote.markdown)};
@@ -106,7 +99,14 @@ function mapPresent(present: Present): Model.Present {
 	}
 }
 
-function deriveVersionFilter(vendors: Vendor[]) {
+export function deriveFilters(vendors: Vendor[]): Model.Filter[] {
+	return [
+		deriveVendorFilter(vendors),
+		deriveVersionFilter(vendors)
+	];
+}
+
+export function deriveVersionFilter(vendors: Vendor[]) {
 	const id = "versions";
 
 	const versions = new Set<number>();
@@ -126,7 +126,7 @@ function deriveVersionFilter(vendors: Vendor[]) {
 	return {id: id, options: options};
 }
 
-function deriveVendorFilter(vendors: Vendor[]) {
+export function deriveVendorFilter(vendors: Vendor[]) {
 	const id = "vendors";
 
 	const names = new Set<string>();
