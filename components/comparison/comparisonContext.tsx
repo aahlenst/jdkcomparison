@@ -34,7 +34,7 @@ export class ToggleShowDifferencesOnly implements ComparisonAction {
 	}
 }
 
-export const ComparisonContext = createContext<ComparisonState>({
+const ComparisonContext = createContext<ComparisonState>({
 	filters: [],
 	data: [],
 	filteredData: [],
@@ -42,7 +42,7 @@ export const ComparisonContext = createContext<ComparisonState>({
 	showDifferencesOnly: false
 });
 
-export const ComparisonDispatchContext = createContext<React.Dispatch<ComparisonAction>>(() => {
+const ComparisonDispatchContext = createContext<React.Dispatch<ComparisonAction>>(() => {
 });
 
 export function ComparisonProvider({children, filters, data, footnotes}: PropsWithChildren<ComparisonProviderProps>) {
@@ -69,7 +69,7 @@ export function useComparisonDispatch(): React.Dispatch<ComparisonAction> {
 }
 
 function comparisonReducer(draft: ComparisonState, action: ComparisonAction): ComparisonState {
-	switch(action.type) {
+	switch (action.type) {
 		case ComparisonActionType.ToggleShowDifferencesOnly:
 			draft.showDifferencesOnly = (action as ToggleShowDifferencesOnly).on;
 			return draft;
