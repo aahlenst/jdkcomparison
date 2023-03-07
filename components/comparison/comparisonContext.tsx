@@ -17,10 +17,11 @@ type ComparisonState = {
 }
 
 enum ComparisonActionType {
-	ToggleShowDifferencesOnly = "TOGGLE_SHOW_DIFFERENCES_ONLY"
+	ToggleShowDifferencesOnly = "TOGGLE_SHOW_DIFFERENCES_ONLY",
+	ApplyCheckboxFilter = "APPLY_FILTER"
 }
 
-interface ComparisonAction {
+export interface ComparisonAction {
 	type: ComparisonActionType
 }
 
@@ -31,6 +32,17 @@ export class ToggleShowDifferencesOnly implements ComparisonAction {
 
 	constructor(on: boolean) {
 		this.on = on;
+	}
+}
+
+export class ApplyCheckboxFilter implements ComparisonAction {
+	type = ComparisonActionType.ApplyCheckboxFilter;
+	filterId: string;
+	checked: boolean;
+
+	constructor(filterId: string, checked: boolean) {
+		this.filterId = filterId;
+		this.checked = checked;
 	}
 }
 
@@ -72,6 +84,17 @@ function comparisonReducer(draft: ComparisonState, action: ComparisonAction): Co
 	switch (action.type) {
 		case ComparisonActionType.ToggleShowDifferencesOnly:
 			draft.showDifferencesOnly = (action as ToggleShowDifferencesOnly).on;
+			return draft;
+		case ComparisonActionType.ApplyCheckboxFilter:
+			const filterAction = action as ApplyCheckboxFilter;
+			for (const filter of draft.filters) {
+				for (const option of filter.options) {
+					if (option.id === filterAction.filterId) {
+						option.checked = filterAction.checked;
+						return draft;
+					}
+				}
+			}
 			return draft;
 	}
 
