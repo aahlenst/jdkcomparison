@@ -12,29 +12,43 @@ type ComparisonState = {
 	filters: Model.Filter[]
 	data: Model.FeatureComparison[]
 	filteredData: Model.FeatureComparison[]
-	footnotes: Model.Footnote[]
+	footnotes: Model.Footnote[],
+	showDifferencesOnly: boolean
 }
 
 enum ComparisonActionType {
+	ToggleShowDifferencesOnly = "TOGGLE_SHOW_DIFFERENCES_ONLY"
 }
 
 interface ComparisonAction {
 	type: ComparisonActionType
 }
 
+export class ToggleShowDifferencesOnly implements ComparisonAction {
+	type = ComparisonActionType.ToggleShowDifferencesOnly;
+
+	on: boolean;
+
+	constructor(on: boolean) {
+		this.on = on;
+	}
+}
+
 export const ComparisonContext = createContext<ComparisonState>({
 	filters: [],
 	data: [],
 	filteredData: [],
-	footnotes: []
+	footnotes: [],
+	showDifferencesOnly: false
 });
+
 export const ComparisonDispatchContext = createContext<React.Dispatch<ComparisonAction>>(() => {
 });
 
 export function ComparisonProvider({children, filters, data, footnotes}: PropsWithChildren<ComparisonProviderProps>) {
 	const [comparison, dispatch] = useImmerReducer(
 		comparisonReducer,
-		{filters: filters, data: data, filteredData: data, footnotes: footnotes}
+		{filters: filters, data: data, filteredData: data, footnotes: footnotes, showDifferencesOnly: false}
 	);
 
 	return (
@@ -55,6 +69,12 @@ export function useComparisonDispatch(): React.Dispatch<ComparisonAction> {
 }
 
 function comparisonReducer(draft: ComparisonState, action: ComparisonAction): ComparisonState {
+	switch(action.type) {
+		case ComparisonActionType.ToggleShowDifferencesOnly:
+			draft.showDifferencesOnly = (action as ToggleShowDifferencesOnly).on;
+			return draft;
+	}
+
 	return draft;
 }
 
