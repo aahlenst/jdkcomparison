@@ -35,11 +35,6 @@ export namespace Model {
 		footnoteNumber?: number
 	}
 
-	export type Filters = {
-		vendors: Filter
-		versions: Filter
-	}
-
 	export type Filter = {
 		id: string,
 		options: FilterOption[]
