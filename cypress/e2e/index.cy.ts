@@ -30,7 +30,47 @@ describe("Home", () => {
 		cy.get("section").find(".featureName").should("have.length", 1);
 		cy.get(".featureName").eq(0).should("have.text", "JavaFX");
 	});
+
+	it("shows all filters", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectFilter("Versions");
+		comparisonPage.expectFilter("Vendors");
+		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		comparisonPage.clickFilter("versions", "8");
+		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+	});
 });
 
-// Prevent TypeScript from reading file as legacy script
+const comparisonPage = {
+	clickFilter: (id: string, option: string) => {
+		cy.get(`#filter-${id} > div`).each((e, i) => {
+			if (e.find("label").text() === option) {
+				e.find("input").trigger("click");
+			}
+		});
+	},
+	expectFilter: (name: string) => {
+		cy.get("#filters > fieldset > legend").should($l => {
+			const foundNames = $l.map((i, el) => Cypress.$(el).text()).get();
+			expect(foundNames).to.contain(name);
+		});
+	},
+	expectFilterOption: (id: string, option: { version: string, checked: boolean }) => {
+		cy.get(`#filter-${id} > div`).should($opt => {
+			const foundOptions = $opt.map((i, el) => {
+				return {
+					version: Cypress.$(el).find("label").text(),
+					checked: Cypress.$(el).find("input").prop("checked")
+				};
+			}).get();
+
+			expect(foundOptions).to.deep.contain(option);
+		});
+	},
+};
+
+// Prevent TypeScript from reading file as legacy script.
 export {};

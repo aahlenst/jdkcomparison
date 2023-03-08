@@ -7,6 +7,7 @@ import {Vendor} from "@/src/vendorDataTypes";
 import {deriveFilters, extractComparisonData} from "@/src/comparison";
 import {Model} from "@/src/modelTypes";
 import {ComparisonProvider} from "@/components/comparison/comparisonContext";
+import {Filters} from "@/components/comparison/filters";
 
 type ComparisonProps = {
 	filters: Model.Filter[],
@@ -24,6 +25,7 @@ export default function ComparisonPage({filters, data, footnotes}: ComparisonPro
 			</Head>
 			<main className={styles.main}>
 				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>
+					<Filters/>
 					<ComparisonTable/>
 				</ComparisonProvider>
 			</main>

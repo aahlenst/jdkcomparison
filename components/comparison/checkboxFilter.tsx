@@ -21,7 +21,7 @@ export function CheckboxFilter({label, filter, onChangeHandler}: CheckboxFilterP
 	});
 
 	return (
-		<fieldset>
+		<fieldset id={`filter-${filter.id}`}>
 			<legend>{label}</legend>
 			{fields}
 		</fieldset>
