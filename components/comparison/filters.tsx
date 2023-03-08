@@ -22,6 +22,8 @@ export function Filters() {
 							onChangeHandler={dispatch}/>
 			<CheckboxFilter label="Vendors" filter={getFilter("vendors", comparison.filters)}
 							onChangeHandler={dispatch}/>
+			<CheckboxFilter label="Technologies" filter={getFilter("technologies", comparison.filters)}
+							onChangeHandler={dispatch}/>
 		</div>
 	);
 }

@@ -101,6 +101,7 @@ function mapPresent(present: Present): Model.Present {
 
 export function deriveFilters(vendors: Vendor[]): Model.Filter[] {
 	return [
+		createTechnologiesFilter(),
 		deriveVendorsFilter(vendors),
 		deriveVersionsFilter(vendors)
 	];
@@ -144,3 +145,15 @@ export function deriveVendorsFilter(vendors: Vendor[]) {
 	return {id: id, options: options};
 }
 
+export function createTechnologiesFilter() {
+	const id = "technologies";
+
+	const names: string[] = ["JavaFX", "Flight Recorder"];
+	names.sort((a, b) => a.localeCompare(b, "en"));
+
+	const options = names.map((name, index) => {
+		return {id: `${id}-${index}`, label: `${name}`, checked: false};
+	});
+
+	return {id: id, options: options};
+}

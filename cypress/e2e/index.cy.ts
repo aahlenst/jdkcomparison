@@ -24,9 +24,13 @@ describe("Home", () => {
 
 		comparisonPage.expectFilter("Versions");
 		comparisonPage.expectFilter("Vendors");
+		comparisonPage.expectFilter("Technologies");
+
 		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
 		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+
 		comparisonPage.clickFilter("versions", "8");
+
 		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
 		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
 	});

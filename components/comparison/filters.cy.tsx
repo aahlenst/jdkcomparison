@@ -4,6 +4,13 @@ import {Filters} from "./filters";
 describe("<Filters/>", () => {
 	const filters = [
 		{
+			id: "technologies",
+			options: [
+				{id: "technologies-0", label: "Flight Recorder", checked: false},
+				{id: "technologies-1", label: "JavaFX", checked: false},
+			]
+		},
+		{
 			id: "versions",
 			options: [
 				{id: "versions-0", label: "8", checked: false},
@@ -42,6 +49,12 @@ describe("<Filters/>", () => {
 		cy.get("fieldset:nth-of-type(2) input[id=vendors-0]").should("not.be.checked");
 		cy.get("fieldset:nth-of-type(2) label[for=vendors-1]").should("have.text", "Azul");
 		cy.get("fieldset:nth-of-type(2) input[id=vendors-1]").should("be.checked");
+
+		cy.get("fieldset:nth-of-type(3) legend").should("have.text", "Technologies");
+		cy.get("fieldset:nth-of-type(3) label[for=technologies-0]").should("have.text", "Flight Recorder");
+		cy.get("fieldset:nth-of-type(3) input[id=technologies-0]").should("not.be.checked");
+		cy.get("fieldset:nth-of-type(3) label[for=technologies-1]").should("have.text", "JavaFX");
+		cy.get("fieldset:nth-of-type(3) input[id=technologies-1]").should("not.be.checked");
 	});
 
 	it("updates filters on click", () => {
