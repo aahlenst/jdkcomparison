@@ -1,6 +1,6 @@
 import {beforeAll, describe, expect} from "@jest/globals";
 import {Vendor} from "@/src/vendorDataTypes";
-import {deriveFilters, deriveVendorFilter, deriveVersionFilter, extractComparisonData} from "@/src/comparison";
+import {deriveFilters, deriveVendorsFilter, deriveVersionsFilter, extractComparisonData} from "@/src/comparison";
 import {Model} from "@/src/modelTypes";
 
 describe("comparison module", () => {
@@ -44,8 +44,8 @@ describe("comparison module", () => {
 		expect(filters).toEqual(["vendors", "versions"]);
 	});
 
-	test("deriveVersionFilter() produces a filter with all JDK versions", () => {
-		const versionFilter = deriveVersionFilter(testData);
+	test("deriveVersionsFilter() produces a filter with all JDK versions", () => {
+		const versionFilter = deriveVersionsFilter(testData);
 
 		expect(versionFilter.id).toEqual("versions");
 		expect(versionFilter.options.length).toEqual(2);
@@ -53,8 +53,8 @@ describe("comparison module", () => {
 		expect(versionFilter.options[1]).toEqual({id: "versions-1", label: "17", checked: false});
 	});
 
-	test("deriveVendorFilter() produces a filter with all JDK vendors", () => {
-		const vendorFilter = deriveVendorFilter(testData);
+	test("deriveVendorsFilter() produces a filter with all JDK vendors", () => {
+		const vendorFilter = deriveVendorsFilter(testData);
 
 		expect(vendorFilter.id).toEqual("vendors");
 		expect(vendorFilter.options.length).toEqual(2);

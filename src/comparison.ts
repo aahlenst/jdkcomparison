@@ -101,12 +101,12 @@ function mapPresent(present: Present): Model.Present {
 
 export function deriveFilters(vendors: Vendor[]): Model.Filter[] {
 	return [
-		deriveVendorFilter(vendors),
-		deriveVersionFilter(vendors)
+		deriveVendorsFilter(vendors),
+		deriveVersionsFilter(vendors)
 	];
 }
 
-export function deriveVersionFilter(vendors: Vendor[]) {
+export function deriveVersionsFilter(vendors: Vendor[]) {
 	const id = "versions";
 
 	const versions = new Set<number>();
@@ -126,7 +126,7 @@ export function deriveVersionFilter(vendors: Vendor[]) {
 	return {id: id, options: options};
 }
 
-export function deriveVendorFilter(vendors: Vendor[]) {
+export function deriveVendorsFilter(vendors: Vendor[]) {
 	const id = "vendors";
 
 	const names = new Set<string>();
