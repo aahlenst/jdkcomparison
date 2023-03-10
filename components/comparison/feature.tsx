@@ -30,7 +30,7 @@ function FeaturePresence({present}: FeaturePresenceProps) {
 	}
 
 	return (
-		<div className="featureValue">{presentText}</div>
+		<div className="featureValue py-2 px-4">{presentText}</div>
 	);
 }
 
@@ -42,15 +42,16 @@ export function Feature({name, values, children}: PropsWithChildren<FeatureProps
 					<FeaturePresence present={value.present}/>
 				}
 				{"text" in value &&
-					<div className="featureValue">{value.text}</div>
+					<div className="featureValue py-2 px-4">{value.text}</div>
 				}
 			</React.Fragment>
 		);
 	});
 
 	return (
-		<div className="feature" data-cy={name} style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
-			<div>
+		<div className="feature grid gap-4 divide-x" data-cy={name}
+			 style={{gridTemplateColumns: `repeat(${features.length + 1}, 12rem)`}}>
+			<div className="py-2">
 				<span className="featureName">{name}</span>
 				<span>{children}</span>
 			</div>
