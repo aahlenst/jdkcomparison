@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
 import {GetStaticProps} from "next";
 import React from "react";
 import {ComparisonTable} from "@/components/comparison/comparisonTable";
@@ -24,7 +23,8 @@ export default function ComparisonPage({data, footnotes}: ComparisonProps) {
 				<meta name="viewport" content="width=device-width, initial-scale=1"/>
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
-			<main className={styles.main}>
+			<main>
+				<h1 className="text-3xl font-bold underline">JDK Comparison</h1>
 				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>
 					<Filters/>
 					<ComparisonTable/>
