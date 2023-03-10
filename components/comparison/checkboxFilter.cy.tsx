@@ -1,16 +1,11 @@
 import {CheckboxFilter} from "./checkboxFilter";
-import {Model} from "@/src/modelTypes";
-import {ApplyCheckboxFilter, ComparisonAction} from "./comparisonContext";
+import {ApplyCheckboxFilter} from "./comparisonContext";
+import {DynamicSelectionFilter} from "../../src/filter";
 
 describe("<CheckboxFilter/>", () => {
 	it("renders all options", () => {
-		const filter: Model.Filter = {
-			id: "vendors",
-			options: [
-				{id: "vendors-0", label: "Oracle", checked: false},
-				{id: "vendors-1", label: "Azul", checked: true},
-			]
-		};
+		const filter = new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor);
+
 		const onChangeHandler = function () {
 			// Do nothing.
 		};
@@ -19,27 +14,20 @@ describe("<CheckboxFilter/>", () => {
 
 		cy.get("legend").should("have.text", "Vendors");
 
-		cy.get("label[for=vendors-0]").should("have.text", "Oracle");
+		cy.get("label[for=vendors-0]").should("have.text", "Coffeecorp");
 		cy.get("input[id=vendors-0]").should("not.be.checked");
 
-		cy.get("label[for=vendors-1]").should("have.text", "Azul");
-		cy.get("input[id=vendors-1]").should("be.checked");
+		cy.get("label[for=vendors-1]").should("have.text", "Dukecorp");
+		cy.get("input[id=vendors-1]").should("not.be.checked");
 	});
 
 	it("enables and disables options on click", () => {
-		const filter = {
-			id: "versions",
-			options: [
-				{id: "versions-0", label: "8", checked: false},
-				{id: "versions-1", label: "11", checked: false},
-				{id: "versions-2", label: "17", checked: false},
-			]
-		};
+		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString());
 
 		const onChangeHandler = function (action: ApplyCheckboxFilter) {
 			for (const option of filter.options) {
-				if (option.id === action.filterId) {
-					option.checked = action.checked;
+				if (option.id === action.optionId) {
+					option.selected = action.checked;
 				}
 			}
 		};

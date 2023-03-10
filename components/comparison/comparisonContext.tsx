@@ -1,6 +1,7 @@
 import React, {createContext, PropsWithChildren, useContext} from "react";
 import {useImmerReducer} from "use-immer";
-import {Model} from "@/src/modelTypes";
+import {Model} from "../../src/modelTypes";
+import {applyFilters} from "../../src/filter";
 
 type ComparisonProviderProps = {
 	filters: Model.Filter[]
@@ -37,11 +38,11 @@ export class ToggleShowDifferencesOnly implements ComparisonAction {
 
 export class ApplyCheckboxFilter implements ComparisonAction {
 	type = ComparisonActionType.ApplyCheckboxFilter;
-	filterId: string;
+	optionId: string;
 	checked: boolean;
 
 	constructor(filterId: string, checked: boolean) {
-		this.filterId = filterId;
+		this.optionId = filterId;
 		this.checked = checked;
 	}
 }
@@ -88,16 +89,14 @@ function comparisonReducer(draft: ComparisonState, action: ComparisonAction): Co
 		case ComparisonActionType.ApplyCheckboxFilter:
 			const filterAction = action as ApplyCheckboxFilter;
 			for (const filter of draft.filters) {
-				for (const option of filter.options) {
-					if (option.id === filterAction.filterId) {
-						option.checked = filterAction.checked;
-						return draft;
-					}
+				if (filter.hasOption(filterAction.optionId)) {
+					filter.setOptionSelected(filterAction.optionId, filterAction.checked);
 				}
 			}
+
+			draft.filteredData = applyFilters(draft.filters, draft.data);
 			return draft;
 	}
 
 	return draft;
 }
-

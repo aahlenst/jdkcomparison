@@ -4,18 +4,19 @@ import {GetStaticProps} from "next";
 import React from "react";
 import {ComparisonTable} from "@/components/comparison/comparisonTable";
 import {Vendor} from "@/src/vendorDataTypes";
-import {deriveFilters, extractComparisonData} from "@/src/comparison";
+import {extractComparisonData} from "@/src/comparison";
 import {Model} from "@/src/modelTypes";
 import {ComparisonProvider} from "@/components/comparison/comparisonContext";
 import {Filters} from "@/components/comparison/filters";
+import {createFilters} from "@/src/filter";
 
 type ComparisonProps = {
-	filters: Model.Filter[],
 	data: Model.FeatureComparison[],
 	footnotes: Model.Footnote[]
 }
 
-export default function ComparisonPage({filters, data, footnotes}: ComparisonProps) {
+export default function ComparisonPage({data, footnotes}: ComparisonProps) {
+	const filters: Model.Filter[] = createFilters(data);
 	return (
 		<>
 			<Head>
@@ -43,11 +44,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	];
 
 	const {productsInComparison, footnotes} = extractComparisonData(vendorData);
-	const filters: Model.Filter[] = deriveFilters(vendorData);
 
 	return {
 		props: {
-			filters: filters,
 			data: productsInComparison,
 			footnotes: footnotes
 		}

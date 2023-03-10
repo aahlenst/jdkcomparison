@@ -6,6 +6,8 @@ export namespace Model {
 
 	export type FeatureComparison = {
 		id: string,
+		vendor: string,
+		version: number,
 		jfx: FeaturePresence,
 		jfr: FeaturePresence,
 		paidSupport: FeaturePresence,
@@ -35,15 +37,24 @@ export namespace Model {
 		footnoteNumber?: number
 	}
 
-	export type Filter = {
-		id: string,
-		options: FilterOption[]
+	export interface Filter {
+		readonly id: string,
+
+		readonly options: FilterOption[],
+
+		apply(fc: Model.FeatureComparison): boolean
+
+		hasOption(id: string): boolean
+
+		setOptionSelected(id: string, selected: boolean): void
+
+		setOptionSelectedByLabel(label: string, selected: boolean): void
 	}
 
 	export type FilterOption = {
 		id: string,
 		label: string,
-		checked: boolean
+		selected: boolean
 	}
 
 	export type Keyable = {

@@ -5,7 +5,7 @@ describe("Home", () => {
 		comparisonPage.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)"]);
 		comparisonPage.expectFeatureText("JavaFX", ["yes", "no", "no"]);
-		comparisonPage.expectFeatureText("Flight Recorder (JFR)", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeatureText("Flight Recorder (JFR)", ["no", "yes", "yes"]);
 	});
 
 	it("should display only features with different values", () => {
@@ -16,7 +16,7 @@ describe("Home", () => {
 
 		comparisonPage.clickShowDifferencesOnly();
 
-		comparisonPage.expectFeatures(["JavaFX"]);
+		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)"]);
 	});
 
 	it("shows all filters", () => {

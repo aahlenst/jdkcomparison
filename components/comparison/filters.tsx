@@ -1,6 +1,6 @@
 import {useComparison, useComparisonDispatch} from "./comparisonContext";
 import {CheckboxFilter} from "./checkboxFilter";
-import {Model} from "@/src/modelTypes";
+import {Model} from "../../src/modelTypes";
 
 function getFilter(id: string, filters: Model.Filter[]): Model.Filter {
 	const filter = filters.find(filter => filter.id === id);

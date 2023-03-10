@@ -1,5 +1,5 @@
-import {Model} from "@/src/modelTypes";
-import {ApplyCheckboxFilter, ComparisonAction} from "./comparisonContext";
+import {Model} from "../../src/modelTypes";
+import {ApplyCheckboxFilter} from "./comparisonContext";
 
 type CheckboxFilterProps = {
 	label: string
@@ -11,7 +11,7 @@ export function CheckboxFilter({label, filter, onChangeHandler}: CheckboxFilterP
 	const fields = filter.options.map((option) => {
 		return (
 			<div key={option.id}>
-				<input type="checkbox" id={option.id} checked={option.checked}
+				<input type="checkbox" id={option.id} checked={option.selected}
 					   onChange={(e) => {
 						   onChangeHandler(new ApplyCheckboxFilter(e.target.id, e.target.checked));
 					   }}/>

@@ -1,12 +1,6 @@
 import {beforeAll, describe, expect} from "@jest/globals";
 import {Vendor} from "@/src/vendorDataTypes";
-import {
-	deriveFilters,
-	createTechnologiesFilter,
-	deriveVendorsFilter,
-	deriveVersionsFilter,
-	extractComparisonData
-} from "@/src/comparison";
+import {extractComparisonData} from "@/src/comparison";
 import {Model} from "@/src/modelTypes";
 
 describe("comparison module", () => {
@@ -43,37 +37,5 @@ describe("comparison module", () => {
 		expect(jdk.jfr).toEqual({present: Model.Present.YES});
 		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteNumber: 1});
 		expect(jdk.eolDate).toEqual({text: "2027-10"});
-	});
-
-	test("deriveFilters() includes all filters", () => {
-		const filters = deriveFilters(testData).map(filter => filter.id);
-		expect(filters).toEqual(["technologies", "vendors", "versions"]);
-	});
-
-	test("deriveVersionsFilter() produces a filter with all JDK versions", () => {
-		const versionFilter = deriveVersionsFilter(testData);
-
-		expect(versionFilter.id).toEqual("versions");
-		expect(versionFilter.options.length).toEqual(2);
-		expect(versionFilter.options[0]).toEqual({id: "versions-0", label: "8", checked: false});
-		expect(versionFilter.options[1]).toEqual({id: "versions-1", label: "17", checked: false});
-	});
-
-	test("deriveVendorsFilter() produces a filter with all JDK vendors", () => {
-		const vendorFilter = deriveVendorsFilter(testData);
-
-		expect(vendorFilter.id).toEqual("vendors");
-		expect(vendorFilter.options.length).toEqual(2);
-		expect(vendorFilter.options[0]).toEqual({id: "vendors-0", label: "Coffeecorp", checked: false});
-		expect(vendorFilter.options[1]).toEqual({id: "vendors-1", label: "Dukecorp", checked: false});
-	});
-
-	test("deriveTechnologiesFilter() produces a filter with technologies", () => {
-		const technologiesFilter = createTechnologiesFilter();
-
-		expect(technologiesFilter.id).toEqual("technologies");
-		expect(technologiesFilter.options.length).toEqual(2);
-		expect(technologiesFilter.options[0]).toEqual({id: "technologies-0", label: "Flight Recorder", checked: false});
-		expect(technologiesFilter.options[1]).toEqual({id: "technologies-1", label: "JavaFX", checked: false});
 	});
 });

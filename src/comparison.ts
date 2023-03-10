@@ -38,6 +38,8 @@ function extractFeatureComparisons(vendor: Vendor, footnotes: Model.Footnote[]):
 	return vendor.jdks.map(jdk => {
 		return {
 			id: jdk.id,
+			vendor: vendor.vendor,
+			version: jdk.information.version,
 			jfx: mapFeaturePresence(jdk.features.javaFX, footnotes),
 			jfr: mapFeaturePresence(jdk.features.flightRecorder, footnotes),
 			paidSupport: mapFeaturePresence(jdk.features.paidSupport, footnotes),
@@ -97,63 +99,4 @@ function mapPresent(present: Present): Model.Present {
 		default:
 			throw new Error(`Unknown presence: ${present}`);
 	}
-}
-
-export function deriveFilters(vendors: Vendor[]): Model.Filter[] {
-	return [
-		createTechnologiesFilter(),
-		deriveVendorsFilter(vendors),
-		deriveVersionsFilter(vendors)
-	];
-}
-
-export function deriveVersionsFilter(vendors: Vendor[]) {
-	const id = "versions";
-
-	const versions = new Set<number>();
-	for (const vendor of vendors) {
-		for (const jdk of vendor.jdks) {
-			versions.add(jdk.information.version);
-		}
-	}
-
-	const sortedVersions: number[] = [...versions];
-	sortedVersions.sort((a, b) => a - b);
-
-	const options = sortedVersions.map((version, index) => {
-		return {id: `${id}-${index}`, label: `${version}`, checked: false};
-	});
-
-	return {id: id, options: options};
-}
-
-export function deriveVendorsFilter(vendors: Vendor[]) {
-	const id = "vendors";
-
-	const names = new Set<string>();
-	for (const vendor of vendors) {
-		names.add(vendor.vendor);
-	}
-
-	const sortedNames: string[] = [...names];
-	sortedNames.sort((a, b) => a.localeCompare(b, "en"));
-
-	const options = sortedNames.map((name, index) => {
-		return {id: `${id}-${index}`, label: `${name}`, checked: false};
-	});
-
-	return {id: id, options: options};
-}
-
-export function createTechnologiesFilter() {
-	const id = "technologies";
-
-	const names: string[] = ["JavaFX", "Flight Recorder"];
-	names.sort((a, b) => a.localeCompare(b, "en"));
-
-	const options = names.map((name, index) => {
-		return {id: `${id}-${index}`, label: `${name}`, checked: false};
-	});
-
-	return {id: id, options: options};
 }
