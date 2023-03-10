@@ -11,8 +11,8 @@ const inter = Inter({
 
 export default function Layout({children}: PropsWithChildren) {
 	return (
-		<main className={`${inter.variable} font-sans`}>
+		<div className={`${inter.variable} font-sans`}>
 			{children}
-		</main>
+		</div>
 	);
 }
