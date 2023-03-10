@@ -29,12 +29,13 @@ function extractValue(feature: Model.FeaturePresence | Model.FeatureDescription)
 export function TechnologiesSection({productData, showDifferencesOnly}: TechnologiesSectionProps) {
 	const jfx = productData.map(product => ({...product.jfx, id: product.id}));
 	const jfr = productData.map(product => ({...product.jfr, id: product.id}));
+	const jaws = productData.map(product => ({...product.jaws, id: product.id}));
 
 	function hasDifferences(values: Model.FeaturePresence[] | Model.FeatureDescription[]): boolean {
 		return new Set(values.map(v => extractValue(v))).size > 1;
 	}
 
-	if (showDifferencesOnly && !([jfx, jfr].some(hasDifferences))) {
+	if (showDifferencesOnly && !([jfx, jfr, jaws].some(hasDifferences))) {
 		return (<></>);
 	}
 
@@ -56,6 +57,9 @@ export function TechnologiesSection({productData, showDifferencesOnly}: Technolo
 					href="https://openjdk.org/jeps/328">open-sourced as part of JDK 11</a> in 2018 and was subsequently
 					backported to JDK 8.
 				</Feature>
+			}
+			{(!showDifferencesOnly || hasDifferences(jaws)) &&
+				<Feature name="Java Web Start" values={jaws}/>
 			}
 		</section>
 	);

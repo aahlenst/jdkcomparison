@@ -15,6 +15,7 @@ export const data: Vendor = {
 			features: {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
+				javaWS: {present: Present.NO},
 				paidSupport: {present: Present.NO, footnote: "f4b31750-2c0d-4332-bfe7-6d30daa959a1"},
 				eolDate: {text: "2027-10"}
 			}

@@ -50,7 +50,8 @@ export type JDKInformation = {
 export type JDKFeatures = {
 	javaFX: FeaturePresence
 	flightRecorder: FeaturePresence
-	paidSupport: FeaturePresence,
+	javaWS: FeaturePresence
+	paidSupport: FeaturePresence
 	eolDate: FeatureDescription
 }
 

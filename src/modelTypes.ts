@@ -10,6 +10,7 @@ export namespace Model {
 		version: number,
 		jfx: FeaturePresence,
 		jfr: FeaturePresence,
+		jaws: FeaturePresence,
 		paidSupport: FeaturePresence,
 		eolDate: FeatureDescription
 	}

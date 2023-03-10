@@ -3,16 +3,17 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)"]);
+		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
 		comparisonPage.expectFeatureText("JavaFX", ["yes", "no", "no"]);
 		comparisonPage.expectFeatureText("Flight Recorder (JFR)", ["no", "yes", "yes"]);
+		comparisonPage.expectFeatureText("Java Web Start", ["no", "no", "no"]);
 	});
 
 	it("should display only features with different values", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)"]);
+		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
