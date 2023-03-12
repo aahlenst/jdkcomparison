@@ -42,7 +42,7 @@ export function CheckboxFilterMobile({label, filter, onChangeHandler}: CheckboxF
 						<Disclosure.Button
 							id={`mobile-menu-filter-${filter.id}`}
 							className="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400">
-							<span className="font-medium text-gray-900">{label}</span>
+							<span className="filter-name font-medium text-gray-900">{label}</span>
 							<span className="ml-6 flex items-center">
                                 <ChevronDownIcon
 									className={classNames(open ? "-rotate-180" : "rotate-0", "h-5 w-5 transform")}
