@@ -12,7 +12,7 @@ export function ComparisonTable() {
 
 	return (
 		<div className="overflow-x-auto">
-			<input type="checkbox" id="showDifferencesOnly" name="showDifferencesOnly"
+			<input type="checkbox" id="show-differences-only" name="show-differences-only"
 				   onChange={(e) => dispatch(new ToggleShowDifferencesOnly(e.target.checked))}/> Show differences only
 			<TechnologiesSection productData={comparison.filteredData}
 								 showDifferencesOnly={comparison.showDifferencesOnly}/>

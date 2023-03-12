@@ -29,14 +29,10 @@ export function Sort() {
 					className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
 					<div className="py-1">
 						<Menu.Item>
-											<span className="block px-4 py-2 text-sm font-medium text-gray-900">
-												Version
-											</span>
+							<span className="block px-4 py-2 text-sm font-medium text-gray-900">Version</span>
 						</Menu.Item>
 						<Menu.Item>
-											<span className="block px-4 py-2 text-sm font-medium text-gray-900">
-												Vendor
-											</span>
+							<span className="block px-4 py-2 text-sm font-medium text-gray-900">Vendor</span>
 						</Menu.Item>
 					</div>
 				</Menu.Items>

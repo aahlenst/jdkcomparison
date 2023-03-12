@@ -100,7 +100,7 @@ const comparisonPage = {
 		});
 	},
 	clickShowDifferencesOnly: () => {
-		cy.get("#showDifferencesOnly").click();
+		cy.get("#show-differences-only").click();
 	},
 	closeFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
@@ -113,19 +113,19 @@ const comparisonPage = {
 		}
 	},
 	expectFeatures: (names: string[]) => {
-		cy.get(".feature .featureName").should("have.length", names.length);
+		cy.get(".feature .feature-name").should("have.length", names.length);
 
 		for (let i = 0; i < names.length; i++) {
 			const name = names[i];
-			cy.get(".feature .featureName").eq(i).should("have.text", name);
+			cy.get(".feature .feature-name").eq(i).should("have.text", name);
 		}
 	},
 	expectFeatureText: (name: string, values: string[]) => {
-		cy.get(`.feature[data-cy="${name}"] .featureName`).should("have.text", name);
-		cy.get(`.feature[data-cy="${name}"] .featureValue`).should("have.length", values.length);
+		cy.get(`.feature[data-cy="${name}"] .feature-name`).should("have.text", name);
+		cy.get(`.feature[data-cy="${name}"] .feature-value`).should("have.length", values.length);
 
 		for (let i = 0; i < values.length; i++) {
-			cy.get(`.feature[data-cy="${name}"] .featureValue`).eq(i).should("have.text", values[i]);
+			cy.get(`.feature[data-cy="${name}"] .feature-value`).eq(i).should("have.text", values[i]);
 		}
 	},
 	expectFilter: (name: string) => {
