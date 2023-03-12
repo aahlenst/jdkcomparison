@@ -65,8 +65,12 @@ abstract class AbstractFilter implements Model.Filter {
 	setOptionSelectedByLabel(label: string, selected: boolean): void {
 		const option = this.options.find(option => option.label === label);
 		if (option !== undefined) {
-			option.selected = selected;
+			this.setOptionSelected(option.id, selected);
 		}
+	}
+
+	numberOfSelectedOptions(): number {
+		return this.options.filter(o => o.selected).length;
 	}
 }
 

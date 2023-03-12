@@ -5,7 +5,7 @@ import {
 	createFilters,
 	createTechnologiesFilter,
 	createVendorsFilter,
-	createVersionsFilter
+	createVersionsFilter, DynamicSelectionFilter, TechnologiesFilter
 } from "@/src/filter";
 import {Model} from "@/src/modelTypes";
 
@@ -192,5 +192,81 @@ describe("filter module", () => {
 		expect(foundProducts).not.toContainEqual({vendor: "Coffeecorp", version: 8, jfx: Model.Present.YES});
 		expect(foundProducts).not.toContainEqual({vendor: "Coffeecorp", version: 17, jfx: Model.Present.NO});
 		expect(foundProducts).not.toContainEqual({vendor: "Dukecorp", version: 17, jfx: Model.Present.NO});
+	});
+
+	test("DynamicSelectionFilter returns number of selected options set by option ID", () => {
+		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], fc => fc.vendor);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(0);
+
+		filter.setOptionSelected("a-filter-0", true);
+		filter.setOptionSelected("a-filter-1", true);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(2);
+
+		filter.setOptionSelected("a-filter-0", false);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(1);
+
+		filter.setOptionSelected("a-filter-1", false);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("DynamicSelectionFilter returns number of selected options set by option label", () => {
+		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], fc => fc.vendor);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(0);
+
+		filter.setOptionSelectedByLabel("A", true);
+		filter.setOptionSelectedByLabel("C", true);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(2);
+
+		filter.setOptionSelectedByLabel("A", false);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(1);
+
+		filter.setOptionSelectedByLabel("C", false);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("TechnologiesFilter returns number of selected options set by option ID", () => {
+		const filter = new TechnologiesFilter();
+
+		expect(filter.numberOfSelectedOptions()).toEqual(0);
+
+		filter.setOptionSelected("technologies-jfr", true);
+		filter.setOptionSelected("technologies-jfx", true);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(2);
+
+		filter.setOptionSelected("technologies-jfr", false);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(1);
+
+		filter.setOptionSelected("technologies-jfx", false);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("TechnologiesFilter returns number of selected options set by option label", () => {
+		const filter = new TechnologiesFilter();
+
+		expect(filter.numberOfSelectedOptions()).toEqual(0);
+
+		filter.setOptionSelectedByLabel("Flight Recorder", true);
+		filter.setOptionSelectedByLabel("JavaFX", true);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(2);
+
+		filter.setOptionSelectedByLabel("Flight Recorder", false);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(1);
+
+		filter.setOptionSelectedByLabel("JavaFX", false);
+
+		expect(filter.numberOfSelectedOptions()).toEqual(0);
 	});
 });

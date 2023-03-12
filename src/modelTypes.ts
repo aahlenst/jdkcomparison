@@ -50,6 +50,8 @@ export namespace Model {
 		setOptionSelected(id: string, selected: boolean): void
 
 		setOptionSelectedByLabel(label: string, selected: boolean): void
+
+		numberOfSelectedOptions(): number
 	}
 
 	export type FilterOption = {

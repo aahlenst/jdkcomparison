@@ -27,18 +27,72 @@ describe("Home", () => {
 		comparisonPage.expectFilter("Vendors");
 		comparisonPage.expectFilter("Technologies");
 
+		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
 		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
 
-		comparisonPage.clickFilter("versions", "8");
+		comparisonPage.clickFilterOption("versions", "8");
 
 		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
 		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
 	});
+
+	it("retains filter state when opening and closing", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectFilter("Versions");
+
+		comparisonPage.showFilter("versions");
+
+		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+
+		comparisonPage.clickFilterOption("versions", "8");
+
+		comparisonPage.closeFilter("versions");
+		comparisonPage.showFilter("versions");
+
+		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+	});
+
+	it("updates number of active filters", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectFilter("Versions");
+		comparisonPage.expectActiveFilterOptions("versions", 0);
+
+		comparisonPage.showFilter("versions");
+
+		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+
+		comparisonPage.clickFilterOption("versions", "17");
+
+		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {version: "17", checked: true});
+
+		comparisonPage.expectActiveFilterOptions("versions", 1);
+
+		comparisonPage.clickFilterOption("versions", "8");
+
+		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {version: "17", checked: true});
+
+		comparisonPage.expectActiveFilterOptions("versions", 2);
+
+		comparisonPage.clickFilterOption("versions", "8");
+		comparisonPage.clickFilterOption("versions", "17");
+
+		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+
+		comparisonPage.expectActiveFilterOptions("versions", 0);
+	});
 });
 
 const comparisonPage = {
-	clickFilter: (id: string, option: string) => {
+	clickFilterOption: (id: string, option: string) => {
 		cy.get(`#filter-${id} > div`).each((e, i) => {
 			if (e.find("label").text() === option) {
 				e.find("input").trigger("click");
@@ -47,6 +101,16 @@ const comparisonPage = {
 	},
 	clickShowDifferencesOnly: () => {
 		cy.get("#showDifferencesOnly").click();
+	},
+	closeFilter: (filterId: string) => {
+		cy.get(`#desktop-menu-filter-${filterId}`).click();
+	},
+	expectActiveFilterOptions: (filterId: string, count: number) => {
+		if (count === 0) {
+			cy.get(`#desktop-menu-filter-${filterId} .active-filter-options`).should("not.exist");
+		} else {
+			cy.get(`#desktop-menu-filter-${filterId} .active-filter-options`).should("have.text", count.toString());
+		}
 	},
 	expectFeatures: (names: string[]) => {
 		cy.get(".feature .featureName").should("have.length", names.length);
@@ -65,7 +129,7 @@ const comparisonPage = {
 		}
 	},
 	expectFilter: (name: string) => {
-		cy.get("#filters > fieldset > legend").should($l => {
+		cy.get("#filters .filter-name").should($l => {
 			const foundNames = $l.map((i, el) => Cypress.$(el).text()).get();
 			expect(foundNames).to.contain(name);
 		});
@@ -84,6 +148,9 @@ const comparisonPage = {
 	},
 	expectPageTitle: (title: string) => {
 		cy.title().should("eq", title);
+	},
+	showFilter: (filterId: string) => {
+		cy.get(`#desktop-menu-filter-${filterId}`).click();
 	},
 };
 
