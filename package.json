@@ -15,6 +15,7 @@
 		"test": "npm run jest && npm run component:headless"
 	},
 	"dependencies": {
+		"@headlessui/react": "1.7.13",
 		"immer": "9.0.19",
 		"micromark": "3.1.0",
 		"next": "13.2.3",
