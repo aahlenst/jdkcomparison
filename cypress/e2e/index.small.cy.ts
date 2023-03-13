@@ -1,27 +1,8 @@
 describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight: 844}, () => {
-	it("should display Technologies", () => {
-		cy.visit("http://localhost:3000/");
-
-		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
-		comparisonPage.expectFeatureText("JavaFX", ["yes", "no", "no"]);
-		comparisonPage.expectFeatureText("Flight Recorder (JFR)", ["no", "yes", "yes"]);
-		comparisonPage.expectFeatureText("Java Web Start", ["no", "no", "no"]);
-	});
-
-	it("should display only features with different values", () => {
-		cy.visit("http://localhost:3000/");
-
-		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
-
-		comparisonPage.clickShowDifferencesOnly();
-
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)"]);
-	});
-
 	it("shows all filters", () => {
 		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
 
 		comparisonPage.showFilters();
 
@@ -41,6 +22,8 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 
 	it("retains filter state when opening and closing", () => {
 		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
 
 		comparisonPage.showFilters();
 
@@ -74,30 +57,11 @@ const comparisonPage = {
 			}
 		});
 	},
-	clickShowDifferencesOnly: () => {
-		cy.get("#show-differences-only").click();
-	},
 	closeFilter: (filterId: string) => {
 		cy.get(`#mobile-menu-filter-${filterId}`).click();
 	},
 	closeFilters: () => {
 		cy.get("#mobile-filters-close").click();
-	},
-	expectFeatures: (names: string[]) => {
-		cy.get(".feature .feature-name").should("have.length", names.length);
-
-		for (let i = 0; i < names.length; i++) {
-			const name = names[i];
-			cy.get(".feature .feature-name").eq(i).should("have.text", name);
-		}
-	},
-	expectFeatureText: (name: string, values: string[]) => {
-		cy.get(`.feature[data-cy="${name}"] .feature-name`).should("have.text", name);
-		cy.get(`.feature[data-cy="${name}"] .feature-value`).should("have.length", values.length);
-
-		for (let i = 0; i < values.length; i++) {
-			cy.get(`.feature[data-cy="${name}"] .feature-value`).eq(i).should("have.text", values[i]);
-		}
 	},
 	expectFilter: (name: string) => {
 		cy.get("#filters .filter-name").should($l => {
