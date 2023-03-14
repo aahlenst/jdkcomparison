@@ -112,7 +112,7 @@ const comparisonPage = {
 		cy.get("#show-differences-only").click();
 	},
 	closeFeatureExplanation: (id: string) => {
-		cy.get(`#${id} .feature-explanation-toggle`).click();
+		cy.get(`#${id} .desktop-feature-explanation-toggle`).click();
 	},
 	closeFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
@@ -125,7 +125,7 @@ const comparisonPage = {
 		}
 	},
 	expectFeatureExplanation: (excerpt: string) => {
-		cy.get(".feature-explanation").should("contain.text", excerpt);
+		cy.get(".desktop-feature-explanation").should("contain.text", excerpt);
 	},
 	expectFeatures: (names: string[]) => {
 		cy.get(".feature .feature-name").should("have.length", names.length);
@@ -165,7 +165,7 @@ const comparisonPage = {
 		cy.title().should("eq", title);
 	},
 	showFeatureExplanation: (id: string) => {
-		cy.get(`#${id} .feature-explanation-toggle`).click();
+		cy.get(`#${id} .desktop-feature-explanation-toggle`).click();
 	},
 	showFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();

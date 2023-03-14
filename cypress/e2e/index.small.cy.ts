@@ -47,6 +47,15 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
 		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
 	});
+
+	it("shows feature explanation", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
+		comparisonPage.showFeatureExplanation("technologies-jfr");
+		comparisonPage.expectFeatureExplanation("Flight Recorder (JFR) is a low-overhead data collection framework");
+		comparisonPage.closeFeatureExplanation("technologies-jfr");
+	});
 });
 
 const comparisonPage = {
@@ -57,11 +66,17 @@ const comparisonPage = {
 			}
 		});
 	},
+	closeFeatureExplanation: (id: string) => {
+		cy.get(`#${id} .mobile-feature-explanation-overlay`).click();
+	},
 	closeFilter: (filterId: string) => {
 		cy.get(`#mobile-menu-filter-${filterId}`).click();
 	},
 	closeFilters: () => {
 		cy.get("#mobile-filters-close").click();
+	},
+	expectFeatureExplanation: (excerpt: string) => {
+		cy.get(".mobile-feature-explanation").should("contain.text", excerpt);
 	},
 	expectFilter: (name: string) => {
 		cy.get("#filters .filter-name").should($l => {
@@ -83,6 +98,9 @@ const comparisonPage = {
 	},
 	expectPageTitle: (title: string) => {
 		cy.title().should("eq", title);
+	},
+	showFeatureExplanation: (id: string) => {
+		cy.get(`#${id} .mobile-feature-explanation-toggle`).click();
 	},
 	showFilter: (filterId: string) => {
 		cy.get(`#mobile-menu-filter-${filterId}`).click();
