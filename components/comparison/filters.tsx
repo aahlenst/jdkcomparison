@@ -81,8 +81,8 @@ export function Filters() {
 			</Transition.Root>
 
 			{/* Desktop filters */}
-			<div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
-				<section aria-labelledby="filter-heading" className="border-t border-b border-gray-200 py-6">
+			<div className="mx-auto max-w-full text-center">
+				<section aria-labelledby="filter-heading" className="border-t border-b border-gray-200 py-3">
 					<h2 id="filter-heading" className="sr-only">
 						Filters
 					</h2>
