@@ -1,11 +1,13 @@
 import React, {PropsWithChildren} from "react";
 import {Model} from "../../src/modelTypes";
+import {FeatureExplanation} from "./featureExplanation";
 
 type FeaturePresenceProps = {
 	present: Model.Present
 }
 
 type FeatureProps = {
+	id: string,
 	name: string,
 	values: (Model.FeaturePresence & Model.Keyable)[] | (Model.FeatureDescription & Model.Keyable)[],
 }
@@ -34,7 +36,7 @@ function FeaturePresence({present}: FeaturePresenceProps) {
 	);
 }
 
-export function Feature({name, values, children}: PropsWithChildren<FeatureProps>) {
+export function Feature({id, name, values, children}: PropsWithChildren<FeatureProps>) {
 	const features = values.map(value => {
 		return (
 			<React.Fragment key={value.id}>
@@ -49,11 +51,15 @@ export function Feature({name, values, children}: PropsWithChildren<FeatureProps
 	});
 
 	return (
-		<div className="feature grid gap-4 divide-x" data-cy={name}
+		<div id={id} className="feature grid gap-4 divide-x"
 			 style={{gridTemplateColumns: `repeat(${features.length + 1}, 12rem)`}}>
-			<div className="py-2">
+			<div className="group inline-flex items-center py-2">
 				<span className="feature-name">{name}</span>
-				<span>{children}</span>
+				{children &&
+					<FeatureExplanation>
+						{children}
+					</FeatureExplanation>
+				}
 			</div>
 			{features}
 		</div>

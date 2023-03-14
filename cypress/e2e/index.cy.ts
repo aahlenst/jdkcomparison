@@ -4,9 +4,9 @@ describe("Home", () => {
 
 		comparisonPage.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
-		comparisonPage.expectFeatureText("JavaFX", ["yes", "no", "no"]);
-		comparisonPage.expectFeatureText("Flight Recorder (JFR)", ["no", "yes", "yes"]);
-		comparisonPage.expectFeatureText("Java Web Start", ["no", "no", "no"]);
+		comparisonPage.expectFeatureText("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
+		comparisonPage.expectFeatureText("technologies-jfr", "Flight Recorder (JFR)", ["no", "yes", "yes"]);
+		comparisonPage.expectFeatureText("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
 	});
 
 	it("should display only features with different values", () => {
@@ -89,6 +89,15 @@ describe("Home", () => {
 
 		comparisonPage.expectActiveFilterOptions("versions", 0);
 	});
+
+	it("shows feature explanation", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
+		comparisonPage.showFeatureExplanation("technologies-jfr");
+		comparisonPage.expectFeatureExplanation("Flight Recorder (JFR) is a low-overhead data collection framework");
+		comparisonPage.closeFeatureExplanation("technologies-jfr");
+	});
 });
 
 const comparisonPage = {
@@ -102,6 +111,9 @@ const comparisonPage = {
 	clickShowDifferencesOnly: () => {
 		cy.get("#show-differences-only").click();
 	},
+	closeFeatureExplanation: (id: string) => {
+		cy.get(`#${id} .feature-explanation-toggle`).click();
+	},
 	closeFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
 	},
@@ -112,6 +124,9 @@ const comparisonPage = {
 			cy.get(`#desktop-menu-filter-${filterId} .active-filter-options`).should("have.text", count.toString());
 		}
 	},
+	expectFeatureExplanation: (excerpt: string) => {
+		cy.get(".feature-explanation").should("contain.text", excerpt);
+	},
 	expectFeatures: (names: string[]) => {
 		cy.get(".feature .feature-name").should("have.length", names.length);
 
@@ -120,12 +135,12 @@ const comparisonPage = {
 			cy.get(".feature .feature-name").eq(i).should("have.text", name);
 		}
 	},
-	expectFeatureText: (name: string, values: string[]) => {
-		cy.get(`.feature[data-cy="${name}"] .feature-name`).should("have.text", name);
-		cy.get(`.feature[data-cy="${name}"] .feature-value`).should("have.length", values.length);
+	expectFeatureText: (id: string, name: string, values: string[]) => {
+		cy.get(`#${id} .feature-name`).should("have.text", name);
+		cy.get(`#${id} .feature-value`).should("have.length", values.length);
 
 		for (let i = 0; i < values.length; i++) {
-			cy.get(`.feature[data-cy="${name}"] .feature-value`).eq(i).should("have.text", values[i]);
+			cy.get(`#${id} .feature-value`).eq(i).should("have.text", values[i]);
 		}
 	},
 	expectFilter: (name: string) => {
@@ -148,6 +163,9 @@ const comparisonPage = {
 	},
 	expectPageTitle: (title: string) => {
 		cy.title().should("eq", title);
+	},
+	showFeatureExplanation: (id: string) => {
+		cy.get(`#${id} .feature-explanation-toggle`).click();
 	},
 	showFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();

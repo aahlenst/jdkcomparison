@@ -43,23 +43,24 @@ export function TechnologiesSection({productData, showDifferencesOnly}: Technolo
 		<section>
 			<h2>Technologies</h2>
 			{(!showDifferencesOnly || hasDifferences(jfx)) &&
-				<Feature name="JavaFX" values={jfx}>
-					JavaFX was part of Oracle JDK until Oracle JDK 10. Since then, <a
+				<Feature id="technologies-jfx" name="JavaFX" values={jfx}>
+					JavaFX is a GUI toolkit that was part of Oracle JDK until Oracle JDK 10. Since then, it was unbundled
+					and the <a
 					href="https://blogs.oracle.com/java/post/the-future-of-javafx-and-other-java-client-roadmap-updates">development
 					has moved to the OpenJFX project</a>. <a href="https://openjfx.io/">OpenJFX</a> is available as a
 					separate download.
 				</Feature>
 			}
 			{(!showDifferencesOnly || hasDifferences(jfr)) &&
-				<Feature name="Flight Recorder (JFR)" values={jfr}>
+				<Feature id="technologies-jfr" name="Flight Recorder (JFR)" values={jfr}>
 					Flight Recorder (JFR) is a low-overhead data collection framework for troubleshooting Java
-					applications. It was a proprietary feature of Oracle JDK. JFR has been <a
+					applications. It was a paid feature of Oracle JDK. JFR has been <a
 					href="https://openjdk.org/jeps/328">open-sourced as part of JDK 11</a> in 2018 and was subsequently
 					backported to JDK 8.
 				</Feature>
 			}
 			{(!showDifferencesOnly || hasDifferences(jaws)) &&
-				<Feature name="Java Web Start" values={jaws}/>
+				<Feature id="technologies-jaws" name="Java Web Start" values={jaws}/>
 			}
 		</section>
 	);

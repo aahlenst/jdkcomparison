@@ -8,7 +8,7 @@ describe("<Feature/>", () => {
 			{id: "dukecorp-jdk-11", present: Model.Present.NO},
 		];
 
-		cy.mount(<Feature name="JavaFX" values={data}/>);
+		cy.mount(<Feature id="technologies-jfx" name="JavaFX" values={data}/>);
 
 		cy.get(".feature-name").should("have.text", "JavaFX");
 		cy.get(".feature-value").eq(0).should("have.text", "yes");
