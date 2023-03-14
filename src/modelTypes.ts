@@ -6,8 +6,11 @@ export namespace Model {
 
 	export type FeatureComparison = {
 		id: string,
+		name: string,
 		vendor: string,
 		version: number,
+		downloadUrl: string,
+		websiteUrl: string,
 		jfx: FeaturePresence,
 		jfr: FeaturePresence,
 		jaws: FeaturePresence,

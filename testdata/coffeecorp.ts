@@ -10,7 +10,7 @@ export const data: Vendor = {
 			information: {
 				name: "Coffeecorp JDK 8",
 				version: 8,
-				downloadSite: "https://coffeecorp.com/",
+				downloadSite: "https://coffeecorp.com/jdk8",
 			},
 			features: {
 				javaFX: {present: Present.YES, footnote: "6a296137-f4e4-4d34-b64e-3c95375f3db0"},
@@ -25,7 +25,7 @@ export const data: Vendor = {
 			information: {
 				name: "Coffeecorp JDK 17",
 				version: 17,
-				downloadSite: "https://coffeecorp.com/",
+				downloadSite: "https://coffeecorp.com/jdk17",
 			},
 			features: {
 				javaFX: {present: Present.NO, footnote: "6a296137-f4e4-4d34-b64e-3c95375f3db0"},

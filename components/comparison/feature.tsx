@@ -51,8 +51,8 @@ export function Feature({id, name, values, children}: PropsWithChildren<FeatureP
 	});
 
 	return (
-		<div id={id} className="feature grid gap-4 divide-x"
-			 style={{gridTemplateColumns: `repeat(${features.length + 1}, 14rem)`}}>
+		<div id={id} className="feature grid divide-x"
+			 style={{gridTemplateColumns: `repeat(${features.length + 1}, 12rem)`}}>
 			<div className="group inline-flex items-center py-2">
 				<span className="feature-name mr-1">{name}</span>
 				{children &&

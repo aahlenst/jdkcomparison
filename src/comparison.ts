@@ -38,8 +38,11 @@ function extractFeatureComparisons(vendor: Vendor, footnotes: Model.Footnote[]):
 	return vendor.jdks.map(jdk => {
 		return {
 			id: jdk.id,
+			name: jdk.information.name,
 			vendor: vendor.vendor,
 			version: jdk.information.version,
+			downloadUrl: jdk.information.downloadSite,
+			websiteUrl: vendor.website,
 			jfx: mapFeaturePresence(jdk.features.javaFX, footnotes),
 			jfr: mapFeaturePresence(jdk.features.flightRecorder, footnotes),
 			jaws: mapFeaturePresence(jdk.features.javaWS, footnotes),

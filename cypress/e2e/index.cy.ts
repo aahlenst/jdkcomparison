@@ -1,4 +1,11 @@
 describe("Home", () => {
+	it("should display all products", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+	});
+
 	it("should display Technologies", () => {
 		cy.visit("http://localhost:3000/");
 
@@ -98,6 +105,26 @@ describe("Home", () => {
 		comparisonPage.expectFeatureExplanation("Flight Recorder (JFR) is a low-overhead data collection framework");
 		comparisonPage.closeFeatureExplanation("technologies-jfr");
 	});
+
+	it("allows filtering by vendor", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("vendors");
+		comparisonPage.clickFilterOption("vendors", "Coffeecorp");
+		comparisonPage.closeFilter("vendors");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+
+		comparisonPage.showFilter("vendors");
+		comparisonPage.clickFilterOption("vendors", "Coffeecorp");
+		comparisonPage.clickFilterOption("vendors", "Dukecorp");
+		comparisonPage.closeFilter("vendors");
+
+		comparisonPage.expectProductNames(["Dukecorp JDK 17"]);
+	});
 });
 
 const comparisonPage = {
@@ -163,6 +190,14 @@ const comparisonPage = {
 	},
 	expectPageTitle: (title: string) => {
 		cy.title().should("eq", title);
+	},
+	expectProductNames: (names: string[]) => {
+		cy.get("#product-header .product-name").should("have.length", names.length);
+
+		for (let i = 0; i < names.length; i++) {
+			const name = names[i];
+			cy.get("#product-header .product-name").eq(i).should("have.text", name);
+		}
 	},
 	showFeatureExplanation: (id: string) => {
 		cy.get(`#${id} .desktop-feature-explanation-toggle`).click();
