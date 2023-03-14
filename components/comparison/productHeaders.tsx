@@ -1,4 +1,5 @@
 import {Model} from "@/src/modelTypes";
+import {DifferencesOnlyToggle} from "./differencesOnlyToggle";
 
 type ProductHeader = Pick<Model.FeatureComparison, "id" | "name" | "vendor" | "downloadUrl" | "websiteUrl">;
 
@@ -9,7 +10,7 @@ type ProductHeadersProps = {
 export function ProductHeaders({headers}: ProductHeadersProps) {
 	const productHeaders = headers.map(product => {
 		return (
-			<div key={product.id} className="flex flex-col py-2 px-4">
+			<div key={product.id} className="flex flex-col px-4">
 				<div className="product-vendor text-sm text-gray-500">{product.vendor}</div>
 				<div className="product-name font-semibold">{product.name}</div>
 				<div className="product-download mt-4 text-xs">
@@ -24,9 +25,13 @@ export function ProductHeaders({headers}: ProductHeadersProps) {
 
 	return (
 		<section id="product-header">
-			<div className="feature grid divide-x"
-				 style={{gridTemplateColumns: `repeat(${productHeaders.length + 1}, 12rem)`}}>
-				<div></div>
+			<div
+				className="feature grid divide-x py-2"
+				style={{gridTemplateColumns: `repeat(${productHeaders.length + 1}, 12rem)`}}
+			>
+				<div className="flex flex-col place-content-end pr-4">
+					<DifferencesOnlyToggle/>
+				</div>
 				{productHeaders}
 			</div>
 		</section>
