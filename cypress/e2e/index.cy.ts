@@ -10,9 +10,9 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
+		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeatureText("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
-		comparisonPage.expectFeatureText("technologies-jfr", "Flight Recorder (JFR)", ["no", "yes", "yes"]);
+		comparisonPage.expectFeatureText("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
 		comparisonPage.expectFeatureText("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
 	});
 
@@ -20,11 +20,11 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
+		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder", "Java Web Start"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder (JFR)"]);
+		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder"]);
 	});
 
 	it("shows all filters", () => {
@@ -130,7 +130,7 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 
 		comparisonPage.closeSection("technologies");
 
@@ -138,7 +138,7 @@ describe("Home", () => {
 
 		comparisonPage.showSection("technologies");
 
-		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 	});
 });
 

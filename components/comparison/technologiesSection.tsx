@@ -52,7 +52,7 @@ export function TechnologiesSection({productData, showDifferencesOnly}: Technolo
 				</Feature>
 			}
 			{(!showDifferencesOnly || hasDifferences(jfr)) &&
-				<Feature id="technologies-jfr" name="Flight Recorder (JFR)" values={jfr}>
+				<Feature id="technologies-jfr" name="Flight Recorder" values={jfr}>
 					Flight Recorder (JFR) is a low-overhead data collection framework for troubleshooting Java
 					applications. It was a paid feature of Oracle JDK. JFR has been <a
 					href="https://openjdk.org/jeps/328">open-sourced as part of JDK 11</a> in 2018 and was subsequently
