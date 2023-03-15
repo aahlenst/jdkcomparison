@@ -125,6 +125,21 @@ describe("Home", () => {
 
 		comparisonPage.expectProductNames(["Dukecorp JDK 17"]);
 	});
+
+	it("hides and reveals sections", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
+
+		comparisonPage.closeSection("technologies");
+
+		comparisonPage.expectFeaturesInSection("technologies", []);
+
+		comparisonPage.showSection("technologies");
+
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder (JFR)", "Java Web Start"]);
+	});
 });
 
 const comparisonPage = {
@@ -144,6 +159,9 @@ const comparisonPage = {
 	closeFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
 	},
+	closeSection: (sectionId: string) => {
+		cy.get(`section[id='${sectionId}'] .toggle-section`).click();
+	},
 	expectActiveFilterOptions: (filterId: string, count: number) => {
 		if (count === 0) {
 			cy.get(`#desktop-menu-filter-${filterId} .active-filter-options`).should("not.exist");
@@ -160,6 +178,14 @@ const comparisonPage = {
 		for (let i = 0; i < names.length; i++) {
 			const name = names[i];
 			cy.get(".feature .feature-name").eq(i).should("have.text", name);
+		}
+	},
+	expectFeaturesInSection: (sectionId: string, featureNames: string[]) => {
+		cy.get(`section[id='${sectionId}'] .feature .feature-name`).should("have.length", featureNames.length);
+
+		for (let i = 0; i < featureNames.length; i++) {
+			const name = featureNames[i];
+			cy.get(`section[id='${sectionId}'] .feature .feature-name`).eq(i).should("have.text", name);
 		}
 	},
 	expectFeatureText: (id: string, name: string, values: string[]) => {
@@ -204,6 +230,9 @@ const comparisonPage = {
 	},
 	showFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
+	},
+	showSection: (sectionId: string) => {
+		cy.get(`section[id='${sectionId}'] .toggle-section`).click();
 	},
 };
 
