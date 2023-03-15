@@ -1,10 +1,7 @@
 import React, {PropsWithChildren} from "react";
 import {Model} from "../../src/modelTypes";
 import {FeatureExplanation} from "./featureExplanation";
-
-type FeaturePresenceProps = {
-	present: Model.Present
-}
+import {FeaturePresence} from "./featurePresence";
 
 type FeatureProps = {
 	id: string,
@@ -12,41 +9,17 @@ type FeatureProps = {
 	values: (Model.FeaturePresence & Model.Keyable)[] | (Model.FeatureDescription & Model.Keyable)[],
 }
 
-function FeaturePresence({present}: FeaturePresenceProps) {
-	let presentText: string;
-	switch (present) {
-		case Model.Present.YES:
-			presentText = "yes";
-			break;
-		case Model.Present.PARTIALLY:
-			presentText = "partially";
-			break;
-		case Model.Present.NO:
-			presentText = "no";
-			break;
-		case Model.Present.UNKNOWN:
-			presentText = "unknown";
-			break;
-		default:
-			throw new Error(`Unknown presence: ${present}`);
-	}
-
-	return (
-		<div className="feature-value py-2 px-4">{presentText}</div>
-	);
-}
-
 export function Feature({id, name, values, children}: PropsWithChildren<FeatureProps>) {
 	const features = values.map(value => {
 		return (
-			<React.Fragment key={value.id}>
+			<div key={value.id} className="feature-value py-2 px-4">
 				{"present" in value &&
 					<FeaturePresence present={value.present}/>
 				}
 				{"text" in value &&
-					<div className="feature-value py-2 px-4">{value.text}</div>
+					value.text
 				}
-			</React.Fragment>
+			</div>
 		);
 	});
 

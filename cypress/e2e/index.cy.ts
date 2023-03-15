@@ -1,3 +1,5 @@
+import {Model} from "@/src/modelTypes";
+
 describe("Home", () => {
 	it("should display all products", () => {
 		cy.visit("http://localhost:3000/");
@@ -11,9 +13,9 @@ describe("Home", () => {
 
 		comparisonPage.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder", "Java Web Start"]);
-		comparisonPage.expectFeatureText("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
-		comparisonPage.expectFeatureText("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
-		comparisonPage.expectFeatureText("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
+		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
 	});
 
 	it("should display only features with different values", () => {
@@ -188,12 +190,12 @@ const comparisonPage = {
 			cy.get(`section[id='${sectionId}'] .feature .feature-name`).eq(i).should("have.text", name);
 		}
 	},
-	expectFeatureText: (id: string, name: string, values: string[]) => {
-		cy.get(`#${id} .feature-name`).should("have.text", name);
-		cy.get(`#${id} .feature-value`).should("have.length", values.length);
+	expectFeaturePresence: (featureId: string, name: string, presenceClassNames: string[]) => {
+		cy.get(`#${featureId} .feature-name`).should("have.text", name);
+		cy.get(`#${featureId} .feature-value`).should("have.length", presenceClassNames.length);
 
-		for (let i = 0; i < values.length; i++) {
-			cy.get(`#${id} .feature-value`).eq(i).should("have.text", values[i]);
+		for (let i = 0; i < presenceClassNames.length; i++) {
+			cy.get(`#${featureId} .feature-value svg`).eq(i).should("have.class", `present-${presenceClassNames[i]}`);
 		}
 	},
 	expectFilter: (name: string) => {

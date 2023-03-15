@@ -11,7 +11,7 @@ describe("<Feature/>", () => {
 		cy.mount(<Feature id="technologies-jfx" name="JavaFX" values={data}/>);
 
 		cy.get(".feature-name").should("have.text", "JavaFX");
-		cy.get(".feature-value").eq(0).should("have.text", "yes");
-		cy.get(".feature-value").eq(1).should("have.text", "no");
+		cy.get(".feature-value svg").eq(0).should("have.class", "present-yes");
+		cy.get(".feature-value svg").eq(1).should("have.class", "present-no");
 	});
 });
