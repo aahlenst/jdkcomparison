@@ -2,6 +2,7 @@ import React from "react";
 import {TechnologiesSection} from "@/components/comparison/technologiesSection";
 import {useComparison} from "@/components/comparison/comparisonContext";
 import {ProductHeaders} from "@/components/comparison/productHeaders";
+import {SupportSection} from "@/components/comparison/supportSection";
 
 export function ComparisonTable() {
 	const comparison = useComparison();
@@ -11,6 +12,8 @@ export function ComparisonTable() {
 			<ProductHeaders headers={comparison.filteredData}/>
 			<TechnologiesSection productData={comparison.filteredData}
 								 showDifferencesOnly={comparison.showDifferencesOnly}/>
+			<SupportSection productData={comparison.filteredData}
+							showDifferencesOnly={comparison.showDifferencesOnly}/>
 		</div>
 	);
 }

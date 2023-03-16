@@ -10,7 +10,7 @@ export function ComparisonSection({id, label, children}: PropsWithChildren<Compa
 	const [open, setOpen] = useState(true);
 
 	return (
-		<section id={id} className="py-4">
+		<section id={id} className="pt-4">
 			<button className="toggle-section flex inline-flex items-center" onClick={() => setOpen(!open)}>
 				<h2 className="section-label font-semibold">{label}</h2>
 				{open &&

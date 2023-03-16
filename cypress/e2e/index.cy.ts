@@ -8,25 +8,30 @@ describe("Home", () => {
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
 	});
 
-	it("should display Technologies", () => {
+	it("should display all sections", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("technologies",["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
 		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
+		comparisonPage.expectFeaturesInSection("support",["Patches until", "Paid support"]);
+		comparisonPage.expectFeatureText("support-eol-date", "Patches until", ["2026-10", "2027-10", "2027-10"]);
+		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
 	});
 
 	it("should display only features with different values", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
-		comparisonPage.expectFeatures(["JavaFX", "Flight Recorder"]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until"]);
 	});
 
 	it("shows all filters", () => {
@@ -196,6 +201,14 @@ const comparisonPage = {
 
 		for (let i = 0; i < presenceClassNames.length; i++) {
 			cy.get(`#${featureId} .feature-value svg`).eq(i).should("have.class", `present-${presenceClassNames[i]}`);
+		}
+	},
+	expectFeatureText: (featureId: string, name: string, values: string[]) => {
+		cy.get(`#${featureId} .feature-name`).should("have.text", name);
+		cy.get(`#${featureId} .feature-value`).should("have.length", values.length);
+
+		for (let i = 0; i < values.length; i++) {
+			cy.get(`#${featureId} .feature-value`).eq(i).should("have.text", values[i]);
 		}
 	},
 	expectFilter: (name: string) => {
