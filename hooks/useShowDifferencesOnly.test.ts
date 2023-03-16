@@ -32,4 +32,12 @@ describe("useShowDifferencesOnly", () => {
 		expect(showFeatures.a).toBeFalsy();
 		expect(showFeatures.b).toBeTruthy();
 	});
+
+	test("show everything if there is only one value per feature", () => {
+		const oneValue = {a: [{present: Present.YES}], b: [{present: Present.YES}]};
+		const [showSection, showFeatures] = useShowDifferencesOnly(true, oneValue);
+		expect(showSection).toBeTruthy();
+		expect(showFeatures.a).toBeTruthy();
+		expect(showFeatures.b).toBeTruthy();
+	});
 });

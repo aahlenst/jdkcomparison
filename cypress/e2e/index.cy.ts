@@ -34,6 +34,26 @@ describe("Home", () => {
 		comparisonPage.expectFeaturesInSection("support", ["Patches until"]);
 	});
 
+	it("shows single product even if it should only display differences", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.clickFilterOption("versions", "8");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+
+		comparisonPage.clickShowDifferencesOnly();
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+	});
+
 	it("shows all filters", () => {
 		cy.visit("http://localhost:3000/");
 

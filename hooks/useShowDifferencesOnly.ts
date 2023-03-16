@@ -41,7 +41,7 @@ export const useShowDifferencesOnly = (showDifferencesOnly: boolean, data: Secti
 
 	let anyDifferences = false;
 	for (const key of Object.keys(data)) {
-		showFeatures[key] = hasDifferences(data[key]);
+		showFeatures[key] = data[key].length === 1 || hasDifferences(data[key]);
 
 		if (showFeatures[key]) {
 			anyDifferences = true;
