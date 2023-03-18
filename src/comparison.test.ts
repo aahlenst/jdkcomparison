@@ -15,13 +15,16 @@ describe("comparison module", () => {
 	test("extractComparisonData() numbers all footnotes", () => {
 		const {footnotes} = extractComparisonData(testData);
 
-		expect(footnotes.length).toEqual(2);
+		expect(footnotes.length).toEqual(3);
 		expect(footnotes[0].id).toEqual("6a296137-f4e4-4d34-b64e-3c95375f3db0");
 		expect(footnotes[0].number).toEqual(1);
-		expect(footnotes[0].html).toEqual("<p>Some <em>clarifications</em> regarding JavaFX.</p>");
+		expect(footnotes[0].html).toContain("<p>Some <strong>clarifications</strong> regarding JavaFX");
 		expect(footnotes[1].id).toEqual("f4b31750-2c0d-4332-bfe7-6d30daa959a1");
 		expect(footnotes[1].number).toEqual(2);
-		expect(footnotes[1].html).toEqual("<p>Some <em>remark</em> regarding paid support.</p>");
+		expect(footnotes[1].html).toContain("<p>Some <em>remark</em> regarding paid support");
+		expect(footnotes[2].id).toEqual("31e01ff8-ff7b-4864-ab54-1b1e18663dcf");
+		expect(footnotes[2].number).toEqual(3);
+		expect(footnotes[2].html).toContain("<p>Some <em>comment</em> about the end of life date.</p>");
 	});
 
 	test("extractComparisonData() extracts all JDKs", async () => {
@@ -36,6 +39,6 @@ describe("comparison module", () => {
 		expect(jdk.jfx).toEqual({present: Model.Present.NO});
 		expect(jdk.jfr).toEqual({present: Model.Present.YES});
 		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteNumber: 1});
-		expect(jdk.eolDate).toEqual({text: "2027-10"});
+		expect(jdk.eolDate).toEqual({text: "2027-10", footnoteNumber: 2});
 	});
 });

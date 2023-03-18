@@ -2,6 +2,7 @@ import React, {PropsWithChildren} from "react";
 import {Model} from "../../src/modelTypes";
 import {FeatureExplanation} from "./featureExplanation";
 import {FeaturePresence} from "./featurePresence";
+import {FootnoteReference} from "./footnoteReference";
 
 type FeatureProps = {
 	id: string,
@@ -18,6 +19,9 @@ export function Feature({id, name, values, children}: PropsWithChildren<FeatureP
 				}
 				{"text" in value &&
 					value.text
+				}
+				{"footnoteNumber" in value &&
+					<FootnoteReference footnoteNumber={value.footnoteNumber}/>
 				}
 			</div>
 		);

@@ -39,7 +39,7 @@ export const data: Vendor = {
 	footnotes: [
 		{
 			id: "6a296137-f4e4-4d34-b64e-3c95375f3db0",
-			markdown: "Some *clarifications* regarding JavaFX."
+			markdown: "Some **clarifications** regarding JavaFX that include a really long text because we hope to trigger a linebreak when this footnote is being displayed."
 		}
 	]
 };

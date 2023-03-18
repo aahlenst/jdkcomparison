@@ -1,5 +1,3 @@
-import {Model} from "@/src/modelTypes";
-
 describe("Home", () => {
 	it("should display all products", () => {
 		cy.visit("http://localhost:3000/");
@@ -17,7 +15,7 @@ describe("Home", () => {
 		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
 		comparisonPage.expectFeaturesInSection("support",["Patches until", "Paid support"]);
-		comparisonPage.expectFeatureText("support-eol-date", "Patches until", ["2026-10", "2027-10", "2027-10"]);
+		comparisonPage.expectFeatureText("support-eol-date", "Patches until", ["2026-10", "2027-10", "2027-10[3]"]);
 		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
 	});
 
@@ -167,6 +165,14 @@ describe("Home", () => {
 
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 	});
+
+	it("displays footnotes", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectPageTitle("JDK Comparison");
+		comparisonPage.expectFootnote(2, "Some remark regarding paid support");
+		comparisonPage.expectFootnote(3, "Some comment about the end of life date");
+	});
 });
 
 const comparisonPage = {
@@ -248,6 +254,13 @@ const comparisonPage = {
 
 			expect(foundOptions).to.deep.contain(option);
 		});
+	},
+	expectFootnote: (number: number, excerpt: string) => {
+		cy.get(`sup[id='fnref-${number}']`).should("have.text", `[${number}]`);
+		cy.get(`sup[id='fnref-${number}'] a`).should("have.attr", "href").and("eq", `#fn-${number}`);
+		cy.get(`#footnotes li#fn-${number}`).should("exist");
+		cy.get(`#footnotes li#fn-${number}`).should("contain.text", excerpt);
+		cy.get(`#footnotes li#fn-${number} a`).should("have.attr", "href").and("eq", `#fnref-${number}`);
 	},
 	expectPageTitle: (title: string) => {
 		cy.title().should("eq", title);
