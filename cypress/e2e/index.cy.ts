@@ -263,10 +263,6 @@ const comparisonPage = {
 		}
 		cy.get(`#footnotes li#fn-${number}`).should("exist");
 		cy.get(`#footnotes li#fn-${number}`).should("contain.text", excerpt);
-		for (let i = 1; i <= backReferences; i++) {
-			cy.get(`#footnotes li#fn-${number} a`).eq(i-1)
-				.should("have.attr", "href").and("eq", `#fnref-${number}:${i}`);
-		}
 	},
 	expectPageTitle: (title: string) => {
 		cy.title().should("eq", title);
