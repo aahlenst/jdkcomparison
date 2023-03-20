@@ -17,7 +17,9 @@ export function FeatureExplanation({children}: PropsWithChildren) {
 			{/* Popover for small screens, appears at the bottom and spans the entire screen width. No Popper.js. */}
 			<Popover className="block sm:hidden">
 				<Popover.Button className="mobile-feature-explanation-toggle">
-					<InfoIcon className="w-3.5 h-3.5 mx-2"/>
+					<InfoIcon className="w-3.5 h-3.5 mx-2" role="img" aria-label="Show explanation">
+						<title>Show explanation</title>
+					</InfoIcon>
 				</Popover.Button>
 				<Popover.Overlay className="mobile-feature-explanation-overlay fixed inset-0 bg-black opacity-30"/>
 				<Popover.Panel
@@ -32,7 +34,9 @@ export function FeatureExplanation({children}: PropsWithChildren) {
 			{/* Popover for larger screens, appears as a tooltip, driven by Popper.js */}
 			<Popover className="hidden sm:block">
 				<Popover.Button ref={setReferenceElement} className="desktop-feature-explanation-toggle">
-					<InfoIcon className="w-3.5 h-3.5 mx-2"/>
+					<InfoIcon className="w-3.5 h-3.5 mx-2" role="img" aria-label="Show explanation">
+						<title>Show explanation</title>
+					</InfoIcon>
 				</Popover.Button>
 				<Popover.Panel
 					ref={setPopperElement}

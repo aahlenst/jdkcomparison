@@ -14,10 +14,14 @@ export function ComparisonSection({id, label, children}: PropsWithChildren<Compa
 			<button className="toggle-section flex inline-flex items-center" onClick={() => setOpen(!open)}>
 				<h2 className="section-label font-semibold">{label}</h2>
 				{open &&
-					<SquareMinusIcon className="ml-2 h-4 w-4"/>
+					<SquareMinusIcon className="ml-2 h-4 w-4" role="img" aria-label="Hide section">
+						<title>Hide section</title>
+					</SquareMinusIcon>
 				}
 				{!open &&
-					<SquarePlusIcon className="ml-2 h-4 w-4"/>
+					<SquarePlusIcon className="ml-2 h-4 w-4" role="img" aria-label="Show section">
+						<title>Show section</title>
+					</SquarePlusIcon>
 				}
 			</button>
 			{open && children}
