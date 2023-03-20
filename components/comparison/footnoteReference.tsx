@@ -1,15 +1,18 @@
+import {Model} from "../../src/modelTypes";
+
 type FootnoteReferenceProps = {
-	footnoteNumber?: number
+	footnoteReference?: Model.FootnoteReference
 }
 
-export function FootnoteReference({footnoteNumber}: FootnoteReferenceProps) {
-	if (typeof (footnoteNumber) !== "number") {
+export function FootnoteReference({footnoteReference}: FootnoteReferenceProps) {
+	if (footnoteReference === undefined) {
 		return (<></>);
 	}
 
 	return (
-		<sup id={`fnref-${footnoteNumber}`} className="ml-0.5">
-			<a href={`#fn-${footnoteNumber}`} className="footnote-ref" role="doc-noteref">[{footnoteNumber}]</a>
+		<sup id={`fnref-${footnoteReference.number}:${footnoteReference.backReference}`} className="ml-0.5">
+			<a href={`#fn-${footnoteReference.number}`} className="footnote-ref"
+			   role="doc-noteref">[{footnoteReference.number}]</a>
 		</sup>
 	);
 }

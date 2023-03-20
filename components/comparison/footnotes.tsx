@@ -6,13 +6,25 @@ type FootnotesProps = {
 
 export function Footnotes({footnotes}: FootnotesProps) {
 	const notes = footnotes.map(fn => {
+		const backReferences = [];
+		for (let i = 1; i <= fn.backReferences; i++) {
+			const backRef = (
+				<>
+					&nbsp;
+					<a href={`#fnref-${fn.number}:${i}`} className="footnote-backref underline hover:no-underline"
+					   role="doc-backlink">↩︎</a>
+				</>
+			);
+			backReferences.push(backRef);
+		}
+
 		return (
 			<li key={fn.number} id={`fn-${fn.number}`} className="[&_*]:inline">
 				<div dangerouslySetInnerHTML={{__html: fn.html}}/>
 				<div>
-					&nbsp;
-					<a href={`#fnref-${fn.number}`} className="footnote-backref underline hover:no-underline"
-					   role="doc-backlink">↩︎</a></div>
+
+					{backReferences}
+				</div>
 			</li>
 		);
 	});

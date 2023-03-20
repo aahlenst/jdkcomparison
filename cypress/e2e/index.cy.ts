@@ -10,11 +10,11 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeaturesInSection("technologies",["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
 		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
-		comparisonPage.expectFeaturesInSection("support",["Patches until", "Paid support"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 		comparisonPage.expectFeatureText("support-eol-date", "Patches until", ["2026-10", "2027-10", "2027-10[3]"]);
 		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
 	});
@@ -170,6 +170,7 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.expectPageTitle("JDK Comparison");
+		comparisonPage.expectFootnote(1, "Some clarifications regarding JavaFX", 2);
 		comparisonPage.expectFootnote(2, "Some remark regarding paid support");
 		comparisonPage.expectFootnote(3, "Some comment about the end of life date");
 	});
@@ -255,12 +256,17 @@ const comparisonPage = {
 			expect(foundOptions).to.deep.contain(option);
 		});
 	},
-	expectFootnote: (number: number, excerpt: string) => {
-		cy.get(`sup[id='fnref-${number}']`).should("have.text", `[${number}]`);
-		cy.get(`sup[id='fnref-${number}'] a`).should("have.attr", "href").and("eq", `#fn-${number}`);
+	expectFootnote: (number: number, excerpt: string, backReferences: number = 1) => {
+		for (let i = 1; i <= backReferences; i++) {
+			cy.get(`sup[id='fnref-${number}:${i}']`).should("have.text", `[${number}]`);
+			cy.get(`sup[id='fnref-${number}:${i}'] a`).should("have.attr", "href").and("eq", `#fn-${number}`);
+		}
 		cy.get(`#footnotes li#fn-${number}`).should("exist");
 		cy.get(`#footnotes li#fn-${number}`).should("contain.text", excerpt);
-		cy.get(`#footnotes li#fn-${number} a`).should("have.attr", "href").and("eq", `#fnref-${number}`);
+		for (let i = 1; i <= backReferences; i++) {
+			cy.get(`#footnotes li#fn-${number} a`).eq(i-1)
+				.should("have.attr", "href").and("eq", `#fnref-${number}:${i}`);
+		}
 	},
 	expectPageTitle: (title: string) => {
 		cy.title().should("eq", title);

@@ -20,8 +20,8 @@ export function Feature({id, name, values, children}: PropsWithChildren<FeatureP
 				{"text" in value &&
 					value.text
 				}
-				{"footnoteNumber" in value &&
-					<FootnoteReference footnoteNumber={value.footnoteNumber}/>
+				{"footnoteReference" in value &&
+					<FootnoteReference footnoteReference={value.footnoteReference}/>
 				}
 			</div>
 		);

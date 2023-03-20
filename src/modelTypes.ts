@@ -21,7 +21,13 @@ export namespace Model {
 	export type Footnote = {
 		id: string,
 		number: number,
-		html: string
+		html: string,
+		backReferences: number
+	}
+
+	export type FootnoteReference = {
+		number: number,
+		backReference: number
 	}
 
 	export enum Present {
@@ -33,12 +39,12 @@ export namespace Model {
 
 	export type FeaturePresence = {
 		present: Present
-		footnoteNumber?: number
+		footnoteReference?: FootnoteReference
 	}
 
 	export type FeatureDescription = {
 		text: string
-		footnoteNumber?: number
+		footnoteReference?: FootnoteReference
 	}
 
 	export interface Filter {

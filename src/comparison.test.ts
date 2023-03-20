@@ -38,7 +38,7 @@ describe("comparison module", () => {
 		expect(jdk.id).toEqual("dukecorp-jdk-17");
 		expect(jdk.jfx).toEqual({present: Model.Present.NO});
 		expect(jdk.jfr).toEqual({present: Model.Present.YES});
-		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteNumber: 1});
-		expect(jdk.eolDate).toEqual({text: "2027-10", footnoteNumber: 2});
+		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteReference: {backReference: 1, number: 1}});
+		expect(jdk.eolDate).toEqual({text: "2027-10", footnoteReference: {backReference: 1, number: 2}});
 	});
 });

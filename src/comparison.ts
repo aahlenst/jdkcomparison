@@ -1,6 +1,7 @@
 import {FeatureDescription, FeaturePresence, Present, Vendor} from "@/src/vendorDataTypes";
 import {micromark} from "micromark";
 import {Model} from "@/src/modelTypes";
+import FootnoteReference = Model.FootnoteReference;
 
 class FootnoteCounter {
 	#counter: number = 1;
@@ -30,7 +31,7 @@ export function extractComparisonData(vendors: Vendor[]): Model.Comparison {
 
 function extractFootnotes(vendor: Vendor, counter: FootnoteCounter) {
 	return vendor.footnotes.map(footnote => {
-		return {id: footnote.id, number: counter.getAndAdd(), html: micromark(footnote.markdown)};
+		return {id: footnote.id, number: counter.getAndAdd(), html: micromark(footnote.markdown), backReferences: 0};
 	});
 }
 
@@ -52,13 +53,14 @@ function extractFeatureComparisons(vendor: Vendor, footnotes: Model.Footnote[]):
 	});
 }
 
-function resolveFootnote(id: string | undefined, footnotes: Model.Footnote[]): number | undefined {
+function resolveFootnote(id: string | undefined, footnotes: Model.Footnote[]): FootnoteReference | undefined {
 	if (id === undefined) {
 		return undefined;
 	}
 	for (const footnote of footnotes) {
 		if (footnote.id === id) {
-			return footnote.number;
+			footnote.backReferences += 1;
+			return {number: footnote.number, backReference: footnote.backReferences};
 		}
 	}
 	throw Error(`Unresolvable footnote: ${id}`);
@@ -71,7 +73,7 @@ function mapFeaturePresence(presence: FeaturePresence, footnotes: Model.Footnote
 
 	// Next.JS does not accept properties that are `undefined` because they cannot be serialized to JSON.
 	if (presence.footnote !== undefined) {
-		retVal.footnoteNumber = resolveFootnote(presence.footnote, footnotes);
+		retVal.footnoteReference = resolveFootnote(presence.footnote, footnotes);
 	}
 
 	return retVal;
@@ -84,7 +86,7 @@ function mapFeatureDescription(description: FeatureDescription, footnotes: Model
 
 	// Next.JS does not accept properties that are `undefined` because they cannot be serialized to JSON.
 	if (description.footnote !== undefined) {
-		retVal.footnoteNumber = resolveFootnote(description.footnote, footnotes);
+		retVal.footnoteReference = resolveFootnote(description.footnote, footnotes);
 	}
 
 	return retVal;
