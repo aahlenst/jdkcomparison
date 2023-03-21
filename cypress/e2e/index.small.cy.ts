@@ -1,4 +1,26 @@
+import {mobileNavigationComponent} from "./navigationComponent";
+
 describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight: 844}, () => {
+	it("should display all navigation options", () => {
+		cy.visit("http://localhost:3000/");
+
+		mobileNavigationComponent.expectPageTitle("JDK Comparison");
+		mobileNavigationComponent.showMobileMenu();
+		mobileNavigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
+		mobileNavigationComponent.closeMobileMenu();
+	});
+
+	it("should navigate to FAQ", () => {
+		cy.visit("http://localhost:3000/");
+
+		mobileNavigationComponent.expectPageTitle("JDK Comparison");
+		mobileNavigationComponent.showMobileMenu();
+		mobileNavigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
+
+		mobileNavigationComponent.navigateTo("FAQ");
+		mobileNavigationComponent.expectPageTitle("JDK Comparison - FAQ");
+	});
+
 	it("shows all filters", () => {
 		cy.visit("http://localhost:3000/");
 

@@ -1,15 +1,34 @@
+import {navigationComponent} from "./navigationComponent";
+
 describe("Home", () => {
+	it("should display all navigation options", () => {
+		cy.visit("http://localhost:3000/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
+	});
+
+	it("should navigate to FAQ", () => {
+		cy.visit("http://localhost:3000/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
+
+		navigationComponent.navigateTo("FAQ");
+		navigationComponent.expectPageTitle("JDK Comparison - FAQ");
+	});
+
 	it("should display all products", () => {
 		cy.visit("http://localhost:3000/");
 
-		comparisonPage.expectPageTitle("JDK Comparison");
+		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
 	});
 
 	it("should display all sections", () => {
 		cy.visit("http://localhost:3000/");
 
-		comparisonPage.expectPageTitle("JDK Comparison");
+		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
 		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
@@ -22,7 +41,7 @@ describe("Home", () => {
 	it("should display only features with different values", () => {
 		cy.visit("http://localhost:3000/");
 
-		comparisonPage.expectPageTitle("JDK Comparison");
+		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 
@@ -35,7 +54,7 @@ describe("Home", () => {
 	it("shows single product even if it should only display differences", () => {
 		cy.visit("http://localhost:3000/");
 
-		comparisonPage.expectPageTitle("JDK Comparison");
+		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
 
 		comparisonPage.showFilter("versions");
@@ -125,7 +144,7 @@ describe("Home", () => {
 	it("shows feature explanation", () => {
 		cy.visit("http://localhost:3000/");
 
-		comparisonPage.expectPageTitle("JDK Comparison");
+		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.showFeatureExplanation("technologies-jfr");
 		comparisonPage.expectFeatureExplanation("Flight Recorder (JFR) is a low-overhead data collection framework");
 		comparisonPage.closeFeatureExplanation("technologies-jfr");
@@ -134,7 +153,7 @@ describe("Home", () => {
 	it("allows filtering by vendor", () => {
 		cy.visit("http://localhost:3000/");
 
-		comparisonPage.expectPageTitle("JDK Comparison");
+		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
 
 		comparisonPage.showFilter("vendors");
@@ -154,7 +173,7 @@ describe("Home", () => {
 	it("hides and reveals sections", () => {
 		cy.visit("http://localhost:3000/");
 
-		comparisonPage.expectPageTitle("JDK Comparison");
+		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 
 		comparisonPage.closeSection("technologies");
@@ -169,7 +188,7 @@ describe("Home", () => {
 	it("displays footnotes", () => {
 		cy.visit("http://localhost:3000/");
 
-		comparisonPage.expectPageTitle("JDK Comparison");
+		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFootnote(1, "Some clarifications regarding JavaFX", 2);
 		comparisonPage.expectFootnote(2, "Some remark regarding paid support");
 		comparisonPage.expectFootnote(3, "Some comment about the end of life date");
@@ -263,9 +282,6 @@ const comparisonPage = {
 		}
 		cy.get(`#footnotes li#fn-${number}`).should("exist");
 		cy.get(`#footnotes li#fn-${number}`).should("contain.text", excerpt);
-	},
-	expectPageTitle: (title: string) => {
-		cy.title().should("eq", title);
 	},
 	expectProductNames: (names: string[]) => {
 		cy.get("#product-header .product-name").should("have.length", names.length);

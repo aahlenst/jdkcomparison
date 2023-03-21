@@ -25,7 +25,6 @@ export default function ComparisonPage({data, footnotes}: ComparisonProps) {
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 			<main>
-				<h1 className="text-3xl mb-2 font-bold underline">JDK Comparison</h1>
 				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>
 					<Filters/>
 					<ComparisonTable/>
