@@ -2,6 +2,8 @@ import {Disclosure} from "@headlessui/react";
 import {BarsIcon, GitHubIcon, XMarkIcon} from "@/components/icons";
 import Link from "next/link";
 import {NextRouter, useRouter} from "next/router";
+import duke from "../public/duke.svg";
+import Image from "next/image";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -35,16 +37,7 @@ export function Navigation() {
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<div className="flex flex-shrink-0 items-center">
-									<img
-										className="block h-8 w-auto lg:hidden"
-										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-										alt="Your Company"
-									/>
-									<img
-										className="hidden h-8 w-auto lg:block"
-										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-										alt="Your Company"
-									/>
+									<Image src={duke} alt="Duke" className="block h-8 w-auto"/>
 								</div>
 								<div className="hidden sm:ml-6 sm:flex sm:space-x-8">
 									<Link href="/"
