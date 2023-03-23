@@ -39,7 +39,7 @@ export function Navigation() {
 								<div className="flex flex-shrink-0 items-center">
 									<Link href="/">
 										<span className="sr-only">Back to homepage.</span>
-										<Image src={duke} alt="Icon picturing Duke, the Java mascot." className="block h-8 w-auto" />
+										<Image id="logo" src={duke} alt="Icon picturing Duke, the Java mascot." className="block h-8 w-auto" />
 									</Link>
 								</div>
 								<div className="hidden sm:ml-6 sm:flex sm:space-x-8">

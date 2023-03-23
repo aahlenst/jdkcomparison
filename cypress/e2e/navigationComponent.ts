@@ -1,4 +1,7 @@
 export const navigationComponent = {
+	clickOnLogo: () => {
+		cy.get("#logo").click();
+	},
 	expectNavigationOptions: (name: string[]) => {
 		cy.get(".desktop-navigation-option").should("have.length", name.length);
 		for (let i = 0; i < name.length; i++) {
@@ -15,6 +18,9 @@ export const navigationComponent = {
 };
 
 export const mobileNavigationComponent = {
+	clickOnLogo: () => {
+		cy.get("#logo").click();
+	},
 	closeMobileMenu: () => {
 		cy.get("#mobile-menu-toggle").click();
 	},

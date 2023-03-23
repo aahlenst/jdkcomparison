@@ -19,4 +19,14 @@ describe("FAQ", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 	});
+
+	it("should navigate to Homepage when clicking on logo", () => {
+		cy.visit("http://localhost:3000/faq");
+
+		navigationComponent.expectPageTitle("JDK Comparison - FAQ");
+
+		navigationComponent.clickOnLogo();
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+	});
 });
