@@ -37,7 +37,10 @@ export function Navigation() {
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<div className="flex flex-shrink-0 items-center">
-									<Image src={duke} alt="Duke" className="block h-8 w-auto"/>
+									<Link href="/">
+										<span className="sr-only">Back to homepage.</span>
+										<Image src={duke} alt="Icon picturing Duke, the Java mascot." className="block h-8 w-auto" />
+									</Link>
 								</div>
 								<div className="hidden sm:ml-6 sm:flex sm:space-x-8">
 									<Link href="/"
