@@ -17,6 +17,6 @@ trap cleanup EXIT SIGHUP SIGINT SIGQUIT SIGABRT
 rm -rf .next
 npm run build
 
-npm run start > "$TEMP_DIR/nextjs-e2e.txt" 2>&1 &
+npm run dev > "$TEMP_DIR/nextjs-dev.txt" 2>&1 &
 PID=$!
 npm run e2e:headless

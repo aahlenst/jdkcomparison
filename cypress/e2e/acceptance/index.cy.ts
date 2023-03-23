@@ -1,6 +1,6 @@
-import {navigationComponent} from "./navigationComponent";
+import {navigationComponent} from "../navigationComponent";
 
-describe("Home", () => {
+describe("Comparison in production", () => {
 	it("should display all navigation options", () => {
 		cy.visit("http://localhost:3000/");
 
@@ -22,53 +22,7 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
-	});
-
-	it("should display all sections", () => {
-		cy.visit("http://localhost:3000/");
-
-		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
-		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
-		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
-		comparisonPage.expectFeaturePresence("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
-		comparisonPage.expectFeatureText("support-eol-date", "Patches until", ["2026-10", "2027-10", "2027-10[3]"]);
-		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
-	});
-
-	it("should display only features with different values", () => {
-		cy.visit("http://localhost:3000/");
-
-		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
-
-		comparisonPage.clickShowDifferencesOnly();
-
-		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until"]);
-	});
-
-	it("shows single product even if it should only display differences", () => {
-		cy.visit("http://localhost:3000/");
-
-		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
-
-		comparisonPage.showFilter("versions");
-		comparisonPage.clickFilterOption("versions", "8");
-
-		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
-		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
-
-		comparisonPage.clickShowDifferencesOnly();
-
-		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
-		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+		comparisonPage.expectProductNames(["Eclipse Temurin 8", "Eclipse Temurin 17", "OpenJDK 20"]);
 	});
 
 	it("shows all filters", () => {
@@ -81,64 +35,6 @@ describe("Home", () => {
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
 		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
-
-		comparisonPage.clickFilterOption("versions", "8");
-
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
-	});
-
-	it("retains filter state when opening and closing", () => {
-		cy.visit("http://localhost:3000/");
-
-		comparisonPage.expectFilter("Versions");
-
-		comparisonPage.showFilter("versions");
-
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
-
-		comparisonPage.clickFilterOption("versions", "8");
-
-		comparisonPage.closeFilter("versions");
-		comparisonPage.showFilter("versions");
-
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
-	});
-
-	it("updates number of active filters", () => {
-		cy.visit("http://localhost:3000/");
-
-		comparisonPage.expectFilter("Versions");
-		comparisonPage.expectActiveFilterOptions("versions", 0);
-
-		comparisonPage.showFilter("versions");
-
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
-
-		comparisonPage.clickFilterOption("versions", "17");
-
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: true});
-
-		comparisonPage.expectActiveFilterOptions("versions", 1);
-
-		comparisonPage.clickFilterOption("versions", "8");
-
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: true});
-
-		comparisonPage.expectActiveFilterOptions("versions", 2);
-
-		comparisonPage.clickFilterOption("versions", "8");
-		comparisonPage.clickFilterOption("versions", "17");
-
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
-
-		comparisonPage.expectActiveFilterOptions("versions", 0);
 	});
 
 	it("shows feature explanation", () => {
@@ -154,20 +50,20 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+		comparisonPage.expectProductNames(["Eclipse Temurin 8", "Eclipse Temurin 17", "OpenJDK 20"]);
 
 		comparisonPage.showFilter("vendors");
-		comparisonPage.clickFilterOption("vendors", "Coffeecorp");
+		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
 		comparisonPage.closeFilter("vendors");
 
-		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+		comparisonPage.expectProductNames(["Eclipse Temurin 8", "Eclipse Temurin 17"]);
 
 		comparisonPage.showFilter("vendors");
-		comparisonPage.clickFilterOption("vendors", "Coffeecorp");
-		comparisonPage.clickFilterOption("vendors", "Dukecorp");
+		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
+		comparisonPage.clickFilterOption("vendors", "Oracle");
 		comparisonPage.closeFilter("vendors");
 
-		comparisonPage.expectProductNames(["Dukecorp JDK 17"]);
+		comparisonPage.expectProductNames(["OpenJDK 20"]);
 	});
 
 	it("hides and reveals sections", () => {
@@ -183,15 +79,6 @@ describe("Home", () => {
 		comparisonPage.showSection("technologies");
 
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
-	});
-
-	it("displays footnotes", () => {
-		cy.visit("http://localhost:3000/");
-
-		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFootnote(1, "Some clarifications regarding JavaFX", 2);
-		comparisonPage.expectFootnote(2, "Some remark regarding paid support");
-		comparisonPage.expectFootnote(3, "Some comment about the end of life date");
 	});
 });
 
@@ -304,3 +191,4 @@ const comparisonPage = {
 
 // Prevent TypeScript from reading file as legacy script.
 export {};
+

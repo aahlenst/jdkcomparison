@@ -39,12 +39,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	// Next.js 13 only supports dynamic imports with string literals. There is currently no way to trick it into
 	// accepting any kind of variables. Therefore, dynamic data loading is not possible. For details, see
 	// https://nextjs.org/docs/advanced-features/dynamic-import.
-	const vendorData: Vendor[] = [
+	const testData: Vendor[] = [
 		(await import("@/testdata/coffeecorp")).default,
 		(await import("@/testdata/dukecorp")).default,
 	];
+	const productionData: Vendor[] = [
+		(await import("@/data/eclipse")).default,
+		(await import("@/data/oracle")).default,
+	];
 
-	const {productsInComparison, footnotes} = extractComparisonData(vendorData);
+	let data: Vendor[];
+	if (process.env.DATA_SOURCE === "data") {
+		data = productionData;
+	} else if (process.env.DATA_SOURCE === "testdata") {
+		data = testData;
+	} else {
+		throw new Error(`Unknown process.env.DATA_SOURCE: ${process.env.DATA_SOURCE}`);
+	}
+
+	const {productsInComparison, footnotes} = extractComparisonData(data);
 
 	return {
 		props: {

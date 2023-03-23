@@ -1,4 +1,4 @@
-import {navigationComponent} from "./navigationComponent";
+import {navigationComponent} from "../navigationComponent";
 
 describe("FAQ", () => {
 	it("should display all navigation options", () => {

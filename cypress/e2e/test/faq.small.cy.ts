@@ -1,4 +1,4 @@
-import {mobileNavigationComponent, navigationComponent} from "./navigationComponent";
+import {mobileNavigationComponent, navigationComponent} from "../navigationComponent";
 
 describe("FAQ on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight: 844}, () => {
 	it("should display all navigation options", () => {

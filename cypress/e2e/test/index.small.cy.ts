@@ -1,4 +1,4 @@
-import {mobileNavigationComponent} from "./navigationComponent";
+import {mobileNavigationComponent} from "../navigationComponent";
 
 describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight: 844}, () => {
 	it("should display all navigation options", () => {

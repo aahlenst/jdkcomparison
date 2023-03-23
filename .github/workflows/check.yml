@@ -30,15 +30,30 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build and test
-        run: npm run build
+      - name: Lint
+        run: npm run lint
 
-      # For reliable results, E2E tests should run on the actual build. That requires a running NextJS server.
-      # Because the NextJS server can only run in the foreground, we put it forcefully into the background, capture its
-      # PID, run the E2E tests, before terminating the NextJS server using the captured PID.
+      - name: Run tests
+        run: npm run test
+
+      # Starts the Next.js development server and puts it into the background before running the tests and stopping the
+      # development server by looking for the PID of the process that listens on port 3000. Capturing the PID with $! is
+      # not possible because `next` seems to spawn a separate process, even if invoked directly.
       - name: Run E2E tests
-        run: >
-          npm run start > /tmp/nextjs-e2e.txt 2>&1 &
-          PID=$!
+        run: |
+          npm run dev > /tmp/nextjs-dev.txt 2>&1 &
           npm run e2e:headless
-          kill -TERM $PID
+          lsof -t -i:3000 | xargs kill -TERM
+
+      # Build the site separately. Running the Next.js development server makes a previous production build unusable.
+      - name: Build
+        run: npx next build
+
+      # Starts the Next.js server and puts it into the background before running the acceptance tests and stopping the
+      # production server by looking for the PID of the process that listens on port 3000. Capturing the PID with $! is
+      # not possible because `next` seems to spawn a separate process, even if invoked directly.
+      - name: Run acceptance tests
+        run: |
+          npm run start > /tmp/nextjs-prod.txt 2>&1 &
+          npm run acceptance
+          lsof -t -i:3000 | xargs kill -TERM
