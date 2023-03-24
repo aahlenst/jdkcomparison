@@ -27,7 +27,7 @@ export function TechnologiesSection({productData, showDifferencesOnly}: Technolo
 					unbundled and the <a
 					href="https://blogs.oracle.com/java/post/the-future-of-javafx-and-other-java-client-roadmap-updates">development
 					has moved to the OpenJFX project</a>. <a href="https://openjfx.io/">OpenJFX</a> is available as a
-					separate download.
+					separate download. Developers are supposed to ship it with their applications.
 				</Feature>
 			}
 			{showFeatures.jfr &&
