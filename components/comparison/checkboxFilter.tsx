@@ -37,7 +37,7 @@ export function CheckboxFilter({label, filter, onChangeHandler}: CheckboxFilterP
 			as="div"
 			key={filter.id}
 			id={`desktop-menu-filter-${filter.id}`}
-			className="relative inline-block text-left px-4"
+			className="relative inline-block text-left px-4 last:pr-0"
 		>
 			<div>
 				<Popover.Button
@@ -47,7 +47,7 @@ export function CheckboxFilter({label, filter, onChangeHandler}: CheckboxFilterP
 						<span className="active-filter-options ml-1.5 rounded bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700">{numberOfSelectedOptions}</span>
 					}
 					<ChevronDownIcon
-						className="-mr-1 ml-1 h-3 w-3 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+						className="-mr-1 last:mr-0 ml-1 h-3 w-3 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
 						aria-hidden="true"
 					/>
 				</Popover.Button>

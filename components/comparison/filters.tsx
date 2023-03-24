@@ -82,7 +82,7 @@ export function Filters() {
 
 			{/* Desktop filters */}
 			<div className="mx-auto max-w-full text-center">
-				<section aria-labelledby="filter-heading" className="border-t border-b border-gray-200 py-3">
+				<section aria-labelledby="filter-heading" className="border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8">
 					<h2 id="filter-heading" className="sr-only">
 						Filters
 					</h2>
@@ -91,7 +91,7 @@ export function Filters() {
 						<button
 							type="button"
 							id="mobile-filters-open"
-							className="inline-block text-sm font-medium text-gray-700 hover:text-gray-900 sm:hidden"
+							className="inline-block text-sm font-medium text-gray-700 pr-2 sm:pr-0 hover:text-gray-900 sm:hidden"
 							onClick={() => setOpen(true)}
 						>
 							Filters
