@@ -40,6 +40,8 @@ describe("<Filters/>", () => {
 		cy.get("input[id=technologies-jfr]").should("not.be.checked");
 		cy.get("label[for=technologies-jfx]").should("have.text", "JavaFX");
 		cy.get("input[id=technologies-jfx]").should("not.be.checked");
+		cy.get("label[for=technologies-jaws]").should("have.text", "Java Web Start");
+		cy.get("input[id=technologies-jaws]").should("not.be.checked");
 	});
 
 	it("updates filters on click", () => {

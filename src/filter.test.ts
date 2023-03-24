@@ -139,7 +139,7 @@ describe("filter module", () => {
 		expect(foundVendors).toContainEqual("Dukecorp");
 	});
 
-	test("createTechnologiesFilter() produces a filter that filters by technologies", () => {
+	test("TechnologiesFilter produces a filter that filters by technologies", () => {
 		const technologiesFilter = createTechnologiesFilter();
 
 		expect(technologiesFilter.id).toEqual("technologies");
@@ -153,7 +153,7 @@ describe("filter module", () => {
 		expect(technologiesFilter.options[2]).toEqual({id: "technologies-jaws", label: "Java Web Start", selected: false});
 	});
 
-	test("createTechnologiesFilter() does not remove items with missing technologies if none is selected", () => {
+	test("TechnologiesFilter does not remove items with missing technologies if none is selected", () => {
 		const technologiesFilter = createTechnologiesFilter();
 
 		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, jfx: c.jfx.present}));
@@ -169,7 +169,7 @@ describe("filter module", () => {
 		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, jfx: Model.Present.NO});
 	});
 
-	test("createTechnologiesFilter() removes items with missing technologies", () => {
+	test("TechnologiesFilter removes items with missing technologies", () => {
 		const technologiesFilter = createTechnologiesFilter();
 
 		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, jfx: c.jfx.present}));
@@ -196,7 +196,7 @@ describe("filter module", () => {
 	});
 
 	test("TechnologiesFilter filters by presence of Java Web Start", () => {
-		const technologiesFilter = new TechnologiesFilter();
+		const technologiesFilter = createTechnologiesFilter();
 
 		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, jaws: c.jaws.present}));
 		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, jaws: Model.Present.NO});
@@ -248,7 +248,7 @@ describe("filter module", () => {
 	});
 
 	test("TechnologiesFilter returns number of selected options set by option ID", () => {
-		const filter = new TechnologiesFilter();
+		const filter = createTechnologiesFilter();
 
 		expect(filter.numberOfSelectedOptions()).toEqual(0);
 
@@ -267,7 +267,7 @@ describe("filter module", () => {
 	});
 
 	test("TechnologiesFilter returns number of selected options set by option label", () => {
-		const filter = new TechnologiesFilter();
+		const filter = createTechnologiesFilter();
 
 		expect(filter.numberOfSelectedOptions()).toEqual(0);
 
