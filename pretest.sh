@@ -5,10 +5,8 @@ set -Eeuo pipefail
 TEMP_DIR=$(mktemp -d 2>/dev/null || mktemp -d -t "jdkcomparison")
 
 cleanup() {
-	PID=$(lsof -t -i:3000)
-	if [ -n "$PID" ]; then
-		kill -TERM "$PID"
-    fi
+	# xargs handles 0..n running processes correctly.
+	lsof -t -i:3000 | xargs -r kill -TERM
 }
 
 trap cleanup EXIT SIGHUP SIGINT SIGQUIT SIGABRT

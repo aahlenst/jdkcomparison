@@ -38,13 +38,13 @@ jobs:
 
       # Starts the Next.js development server and puts it into the background before running the tests and stopping the
       # development server by looking for the PID of the process that listens on port 3000. Capturing the PID with $! is
-      # not possible because `next` seems to spawn a separate process, even if invoked directly.
+      # not possible because `next` seems to spawn a separate process, even if invoked directly. xargs handles 0..n
+      # matching processes correctly.
       - name: Run E2E tests
         run: |
           npm run dev > /tmp/nextjs-dev.txt 2>&1 &
           npm run e2e:headless
-          PID=$(lsof -t -i:3000)
-          if [ -n "$PID" ]; then kill -TERM "$PID"; fi
+          lsof -t -i:3000 | xargs -r kill -TERM
 
       # Build the site separately. Running the Next.js development server makes a previous production build unusable.
       - name: Build
@@ -52,10 +52,10 @@ jobs:
 
       # Starts the Next.js server and puts it into the background before running the acceptance tests and stopping the
       # production server by looking for the PID of the process that listens on port 3000. Capturing the PID with $! is
-      # not possible because `next` seems to spawn a separate process, even if invoked directly.
+      # not possible because `next` seems to spawn a separate process, even if invoked directly. xargs handles 0..n
+      # matching processes correctly.
       - name: Run acceptance tests
         run: |
           npm run start > /tmp/nextjs-prod.txt 2>&1 &
           npm run acceptance
-          PID=$(lsof -t -i:3000)
-          if [ -n "$PID" ]; then kill -TERM "$PID"; fi
+          lsof -t -i:3000 | xargs -r kill -TERM
