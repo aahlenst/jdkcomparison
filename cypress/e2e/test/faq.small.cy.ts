@@ -1,4 +1,4 @@
-import {mobileNavigationComponent, navigationComponent} from "../navigationComponent";
+import {mobileNavigationComponent} from "../mobileNavigationComponent";
 
 describe("FAQ on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight: 844}, () => {
 	it("should display all navigation options", () => {
@@ -28,10 +28,10 @@ describe("FAQ on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight:
 	it("should navigate to Homepage when clicking on logo", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		navigationComponent.expectPageTitle("JDK Comparison - FAQ");
+		mobileNavigationComponent.expectPageTitle("JDK Comparison - FAQ");
 
-		navigationComponent.clickOnLogo();
+		mobileNavigationComponent.clickOnLogo();
 
-		navigationComponent.expectPageTitle("JDK Comparison");
+		mobileNavigationComponent.expectPageTitle("JDK Comparison");
 	});
 });
