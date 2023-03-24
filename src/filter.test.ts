@@ -143,13 +143,14 @@ describe("filter module", () => {
 		const technologiesFilter = createTechnologiesFilter();
 
 		expect(technologiesFilter.id).toEqual("technologies");
-		expect(technologiesFilter.options.length).toEqual(2);
+		expect(technologiesFilter.options.length).toEqual(3);
 		expect(technologiesFilter.options[0]).toEqual({
 			id: "technologies-jfr",
 			label: "Flight Recorder",
 			selected: false
 		});
 		expect(technologiesFilter.options[1]).toEqual({id: "technologies-jfx", label: "JavaFX", selected: false});
+		expect(technologiesFilter.options[2]).toEqual({id: "technologies-jaws", label: "Java Web Start", selected: false});
 	});
 
 	test("createTechnologiesFilter() does not remove items with missing technologies if none is selected", () => {
@@ -192,6 +193,20 @@ describe("filter module", () => {
 		expect(foundProducts).not.toContainEqual({vendor: "Coffeecorp", version: 8, jfx: Model.Present.YES});
 		expect(foundProducts).not.toContainEqual({vendor: "Coffeecorp", version: 17, jfx: Model.Present.NO});
 		expect(foundProducts).not.toContainEqual({vendor: "Dukecorp", version: 17, jfx: Model.Present.NO});
+	});
+
+	test("TechnologiesFilter filters by presence of Java Web Start", () => {
+		const technologiesFilter = new TechnologiesFilter();
+
+		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, jaws: c.jaws.present}));
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, jaws: Model.Present.NO});
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, jaws: Model.Present.NO});
+		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, jaws: Model.Present.NO});
+
+		technologiesFilter.setOptionSelectedByLabel("Java Web Start", true);
+		let filteredData = applyFilters([technologiesFilter], comparisonData);
+
+		expect(filteredData.length).toBe(0);
 	});
 
 	test("DynamicSelectionFilter returns number of selected options set by option ID", () => {

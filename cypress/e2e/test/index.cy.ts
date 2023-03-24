@@ -171,6 +171,33 @@ describe("Home", () => {
 		comparisonPage.expectProductNames(["Dukecorp JDK 17"]);
 	});
 
+	it("allows filtering by technology", () => {
+		cy.visit("http://localhost:3000/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("technologies");
+		comparisonPage.clickFilterOption("technologies", "JavaFX");
+		comparisonPage.closeFilter("technologies");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+
+		comparisonPage.showFilter("technologies");
+		comparisonPage.clickFilterOption("technologies", "JavaFX");
+		comparisonPage.clickFilterOption("technologies", "Flight Recorder");
+		comparisonPage.closeFilter("technologies");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("technologies");
+		comparisonPage.clickFilterOption("technologies", "Flight Recorder");
+		comparisonPage.clickFilterOption("technologies", "Java Web Start");
+		comparisonPage.closeFilter("technologies");
+
+		comparisonPage.expectProductNames([]);
+	});
+
 	it("hides and reveals sections", () => {
 		cy.visit("http://localhost:3000/");
 

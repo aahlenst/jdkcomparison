@@ -103,16 +103,19 @@ export class TechnologiesFilter extends AbstractFilter{
 
 	readonly options: Model.FilterOption[] = [
 		{id: "technologies-jfr", label: "Flight Recorder", selected: false},
-		{id: "technologies-jfx", label: "JavaFX", selected: false}
+		{id: "technologies-jfx", label: "JavaFX", selected: false},
+		{id: "technologies-jaws", label: "Java Web Start", selected: false}
 	];
 
 	apply(fc: Model.FeatureComparison): boolean {
 		const jfrRequired = this.options.some(o => o.id === "technologies-jfr" && o.selected);
 		const jfxRequired = this.options.some(o => o.id === "technologies-jfx" && o.selected);
+		const jawsRequired = this.options.some(o => o.id === "technologies-jaws" && o.selected);
 		const acceptedPresences = new Set([Model.Present.YES, Model.Present.PARTIALLY]);
 		return (
 			(!jfrRequired || acceptedPresences.has(fc.jfr.present)) &&
-			(!jfxRequired || acceptedPresences.has(fc.jfx.present))
+			(!jfxRequired || acceptedPresences.has(fc.jfx.present)) &&
+			(!jawsRequired || acceptedPresences.has(fc.jaws.present))
 		);
 	}
 }
