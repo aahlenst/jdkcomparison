@@ -43,7 +43,8 @@ jobs:
         run: |
           npm run dev > /tmp/nextjs-dev.txt 2>&1 &
           npm run e2e:headless
-          lsof -t -i:3000 | xargs kill -TERM
+          PID=$(lsof -t -i:3000)
+          if [ -n "$PID" ]; then kill -TERM "$PID"; fi
 
       # Build the site separately. Running the Next.js development server makes a previous production build unusable.
       - name: Build
@@ -56,4 +57,5 @@ jobs:
         run: |
           npm run start > /tmp/nextjs-prod.txt 2>&1 &
           npm run acceptance
-          lsof -t -i:3000 | xargs kill -TERM
+          PID=$(lsof -t -i:3000)
+          if [ -n "$PID" ]; then kill -TERM "$PID"; fi
