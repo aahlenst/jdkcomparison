@@ -5,7 +5,9 @@ import {
 	createFilters,
 	createTechnologiesFilter,
 	createVendorsFilter,
-	createVersionsFilter, DynamicSelectionFilter, TechnologiesFilter
+	createVersionsFilter,
+	createVirtualMachinesFilter,
+	DynamicSelectionFilter
 } from "@/src/filter";
 import {Model} from "@/src/modelTypes";
 
@@ -26,7 +28,7 @@ describe("filter module", () => {
 			.map(filter => filter.id)
 			.sort((a, b) => a.localeCompare(b, "en"));
 
-		expect(filters).toEqual(["technologies", "vendors", "versions"]);
+		expect(filters).toEqual(["technologies", "vendors", "versions", "vms"]);
 	});
 
 	test("createVersionsFilter() produces a filter with all JDK versions", () => {
@@ -139,6 +141,62 @@ describe("filter module", () => {
 		expect(foundVendors).toContainEqual("Dukecorp");
 	});
 
+	test("createVirtualMachinesFilter() produces a filter with all VMs", () => {
+		const virtualMachinesFilter = createVirtualMachinesFilter(comparisonData);
+
+		expect(virtualMachinesFilter.id).toEqual("vms");
+		expect(virtualMachinesFilter.options.length).toEqual(2);
+		expect(virtualMachinesFilter.options[0]).toEqual({id: "vms-0", label: "CoffeeVM", selected: false});
+		expect(virtualMachinesFilter.options[1]).toEqual({id: "vms-1", label: "DukeVM", selected: false});
+	});
+
+	test("createVirtualMachinesFilter() produces a filter that accepts all VMs if none is selected", () => {
+		const virtualMachinesFilter = createVirtualMachinesFilter(comparisonData);
+
+		let foundVMs = comparisonData.map(c => c.virtualMachine.text);
+		expect(foundVMs).toContainEqual("CoffeeVM");
+		expect(foundVMs).toContainEqual("DukeVM");
+
+		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
+
+		foundVMs = filteredData.map(c => c.virtualMachine.text);
+		expect(foundVMs).toContainEqual("CoffeeVM");
+		expect(foundVMs).toContainEqual("DukeVM");
+	});
+
+	test("createVirtualMachinesFilter() produces a filter that removes all VMs that are not selected", () => {
+		const virtualMachinesFilter = createVirtualMachinesFilter(comparisonData);
+
+		let foundVMs = comparisonData.map(c => c.virtualMachine.text);
+		expect(foundVMs).toContainEqual("CoffeeVM");
+		expect(foundVMs).toContainEqual("DukeVM");
+
+		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
+
+		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
+
+		foundVMs = filteredData.map(c => c.virtualMachine.text);
+		expect(foundVMs).not.toContainEqual("CoffeeVM");
+		expect(foundVMs).toContainEqual("DukeVM");
+	});
+
+	test("createVirtualMachinesFilter() produces a filter that includes all VMs that are selected", () => {
+		const virtualMachinesFilter = createVirtualMachinesFilter(comparisonData);
+
+		let foundVMs = comparisonData.map(c => c.virtualMachine.text);
+		expect(foundVMs).toContainEqual("CoffeeVM");
+		expect(foundVMs).toContainEqual("DukeVM");
+
+		virtualMachinesFilter.setOptionSelectedByLabel("CoffeeVM", true);
+		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
+
+		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
+
+		foundVMs = filteredData.map(c => c.virtualMachine.text);
+		expect(foundVMs).toContainEqual("CoffeeVM");
+		expect(foundVMs).toContainEqual("DukeVM");
+	});
+
 	test("TechnologiesFilter produces a filter that filters by technologies", () => {
 		const technologiesFilter = createTechnologiesFilter();
 
@@ -150,7 +208,11 @@ describe("filter module", () => {
 			selected: false
 		});
 		expect(technologiesFilter.options[1]).toEqual({id: "technologies-jfx", label: "JavaFX", selected: false});
-		expect(technologiesFilter.options[2]).toEqual({id: "technologies-jaws", label: "Java Web Start", selected: false});
+		expect(technologiesFilter.options[2]).toEqual({
+			id: "technologies-jaws",
+			label: "Java Web Start",
+			selected: false
+		});
 	});
 
 	test("TechnologiesFilter does not remove items with missing technologies if none is selected", () => {

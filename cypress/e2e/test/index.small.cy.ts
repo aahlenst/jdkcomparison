@@ -34,13 +34,22 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 		mobileComparisonPage.expectFilter("Technologies");
 
 		mobileComparisonPage.showFilter("versions");
-		mobileComparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		mobileComparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		mobileComparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		mobileComparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 
-		mobileComparisonPage.clickFilterOption("versions", "8");
+		mobileComparisonPage.showFilter("vendors");
+		mobileComparisonPage.expectFilterOption("vendors", {label: "Coffeecorp", checked: false});
+		mobileComparisonPage.expectFilterOption("vendors", {label: "Dukecorp", checked: false});
 
-		mobileComparisonPage.expectFilterOption("versions", {version: "8", checked: true});
-		mobileComparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		mobileComparisonPage.showFilter("vms");
+		mobileComparisonPage.expectFilterOption("vms", {label: "CoffeeVM", checked: false});
+		mobileComparisonPage.expectFilterOption("vms", {label: "DukeVM", checked: false});
+
+		mobileComparisonPage.showFilter("technologies");
+		mobileComparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
+		mobileComparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
+		mobileComparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
+
 	});
 
 	it("retains filter state when opening and closing", () => {
@@ -54,8 +63,8 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 
 		mobileComparisonPage.showFilter("versions");
 
-		mobileComparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		mobileComparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		mobileComparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		mobileComparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 
 		mobileComparisonPage.clickFilterOption("versions", "8");
 
@@ -67,8 +76,8 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 
 		mobileComparisonPage.showFilter("versions");
 
-		mobileComparisonPage.expectFilterOption("versions", {version: "8", checked: true});
-		mobileComparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		mobileComparisonPage.expectFilterOption("versions", {label: "8", checked: true});
+		mobileComparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 	});
 
 	it("shows feature explanation", () => {

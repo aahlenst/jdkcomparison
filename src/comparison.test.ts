@@ -36,7 +36,7 @@ describe("comparison module", () => {
 		const jdk = productsInComparison[0];
 
 		expect(jdk.id).toEqual("dukecorp-jdk-17");
-		expect(jdk.virtualMachine).toEqual({text: "HotSpot"});
+		expect(jdk.virtualMachine).toEqual({text: "DukeVM"});
 		expect(jdk.classLibraries).toEqual({text: "OpenJDK"});
 		expect(jdk.jfx).toEqual({present: Model.Present.NO});
 		expect(jdk.jfr).toEqual({present: Model.Present.YES});

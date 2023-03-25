@@ -6,7 +6,8 @@ describe("<Filters/>", () => {
 	const filters = [
 		new TechnologiesFilter(),
 		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString()),
-		new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor)
+		new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor),
+		new DynamicSelectionFilter("vms", ["CoffeeVM", "DukeVM"], (fc) => fc.virtualMachine.toString())
 	];
 
 	const component = (
@@ -34,8 +35,15 @@ describe("<Filters/>", () => {
 		cy.get("label[for=vendors-1]").should("have.text", "Dukecorp");
 		cy.get("input[id=vendors-1]").should("not.be.checked");
 
-		cy.get(".filter-name").eq(2).should("have.text", "Technologies");
+		cy.get(".filter-name").eq(2).should("have.text", "VMs");
 		cy.get(".filter-name").eq(2).click();
+		cy.get("label[for=vms-0]").should("have.text", "CoffeeVM");
+		cy.get("input[id=vms-0]").should("not.be.checked");
+		cy.get("label[for=vms-1]").should("have.text", "DukeVM");
+		cy.get("input[id=vms-1]").should("not.be.checked");
+
+		cy.get(".filter-name").eq(3).should("have.text", "Technologies");
+		cy.get(".filter-name").eq(3).click();
 		cy.get("label[for=technologies-jfr]").should("have.text", "Flight Recorder");
 		cy.get("input[id=technologies-jfr]").should("not.be.checked");
 		cy.get("label[for=technologies-jfx]").should("have.text", "JavaFX");

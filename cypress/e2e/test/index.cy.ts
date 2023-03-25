@@ -32,7 +32,7 @@ describe("Home", () => {
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeatureText("properties-feature-version", "Feature Version", ["8", "17", "17"]);
-		comparisonPage.expectFeatureText("properties-vm", "Virtual Machine", ["HotSpot", "HotSpot", "HotSpot"]);
+		comparisonPage.expectFeatureText("properties-vm", "Virtual Machine", ["CoffeeVM", "CoffeeVM", "DukeVM"]);
 		comparisonPage.expectFeatureText("properties-class-libraries", "Class Libraries", ["OpenJDK", "OpenJDK", "OpenJDK"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
@@ -53,7 +53,7 @@ describe("Home", () => {
 
 		comparisonPage.clickShowDifferencesOnly();
 
-		comparisonPage.expectFeaturesInSection("properties", ["Feature Version"]);
+		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until"]);
 	});
@@ -90,11 +90,23 @@ describe("Home", () => {
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
 		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		comparisonPage.closeFilter("versions");
 
-		comparisonPage.clickFilterOption("versions", "8");
+		comparisonPage.showFilter("vendors");
+		comparisonPage.expectFilterOption("vendors", {label: "Coffeecorp", checked: false});
+		comparisonPage.expectFilterOption("vendors", {label: "Dukecorp", checked: false});
+		comparisonPage.closeFilter("vendors");
 
-		comparisonPage.expectFilterOption("versions", {label: "8", checked: true});
-		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		comparisonPage.showFilter("vms");
+		comparisonPage.expectFilterOption("vms", {label: "CoffeeVM", checked: false});
+		comparisonPage.expectFilterOption("vms", {label: "DukeVM", checked: false});
+		comparisonPage.closeFilter("vms");
+
+		comparisonPage.showFilter("technologies");
+		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
+		comparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
+		comparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
+		comparisonPage.closeFilter("technologies");
 	});
 
 	it("retains filter state when opening and closing", () => {
@@ -204,6 +216,32 @@ describe("Home", () => {
 		comparisonPage.closeFilter("technologies");
 
 		comparisonPage.expectProductNames([]);
+	});
+
+	it("allows filtering by virtual machine", () => {
+		cy.visit("http://localhost:3000/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("vms");
+		comparisonPage.clickFilterOption("vms", "CoffeeVM");
+		comparisonPage.closeFilter("vms");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+
+		comparisonPage.showFilter("vms");
+		comparisonPage.clickFilterOption("vms", "CoffeeVM");
+		comparisonPage.clickFilterOption("vms", "DukeVM");
+		comparisonPage.closeFilter("vms");
+
+		comparisonPage.expectProductNames(["Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("vms");
+		comparisonPage.clickFilterOption("vms", "CoffeeVM");
+		comparisonPage.closeFilter("technologies");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
 	});
 
 	it("hides and reveals sections", () => {

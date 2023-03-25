@@ -4,6 +4,7 @@ export function createFilters(comparisons: Model.FeatureComparison[]): Model.Fil
 	return [
 		createVersionsFilter(comparisons),
 		createVendorsFilter(comparisons),
+		createVirtualMachinesFilter(comparisons),
 		createTechnologiesFilter()
 	];
 }
@@ -21,6 +22,12 @@ export function createVendorsFilter(comparisons: Model.FeatureComparison[]): Mod
 	const vendors = new Set(comparisons.map(c => c.vendor));
 	const sortedVendors = [...vendors].sort((a, b) => a.localeCompare(b, "en"));
 	return new DynamicSelectionFilter("vendors", sortedVendors, fc => fc.vendor);
+}
+
+export function createVirtualMachinesFilter(comparisons: Model.FeatureComparison[]): Model.Filter {
+	const vms = new Set(comparisons.map(c => c.virtualMachine.text));
+	const sortedVMs = [...vms].sort((a, b) => a.localeCompare(b, "en"));
+	return new DynamicSelectionFilter("vms", sortedVMs, fc => fc.virtualMachine.text);
 }
 
 export function createTechnologiesFilter(): Model.Filter {

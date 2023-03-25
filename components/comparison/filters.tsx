@@ -70,6 +70,9 @@ export function Filters() {
 									<CheckboxFilterMobile label="Vendors"
 														  filter={getFilter("vendors", comparison.filters)}
 														  onChangeHandler={dispatch}/>
+									<CheckboxFilterMobile label="VMs"
+														  filter={getFilter("vms", comparison.filters)}
+														  onChangeHandler={dispatch}/>
 									<CheckboxFilterMobile label="Technologies"
 														  filter={getFilter("technologies", comparison.filters)}
 														  onChangeHandler={dispatch}/>
@@ -100,6 +103,8 @@ export function Filters() {
 							<CheckboxFilter label="Versions" filter={getFilter("versions", comparison.filters)}
 											onChangeHandler={dispatch}/>
 							<CheckboxFilter label="Vendors" filter={getFilter("vendors", comparison.filters)}
+											onChangeHandler={dispatch}/>
+							<CheckboxFilter label="VMs" filter={getFilter("vms", comparison.filters)}
 											onChangeHandler={dispatch}/>
 							<CheckboxFilter label="Technologies" filter={getFilter("technologies", comparison.filters)}
 											onChangeHandler={dispatch}/>
