@@ -41,6 +41,8 @@ describe("comparison module", () => {
 		expect(jdk.jfx).toEqual({present: Model.Present.NO});
 		expect(jdk.jfr).toEqual({present: Model.Present.YES});
 		expect(jdk.jaws).toEqual({present: Model.Present.NO});
+		expect(jdk.aqavit).toEqual({present: Model.Present.YES});
+		expect(jdk.tck).toEqual({present: Model.Present.YES});
 		expect(jdk.license).toEqual({text: "Proprietary"});
 		expect(jdk.freeInDevelopment).toEqual({present: Model.Present.YES});
 		expect(jdk.freeInProduction).toEqual({present: Model.Present.NO});

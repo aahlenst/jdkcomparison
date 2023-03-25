@@ -16,6 +16,8 @@ export namespace Model {
 		jfx: FeaturePresence,
 		jfr: FeaturePresence,
 		jaws: FeaturePresence,
+		aqavit: FeaturePresence;
+		tck: FeaturePresence;
 		license: FeatureDescription,
 		freeInDevelopment: FeaturePresence,
 		freeInProduction: FeaturePresence,

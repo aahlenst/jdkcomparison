@@ -53,6 +53,8 @@ export type JDKFeatures = {
 	javaFX: FeaturePresence
 	flightRecorder: FeaturePresence
 	javaWS: FeaturePresence
+	aqavit: FeaturePresence,
+	tck: FeaturePresence,
 	license: FeatureDescription
 	freeInDevelopment: FeaturePresence
 	freeInProduction: FeaturePresence

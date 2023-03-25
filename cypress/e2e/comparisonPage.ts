@@ -94,6 +94,13 @@ export const comparisonPage = {
 			cy.get("#product-header .product-name").eq(i).should("have.text", name);
 		}
 	},
+	expectSections: (names: string[]) => {
+		cy.get(".section-label").should("have.length", names.length);
+		for (let i = 0; i < names.length; i++) {
+			const name = names[i];
+			cy.get(".section-label").eq(i).should("have.text", name);
+		}
+	},
 	showFeatureExplanation: (id: string) => {
 		cy.get(`#${id} .desktop-feature-explanation-toggle`).click();
 	},

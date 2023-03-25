@@ -18,6 +18,8 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				aqavit: {present: Present.YES},
+				tck: {present: Present.YES},
 				license: {text: "Proprietary"},
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.NO},
