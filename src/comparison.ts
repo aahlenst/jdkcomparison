@@ -44,6 +44,8 @@ function extractFeatureComparisons(vendor: Vendor, footnotes: Model.Footnote[]):
 			version: jdk.information.version,
 			downloadUrl: jdk.information.downloadSite,
 			websiteUrl: vendor.website,
+			virtualMachine: mapFeatureDescription(jdk.features.virtualMachine, footnotes),
+			classLibraries: mapFeatureDescription(jdk.features.classLibraries, footnotes),
 			jfx: mapFeaturePresence(jdk.features.javaFX, footnotes),
 			jfr: mapFeaturePresence(jdk.features.flightRecorder, footnotes),
 			jaws: mapFeaturePresence(jdk.features.javaWS, footnotes),

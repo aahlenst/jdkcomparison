@@ -13,6 +13,8 @@ export const data: Vendor = {
 				downloadSite: "https://adoptium.net/temurin/releases/?version=8",
 			},
 			features: {
+				virtualMachine: {text: "HotSpot"},
+				classLibraries: {text: "OpenJDK"},
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
@@ -30,6 +32,8 @@ export const data: Vendor = {
 				downloadSite: "https://adoptium.net/temurin/releases/?version=17",
 			},
 			features: {
+				virtualMachine: {text: "HotSpot"},
+				classLibraries: {text: "OpenJDK"},
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},

@@ -13,6 +13,8 @@ export const data: Vendor = {
 				downloadSite: "https://coffeecorp.com/jdk8",
 			},
 			features: {
+				virtualMachine: {text: "HotSpot"},
+				classLibraries: {text: "OpenJDK"},
 				javaFX: {present: Present.YES, footnote: "6a296137-f4e4-4d34-b64e-3c95375f3db0"},
 				flightRecorder: {present: Present.NO},
 				javaWS: {present: Present.NO},
@@ -28,6 +30,8 @@ export const data: Vendor = {
 				downloadSite: "https://coffeecorp.com/jdk17",
 			},
 			features: {
+				virtualMachine: {text: "HotSpot"},
+				classLibraries: {text: "OpenJDK"},
 				javaFX: {present: Present.NO, footnote: "6a296137-f4e4-4d34-b64e-3c95375f3db0"},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},

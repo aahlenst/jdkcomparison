@@ -36,8 +36,11 @@ describe("comparison module", () => {
 		const jdk = productsInComparison[0];
 
 		expect(jdk.id).toEqual("dukecorp-jdk-17");
+		expect(jdk.virtualMachine).toEqual({text: "HotSpot"});
+		expect(jdk.classLibraries).toEqual({text: "OpenJDK"});
 		expect(jdk.jfx).toEqual({present: Model.Present.NO});
 		expect(jdk.jfr).toEqual({present: Model.Present.YES});
+		expect(jdk.jaws).toEqual({present: Model.Present.NO});
 		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteReference: {backReference: 1, number: 1}});
 		expect(jdk.eolDate).toEqual({text: "2027-10", footnoteReference: {backReference: 1, number: 2}});
 	});

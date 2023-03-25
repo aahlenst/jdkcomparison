@@ -11,6 +11,8 @@ export namespace Model {
 		version: number,
 		downloadUrl: string,
 		websiteUrl: string,
+		virtualMachine: FeatureDescription,
+		classLibraries: FeatureDescription,
 		jfx: FeaturePresence,
 		jfr: FeaturePresence,
 		jaws: FeaturePresence,

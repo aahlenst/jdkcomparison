@@ -26,6 +26,15 @@ describe("Comparison in production", () => {
 		comparisonPage.expectProductNames(["Eclipse Temurin 8", "Eclipse Temurin 17", "OpenJDK 20"]);
 	});
 
+	it("should display all sections", () => {
+		cy.visit("http://localhost:3000/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+	});
+
 	it("shows all filters", () => {
 		cy.visit("http://localhost:3000/");
 

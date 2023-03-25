@@ -48,6 +48,8 @@ export type JDKInformation = {
 }
 
 export type JDKFeatures = {
+	virtualMachine: FeatureDescription
+	classLibraries: FeatureDescription
 	javaFX: FeaturePresence
 	flightRecorder: FeaturePresence
 	javaWS: FeaturePresence

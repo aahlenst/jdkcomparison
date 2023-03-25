@@ -13,6 +13,8 @@ export const data: Vendor = {
 				downloadSite: "https://dukecorp.com/jdk17",
 			},
 			features: {
+				virtualMachine: {text: "HotSpot"},
+				classLibraries: {text: "OpenJDK"},
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},

@@ -13,6 +13,8 @@ export const data: Vendor = {
 				downloadSite: "https://jdk.java.net/20",
 			},
 			features: {
+				virtualMachine: {text: "HotSpot"},
+				classLibraries: {text: "OpenJDK"},
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
