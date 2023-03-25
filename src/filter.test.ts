@@ -3,6 +3,7 @@ import {extractComparisonData} from "@/src/comparison";
 import {
 	applyFilters,
 	createFilters,
+	createLicensingFilter,
 	createTechnologiesFilter,
 	createVendorsFilter,
 	createVersionsFilter,
@@ -28,7 +29,7 @@ describe("filter module", () => {
 			.map(filter => filter.id)
 			.sort((a, b) => a.localeCompare(b, "en"));
 
-		expect(filters).toEqual(["technologies", "vendors", "versions", "vms"]);
+		expect(filters).toEqual(["licensing", "technologies", "vendors", "versions", "vms"]);
 	});
 
 	test("createVersionsFilter() produces a filter with all JDK versions", () => {
@@ -345,5 +346,102 @@ describe("filter module", () => {
 		filter.setOptionSelectedByLabel("JavaFX", false);
 
 		expect(filter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("LicensingFilter produces a filter that filters by licensing options", () => {
+		const licensingFilter = createLicensingFilter();
+
+		expect(licensingFilter.id).toEqual("licensing");
+		expect(licensingFilter.options.length).toEqual(2);
+		expect(licensingFilter.options[0]).toEqual({
+			id: "licensing-free-in-development",
+			label: "Free in Development",
+			selected: false
+		});
+		expect(licensingFilter.options[1]).toEqual({
+			id: "licensing-free-in-production",
+			label: "Free in Production",
+			selected: false
+		});
+	});
+
+	test("LicensingFilter keeps items with missing options if none is selected", () => {
+		const licensingFilter = createLicensingFilter();
+
+		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, free: c.freeInProduction.present}));
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
+		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+
+		const filteredData = applyFilters([licensingFilter], comparisonData);
+
+		foundProducts = filteredData.map(c => ({vendor: c.vendor, version: c.version, free: c.freeInProduction.present}));
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
+		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+	});
+
+	test("LicensingFilter removes items with missing options", () => {
+		const licensingFilter = createLicensingFilter();
+
+		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, free: c.freeInProduction.present}));
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
+		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+
+		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
+		let filteredData = applyFilters([licensingFilter], comparisonData);
+
+		foundProducts = filteredData.map(c => ({vendor: c.vendor, version: c.version, free: c.freeInProduction.present}));
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
+		expect(foundProducts).not.toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+
+		licensingFilter.setOptionSelectedByLabel("Free in Development", true);
+		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
+		filteredData = applyFilters([licensingFilter], comparisonData);
+
+		foundProducts = filteredData.map(c => ({vendor: c.vendor, version: c.version, free: c.freeInProduction.present}));
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
+		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
+		expect(foundProducts).not.toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+	});
+
+	test("LicensingFilter returns number of selected options set by option ID", () => {
+		const licensingFilter = createLicensingFilter();
+
+		expect(licensingFilter.numberOfSelectedOptions()).toEqual(0);
+
+		licensingFilter.setOptionSelected("licensing-free-in-development", true);
+		licensingFilter.setOptionSelected("licensing-free-in-production", true);
+
+		expect(licensingFilter.numberOfSelectedOptions()).toEqual(2);
+
+		licensingFilter.setOptionSelected("licensing-free-in-development", false);
+
+		expect(licensingFilter.numberOfSelectedOptions()).toEqual(1);
+
+		licensingFilter.setOptionSelected("licensing-free-in-production", false);
+
+		expect(licensingFilter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("LicensingFilter returns number of selected options set by option label", () => {
+		const licensingFilter = createLicensingFilter();
+
+		expect(licensingFilter.numberOfSelectedOptions()).toEqual(0);
+
+		licensingFilter.setOptionSelectedByLabel("Free in Development", true);
+		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
+
+		expect(licensingFilter.numberOfSelectedOptions()).toEqual(2);
+
+		licensingFilter.setOptionSelectedByLabel("Free in Development", false);
+
+		expect(licensingFilter.numberOfSelectedOptions()).toEqual(1);
+
+		licensingFilter.setOptionSelectedByLabel("Free in Production", false);
+
+		expect(licensingFilter.numberOfSelectedOptions()).toEqual(0);
 	});
 });

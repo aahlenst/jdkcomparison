@@ -1,10 +1,11 @@
 import {ComparisonProvider} from "./comparisonContext";
 import {Filters} from "./filters";
-import {DynamicSelectionFilter, TechnologiesFilter} from "../../src/filter";
+import {DynamicSelectionFilter, LicensingFilter, TechnologiesFilter} from "../../src/filter";
 
 describe("<Filters/>", () => {
 	const filters = [
 		new TechnologiesFilter(),
+		new LicensingFilter(),
 		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString()),
 		new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor),
 		new DynamicSelectionFilter("vms", ["CoffeeVM", "DukeVM"], (fc) => fc.virtualMachine.toString())
@@ -50,6 +51,13 @@ describe("<Filters/>", () => {
 		cy.get("input[id=technologies-jfx]").should("not.be.checked");
 		cy.get("label[for=technologies-jaws]").should("have.text", "Java Web Start");
 		cy.get("input[id=technologies-jaws]").should("not.be.checked");
+
+		cy.get(".filter-name").eq(4).should("have.text", "Licensing");
+		cy.get(".filter-name").eq(4).click();
+		cy.get("label[for=licensing-free-in-development]").should("have.text", "Free in Development");
+		cy.get("input[id=licensing-free-in-development]").should("not.be.checked");
+		cy.get("label[for=licensing-free-in-production]").should("have.text", "Free in Production");
+		cy.get("input[id=licensing-free-in-production]").should("not.be.checked");
 	});
 
 	it("updates filters on click", () => {

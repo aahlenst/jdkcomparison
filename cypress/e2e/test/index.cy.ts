@@ -93,7 +93,9 @@ describe("Home", () => {
 
 		comparisonPage.expectFilter("Versions");
 		comparisonPage.expectFilter("Vendors");
+		comparisonPage.expectFilter("VMs");
 		comparisonPage.expectFilter("Technologies");
+		comparisonPage.expectFilter("Licensing");
 
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
@@ -115,6 +117,11 @@ describe("Home", () => {
 		comparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
 		comparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
 		comparisonPage.closeFilter("technologies");
+
+		comparisonPage.showFilter("licensing");
+		comparisonPage.expectFilterOption("licensing", {label: "Free in Development", checked: false});
+		comparisonPage.expectFilterOption("licensing", {label: "Free in Production", checked: false});
+		comparisonPage.closeFilter("licensing");
 	});
 
 	it("retains filter state when opening and closing", () => {
@@ -273,9 +280,35 @@ describe("Home", () => {
 
 		comparisonPage.showFilter("vms");
 		comparisonPage.clickFilterOption("vms", "CoffeeVM");
-		comparisonPage.closeFilter("technologies");
+		comparisonPage.closeFilter("vms");
 
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+	});
+
+	it("allows filtering by licensing option", () => {
+		cy.visit("http://localhost:3000/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("licensing");
+		comparisonPage.clickFilterOption("licensing", "Free in Development");
+		comparisonPage.closeFilter("licensing");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("licensing");
+		comparisonPage.clickFilterOption("licensing", "Free in Development");
+		comparisonPage.clickFilterOption("licensing", "Free in Production");
+		comparisonPage.closeFilter("licensing");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+
+		comparisonPage.showFilter("licensing");
+		comparisonPage.clickFilterOption("licensing", "Free in Development");
+		comparisonPage.closeFilter("licensing");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
 	});
 
 	it("hides and reveals sections", () => {

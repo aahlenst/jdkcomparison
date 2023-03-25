@@ -42,6 +42,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFilter("Vendors");
 		comparisonPage.expectFilter("VMs");
 		comparisonPage.expectFilter("Technologies");
+		comparisonPage.expectFilter("Licensing");
 
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});

@@ -76,6 +76,9 @@ export function Filters() {
 									<CheckboxFilterMobile label="Technologies"
 														  filter={getFilter("technologies", comparison.filters)}
 														  onChangeHandler={dispatch}/>
+									<CheckboxFilterMobile label="Licensing"
+														  filter={getFilter("licensing", comparison.filters)}
+														  onChangeHandler={dispatch}/>
 								</form>
 							</Dialog.Panel>
 						</Transition.Child>
@@ -107,6 +110,8 @@ export function Filters() {
 							<CheckboxFilter label="VMs" filter={getFilter("vms", comparison.filters)}
 											onChangeHandler={dispatch}/>
 							<CheckboxFilter label="Technologies" filter={getFilter("technologies", comparison.filters)}
+											onChangeHandler={dispatch}/>
+							<CheckboxFilter label="Licensing" filter={getFilter("licensing", comparison.filters)}
 											onChangeHandler={dispatch}/>
 						</Popover.Group>
 					</div>

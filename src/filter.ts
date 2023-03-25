@@ -5,7 +5,8 @@ export function createFilters(comparisons: Model.FeatureComparison[]): Model.Fil
 		createVersionsFilter(comparisons),
 		createVendorsFilter(comparisons),
 		createVirtualMachinesFilter(comparisons),
-		createTechnologiesFilter()
+		createTechnologiesFilter(),
+		createLicensingFilter(),
 	];
 }
 
@@ -32,6 +33,10 @@ export function createVirtualMachinesFilter(comparisons: Model.FeatureComparison
 
 export function createTechnologiesFilter(): Model.Filter {
 	return new TechnologiesFilter();
+}
+
+export function createLicensingFilter(): Model.Filter {
+	return new LicensingFilter();
 }
 
 export function applyFilters(filters: Model.Filter[], comparisons: Model.FeatureComparison[]): Model.FeatureComparison[] {
@@ -123,6 +128,25 @@ export class TechnologiesFilter extends AbstractFilter{
 			(!jfrRequired || acceptedPresences.has(fc.jfr.present)) &&
 			(!jfxRequired || acceptedPresences.has(fc.jfx.present)) &&
 			(!jawsRequired || acceptedPresences.has(fc.jaws.present))
+		);
+	}
+}
+
+export class LicensingFilter extends AbstractFilter {
+	readonly id: string = "licensing";
+
+	readonly options: Model.FilterOption[] = [
+		{id: "licensing-free-in-development", label: "Free in Development", selected: false},
+		{id: "licensing-free-in-production", label: "Free in Production", selected: false}
+	];
+
+	apply(fc: Model.FeatureComparison): boolean {
+		const freeInDev = this.options.some(o => o.id === "licensing-free-in-development" && o.selected);
+		const freeInProd = this.options.some(o => o.id === "licensing-free-in-production" && o.selected);
+		const acceptedPresences = new Set([Model.Present.YES, Model.Present.PARTIALLY]);
+		return (
+			(!freeInDev || acceptedPresences.has(fc.freeInDevelopment.present)) &&
+			(!freeInProd || acceptedPresences.has(fc.freeInProduction.present))
 		);
 	}
 }

@@ -31,7 +31,9 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 
 		mobileComparisonPage.expectFilter("Versions");
 		mobileComparisonPage.expectFilter("Vendors");
+		mobileComparisonPage.expectFilter("VMs");
 		mobileComparisonPage.expectFilter("Technologies");
+		mobileComparisonPage.expectFilter("Licensing");
 
 		mobileComparisonPage.showFilter("versions");
 		mobileComparisonPage.expectFilterOption("versions", {label: "8", checked: false});
@@ -53,6 +55,11 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 		mobileComparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
 		mobileComparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
 		mobileComparisonPage.closeFilter("technologies");
+
+		mobileComparisonPage.showFilter("licensing");
+		mobileComparisonPage.expectFilterOption("licensing", {label: "Free in Development", checked: false});
+		mobileComparisonPage.expectFilterOption("licensing", {label: "Free in Production", checked: false});
+		mobileComparisonPage.closeFilter("licensing");
 	});
 
 	it("retains filter state when opening and closing", () => {
