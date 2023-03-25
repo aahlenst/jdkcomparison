@@ -23,7 +23,7 @@ export function FeatureExplanation({children}: PropsWithChildren) {
 				</Popover.Button>
 				<Popover.Overlay className="mobile-feature-explanation-overlay fixed inset-0 bg-black opacity-30"/>
 				<Popover.Panel
-					className="mobile-feature-explanation absolute bottom-0 inset-x-0 "
+					className="mobile-feature-explanation fixed bottom-0 inset-x-0 "
 				>
 					<div
 						className="overflow-hidden bg-white p-3 prose prose-sm">
