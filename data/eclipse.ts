@@ -18,6 +18,9 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				freeInDevelopment: {present: Present.YES},
+				freeInProduction: {present: Present.YES},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},
@@ -37,6 +40,9 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				freeInDevelopment: {present: Present.YES},
+				freeInProduction: {present: Present.YES},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},

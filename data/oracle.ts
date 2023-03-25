@@ -18,6 +18,9 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				freeInDevelopment: {present: Present.YES},
+				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.NO},
 				eolDate: {text: "2023-10"}
 			}

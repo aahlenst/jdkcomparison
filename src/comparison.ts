@@ -49,6 +49,9 @@ function extractFeatureComparisons(vendor: Vendor, footnotes: Model.Footnote[]):
 			jfx: mapFeaturePresence(jdk.features.javaFX, footnotes),
 			jfr: mapFeaturePresence(jdk.features.flightRecorder, footnotes),
 			jaws: mapFeaturePresence(jdk.features.javaWS, footnotes),
+			license: mapFeatureDescription(jdk.features.license, footnotes),
+			freeInDevelopment: mapFeaturePresence(jdk.features.freeInDevelopment, footnotes),
+			freeInProduction: mapFeaturePresence(jdk.features.freeInProduction, footnotes),
 			paidSupport: mapFeaturePresence(jdk.features.paidSupport, footnotes),
 			eolDate: mapFeatureDescription(jdk.features.eolDate, footnotes)
 		};

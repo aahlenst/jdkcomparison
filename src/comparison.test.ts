@@ -41,6 +41,9 @@ describe("comparison module", () => {
 		expect(jdk.jfx).toEqual({present: Model.Present.NO});
 		expect(jdk.jfr).toEqual({present: Model.Present.YES});
 		expect(jdk.jaws).toEqual({present: Model.Present.NO});
+		expect(jdk.license).toEqual({text: "Proprietary"});
+		expect(jdk.freeInDevelopment).toEqual({present: Model.Present.YES});
+		expect(jdk.freeInProduction).toEqual({present: Model.Present.NO});
 		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteReference: {backReference: 1, number: 1}});
 		expect(jdk.eolDate).toEqual({text: "2027-10", footnoteReference: {backReference: 1, number: 2}});
 	});
