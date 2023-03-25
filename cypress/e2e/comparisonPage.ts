@@ -66,11 +66,11 @@ export const comparisonPage = {
 			expect(foundNames).to.contain(name);
 		});
 	},
-	expectFilterOption: (id: string, option: { version: string, checked: boolean }) => {
+	expectFilterOption: (id: string, option: { label: string, checked: boolean }) => {
 		cy.get(`#filter-${id} > div`).should($opt => {
 			const foundOptions = $opt.map((i, el) => {
 				return {
-					version: Cypress.$(el).find("label").text(),
+					label: Cypress.$(el).find("label").text(),
 					checked: Cypress.$(el).find("input").prop("checked")
 				};
 			}).get();

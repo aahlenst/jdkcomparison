@@ -84,13 +84,13 @@ describe("Home", () => {
 		comparisonPage.expectFilter("Technologies");
 
 		comparisonPage.showFilter("versions");
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 
 		comparisonPage.clickFilterOption("versions", "8");
 
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 	});
 
 	it("retains filter state when opening and closing", () => {
@@ -100,16 +100,16 @@ describe("Home", () => {
 
 		comparisonPage.showFilter("versions");
 
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 
 		comparisonPage.clickFilterOption("versions", "8");
 
 		comparisonPage.closeFilter("versions");
 		comparisonPage.showFilter("versions");
 
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 	});
 
 	it("updates number of active filters", () => {
@@ -120,28 +120,28 @@ describe("Home", () => {
 
 		comparisonPage.showFilter("versions");
 
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 
 		comparisonPage.clickFilterOption("versions", "17");
 
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: true});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: true});
 
 		comparisonPage.expectActiveFilterOptions("versions", 1);
 
 		comparisonPage.clickFilterOption("versions", "8");
 
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: true});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: true});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: true});
 
 		comparisonPage.expectActiveFilterOptions("versions", 2);
 
 		comparisonPage.clickFilterOption("versions", "8");
 		comparisonPage.clickFilterOption("versions", "17");
 
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 
 		comparisonPage.expectActiveFilterOptions("versions", 0);
 	});

@@ -43,8 +43,8 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFilter("Technologies");
 
 		comparisonPage.showFilter("versions");
-		comparisonPage.expectFilterOption("versions", {version: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {version: "17", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
 	});
 
 	it("shows feature explanation", () => {
