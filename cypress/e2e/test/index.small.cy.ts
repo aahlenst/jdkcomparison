@@ -36,20 +36,23 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 		mobileComparisonPage.showFilter("versions");
 		mobileComparisonPage.expectFilterOption("versions", {label: "8", checked: false});
 		mobileComparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		mobileComparisonPage.closeFilter("versions");
 
 		mobileComparisonPage.showFilter("vendors");
 		mobileComparisonPage.expectFilterOption("vendors", {label: "Coffeecorp", checked: false});
 		mobileComparisonPage.expectFilterOption("vendors", {label: "Dukecorp", checked: false});
+		mobileComparisonPage.closeFilter("vendors");
 
 		mobileComparisonPage.showFilter("vms");
 		mobileComparisonPage.expectFilterOption("vms", {label: "CoffeeVM", checked: false});
 		mobileComparisonPage.expectFilterOption("vms", {label: "DukeVM", checked: false});
+		mobileComparisonPage.closeFilter("vms");
 
 		mobileComparisonPage.showFilter("technologies");
 		mobileComparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
 		mobileComparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
 		mobileComparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
-
+		mobileComparisonPage.closeFilter("technologies");
 	});
 
 	it("retains filter state when opening and closing", () => {

@@ -40,11 +40,28 @@ describe("Comparison in production", () => {
 
 		comparisonPage.expectFilter("Versions");
 		comparisonPage.expectFilter("Vendors");
+		comparisonPage.expectFilter("VMs");
 		comparisonPage.expectFilter("Technologies");
 
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
 		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		comparisonPage.closeFilter("versions");
+
+		comparisonPage.showFilter("vendors");
+		comparisonPage.expectFilterOption("vendors", {label: "Eclipse Foundation", checked: false});
+		comparisonPage.expectFilterOption("vendors", {label: "Oracle", checked: false});
+		comparisonPage.closeFilter("vendors");
+
+		comparisonPage.showFilter("vms");
+		comparisonPage.expectFilterOption("vms", {label: "HotSpot", checked: false});
+		comparisonPage.closeFilter("vms");
+
+		comparisonPage.showFilter("technologies");
+		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
+		comparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
+		comparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
+		comparisonPage.closeFilter("technologies");
 	});
 
 	it("shows feature explanation", () => {

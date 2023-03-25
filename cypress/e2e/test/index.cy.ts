@@ -171,6 +171,32 @@ describe("Home", () => {
 		comparisonPage.closeFeatureExplanation("technologies-jfr");
 	});
 
+	it("allows filtering by version", () => {
+		cy.visit("http://localhost:3000/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.clickFilterOption("versions", "8");
+		comparisonPage.closeFilter("versions");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.clickFilterOption("versions", "8");
+		comparisonPage.clickFilterOption("versions", "17");
+		comparisonPage.closeFilter("versions");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.clickFilterOption("versions", "8");
+		comparisonPage.closeFilter("versions");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+	});
+
 	it("allows filtering by vendor", () => {
 		cy.visit("http://localhost:3000/");
 
