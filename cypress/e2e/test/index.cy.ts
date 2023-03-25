@@ -47,11 +47,13 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
+		comparisonPage.expectFeaturesInSection("properties", ["Feature Version"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until"]);
 	});
@@ -66,12 +68,14 @@ describe("Home", () => {
 		comparisonPage.clickFilterOption("versions", "8");
 
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 	});
