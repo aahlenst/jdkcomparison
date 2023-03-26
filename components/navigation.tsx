@@ -2,7 +2,7 @@ import {Disclosure} from "@headlessui/react";
 import {BarsIcon, GitHubIcon, XMarkIcon} from "@/components/icons";
 import Link from "next/link";
 import {NextRouter, useRouter} from "next/router";
-import duke from "../public/duke.svg";
+import logo from "../public/logo.svg";
 import Image from "next/image";
 
 function classNames(...classes: string[]) {
@@ -39,7 +39,7 @@ export function Navigation() {
 								<div className="flex flex-shrink-0 items-center">
 									<Link href="/">
 										<span className="sr-only">Back to homepage.</span>
-										<Image id="logo" src={duke} alt="Icon picturing Duke, the Java mascot." className="block h-8 w-auto" />
+										<Image id="logo" src={logo} alt="JDK Comparison logo" className="block h-8 w-auto" />
 									</Link>
 								</div>
 								<div className="hidden sm:ml-6 sm:flex sm:space-x-8">
