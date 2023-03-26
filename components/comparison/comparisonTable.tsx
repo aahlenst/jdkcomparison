@@ -6,6 +6,7 @@ import {SupportSection} from "@/components/comparison/supportSection";
 import {PropertiesSection} from "@/components/comparison/propertiesSection";
 import {LicensingSection} from "@/components/comparison/licensingSection";
 import {CertificationsSection} from "@/components/comparison/certificationsSection";
+import {CustomisationsSection} from "@/components/comparison/customisationsSection";
 
 export function ComparisonTable() {
 	const comparison = useComparison();
@@ -18,6 +19,8 @@ export function ComparisonTable() {
 			<TechnologiesSection productData={comparison.filteredData}
 								 showDifferencesOnly={comparison.showDifferencesOnly}/>
 			<CertificationsSection productData={comparison.filteredData}
+								   showDifferencesOnly={comparison.showDifferencesOnly}/>
+			<CustomisationsSection productData={comparison.filteredData}
 								   showDifferencesOnly={comparison.showDifferencesOnly}/>
 			<LicensingSection productData={comparison.filteredData}
 							  showDifferencesOnly={comparison.showDifferencesOnly}/>

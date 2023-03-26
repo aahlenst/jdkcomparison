@@ -20,6 +20,10 @@ export const data: Vendor = {
 				javaWS: {present: Present.NO},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
+				editions: {text: "JRE"},
+				// No customisations apart from a few extra backports and a custom trust store.
+				customisations: {text: "few", footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf"},
+				notableFeatures: {text: "none"},
 				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
@@ -44,6 +48,10 @@ export const data: Vendor = {
 				javaWS: {present: Present.NO},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
+				editions: {text: "JRE"},
+				// No customisations apart from a few extra backports and a custom trust store.
+				customisations: {text: "few", footnote: "dfe09c60-3881-4cb2-8809-a8f3563e8ebd"},
+				notableFeatures: {text: "none"},
 				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
@@ -55,6 +63,18 @@ export const data: Vendor = {
 		}
 	],
 	footnotes: [
+		{
+			id: "b85fc239-060a-4008-ade1-cff1f029ebaf",
+			markdown: `To get a full list of changes, compare the [OpenJDK 8 \`master\` branch with the \`release\`
+			branch of Eclipse Temurin 8](https://github.com/adoptium/jdk8u/compare/master...release) and
+			ignore all changes by @adoptopenjdk-github-bot.`
+		},
+		{
+			id: "dfe09c60-3881-4cb2-8809-a8f3563e8ebd",
+			markdown: `To get a full list of changes, compare the [OpenJDK 17 \`master\` branch with the \`release\`
+			branch of Eclipse Temurin 17](https://github.com/adoptium/jdk17u/compare/master...release) and
+			ignore all changes by @adoptopenjdk-github-bot.`
+		},
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 			markdown: `Paid support is provided by some of the companies backing Eclipse Adoptium, for example,

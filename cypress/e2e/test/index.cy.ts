@@ -30,21 +30,33 @@ describe("Home", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
+
+		comparisonPage.expectSections(["Properties", "Technologies", "Certifications", "Customisations", "Licensing", "Support"]);
+
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeatureText("properties-feature-version", "Feature Version", ["8", "17", "17"]);
 		comparisonPage.expectFeatureText("properties-vm", "Virtual Machine", ["CoffeeVM", "CoffeeVM", "DukeVM"]);
 		comparisonPage.expectFeatureText("properties-class-libraries", "Class Libraries", ["OpenJDK", "OpenJDK", "OpenJDK"]);
+
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["yes", "no", "no"]);
 		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", ["no", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
+
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturePresence("certifications-aqavit", "Eclipse AQAvit", ["yes", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("certifications-tck", "TCK for Java SE", ["yes", "yes", "yes"]);
+
+		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
+		comparisonPage.expectFeatureText("customisations-editions", "Editions", ["JRE", "JRE", "JRE"]);
+		comparisonPage.expectFeatureText("customisations-customisations", "Customisations", ["medium", "few", "many"]);
+		comparisonPage.expectFeatureText("customisations-notable-features", "Notable Features", ["none", "none", "FairyGC"]);
+
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
 		comparisonPage.expectFeatureText("licensing-license", "License", ["GPL-2.0-WITH-Classpath-exception-2.0", "GPL-2.0-WITH-Classpath-exception-2.0", "Proprietary"]);
 		comparisonPage.expectFeaturePresence("licensing-free-in-development", "Free in Development", ["yes", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("licensing-free-in-production", "Free in Production", ["yes", "yes", "no"]);
+
 		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 		comparisonPage.expectFeatureText("support-eol-date", "Patches until", ["2026-10", "2027-10", "2027-10[3]"]);
 		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
@@ -55,18 +67,20 @@ describe("Home", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Certifications", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Certifications", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
+		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
+		comparisonPage.expectFeaturesInSection("customisations", ["Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until"]);
 	});
@@ -83,6 +97,7 @@ describe("Home", () => {
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 
@@ -91,6 +106,7 @@ describe("Home", () => {
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
 	});
