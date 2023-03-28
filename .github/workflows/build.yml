@@ -1,0 +1,118 @@
+name: Build, test, and deploy
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  ARTIFACT_NAME: jdkcomparison-site
+
+jobs:
+  common-checks:
+    name: Run common checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run shellcheck on shell scripts
+        run: find . -name node_modules -prune -o -type f -name "*.sh" -exec shellcheck {} \;
+
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    needs:
+      - common-checks
+    strategy:
+      matrix:
+        # Use Node.js LTS and Current. Schedule: https://nodejs.org/en/about/releases/
+        node-version: [ 18.x, 19.x ]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run unit tests
+        run: npm run jest
+
+      - name: Run component tests
+        run: npm run component:headless
+
+      # Starts the Next.js development server and puts it into the background before running the tests and stopping the
+      # development server by looking for the PID of the process that listens on port 3000. Capturing the PID with $! is
+      # not possible because `next` seems to spawn a separate process, even if invoked directly. xargs handles 0..n
+      # matching processes correctly.
+      - name: Run E2E tests
+        run: |
+          npm run dev > /tmp/nextjs-dev.txt 2>&1 &
+          npm run e2e:headless
+          lsof -t -i:3000 | xargs -r kill -TERM
+
+      - name: Build
+        run: npx @cloudflare/next-on-pages --experimental-minify
+
+      # Upload build output before anything can alter it.
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: .vercel/output/static
+
+      # Start development server of Cloudflare Pages and put it into the background before running the acceptance tests.
+      # Stop it afterwards by looking for the PID of the process that listens on port 3000.
+      - name: Run acceptance tests
+        run: |
+          npx wrangler pages dev --port 3000 .vercel/output/static > /tmp/wrangler.txt 2>&1 &
+          npm run acceptance
+          lsof -t -i:3000 | xargs -r kill -TERM
+  deploy:
+    name: Deploy to Cloudlfare Pages
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: site
+
+      - name: Publish to Cloudflare Pages
+        id: cloudflare-deployment
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 6db44e986b34e7b9e118f48872f9e729
+          projectName: jdkcomparison
+          directory: site
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # Tells Cloudflare Pages which branch this deployment originates from.
+          branch: ${{ github.ref_name }}
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            ### <span aria-hidden="true">✅</span> Your deployment is ready!
+
+            | Name | Link |
+            |-|-|
+            |Deployed Commit | ${{ github.sha }} |
+            |Workflow Log    | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
+            |Preview URL     | ${{ steps.cloudflare-deployment.outputs.url }} |
+            |Environment     | ${{ steps.cloudflare-deployment.outputs.environment }} |
+            ---

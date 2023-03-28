@@ -9,16 +9,23 @@ cleanup() {
 	lsof -t -i:3000 | xargs -r kill -TERM
 }
 
-trap cleanup EXIT SIGHUP SIGINT SIGQUIT SIGABRT
+trap cleanup EXIT
 
-rm -rf .next
-npm run build
+# Remove build output from previous runs.
+rm -rf .next .vercel
 
+# Check
+find . -name node_modules -prune -o -type f -name "*.sh" -exec shellcheck {} \;
+npm run lint
+
+# Test
+npm run jest
+npm run component:headless
 npm run dev > "$TEMP_DIR/nextjs-dev.txt" 2>&1 &
 npm run e2e:headless
 cleanup
 
-npx next build
-npm run start > "$TEMP_DIR/nextjs-prod.txt" 2>&1 &
+npx @cloudflare/next-on-pages --experimental-minify
+npx wrangler pages dev --port 3000 .vercel/output/static > "$TEMP_DIR/wrangler.txt" 2>&1 &
 npm run acceptance
 cleanup

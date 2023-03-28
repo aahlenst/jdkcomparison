@@ -10,6 +10,7 @@ Thumbs.db
 # Build output
 build/
 .next/
+.vercel/
 coverage/
 cypress/downloads/
 cypress/screenshots/
