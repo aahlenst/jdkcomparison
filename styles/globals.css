@@ -8,3 +8,13 @@
 		@apply font-sans;
 	}
 }
+
+@layer components {
+	#footnotes a {
+		@apply underline font-medium;
+	}
+
+	#footnotes code {
+		@apply font-semibold before:content-['`'] after:content-['`']
+	}
+}
