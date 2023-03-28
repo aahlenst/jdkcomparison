@@ -56,8 +56,15 @@ export type JDKFeatures = {
 	aqavit: FeaturePresence
 	tck: FeaturePresence
 	editions: FeatureDescription
+	/**
+	 * Indicates the level of changes incorporated into the vendor's JDK in comparison to OpenJDK excluding ports (ports
+	 * are handled separately). Possible values: none, few, medium, many
+	 */
 	customisations: FeatureDescription
 	notableFeatures: FeatureDescription
+	/**
+	 * SPDX identifier of the open source license or 'Proprietary'.
+	 */
 	license: FeatureDescription
 	freeInDevelopment: FeaturePresence
 	freeInProduction: FeaturePresence

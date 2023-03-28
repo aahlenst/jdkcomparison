@@ -94,6 +94,28 @@ export const comparisonPage = {
 			cy.get("#product-header .product-name").eq(i).should("have.text", name);
 		}
 	},
+	expectProductNamesIncomplete: (names: string[]) => {
+		cy.get("#product-header .product-name").should(match => {
+			const foundProducts = match.map((i, el) => {
+				return el.textContent;
+			}).get();
+
+			for (const name of names) {
+				expect(foundProducts).to.contain(name);
+			}
+		});
+	},
+	expectProductNamesMissing: (names: string[]) => {
+		cy.get("#product-header .product-name").should(match => {
+			const foundProducts = match.map((i, el) => {
+				return el.textContent;
+			}).get();
+
+			for (const name of names) {
+				expect(foundProducts).not.to.contain(name);
+			}
+		});
+	},
 	expectSections: (names: string[]) => {
 		cy.get(".section-label").should("have.length", names.length);
 		for (let i = 0; i < names.length; i++) {

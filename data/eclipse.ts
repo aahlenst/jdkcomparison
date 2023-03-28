@@ -34,6 +34,34 @@ export const data: Vendor = {
 			}
 		},
 		{
+			id: "eclipse-temurin-11",
+			information: {
+				name: "Eclipse Temurin 11",
+				version: 11,
+				downloadSite: "https://adoptium.net/temurin/releases/?version=11",
+			},
+			features: {
+				virtualMachine: {text: "HotSpot"},
+				classLibraries: {text: "OpenJDK"},
+				javaFX: {present: Present.NO},
+				flightRecorder: {present: Present.YES},
+				javaWS: {present: Present.NO},
+				aqavit: {present: Present.YES},
+				tck: {present: Present.YES},
+				editions: {text: "JRE"},
+				// No customisations apart from a few extra backports and a custom trust store.
+				customisations: {text: "few", footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf"},
+				notableFeatures: {text: "none"},
+				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				freeInDevelopment: {present: Present.YES},
+				freeInProduction: {present: Present.YES},
+				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
+				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
+				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},
+				eolDate: {text: "2024-10", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"}
+			}
+		},
+		{
 			id: "eclipse-temurin-17",
 			information: {
 				name: "Eclipse Temurin 17",
@@ -50,7 +78,7 @@ export const data: Vendor = {
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
 				// No customisations apart from a few extra backports and a custom trust store.
-				customisations: {text: "few", footnote: "dfe09c60-3881-4cb2-8809-a8f3563e8ebd"},
+				customisations: {text: "few", footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf"},
 				notableFeatures: {text: "none"},
 				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
 				freeInDevelopment: {present: Present.YES},
@@ -60,25 +88,51 @@ export const data: Vendor = {
 				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},
 				eolDate: {text: "2027-10", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"}
 			}
-		}
+		},
+		{
+			id: "eclipse-temurin-20",
+			information: {
+				name: "Eclipse Temurin 20",
+				version: 20,
+				downloadSite: "https://adoptium.net/temurin/releases/?version=20",
+			},
+			features: {
+				virtualMachine: {text: "HotSpot"},
+				classLibraries: {text: "OpenJDK"},
+				javaFX: {present: Present.NO},
+				flightRecorder: {present: Present.YES},
+				javaWS: {present: Present.NO},
+				aqavit: {present: Present.YES},
+				tck: {present: Present.YES},
+				editions: {text: "JRE"},
+				// No customisations apart from a few extra backports and a custom trust store.
+				customisations: {text: "few", footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf"},
+				notableFeatures: {text: "none"},
+				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				freeInDevelopment: {present: Present.YES},
+				freeInProduction: {present: Present.YES},
+				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
+				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
+				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},
+				eolDate: {text: "2023-09", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"}
+			}
+		},
 	],
 	footnotes: [
 		{
 			id: "b85fc239-060a-4008-ade1-cff1f029ebaf",
-			markdown: `To get a full list of changes, compare the [OpenJDK 8 \`master\` branch with the \`release\`
-			branch of Eclipse Temurin 8](https://github.com/adoptium/jdk8u/compare/master...release) and
-			ignore all changes by @adoptopenjdk-github-bot.`
-		},
-		{
-			id: "dfe09c60-3881-4cb2-8809-a8f3563e8ebd",
-			markdown: `To get a full list of changes, compare the [OpenJDK 17 \`master\` branch with the \`release\`
-			branch of Eclipse Temurin 17](https://github.com/adoptium/jdk17u/compare/master...release) and
-			ignore all changes by @adoptopenjdk-github-bot.`
+			markdown: "To get a full list of changes, compare the respective OpenJDK `master` branch with the " +
+				"`release` branch of Eclipse Temurin and ignore all changes by adoptopenjdk-github-bot and " +
+				"eclipse-temurin-bot: JDK [8](https://github.com/adoptium/jdk8u/compare/master...release), " +
+				"[11](https://github.com/adoptium/jdk11u/compare/master...release), " +
+				"[17](https://github.com/adoptium/jdk17u/compare/master...release), and " +
+				"[20](https://github.com/adoptium/jdk20/compare/master...release)."
 		},
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
-			markdown: `Paid support is provided by some of the companies backing Eclipse Adoptium, for example,
-[Azul](https://www.azul.com/products/core/) and [IBM](https://www.ibm.com/support/pages/ibm-runtimes-business)`
+			markdown: "Paid support is provided by some of the companies backing Eclipse Adoptium, for example, " +
+				"[Azul](https://www.azul.com/products/core/) and " +
+				"[IBM](https://www.ibm.com/support/pages/ibm-runtimes-business)."
 		},
 		{
 			id: "62fd52c0-82d0-468a-a413-38277b35bd30",

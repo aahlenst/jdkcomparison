@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 		(await import("@/testdata/dukecorp")).default,
 	];
 	const productionData: Vendor[] = [
+		(await import("@/data/amazon")).default,
 		(await import("@/data/eclipse")).default,
 		(await import("@/data/oracle")).default,
 	];

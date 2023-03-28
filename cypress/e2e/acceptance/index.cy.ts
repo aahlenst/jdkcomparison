@@ -23,7 +23,7 @@ describe("Comparison in production", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectProductNames(["Eclipse Temurin 8", "Eclipse Temurin 17", "OpenJDK 20"]);
+		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 8", "Eclipse Temurin 17", "OpenJDK 20"]);
 	});
 
 	it("should display all sections", () => {
@@ -50,10 +50,13 @@ describe("Comparison in production", () => {
 
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "11", checked: false});
 		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "20", checked: false});
 		comparisonPage.closeFilter("versions");
 
 		comparisonPage.showFilter("vendors");
+		comparisonPage.expectFilterOption("vendors", {label: "Amazon", checked: false});
 		comparisonPage.expectFilterOption("vendors", {label: "Eclipse Foundation", checked: false});
 		comparisonPage.expectFilterOption("vendors", {label: "Oracle", checked: false});
 		comparisonPage.closeFilter("vendors");
@@ -82,20 +85,22 @@ describe("Comparison in production", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectProductNames(["Eclipse Temurin 8", "Eclipse Temurin 17", "OpenJDK 20"]);
+		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 8", "Eclipse Temurin 17", "OpenJDK 20"]);
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
 		comparisonPage.closeFilter("vendors");
 
-		comparisonPage.expectProductNames(["Eclipse Temurin 8", "Eclipse Temurin 17"]);
+		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 8", "Eclipse Temurin 17"]);
+		comparisonPage.expectProductNamesMissing(["OpenJDK 20"]);
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
 		comparisonPage.clickFilterOption("vendors", "Oracle");
 		comparisonPage.closeFilter("vendors");
 
-		comparisonPage.expectProductNames(["OpenJDK 20"]);
+		comparisonPage.expectProductNamesIncomplete(["OpenJDK 20"]);
+		comparisonPage.expectProductNamesMissing(["Eclipse Temurin 8", "Eclipse Temurin 17"]);
 	});
 
 	it("hides and reveals sections", () => {
