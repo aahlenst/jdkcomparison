@@ -2,6 +2,7 @@ import React, {createContext, PropsWithChildren, useContext} from "react";
 import {useImmerReducer} from "use-immer";
 import {Model} from "../../src/modelTypes";
 import {applyFilters} from "../../src/filter";
+import {useSearchParams} from "../../hooks/useSearchParams";
 
 type ComparisonProviderProps = {
 	filters: Model.Filter[]
@@ -19,7 +20,8 @@ type ComparisonState = {
 
 enum ComparisonActionType {
 	ToggleShowDifferencesOnly = "TOGGLE_SHOW_DIFFERENCES_ONLY",
-	ApplyCheckboxFilter = "APPLY_FILTER"
+	ApplyCheckboxFilter = "APPLY_FILTER",
+	ApplyFilterFromQueryParameter = "APPLY_FILTER_FROM_QUERY_PARAMETER"
 }
 
 export interface ComparisonAction {
@@ -47,6 +49,17 @@ export class ApplyCheckboxFilter implements ComparisonAction {
 	}
 }
 
+export class ApplyFilterFromQueryParameter implements ComparisonAction {
+	type = ComparisonActionType.ApplyFilterFromQueryParameter;
+	filterId: string;
+	optionLabel: string;
+
+	constructor(filterId: string, optionLabel: string) {
+		this.filterId = filterId;
+		this.optionLabel = optionLabel;
+	}
+}
+
 const ComparisonContext = createContext<ComparisonState>({
 	filters: [],
 	data: [],
@@ -63,6 +76,8 @@ export function ComparisonProvider({children, filters, data, footnotes}: PropsWi
 		comparisonReducer,
 		{filters: filters, data: data, filteredData: data, footnotes: footnotes, showDifferencesOnly: false}
 	);
+
+	useSearchParams(new Set<string>(filters.map(f => f.id)), dispatch);
 
 	return (
 		<ComparisonContext.Provider value={comparison}>
@@ -92,6 +107,17 @@ function comparisonReducer(draft: ComparisonState, action: ComparisonAction): Co
 				if (filter.hasOption(filterAction.optionId)) {
 					filter.setOptionSelected(filterAction.optionId, filterAction.checked);
 				}
+			}
+
+			draft.filteredData = applyFilters(draft.filters, draft.data);
+			return draft;
+		case ComparisonActionType.ApplyFilterFromQueryParameter:
+			const act = action as ApplyFilterFromQueryParameter;
+			for (const filter of draft.filters) {
+				if (filter.id !== act.filterId) {
+					continue;
+				}
+				filter.setOptionSelectedByLabel(act.optionLabel, true);
 			}
 
 			draft.filteredData = applyFilters(draft.filters, draft.data);

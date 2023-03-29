@@ -117,4 +117,37 @@ describe("Comparison in production", () => {
 
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 	});
+
+	it("preselects filters filter according to search parameters", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "11", checked: false});
+		comparisonPage.closeFilter("versions");
+		comparisonPage.expectActiveFilterOptions("versions", 0);
+
+		comparisonPage.showFilter("technologies");
+		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
+		comparisonPage.closeFilter("technologies");
+		comparisonPage.expectActiveFilterOptions("technologies", 0);
+
+		comparisonPage.expectProductNamesIncomplete(["Corretto 8", "Eclipse Temurin 17", "Oracle JDK 8"]);
+
+		cy.visit("http://localhost:3000/?versions=8&versions=11&technologies=Flight%20Recorder");
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {label: "11", checked: true});
+		comparisonPage.closeFilter("versions");
+		comparisonPage.expectActiveFilterOptions("versions", 2);
+
+		comparisonPage.showFilter("technologies");
+		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: true});
+		comparisonPage.closeFilter("technologies");
+		comparisonPage.expectActiveFilterOptions("technologies", 1);
+
+		comparisonPage.expectProductNamesIncomplete(["Corretto 8", "Oracle JDK 8"]);
+		comparisonPage.expectProductNamesMissing(["Eclipse Temurin 17"]);
+	});
 });

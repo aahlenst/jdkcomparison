@@ -357,4 +357,166 @@ describe("Home", () => {
 		comparisonPage.expectFootnote(2, "Some remark regarding paid support");
 		comparisonPage.expectFootnote(3, "Some comment about the end of life date");
 	});
+
+	it("can deal with unknown filter in search parameters", () => {
+		cy.visit("http://localhost:3000/?something=123");
+		comparisonPage.expectActiveFilterOptions("versions", 0);
+		comparisonPage.expectActiveFilterOptions("vendors", 0);
+		comparisonPage.expectActiveFilterOptions("vms", 0);
+		comparisonPage.expectActiveFilterOptions("technologies", 0);
+		comparisonPage.expectActiveFilterOptions("licensing", 0);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+	});
+
+	it("can deal with unknown option in filter in search parameters", () => {
+		cy.visit("http://localhost:3000/?versions=8&versions=-10");
+		comparisonPage.expectActiveFilterOptions("versions", 1);
+		comparisonPage.expectActiveFilterOptions("vendors", 0);
+		comparisonPage.expectActiveFilterOptions("vms", 0);
+		comparisonPage.expectActiveFilterOptions("technologies", 0);
+		comparisonPage.expectActiveFilterOptions("licensing", 0);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+	});
+
+	it("preselects Versions filter according to search parameters", () => {
+		cy.visit("http://localhost:3000/");
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		comparisonPage.closeFilter("versions");
+		comparisonPage.expectActiveFilterOptions("versions", 0);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?versions=8");
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		comparisonPage.closeFilter("versions");
+		comparisonPage.expectActiveFilterOptions("versions", 1);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+
+		cy.visit("http://localhost:3000/?versions=8&versions=17");
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterOption("versions", {label: "8", checked: true});
+		comparisonPage.expectFilterOption("versions", {label: "17", checked: true});
+		comparisonPage.closeFilter("versions");
+		comparisonPage.expectActiveFilterOptions("versions", 2);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+	});
+
+	it("preselects Vendors filter according to search parameters", () => {
+		cy.visit("http://localhost:3000/");
+		comparisonPage.showFilter("vendors");
+		comparisonPage.expectFilterOption("vendors", {label: "Coffeecorp", checked: false});
+		comparisonPage.expectFilterOption("vendors", {label: "Dukecorp", checked: false});
+		comparisonPage.closeFilter("vendors");
+		comparisonPage.expectActiveFilterOptions("vendors", 0);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?vendors=Coffeecorp");
+		comparisonPage.showFilter("vendors");
+		comparisonPage.expectFilterOption("vendors", {label: "Coffeecorp", checked: true});
+		comparisonPage.expectFilterOption("vendors", {label: "Dukecorp", checked: false});
+		comparisonPage.closeFilter("vendors");
+		comparisonPage.expectActiveFilterOptions("vendors", 1);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?vendors=Dukecorp&vendors=Coffeecorp");
+		comparisonPage.showFilter("vendors");
+		comparisonPage.expectFilterOption("vendors", {label: "Coffeecorp", checked: true});
+		comparisonPage.expectFilterOption("vendors", {label: "Dukecorp", checked: true});
+		comparisonPage.closeFilter("vendors");
+		comparisonPage.expectActiveFilterOptions("vendors", 2);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+	});
+
+	it("preselects VMs filter according to search parameters", () => {
+		cy.visit("http://localhost:3000/");
+		comparisonPage.showFilter("vms");
+		comparisonPage.expectFilterOption("vms", {label: "CoffeeVM", checked: false});
+		comparisonPage.expectFilterOption("vms", {label: "DukeVM", checked: false});
+		comparisonPage.closeFilter("vms");
+		comparisonPage.expectActiveFilterOptions("vms", 0);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?vms=CoffeeVM");
+		comparisonPage.showFilter("vms");
+		comparisonPage.expectFilterOption("vms", {label: "CoffeeVM", checked: true});
+		comparisonPage.expectFilterOption("vms", {label: "DukeVM", checked: false});
+		comparisonPage.closeFilter("vms");
+		comparisonPage.expectActiveFilterOptions("vms", 1);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?vms=DukeVM&vms=CoffeeVM");
+		comparisonPage.showFilter("vms");
+		comparisonPage.expectFilterOption("vms", {label: "CoffeeVM", checked: true});
+		comparisonPage.expectFilterOption("vms", {label: "DukeVM", checked: true});
+		comparisonPage.closeFilter("vms");
+		comparisonPage.expectActiveFilterOptions("vms", 2);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+	});
+
+	it("preselects Technologies filter according to search parameters", () => {
+		cy.visit("http://localhost:3000/");
+		comparisonPage.showFilter("technologies");
+		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
+		comparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
+		comparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
+		comparisonPage.closeFilter("technologies");
+		comparisonPage.expectActiveFilterOptions("technologies", 0);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?technologies=Flight%20Recorder");
+		comparisonPage.showFilter("technologies");
+		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: true});
+		comparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
+		comparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
+		comparisonPage.closeFilter("technologies");
+		comparisonPage.expectActiveFilterOptions("technologies", 1);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?technologies=JavaFX&technologies=Flight%20Recorder");
+		comparisonPage.showFilter("technologies");
+		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: true});
+		comparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: true});
+		comparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
+		comparisonPage.closeFilter("technologies");
+		comparisonPage.expectActiveFilterOptions("technologies", 2);
+		comparisonPage.expectProductNames([]);
+
+		cy.visit("http://localhost:3000/?technologies=JavaFX&technologies=Flight%20Recorder&technologies=Java%20Web%20Start");
+		comparisonPage.showFilter("technologies");
+		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: true});
+		comparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: true});
+		comparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: true});
+		comparisonPage.closeFilter("technologies");
+		comparisonPage.expectActiveFilterOptions("technologies", 3);
+		comparisonPage.expectProductNames([]);
+	});
+
+	it("preselects Licensing filter according to search parameters", () => {
+		cy.visit("http://localhost:3000/");
+		comparisonPage.showFilter("licensing");
+		comparisonPage.expectFilterOption("licensing", {label: "Free in Development", checked: false});
+		comparisonPage.expectFilterOption("licensing", {label: "Free in Production", checked: false});
+		comparisonPage.closeFilter("licensing");
+		comparisonPage.expectActiveFilterOptions("licensing", 0);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?licensing=Free%20in%20Development");
+		comparisonPage.showFilter("licensing");
+		comparisonPage.expectFilterOption("licensing", {label: "Free in Development", checked: true});
+		comparisonPage.expectFilterOption("licensing", {label: "Free in Production", checked: false});
+		comparisonPage.closeFilter("licensing");
+		comparisonPage.expectActiveFilterOptions("licensing", 1);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		cy.visit("http://localhost:3000/?licensing=Free%20in%20Development&licensing=Free%20in%20Production");
+		comparisonPage.showFilter("licensing");
+		comparisonPage.expectFilterOption("licensing", {label: "Free in Development", checked: true});
+		comparisonPage.expectFilterOption("licensing", {label: "Free in Production", checked: true});
+		comparisonPage.closeFilter("licensing");
+		comparisonPage.expectActiveFilterOptions("licensing", 2);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+	});
 });

@@ -1,6 +1,7 @@
 import {ComparisonProvider} from "./comparisonContext";
 import {Filters} from "./filters";
 import {DynamicSelectionFilter, LicensingFilter, TechnologiesFilter} from "../../src/filter";
+import {MemoryRouterProvider} from "next-router-mock/MemoryRouterProvider";
 
 describe("<Filters/>", () => {
 	const filters = [
@@ -12,9 +13,11 @@ describe("<Filters/>", () => {
 	];
 
 	const component = (
-		<ComparisonProvider filters={filters} data={[]} footnotes={[]}>
-			<Filters/>
-		</ComparisonProvider>
+		<MemoryRouterProvider url="/doesnotmatter">
+			<ComparisonProvider filters={filters} data={[]} footnotes={[]}>
+				<Filters/>
+			</ComparisonProvider>
+		</MemoryRouterProvider>
 	);
 
 	it("renders all filters", () => {
