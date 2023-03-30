@@ -118,7 +118,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 	});
 
-	it("preselects filters filter according to search parameters", () => {
+	it("preselects filters according to search parameters", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.showFilter("versions");

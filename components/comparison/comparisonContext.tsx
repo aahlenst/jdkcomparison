@@ -96,32 +96,42 @@ export function useComparisonDispatch(): React.Dispatch<ComparisonAction> {
 	return useContext(ComparisonDispatchContext);
 }
 
+function handleToggleShowDifferencesOnly(draft: ComparisonState, action: ToggleShowDifferencesOnly) {
+	draft.showDifferencesOnly = action.on;
+	return draft;
+}
+
+function handleApplyCheckboxFilter(draft: ComparisonState, action: ApplyCheckboxFilter) {
+	for (const filter of draft.filters) {
+		if (filter.hasOption(action.optionId)) {
+			filter.setOptionSelected(action.optionId, action.checked);
+		}
+	}
+
+	draft.filteredData = applyFilters(draft.filters, draft.data);
+	return draft;
+}
+
+function handleApplyFilterFromQueryParameter(draft: ComparisonState, action: ApplyFilterFromQueryParameter) {
+	for (const filter of draft.filters) {
+		if (filter.id !== action.filterId) {
+			continue;
+		}
+		filter.setOptionSelectedByLabel(action.optionLabel, true);
+	}
+
+	draft.filteredData = applyFilters(draft.filters, draft.data);
+	return draft;
+}
+
 function comparisonReducer(draft: ComparisonState, action: ComparisonAction): ComparisonState {
 	switch (action.type) {
 		case ComparisonActionType.ToggleShowDifferencesOnly:
-			draft.showDifferencesOnly = (action as ToggleShowDifferencesOnly).on;
-			return draft;
+			return handleToggleShowDifferencesOnly(draft, action as ToggleShowDifferencesOnly);
 		case ComparisonActionType.ApplyCheckboxFilter:
-			const filterAction = action as ApplyCheckboxFilter;
-			for (const filter of draft.filters) {
-				if (filter.hasOption(filterAction.optionId)) {
-					filter.setOptionSelected(filterAction.optionId, filterAction.checked);
-				}
-			}
-
-			draft.filteredData = applyFilters(draft.filters, draft.data);
-			return draft;
+			return handleApplyCheckboxFilter(draft, action as ApplyCheckboxFilter);
 		case ComparisonActionType.ApplyFilterFromQueryParameter:
-			const act = action as ApplyFilterFromQueryParameter;
-			for (const filter of draft.filters) {
-				if (filter.id !== act.filterId) {
-					continue;
-				}
-				filter.setOptionSelectedByLabel(act.optionLabel, true);
-			}
-
-			draft.filteredData = applyFilters(draft.filters, draft.data);
-			return draft;
+			return handleApplyFilterFromQueryParameter(draft, action as ApplyFilterFromQueryParameter);
 	}
 
 	return draft;
