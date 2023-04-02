@@ -89,6 +89,7 @@ describe("Comparison in production", () => {
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
+		comparisonPage.expectFilterOption("vendors", {label: "Eclipse Foundation", checked: true});
 		comparisonPage.closeFilter("vendors");
 
 		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 8", "Eclipse Temurin 17"]);
@@ -97,6 +98,8 @@ describe("Comparison in production", () => {
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
 		comparisonPage.clickFilterOption("vendors", "Oracle");
+		comparisonPage.expectFilterOption("vendors", {label: "Eclipse Foundation", checked: false});
+		comparisonPage.expectFilterOption("vendors", {label: "Oracle", checked: true});
 		comparisonPage.closeFilter("vendors");
 
 		comparisonPage.expectProductNamesIncomplete(["OpenJDK 20"]);

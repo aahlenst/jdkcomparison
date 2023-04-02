@@ -64,7 +64,13 @@ export namespace Model {
 
 		apply(fc: Model.FeatureComparison): boolean
 
+		reset(): void
+
+		activeOptions(): string[]
+
 		hasOption(id: string): boolean
+
+		hasOptionWithLabel(label: string): boolean
 
 		setOptionSelected(id: string, selected: boolean): void
 

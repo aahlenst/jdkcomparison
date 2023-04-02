@@ -1,4 +1,4 @@
-import {useComparison, useComparisonDispatch} from "./comparisonContext";
+import {useComparison} from "./comparisonContext";
 import {Model} from "../../src/modelTypes";
 import {Fragment, useState} from "react";
 import {Dialog, Popover, Transition} from "@headlessui/react";
@@ -6,6 +6,7 @@ import {CheckboxFilter} from "./checkboxFilter";
 import {Sort} from "./sort";
 import {XMarkIcon} from "../icons";
 import {CheckboxFilterMobile} from "./checkboxFilterMobile";
+import {usePropagateToSearchParams} from "@/hooks/usePropagateToSearchParams";
 
 function getFilter(id: string, filters: Model.Filter[]): Model.Filter {
 	const filter = filters.find(filter => filter.id === id);
@@ -19,7 +20,7 @@ function getFilter(id: string, filters: Model.Filter[]): Model.Filter {
 
 export function Filters() {
 	const comparison = useComparison();
-	const dispatch = useComparisonDispatch();
+	const handleSearchParamsAction = usePropagateToSearchParams();
 	const [open, setOpen] = useState(false);
 
 	return (
@@ -66,19 +67,19 @@ export function Filters() {
 								<form className="mt-4">
 									<CheckboxFilterMobile label="Versions"
 														  filter={getFilter("versions", comparison.filters)}
-														  onChangeHandler={dispatch}/>
+														  onChangeHandler={handleSearchParamsAction}/>
 									<CheckboxFilterMobile label="Vendors"
 														  filter={getFilter("vendors", comparison.filters)}
-														  onChangeHandler={dispatch}/>
+														  onChangeHandler={handleSearchParamsAction}/>
 									<CheckboxFilterMobile label="VMs"
 														  filter={getFilter("vms", comparison.filters)}
-														  onChangeHandler={dispatch}/>
+														  onChangeHandler={handleSearchParamsAction}/>
 									<CheckboxFilterMobile label="Technologies"
 														  filter={getFilter("technologies", comparison.filters)}
-														  onChangeHandler={dispatch}/>
+														  onChangeHandler={handleSearchParamsAction}/>
 									<CheckboxFilterMobile label="Licensing"
 														  filter={getFilter("licensing", comparison.filters)}
-														  onChangeHandler={dispatch}/>
+														  onChangeHandler={handleSearchParamsAction}/>
 								</form>
 							</Dialog.Panel>
 						</Transition.Child>
@@ -88,7 +89,8 @@ export function Filters() {
 
 			{/* Desktop filters */}
 			<div className="mx-auto max-w-full text-center">
-				<section aria-labelledby="filter-heading" className="border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8">
+				<section aria-labelledby="filter-heading"
+						 className="border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8">
 					<h2 id="filter-heading" className="sr-only">
 						Filters
 					</h2>
@@ -104,15 +106,15 @@ export function Filters() {
 						</button>
 						<Popover.Group className="hidden divide-x divide-gray-200 sm:flex sm:items-baseline">
 							<CheckboxFilter label="Versions" filter={getFilter("versions", comparison.filters)}
-											onChangeHandler={dispatch}/>
+											onChangeHandler={handleSearchParamsAction}/>
 							<CheckboxFilter label="Vendors" filter={getFilter("vendors", comparison.filters)}
-											onChangeHandler={dispatch}/>
+											onChangeHandler={handleSearchParamsAction}/>
 							<CheckboxFilter label="VMs" filter={getFilter("vms", comparison.filters)}
-											onChangeHandler={dispatch}/>
+											onChangeHandler={handleSearchParamsAction}/>
 							<CheckboxFilter label="Technologies" filter={getFilter("technologies", comparison.filters)}
-											onChangeHandler={dispatch}/>
+											onChangeHandler={handleSearchParamsAction}/>
 							<CheckboxFilter label="Licensing" filter={getFilter("licensing", comparison.filters)}
-											onChangeHandler={dispatch}/>
+											onChangeHandler={handleSearchParamsAction}/>
 						</Popover.Group>
 					</div>
 				</section>

@@ -63,8 +63,22 @@ abstract class AbstractFilter implements Model.Filter {
 
 	abstract apply(fc: Model.FeatureComparison): boolean;
 
+	reset() {
+		for (const option of this.options) {
+			option.selected = false;
+		}
+	}
+
+	activeOptions(): string[] {
+		return this.options.filter(o => o.selected).map(o => o.label);
+	}
+
 	hasOption(id: string): boolean {
 		return this.options.some(option => option.id === id);
+	}
+
+	hasOptionWithLabel(label: string): boolean {
+		return this.options.some(option => option.label === label);
 	}
 
 	setOptionSelected(id: string, selected: boolean): void {

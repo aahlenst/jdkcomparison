@@ -1,6 +1,6 @@
 import {CheckboxFilter} from "./checkboxFilter";
-import {ApplyCheckboxFilter} from "./comparisonContext";
 import {DynamicSelectionFilter} from "../../src/filter";
+import {ApplyFilter} from "@/hooks/usePropagateToSearchParams";
 
 describe("<CheckboxFilter/>", () => {
 	it("renders all options", () => {
@@ -25,10 +25,10 @@ describe("<CheckboxFilter/>", () => {
 	it("enables and disables options on click", () => {
 		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString());
 
-		const onChangeHandler = function (action: ApplyCheckboxFilter) {
+		const onChangeHandler = function (action: ApplyFilter) {
 			for (const option of filter.options) {
-				if (option.id === action.optionId) {
-					option.selected = action.checked;
+				if (option.label === action.option) {
+					option.selected = action.active;
 				}
 			}
 		};
@@ -71,10 +71,10 @@ describe("<CheckboxFilter/>", () => {
 	it("retains selected state after reopening", () => {
 		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString());
 
-		const onChangeHandler = function (action: ApplyCheckboxFilter) {
+		const onChangeHandler = function (action: ApplyFilter) {
 			for (const option of filter.options) {
-				if (option.id === action.optionId) {
-					option.selected = action.checked;
+				if (option.label === action.option) {
+					option.selected = action.active;
 				}
 			}
 		};

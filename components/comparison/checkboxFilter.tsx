@@ -1,13 +1,14 @@
 import {Model} from "../../src/modelTypes";
-import {ApplyCheckboxFilter} from "./comparisonContext";
+import {ToggleFilter} from "./comparisonContext";
 import {ChevronDownIcon} from "../icons";
 import {Fragment} from "react";
 import {Popover, Transition} from "@headlessui/react";
+import {ApplyFilter} from "@/hooks/usePropagateToSearchParams";
 
 type CheckboxFilterProps = {
 	label: string
 	filter: Model.Filter,
-	onChangeHandler: (action: ApplyCheckboxFilter) => void
+	onChangeHandler: (action: ApplyFilter) => void
 }
 
 export function CheckboxFilter({label, filter, onChangeHandler}: CheckboxFilterProps) {
@@ -17,12 +18,12 @@ export function CheckboxFilter({label, filter, onChangeHandler}: CheckboxFilterP
 			<div key={option.id} className="flex items-center">
 				<input
 					id={option.id}
-					name={`${filter.id}[]`}
+					name={filter.id}
 					type="checkbox"
 					checked={option.selected}
 					className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
 					onChange={(e) => {
-						onChangeHandler(new ApplyCheckboxFilter(e.target.id, e.target.checked));
+						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
 					}}
 				/>
 				<label htmlFor={option.id} className="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-gray-900">

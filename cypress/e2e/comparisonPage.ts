@@ -2,7 +2,18 @@ export const comparisonPage = {
 	clickFilterOption: (id: string, option: string) => {
 		cy.get(`#filter-${id} > div`).each((e, i) => {
 			if (e.find("label").text() === option) {
-				e.find("input").trigger("click");
+				cy.url().then((oldURL) => {
+					const checkbox = e.find("input");
+					const oldState = checkbox.prop("checked");
+
+					checkbox.trigger("click");
+
+					// Wait for routing to have happened.
+					cy.url().should("not.eq", oldURL);
+
+					// Ensure that new filter state was applied to state.
+					comparisonPage.expectFilterOption(id, {label: option, checked: !oldState});
+				});
 			}
 		});
 	},

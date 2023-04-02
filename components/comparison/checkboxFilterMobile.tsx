@@ -1,12 +1,12 @@
 import {Disclosure} from "@headlessui/react";
 import {ChevronDownIcon} from "../icons";
 import {Model} from "@/src/modelTypes";
-import {ApplyCheckboxFilter} from "./comparisonContext";
+import {ApplyFilter} from "@/hooks/usePropagateToSearchParams";
 
 type CheckboxFilterMobileProps = {
 	label: string
 	filter: Model.Filter,
-	onChangeHandler: (action: ApplyCheckboxFilter) => void
+	onChangeHandler: (action: ApplyFilter) => void
 }
 
 function classNames(...classes: string[]) {
@@ -19,12 +19,12 @@ export function CheckboxFilterMobile({label, filter, onChangeHandler}: CheckboxF
 			<div key={option.id} className="flex items-center">
 				<input
 					id={option.id}
-					name={`${filter.id}[]`}
+					name={filter.id}
 					type="checkbox"
 					checked={option.selected}
 					className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
 					onChange={(e) => {
-						onChangeHandler(new ApplyCheckboxFilter(e.target.id, e.target.checked));
+						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
 					}}
 				/>
 				<label htmlFor={option.id} className="ml-3 text-sm text-gray-500">
