@@ -2,41 +2,12 @@ import {Model} from "../src/modelTypes";
 
 export function createFilters(comparisons: Model.FeatureComparison[]): Model.Filter[] {
 	return [
-		createVersionsFilter(comparisons),
-		createVendorsFilter(comparisons),
-		createVirtualMachinesFilter(comparisons),
-		createTechnologiesFilter(),
-		createLicensingFilter(),
+		new VersionsFilter(comparisons),
+		new VendorsFilter(comparisons),
+		new VirtualMachinesFilter(comparisons),
+		new TechnologiesFilter(),
+		new LicensingFilter(),
 	];
-}
-
-export function createVersionsFilter(comparisons: Model.FeatureComparison[]): Model.Filter {
-	const versions = new Set(comparisons.map(c => c.version));
-	const sortedVersions = [...versions]
-		.sort((a, b) => a - b)
-		.map(v => v.toString());
-
-	return new DynamicSelectionFilter("versions", sortedVersions, fc => fc.version.toString());
-}
-
-export function createVendorsFilter(comparisons: Model.FeatureComparison[]): Model.Filter {
-	const vendors = new Set(comparisons.map(c => c.vendor));
-	const sortedVendors = [...vendors].sort((a, b) => a.localeCompare(b, "en"));
-	return new DynamicSelectionFilter("vendors", sortedVendors, fc => fc.vendor);
-}
-
-export function createVirtualMachinesFilter(comparisons: Model.FeatureComparison[]): Model.Filter {
-	const vms = new Set(comparisons.map(c => c.virtualMachine.text));
-	const sortedVMs = [...vms].sort((a, b) => a.localeCompare(b, "en"));
-	return new DynamicSelectionFilter("vms", sortedVMs, fc => fc.virtualMachine.text);
-}
-
-export function createTechnologiesFilter(): Model.Filter {
-	return new TechnologiesFilter();
-}
-
-export function createLicensingFilter(): Model.Filter {
-	return new LicensingFilter();
 }
 
 export function applyFilters(filters: Model.Filter[], comparisons: Model.FeatureComparison[]): Model.FeatureComparison[] {
@@ -123,7 +94,34 @@ export class DynamicSelectionFilter extends AbstractFilter {
 	}
 }
 
-export class TechnologiesFilter extends AbstractFilter{
+export class VendorsFilter extends DynamicSelectionFilter {
+	constructor(comparisons: Model.FeatureComparison[]) {
+		const vendors = new Set(comparisons.map(c => c.vendor));
+		const sortedVendors = [...vendors].sort((a, b) => a.localeCompare(b, "en"));
+		super("vendors", sortedVendors, fc => fc.vendor);
+	}
+}
+
+export class VersionsFilter extends DynamicSelectionFilter {
+	constructor(comparisons: Model.FeatureComparison[]) {
+		const versions = new Set(comparisons.map(c => c.version));
+		const sortedVersions = [...versions]
+			.sort((a, b) => a - b)
+			.map(v => v.toString());
+
+		super("versions", sortedVersions, fc => fc.version.toString());
+	}
+}
+
+export class VirtualMachinesFilter extends DynamicSelectionFilter {
+	constructor(comparisons: Model.FeatureComparison[]) {
+		const vms = new Set(comparisons.map(c => c.virtualMachine.text));
+		const sortedVMs = [...vms].sort((a, b) => a.localeCompare(b, "en"));
+		super("vms", sortedVMs, fc => fc.virtualMachine.text);
+	}
+}
+
+export class TechnologiesFilter extends AbstractFilter {
 
 	readonly id: string = "technologies";
 
