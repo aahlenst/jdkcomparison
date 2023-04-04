@@ -80,12 +80,18 @@ export namespace Model {
 	}
 
 	export type FilterOption = {
-		id: string,
-		label: string,
+		id: string
+		label: string
 		selected: boolean
 	}
 
 	export type Keyable = {
 		id: string
+	}
+
+	export interface Comparator<T> {
+		id: string
+		label: string
+		compare(a: T, b: T): number
 	}
 }

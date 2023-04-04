@@ -4,10 +4,7 @@ import Link from "next/link";
 import {NextRouter, useRouter} from "next/router";
 import logo from "../public/logo.svg";
 import Image from "next/image";
-
-function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ");
-}
+import {classNames} from "@/src/utils";
 
 function isActive(router: NextRouter, path: string): boolean {
 	return router.pathname === path;

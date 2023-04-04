@@ -153,4 +153,36 @@ describe("Comparison in production", () => {
 		comparisonPage.expectProductNamesIncomplete(["Corretto 8", "Oracle JDK 8"]);
 		comparisonPage.expectProductNamesMissing(["Eclipse Temurin 17"]);
 	});
+
+	it("retains sort order while filtering", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 8", "Eclipse Temurin 11", "Oracle JDK 8"]);
+
+		comparisonPage.showSortOptions();
+		comparisonPage.expectSortOption("Oldest", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.showFilter("vendors");
+		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
+		comparisonPage.closeFilter("vendors");
+
+		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 8", "Eclipse Temurin 11"]);
+		comparisonPage.expectProductNamesMissing(["Oracle JDK 8"]);
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("JDK Name, Z-A");
+		comparisonPage.expectSortOption("JDK Name, Z-A", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.showFilter("vendors");
+		comparisonPage.clickFilterOption("vendors", "Oracle");
+		comparisonPage.closeFilter("vendors");
+
+		comparisonPage.showSortOptions();
+		comparisonPage.expectSortOption("JDK Name, Z-A", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.expectProductNamesIncomplete(["Oracle JDK 8", "Eclipse Temurin 8", "Eclipse Temurin 11"]);
+	});
 });

@@ -1,5 +1,5 @@
 import {expect, test} from "@jest/globals";
-import {difference, intersection, remove, symmetricDifference} from "./utils";
+import {classNames, difference, intersection, remove, symmetricDifference} from "./utils";
 
 describe("utils", () => {
 	test("difference()", () => {
@@ -32,5 +32,11 @@ describe("utils", () => {
 		expect(remove([1], (x) => x === 1)).toEqual([]);
 		expect(remove([1], (x) => x === 10)).toEqual([1]);
 		expect(remove([], (x) => x === 10)).toEqual([]);
+	});
+
+	test("classNames()", () => {
+		expect(classNames()).toEqual("");
+		expect(classNames("a", "b", "c")).toEqual("a b c");
+		expect(classNames(undefined, null, "b", "c")).toEqual("b c");
 	});
 });

@@ -552,4 +552,93 @@ describe("Home", () => {
 		comparisonPage.expectActiveFilterOptions("licensing", 2);
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
 	});
+
+	it("displays JDKs sorted by ascending versions by default", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+
+		comparisonPage.showSortOptions();
+		comparisonPage.expectSortOption("Oldest", true);
+	});
+
+	it("displays JDKs sorted by descending versions", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("Newest");
+		comparisonPage.expectSortOption("Newest", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Dukecorp JDK 17", "Coffeecorp JDK 8"]);
+	});
+
+	it("displays JDKs sorted by ascending vendor name", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("Vendor, A-Z");
+		comparisonPage.expectSortOption("Vendor, A-Z", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8", "Coffeecorp JDK 17", "Dukecorp JDK 17"]);
+	});
+
+	it("displays JDKs sorted by descending vendor name", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("Vendor, Z-A");
+		comparisonPage.expectSortOption("Vendor, Z-A", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.expectProductNames(["Dukecorp JDK 17", "Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+	});
+
+	it("displays JDKs sorted by ascending JDK name", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("JDK Name, A-Z");
+		comparisonPage.expectSortOption("JDK Name, A-Z", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8", "Dukecorp JDK 17"]);
+	});
+
+	it("displays JDKs sorted by descending JDK name", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("JDK Name, Z-A");
+		comparisonPage.expectSortOption("JDK Name, Z-A", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.expectProductNames(["Dukecorp JDK 17", "Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+	});
+
+	it("retains sort order while filtering", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.showFilter("vendors");
+		comparisonPage.clickFilterOption("vendors", "Dukecorp");
+		comparisonPage.closeFilter("vendors");
+
+		comparisonPage.expectProductNames(["Dukecorp JDK 17"]);
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("JDK Name, Z-A");
+		comparisonPage.expectSortOption("JDK Name, Z-A", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.showFilter("vendors");
+		comparisonPage.clickFilterOption("vendors", "Coffeecorp");
+		comparisonPage.closeFilter("vendors");
+
+		comparisonPage.showSortOptions();
+		comparisonPage.expectSortOption("JDK Name, Z-A", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.expectProductNames(["Dukecorp JDK 17", "Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+	});
 });

@@ -15,3 +15,8 @@ export function remove<T>(a: T[], predicate: (item: T) => boolean = (item) => it
 	const index = a.findIndex(predicate);
 	return [...a.slice(0, index), ...a.slice(index + 1)];
 }
+
+export function classNames(...classes: (string | undefined | null)[]) {
+	// Wondering about filter(Boolean)? See https://mikebifulco.com/posts/javascript-filter-boolean.
+	return classes.filter(Boolean).join(" ");
+}

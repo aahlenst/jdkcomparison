@@ -1,3 +1,5 @@
+import {found} from "@jridgewell/trace-mapping/dist/types/binary-search";
+
 export const comparisonPage = {
 	clickFilterOption: (id: string, option: string) => {
 		cy.get(`#filter-${id} > div`).each((e, i) => {
@@ -20,6 +22,13 @@ export const comparisonPage = {
 	clickShowDifferencesOnly: () => {
 		cy.get("#show-differences-only").click();
 	},
+	clickSortOption: (name: string) => {
+		cy.get("button.sort-option").each((e, i) => {
+			if (e.text() === name) {
+				e.trigger("click");
+			}
+		});
+	},
 	closeFeatureExplanation: (id: string) => {
 		cy.get(`#${id} .desktop-feature-explanation-toggle`).click();
 	},
@@ -28,6 +37,9 @@ export const comparisonPage = {
 	},
 	closeSection: (sectionId: string) => {
 		cy.get(`section[id='${sectionId}'] .toggle-section`).click();
+	},
+	closeSortOptions: () => {
+		cy.get("#sort-options").click();
 	},
 	expectActiveFilterOptions: (filterId: string, count: number) => {
 		if (count === 0) {
@@ -111,9 +123,8 @@ export const comparisonPage = {
 				return el.textContent;
 			}).get();
 
-			for (const name of names) {
-				expect(foundProducts).to.contain(name);
-			}
+			const filteredProducts = foundProducts.filter(p => names.includes(p));
+			expect(filteredProducts).to.deep.eq(names);
 		});
 	},
 	expectProductNamesMissing: (names: string[]) => {
@@ -134,6 +145,20 @@ export const comparisonPage = {
 			cy.get(".section-label").eq(i).should("have.text", name);
 		}
 	},
+	expectSortOption: (name: string, active: boolean) => {
+		if (active) {
+			cy.get(".sort-option-active").should($l => {
+				const foundNames = $l.map((i, el) => Cypress.$(el).text()).get();
+				expect(foundNames).to.have.length(1);
+				expect(foundNames).to.contain(name);
+			});
+		} else {
+			cy.get(".sort-option-inactive").should($l => {
+				const foundNames = $l.map((i, el) => Cypress.$(el).text()).get();
+				expect(foundNames).to.contain(name);
+			});
+		}
+	},
 	showFeatureExplanation: (id: string) => {
 		cy.get(`#${id} .desktop-feature-explanation-toggle`).click();
 	},
@@ -142,5 +167,8 @@ export const comparisonPage = {
 	},
 	showSection: (sectionId: string) => {
 		cy.get(`section[id='${sectionId}'] .toggle-section`).click();
+	},
+	showSortOptions: () => {
+		cy.get("#sort-options").click();
 	},
 };

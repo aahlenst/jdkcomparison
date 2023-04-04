@@ -1,16 +1,41 @@
 import {Menu, Transition} from "@headlessui/react";
 import {ChevronDownIcon} from "../icons";
 import {Fragment} from "react";
+import {AllComparators} from "@/src/sorting";
+import {SetActiveComparator, useComparison, useComparisonDispatch} from "@/components/comparison/comparisonContext";
+import {classNames} from "@/src/utils";
 
 export function Sort() {
+	const comparison = useComparison();
+	const comparisonDispatch = useComparisonDispatch();
+
+	function onClickHandler(comparator: string) {
+		comparisonDispatch(new SetActiveComparator(comparator));
+	}
+
+	const sortOptions = AllComparators.map(comparator => (
+		<Menu.Item key={comparator.label}>
+			{({active}) => (
+				<button
+					onClick={() => onClickHandler(comparator.id)}
+					className={classNames(active ? "bg-gray-100" : "", comparator.id === comparison.activeComparator?.id ? "sort-option-active border-indigo-500 bg-indigo-50 text-indigo-700" : "sort-option-inactive border-transparent", "sort-option border-l-4 w-full px-4 py-2 text-left text-sm font-medium text-gray-900")}
+				>
+					{comparator.label}
+				</button>
+			)}
+
+		</Menu.Item>
+	));
+
 	return (
-		<Menu as="div" className="relative inline-block text-left invisible">
+		<Menu as="div" className="relative inline-block text-left">
 			<div>
 				<Menu.Button
-					className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+					id="sort-options"
+					className="group inline-flex items-baseline justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
 					Sort
 					<ChevronDownIcon
-						className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+						className="-mr-1 ml-1 h-3 w-3 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
 						aria-hidden="true"
 					/>
 				</Menu.Button>
@@ -28,12 +53,7 @@ export function Sort() {
 				<Menu.Items
 					className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
 					<div className="py-1">
-						<Menu.Item>
-							<span className="block px-4 py-2 text-sm font-medium text-gray-900">Version</span>
-						</Menu.Item>
-						<Menu.Item>
-							<span className="block px-4 py-2 text-sm font-medium text-gray-900">Vendor</span>
-						</Menu.Item>
+						{sortOptions}
 					</div>
 				</Menu.Items>
 			</Transition>

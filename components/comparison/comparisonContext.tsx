@@ -3,6 +3,7 @@ import {useImmerReducer} from "use-immer";
 import {Model} from "../../src/modelTypes";
 import {applyFilters} from "../../src/filter";
 import {useApplySearchParams} from "@/hooks/useApplySearchParams";
+import {AllComparators, DefaultComparator, sortFeatureComparisons} from "@/src/sorting";
 
 type ComparisonProviderProps = {
 	filters: Model.Filter[]
@@ -14,18 +15,29 @@ export type ComparisonState = {
 	filters: Model.Filter[]
 	data: Model.FeatureComparison[]
 	filteredData: Model.FeatureComparison[]
-	footnotes: Model.Footnote[],
+	footnotes: Model.Footnote[]
 	showDifferencesOnly: boolean
+	activeComparator: Model.Comparator<Model.FeatureComparison>
 }
 
 enum ComparisonActionType {
 	BatchApplyActions = "BATCH_APPLY_ACTIONS",
+	SetActiveComparator = "SET_ACTIVE_COMPARATOR",
 	ToggleFilter = "TOGGLE_FILTER",
 	ToggleShowDifferencesOnly = "TOGGLE_SHOW_DIFFERENCES_ONLY",
 }
 
 export interface ComparisonAction {
 	type: ComparisonActionType
+}
+
+export class SetActiveComparator implements ComparisonAction {
+	type = ComparisonActionType.SetActiveComparator;
+	comparator: string;
+
+	constructor(comparator: string) {
+		this.comparator = comparator;
+	}
 }
 
 export class ToggleShowDifferencesOnly implements ComparisonAction {
@@ -66,17 +78,24 @@ const ComparisonContext = createContext<ComparisonState>({
 	data: [],
 	filteredData: [],
 	footnotes: [],
-	showDifferencesOnly: false
+	showDifferencesOnly: false,
+	activeComparator: DefaultComparator
 });
 
 const ComparisonDispatchContext = createContext<React.Dispatch<ComparisonAction>>(() => {
 });
 
 export function ComparisonProvider({children, filters, data, footnotes}: PropsWithChildren<ComparisonProviderProps>) {
-	const [comparison, dispatch] = useImmerReducer(
-		comparisonReducer,
-		{filters: filters, data: data, filteredData: data, footnotes: footnotes, showDifferencesOnly: false}
-	);
+	const initialState: ComparisonState = {
+		filters: filters,
+		data: data,
+		filteredData: data,
+		footnotes: footnotes,
+		showDifferencesOnly: false,
+		activeComparator: DefaultComparator
+	};
+
+	const [comparison, dispatch] = useImmerReducer(comparisonReducer, initialState);
 
 	useApplySearchParams(comparison, dispatch);
 
@@ -108,11 +127,17 @@ function comparisonReducer(draft: ComparisonState, action: ComparisonAction): Co
 
 function applyActions(draft: ComparisonState, actions: ComparisonAction[]) {
 	let deferredApplyFilters = false;
+	let deferredSorting = false;
 
 	for (const action of actions) {
 		switch (action.type) {
+			case ComparisonActionType.SetActiveComparator:
+				deferredSorting = true;
+				handleSetActiveComparator(draft, action as SetActiveComparator);
+				break;
 			case ComparisonActionType.ToggleFilter:
 				deferredApplyFilters = true;
+				deferredSorting = true;
 				applyToggleFilter(draft, action as ToggleFilter);
 				break;
 			case ComparisonActionType.ToggleShowDifferencesOnly:
@@ -125,6 +150,16 @@ function applyActions(draft: ComparisonState, actions: ComparisonAction[]) {
 
 	if (deferredApplyFilters) {
 		draft.filteredData = applyFilters(draft.filters, draft.data);
+	}
+	if (deferredSorting) {
+		sortFeatureComparisons(draft.filteredData, [draft.activeComparator]);
+	}
+}
+
+function handleSetActiveComparator(draft: ComparisonState, action: SetActiveComparator): void {
+	const newComparator = AllComparators.find(c => c.id === action.comparator);
+	if (newComparator !== undefined) {
+		draft.activeComparator = newComparator;
 	}
 }
 

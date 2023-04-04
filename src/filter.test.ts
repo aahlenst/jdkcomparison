@@ -1,4 +1,4 @@
-import {beforeAll, expect} from "@jest/globals";
+import {describe, test, beforeAll, expect} from "@jest/globals";
 import {extractComparisonData} from "@/src/comparison";
 import {
 	applyFilters,
