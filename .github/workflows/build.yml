@@ -25,6 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - common-checks
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     strategy:
       matrix:
         # Use Node.js LTS and Current. Schedule: https://nodejs.org/en/about/releases/
@@ -77,6 +81,25 @@ jobs:
           npx wrangler pages dev --port 3000 .vercel/output/static > /tmp/wrangler.txt 2>&1 &
           npm run acceptance
           lsof -t -i:3000 | xargs -r kill -TERM
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          check_name: Tests Results of Node.js ${{ matrix.node-version }}
+          files: |
+            cypress/results/*.xml
+
+      - name: Upload Cypress Screenshots and Videos on Failure
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-node.js-${{ matrix.node-version }}
+          path: |
+            cypress/screenshots/
+            cypress/videos/
+          if-no-files-found: ignore
+
   deploy:
     name: Deploy to Cloudlfare Pages
     runs-on: ubuntu-latest

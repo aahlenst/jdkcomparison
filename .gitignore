@@ -13,6 +13,7 @@ build/
 .vercel/
 coverage/
 cypress/downloads/
+cypress/results/
 cypress/screenshots/
 cypress/videos/
 node_modules/
