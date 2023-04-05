@@ -4,6 +4,7 @@ import {Model} from "../../src/modelTypes";
 import {applyFilters} from "../../src/filter";
 import {useApplySearchParams} from "@/hooks/useApplySearchParams";
 import {AllComparators, DefaultComparator, sortFeatureComparisons} from "@/src/sorting";
+import produce from "immer";
 
 type ComparisonProviderProps = {
 	filters: Model.Filter[]
@@ -86,10 +87,12 @@ const ComparisonDispatchContext = createContext<React.Dispatch<ComparisonAction>
 });
 
 export function ComparisonProvider({children, filters, data, footnotes}: PropsWithChildren<ComparisonProviderProps>) {
+	const sortedData = produce(data,draft => sortFeatureComparisons(draft, [DefaultComparator]));
+
 	const initialState: ComparisonState = {
 		filters: filters,
 		data: data,
-		filteredData: data,
+		filteredData: sortedData,
 		footnotes: footnotes,
 		showDifferencesOnly: false,
 		activeComparator: DefaultComparator
@@ -116,7 +119,7 @@ export function useComparisonDispatch(): React.Dispatch<ComparisonAction> {
 	return useContext(ComparisonDispatchContext);
 }
 
-function comparisonReducer(draft: ComparisonState, action: ComparisonAction): ComparisonState {
+export function comparisonReducer(draft: ComparisonState, action: ComparisonAction): ComparisonState {
 	if (action.type === ComparisonActionType.BatchApplyActions) {
 		applyActions(draft, (action as BatchApplyActions).actions);
 	} else {

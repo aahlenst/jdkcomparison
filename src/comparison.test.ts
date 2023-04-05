@@ -3,7 +3,7 @@ import {Vendor} from "@/src/vendorDataTypes";
 import {extractComparisonData} from "@/src/comparison";
 import {Model} from "@/src/modelTypes";
 
-describe("comparison module", () => {
+describe("extractComparisonData()", () => {
 	const testData: Vendor[] = [];
 
 	beforeAll(async () => {
@@ -12,7 +12,7 @@ describe("comparison module", () => {
 		testData.push((await import("@/testdata/coffeecorp")).default);
 	});
 
-	test("extractComparisonData() numbers all footnotes", () => {
+	test("numbers all footnotes", () => {
 		const {footnotes} = extractComparisonData(testData);
 
 		expect(footnotes.length).toEqual(3);
@@ -27,7 +27,7 @@ describe("comparison module", () => {
 		expect(footnotes[2].html).toContain("<p>Some <em>comment</em> about the end of life date.</p>");
 	});
 
-	test("extractComparisonData() extracts all JDKs", async () => {
+	test("extracts all JDKs", async () => {
 		const dukecorp = (await import("@/testdata/dukecorp")).default;
 		const {productsInComparison} = extractComparisonData([dukecorp]);
 
@@ -51,5 +51,16 @@ describe("comparison module", () => {
 		expect(jdk.freeInProduction).toEqual({present: Model.Present.NO});
 		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteReference: {backReference: 1, number: 1}});
 		expect(jdk.eolDate).toEqual({text: "2027-10", footnoteReference: {backReference: 1, number: 2}});
+	});
+
+	test("returns JDKs sorted by descending version, ascending vendor name, ascending JDK name", () => {
+		const {productsInComparison} = extractComparisonData(testData);
+
+		const order = productsInComparison.map(p => ({vendor: p.vendor, name: p.name, version: p.version}));
+
+		expect(order).toHaveLength(3);
+		expect(order[0]).toEqual({vendor: "Coffeecorp", name: "Coffeecorp JDK 17", version: 17});
+		expect(order[1]).toEqual({vendor: "Dukecorp", name: "Dukecorp JDK 17", version: 17});
+		expect(order[2]).toEqual({vendor: "Coffeecorp", name: "Coffeecorp JDK 8", version: 8});
 	});
 });

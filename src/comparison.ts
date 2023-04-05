@@ -2,6 +2,18 @@ import {FeatureDescription, FeaturePresence, Present, Vendor} from "@/src/vendor
 import {micromark} from "micromark";
 import {Model} from "@/src/modelTypes";
 import FootnoteReference = Model.FootnoteReference;
+import {
+	AscendingNameComparator,
+	AscendingVendorComparator,
+	DescendingVersionComparator,
+	sortFeatureComparisons
+} from "@/src/sorting";
+
+const FeatureComparisonComparatorChain = [
+	new DescendingVersionComparator(),
+	new AscendingVendorComparator(),
+	new AscendingNameComparator()
+];
 
 class FootnoteCounter {
 	#counter: number = 1;
@@ -26,6 +38,8 @@ export function extractComparisonData(vendors: Vendor[]): Model.Comparison {
 	for (const vendor of vendors) {
 		aggregatedFeatureComparisons.push(...extractFeatureComparisons(vendor, aggregatedFootnotes));
 	}
+
+	sortFeatureComparisons(aggregatedFeatureComparisons, FeatureComparisonComparatorChain);
 	return {productsInComparison: aggregatedFeatureComparisons, footnotes: aggregatedFootnotes};
 }
 

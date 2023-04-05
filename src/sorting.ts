@@ -54,7 +54,7 @@ export class DescendingNameComparator implements Model.Comparator<Pick<Model.Fea
 	}
 }
 
-export const DefaultComparator = new AscendingVersionComparator();
+export const DefaultComparator = new DescendingVersionComparator();
 
 export const AllComparators = [
 	new DescendingVersionComparator(),
@@ -78,4 +78,6 @@ export function sortFeatureComparisons(
 		}
 		return 0;
 	});
+
+	return comparisons;
 }
