@@ -641,4 +641,29 @@ describe("Home", () => {
 
 		comparisonPage.expectProductNames(["Dukecorp JDK 17", "Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
 	});
+
+	it("retains original sort order when changing sort options repeatedly", () => {
+		cy.visit("http://localhost:3000/");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Dukecorp JDK 17", "Coffeecorp JDK 8"]);
+
+		comparisonPage.showSortOptions();
+		comparisonPage.expectSortOption("Newest", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("JDK Name, Z-A");
+		comparisonPage.expectSortOption("JDK Name, Z-A", true);
+		comparisonPage.closeSortOptions();
+
+		comparisonPage.expectProductNames(["Dukecorp JDK 17", "Coffeecorp JDK 8", "Coffeecorp JDK 17"]);
+
+		comparisonPage.showSortOptions();
+		comparisonPage.clickSortOption("Vendor, A-Z");
+		comparisonPage.expectSortOption("Vendor, A-Z", true);
+		comparisonPage.closeSortOptions();
+
+		// Original order is Coffeecorp 17 before 8, so it needs to be the same here.
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8","Dukecorp JDK 17"]);
+	});
 });

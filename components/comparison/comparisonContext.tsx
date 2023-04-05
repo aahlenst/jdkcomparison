@@ -129,18 +129,16 @@ export function comparisonReducer(draft: ComparisonState, action: ComparisonActi
 }
 
 function applyActions(draft: ComparisonState, actions: ComparisonAction[]) {
-	let deferredApplyFilters = false;
-	let deferredSorting = false;
+	let refreshData = false;
 
 	for (const action of actions) {
 		switch (action.type) {
 			case ComparisonActionType.SetActiveComparator:
-				deferredSorting = true;
+				refreshData = true;
 				handleSetActiveComparator(draft, action as SetActiveComparator);
 				break;
 			case ComparisonActionType.ToggleFilter:
-				deferredApplyFilters = true;
-				deferredSorting = true;
+				refreshData = true;
 				applyToggleFilter(draft, action as ToggleFilter);
 				break;
 			case ComparisonActionType.ToggleShowDifferencesOnly:
@@ -151,10 +149,8 @@ function applyActions(draft: ComparisonState, actions: ComparisonAction[]) {
 		}
 	}
 
-	if (deferredApplyFilters) {
+	if (refreshData) {
 		draft.filteredData = applyFilters(draft.filters, draft.data);
-	}
-	if (deferredSorting) {
 		sortFeatureComparisons(draft.filteredData, [draft.activeComparator]);
 	}
 }
