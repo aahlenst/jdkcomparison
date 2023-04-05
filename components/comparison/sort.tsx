@@ -7,10 +7,10 @@ import {classNames} from "@/src/utils";
 
 export function Sort() {
 	const comparison = useComparison();
-	const comparisonDispatch = useComparisonDispatch();
+	const dispatch = useComparisonDispatch();
 
 	function onClickHandler(comparator: string) {
-		comparisonDispatch(new SetActiveComparator(comparator));
+		dispatch([new SetActiveComparator(comparator)]);
 	}
 
 	const sortOptions = AllComparators.map(comparator => (

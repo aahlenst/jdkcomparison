@@ -37,7 +37,7 @@ describe("comparisonReducer()", () => {
 		expect(state.filteredData[1].id).toEqual("dukecorp-jdk-17");
 		expect(state.filteredData[2].id).toEqual("coffeecorp-jdk-8");
 
-		comparisonReducer(state, new SetActiveComparator(descendingVendorComparator.id));
+		comparisonReducer(state, [new SetActiveComparator(descendingVendorComparator.id)]);
 
 		expect(state.activeComparator).toEqual(descendingVendorComparator);
 		expect(state.filteredData[0].id).toEqual("dukecorp-jdk-17");
@@ -45,7 +45,7 @@ describe("comparisonReducer()", () => {
 		expect(state.filteredData[2].id).toEqual("coffeecorp-jdk-8");
 
 		// Second pass needed to see whether the default sort order was restored.
-		comparisonReducer(state, new SetActiveComparator(descendingVersionComparator.id));
+		comparisonReducer(state, [new SetActiveComparator(descendingVersionComparator.id)]);
 
 		expect(state.activeComparator).toEqual(descendingVersionComparator);
 		expect(state.filteredData[0].id).toEqual("coffeecorp-jdk-17");

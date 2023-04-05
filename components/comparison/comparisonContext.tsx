@@ -22,7 +22,6 @@ export type ComparisonState = {
 }
 
 enum ComparisonActionType {
-	BatchApplyActions = "BATCH_APPLY_ACTIONS",
 	SetActiveComparator = "SET_ACTIVE_COMPARATOR",
 	ToggleFilter = "TOGGLE_FILTER",
 	ToggleShowDifferencesOnly = "TOGGLE_SHOW_DIFFERENCES_ONLY",
@@ -64,16 +63,6 @@ export class ToggleFilter implements ComparisonAction {
 	}
 }
 
-export class BatchApplyActions implements ComparisonAction {
-	type = ComparisonActionType.BatchApplyActions;
-
-	actions: ComparisonAction[];
-
-	constructor(actions: ComparisonAction[]) {
-		this.actions = actions;
-	}
-}
-
 const ComparisonContext = createContext<ComparisonState>({
 	filters: [],
 	data: [],
@@ -83,7 +72,7 @@ const ComparisonContext = createContext<ComparisonState>({
 	activeComparator: DefaultComparator
 });
 
-const ComparisonDispatchContext = createContext<React.Dispatch<ComparisonAction>>(() => {
+const ComparisonDispatchContext = createContext<React.Dispatch<ComparisonAction[]>>(() => {
 });
 
 export function ComparisonProvider({children, filters, data, footnotes}: PropsWithChildren<ComparisonProviderProps>) {
@@ -115,20 +104,11 @@ export function useComparison(): ComparisonState {
 	return useContext(ComparisonContext);
 }
 
-export function useComparisonDispatch(): React.Dispatch<ComparisonAction> {
+export function useComparisonDispatch(): React.Dispatch<ComparisonAction[]> {
 	return useContext(ComparisonDispatchContext);
 }
 
-export function comparisonReducer(draft: ComparisonState, action: ComparisonAction): ComparisonState {
-	if (action.type === ComparisonActionType.BatchApplyActions) {
-		applyActions(draft, (action as BatchApplyActions).actions);
-	} else {
-		applyActions(draft, [action]);
-	}
-	return draft;
-}
-
-function applyActions(draft: ComparisonState, actions: ComparisonAction[]) {
+export function comparisonReducer(draft: ComparisonState, actions: ComparisonAction[]): ComparisonState {
 	let refreshData = false;
 
 	for (const action of actions) {
@@ -139,10 +119,10 @@ function applyActions(draft: ComparisonState, actions: ComparisonAction[]) {
 				break;
 			case ComparisonActionType.ToggleFilter:
 				refreshData = true;
-				applyToggleFilter(draft, action as ToggleFilter);
+				handleToggleFilter(draft, action as ToggleFilter);
 				break;
 			case ComparisonActionType.ToggleShowDifferencesOnly:
-				applyToggleShowDifferencesOnly(draft, action as ToggleShowDifferencesOnly);
+				handleToggleShowDifferencesOnly(draft, action as ToggleShowDifferencesOnly);
 				break;
 			default:
 				throw new Error(`Unknown action: ${action}`);
@@ -153,6 +133,8 @@ function applyActions(draft: ComparisonState, actions: ComparisonAction[]) {
 		draft.filteredData = applyFilters(draft.filters, draft.data);
 		sortFeatureComparisons(draft.filteredData, [draft.activeComparator]);
 	}
+
+	return draft;
 }
 
 function handleSetActiveComparator(draft: ComparisonState, action: SetActiveComparator): void {
@@ -162,7 +144,7 @@ function handleSetActiveComparator(draft: ComparisonState, action: SetActiveComp
 	}
 }
 
-function applyToggleFilter(draft: ComparisonState, action: ToggleFilter): void {
+function handleToggleFilter(draft: ComparisonState, action: ToggleFilter): void {
 	for (const filter of draft.filters) {
 		if (filter.hasOptionWithLabel(action.optionLabel)) {
 			filter.setOptionSelectedByLabel(action.optionLabel, action.active);
@@ -170,6 +152,6 @@ function applyToggleFilter(draft: ComparisonState, action: ToggleFilter): void {
 	}
 }
 
-function applyToggleShowDifferencesOnly(draft: ComparisonState, action: ToggleShowDifferencesOnly): void {
+function handleToggleShowDifferencesOnly(draft: ComparisonState, action: ToggleShowDifferencesOnly): void {
 	draft.showDifferencesOnly = action.on;
 }

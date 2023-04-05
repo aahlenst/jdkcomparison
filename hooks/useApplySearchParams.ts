@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {useRouter} from "next/router";
 import {
-	BatchApplyActions,
 	ComparisonAction,
 	ComparisonState,
 	ToggleFilter
@@ -12,7 +11,7 @@ export type SearchParams = {
 	[key: string]: undefined | string | string[]
 }
 
-export function useApplySearchParams(comparison: ComparisonState, dispatch: React.Dispatch<ComparisonAction>) {
+export function useApplySearchParams(comparison: ComparisonState, dispatch: React.Dispatch<ComparisonAction[]>) {
 	const router = useRouter();
 
 	useEffect(() => {
@@ -27,7 +26,7 @@ export function useApplySearchParams(comparison: ComparisonState, dispatch: Reac
 export function applySearchParamsToState(
 	searchParams: SearchParams,
 	comparison: ComparisonState,
-	dispatch: React.Dispatch<ComparisonAction>
+	dispatch: React.Dispatch<ComparisonAction[]>
 ) {
 	const pendingActions: ComparisonAction[] = [];
 
@@ -61,7 +60,7 @@ export function applySearchParamsToState(
 	if (pendingActions.length < 1) {
 		return;
 	}
-	dispatch(new BatchApplyActions(pendingActions));
+	dispatch(pendingActions);
 }
 
 function extractFilterLabels(searchParamValues: undefined | string | string[]): string[] {

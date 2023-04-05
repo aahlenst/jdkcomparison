@@ -1,8 +1,10 @@
 import {beforeEach, describe, expect, jest} from "@jest/globals";
 import {applySearchParamsToState} from "@/hooks/useApplySearchParams";
 import {DynamicSelectionFilter} from "@/src/filter";
-import {BatchApplyActions, ComparisonState, ToggleFilter} from "@/components/comparison/comparisonContext";
+import {ComparisonAction, ComparisonState, ToggleFilter} from "@/components/comparison/comparisonContext";
 import {Model} from "@/src/modelTypes";
+import {DefaultComparator} from "@/src/sorting";
+import React from "react";
 
 describe("applySearchParamsToState()", () => {
 
@@ -14,10 +16,11 @@ describe("applySearchParamsToState()", () => {
 		data: [],
 		filteredData: [],
 		footnotes: [],
-		showDifferencesOnly: false
+		showDifferencesOnly: false,
+		activeComparator: DefaultComparator
 	};
 
-	const mockDispatch = jest.fn();
+	const mockDispatch = jest.fn<React.Dispatch<ComparisonAction[]>>();
 
 	beforeEach(() => {
 		for (const filter of state.filters) {
@@ -67,8 +70,8 @@ describe("applySearchParamsToState()", () => {
 
 		expect(mockDispatch.mock.calls).toHaveLength(1);
 
-		const batchApplyAction = mockDispatch.mock.calls[0][0] as BatchApplyActions;
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterA", "C", false));
+		const actions = mockDispatch.mock.calls[0][0];
+		expect(actions).toContainEqual(new ToggleFilter("filterA", "C", false));
 	});
 
 	test("dispatches action to enable filters requested by search params", () => {
@@ -76,10 +79,10 @@ describe("applySearchParamsToState()", () => {
 
 		expect(mockDispatch.mock.calls).toHaveLength(1);
 
-		const batchApplyAction = mockDispatch.mock.calls[0][0] as BatchApplyActions;
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterA", "A", true));
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterA", "B", true));
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterB", "2", true));
+		const actions = mockDispatch.mock.calls[0][0];
+		expect(actions).toContainEqual(new ToggleFilter("filterA", "A", true));
+		expect(actions).toContainEqual(new ToggleFilter("filterA", "B", true));
+		expect(actions).toContainEqual(new ToggleFilter("filterB", "2", true));
 	});
 
 	test("dispatches action to disable filters not requested by search params", () => {
@@ -90,11 +93,11 @@ describe("applySearchParamsToState()", () => {
 
 		expect(mockDispatch.mock.calls).toHaveLength(1);
 
-		const batchApplyAction = mockDispatch.mock.calls[0][0] as BatchApplyActions;
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterA", "A", true));
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterA", "B", true));
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterA", "C", false));
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterB", "2", true));
-		expect(batchApplyAction.actions).toContainEqual(new ToggleFilter("filterB", "1", false));
+		const actions = mockDispatch.mock.calls[0][0];
+		expect(actions).toContainEqual(new ToggleFilter("filterA", "A", true));
+		expect(actions).toContainEqual(new ToggleFilter("filterA", "B", true));
+		expect(actions).toContainEqual(new ToggleFilter("filterA", "C", false));
+		expect(actions).toContainEqual(new ToggleFilter("filterB", "2", true));
+		expect(actions).toContainEqual(new ToggleFilter("filterB", "1", false));
 	});
 });
