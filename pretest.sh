@@ -3,8 +3,13 @@ set -Eeuo pipefail
 
 # Linux/macOS compatibility shim, see https://unix.stackexchange.com/a/84980.
 TEMP_DIR=$(mktemp -d 2>/dev/null || mktemp -d -t "jdkcomparison")
+WRANGLER_PID=
 
 cleanup() {
+	if [ -n "$WRANGLER_PID" ]; then
+    	kill -TERM "$WRANGLER_PID"
+    fi
+
 	# xargs handles 0..n running processes correctly.
 	lsof -t -i:3000 | xargs -r kill -TERM
 }
@@ -27,5 +32,6 @@ cleanup
 
 npx @cloudflare/next-on-pages --experimental-minify
 npx wrangler pages dev --port 3000 .vercel/output/static > "$TEMP_DIR/wrangler.txt" 2>&1 &
+WRANGLER_PID=$!
 npm run acceptance
 cleanup
