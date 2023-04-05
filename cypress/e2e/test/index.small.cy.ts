@@ -36,29 +36,29 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 		mobileComparisonPage.expectFilter("Licensing");
 
 		mobileComparisonPage.showFilter("versions");
-		mobileComparisonPage.expectFilterOption("versions", {label: "8", checked: false});
-		mobileComparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		mobileComparisonPage.expectFilterOption("versions", "8", false);
+		mobileComparisonPage.expectFilterOption("versions", "17", false);
 		mobileComparisonPage.closeFilter("versions");
 
 		mobileComparisonPage.showFilter("vendors");
-		mobileComparisonPage.expectFilterOption("vendors", {label: "Coffeecorp", checked: false});
-		mobileComparisonPage.expectFilterOption("vendors", {label: "Dukecorp", checked: false});
+		mobileComparisonPage.expectFilterOption("vendors", "Coffeecorp", false);
+		mobileComparisonPage.expectFilterOption("vendors", "Dukecorp", false);
 		mobileComparisonPage.closeFilter("vendors");
 
 		mobileComparisonPage.showFilter("vms");
-		mobileComparisonPage.expectFilterOption("vms", {label: "CoffeeVM", checked: false});
-		mobileComparisonPage.expectFilterOption("vms", {label: "DukeVM", checked: false});
+		mobileComparisonPage.expectFilterOption("vms", "CoffeeVM", false);
+		mobileComparisonPage.expectFilterOption("vms", "DukeVM", false);
 		mobileComparisonPage.closeFilter("vms");
 
 		mobileComparisonPage.showFilter("technologies");
-		mobileComparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
-		mobileComparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
-		mobileComparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
+		mobileComparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
+		mobileComparisonPage.expectFilterOption("technologies", "JavaFX", false);
+		mobileComparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		mobileComparisonPage.closeFilter("technologies");
 
 		mobileComparisonPage.showFilter("licensing");
-		mobileComparisonPage.expectFilterOption("licensing", {label: "Free in Development", checked: false});
-		mobileComparisonPage.expectFilterOption("licensing", {label: "Free in Production", checked: false});
+		mobileComparisonPage.expectFilterOption("licensing", "Free in Development", false);
+		mobileComparisonPage.expectFilterOption("licensing", "Free in Production", false);
 		mobileComparisonPage.closeFilter("licensing");
 	});
 
@@ -73,8 +73,8 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 
 		mobileComparisonPage.showFilter("versions");
 
-		mobileComparisonPage.expectFilterOption("versions", {label: "8", checked: false});
-		mobileComparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		mobileComparisonPage.expectFilterOption("versions", "8", false);
+		mobileComparisonPage.expectFilterOption("versions", "17", false);
 
 		mobileComparisonPage.clickFilterOption("versions", "8");
 
@@ -86,8 +86,8 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 
 		mobileComparisonPage.showFilter("versions");
 
-		mobileComparisonPage.expectFilterOption("versions", {label: "8", checked: true});
-		mobileComparisonPage.expectFilterOption("versions", {label: "17", checked: false});
+		mobileComparisonPage.expectFilterOption("versions", "8", true);
+		mobileComparisonPage.expectFilterOption("versions", "17", false);
 	});
 
 	it("shows feature explanation", () => {

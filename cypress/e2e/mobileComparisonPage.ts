@@ -12,7 +12,7 @@ export const mobileComparisonPage = {
 					cy.url().should("not.eq", oldURL);
 
 					// Ensure that new filter state was applied to state.
-					mobileComparisonPage.expectFilterOption(id, {label: option, checked: !oldState});
+					mobileComparisonPage.expectFilterOption(id, option, !oldState);
 				});
 			}
 		});
@@ -35,7 +35,7 @@ export const mobileComparisonPage = {
 			expect(foundNames).to.contain(name);
 		});
 	},
-	expectFilterOption: (id: string, option: { label: string, checked: boolean }) => {
+	expectFilterOption: (id: string, label: string, active: boolean) => {
 		cy.get(`#filter-${id} > div`).should($opt => {
 			const foundOptions = $opt.map((i, el) => {
 				return {
@@ -44,7 +44,7 @@ export const mobileComparisonPage = {
 				};
 			}).get();
 
-			expect(foundOptions).to.deep.contain(option);
+			expect(foundOptions).to.deep.contain({label: label, checked: active});
 		});
 	},
 	expectPageTitle: (title: string) => {

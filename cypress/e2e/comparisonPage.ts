@@ -1,5 +1,3 @@
-import {found} from "@jridgewell/trace-mapping/dist/types/binary-search";
-
 export const comparisonPage = {
 	clickFilterOption: (id: string, option: string) => {
 		cy.get(`#filter-${id} > div`).each((e, i) => {
@@ -14,7 +12,7 @@ export const comparisonPage = {
 					cy.url().should("not.eq", oldURL);
 
 					// Ensure that new filter state was applied to state.
-					comparisonPage.expectFilterOption(id, {label: option, checked: !oldState});
+					comparisonPage.expectFilterOption(id, option, !oldState);
 				});
 			}
 		});
@@ -89,7 +87,7 @@ export const comparisonPage = {
 			expect(foundNames).to.contain(name);
 		});
 	},
-	expectFilterOption: (id: string, option: { label: string, checked: boolean }) => {
+	expectFilterOption: (id: string, label: string, active: boolean) => {
 		cy.get(`#filter-${id} > div`).should($opt => {
 			const foundOptions = $opt.map((i, el) => {
 				return {
@@ -98,7 +96,7 @@ export const comparisonPage = {
 				};
 			}).get();
 
-			expect(foundOptions).to.deep.contain(option);
+			expect(foundOptions).to.deep.contain({label: label, checked: active});
 		});
 	},
 	expectFootnote: (number: number, excerpt: string, backReferences: number = 1) => {

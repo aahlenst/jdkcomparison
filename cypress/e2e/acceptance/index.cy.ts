@@ -23,7 +23,7 @@ describe("Comparison in production", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectProductNamesIncomplete([ "OpenJDK 20", "Eclipse Temurin 17", "Eclipse Temurin 8"]);
+		comparisonPage.expectProductNamesIncomplete(["OpenJDK 20", "Eclipse Temurin 17", "Eclipse Temurin 8"]);
 	});
 
 	it("should display all sections", () => {
@@ -49,26 +49,26 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFilter("Licensing");
 
 		comparisonPage.showFilter("versions");
-		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {label: "11", checked: false});
-		comparisonPage.expectFilterOption("versions", {label: "17", checked: false});
-		comparisonPage.expectFilterOption("versions", {label: "20", checked: false});
+		comparisonPage.expectFilterOption("versions", "8", false);
+		comparisonPage.expectFilterOption("versions", "11", false);
+		comparisonPage.expectFilterOption("versions", "17", false);
+		comparisonPage.expectFilterOption("versions", "20", false);
 		comparisonPage.closeFilter("versions");
 
 		comparisonPage.showFilter("vendors");
-		comparisonPage.expectFilterOption("vendors", {label: "Amazon", checked: false});
-		comparisonPage.expectFilterOption("vendors", {label: "Eclipse Foundation", checked: false});
-		comparisonPage.expectFilterOption("vendors", {label: "Oracle", checked: false});
+		comparisonPage.expectFilterOption("vendors", "Amazon", false);
+		comparisonPage.expectFilterOption("vendors", "Eclipse Foundation", false);
+		comparisonPage.expectFilterOption("vendors", "Oracle", false);
 		comparisonPage.closeFilter("vendors");
 
 		comparisonPage.showFilter("vms");
-		comparisonPage.expectFilterOption("vms", {label: "HotSpot", checked: false});
+		comparisonPage.expectFilterOption("vms", "HotSpot", false);
 		comparisonPage.closeFilter("vms");
 
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
-		comparisonPage.expectFilterOption("technologies", {label: "JavaFX", checked: false});
-		comparisonPage.expectFilterOption("technologies", {label: "Java Web Start", checked: false});
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
+		comparisonPage.expectFilterOption("technologies", "JavaFX", false);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		comparisonPage.closeFilter("technologies");
 	});
 
@@ -89,7 +89,7 @@ describe("Comparison in production", () => {
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
-		comparisonPage.expectFilterOption("vendors", {label: "Eclipse Foundation", checked: true});
+		comparisonPage.expectFilterOption("vendors", "Eclipse Foundation", true);
 		comparisonPage.closeFilter("vendors");
 
 		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 17", "Eclipse Temurin 8"]);
@@ -98,8 +98,8 @@ describe("Comparison in production", () => {
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
 		comparisonPage.clickFilterOption("vendors", "Oracle");
-		comparisonPage.expectFilterOption("vendors", {label: "Eclipse Foundation", checked: false});
-		comparisonPage.expectFilterOption("vendors", {label: "Oracle", checked: true});
+		comparisonPage.expectFilterOption("vendors", "Eclipse Foundation", false);
+		comparisonPage.expectFilterOption("vendors", "Oracle", true);
 		comparisonPage.closeFilter("vendors");
 
 		comparisonPage.expectProductNamesIncomplete(["OpenJDK 20"]);
@@ -125,13 +125,13 @@ describe("Comparison in production", () => {
 		cy.visit("http://localhost:3000/");
 
 		comparisonPage.showFilter("versions");
-		comparisonPage.expectFilterOption("versions", {label: "8", checked: false});
-		comparisonPage.expectFilterOption("versions", {label: "11", checked: false});
+		comparisonPage.expectFilterOption("versions", "8", false);
+		comparisonPage.expectFilterOption("versions", "11", false);
 		comparisonPage.closeFilter("versions");
 		comparisonPage.expectActiveFilterOptions("versions", 0);
 
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: false});
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 0);
 
@@ -140,13 +140,13 @@ describe("Comparison in production", () => {
 		cy.visit("http://localhost:3000/?versions=8&versions=11&technologies=Flight%20Recorder");
 
 		comparisonPage.showFilter("versions");
-		comparisonPage.expectFilterOption("versions", {label: "8", checked: true});
-		comparisonPage.expectFilterOption("versions", {label: "11", checked: true});
+		comparisonPage.expectFilterOption("versions", "8", true);
+		comparisonPage.expectFilterOption("versions", "11", true);
 		comparisonPage.closeFilter("versions");
 		comparisonPage.expectActiveFilterOptions("versions", 2);
 
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption("technologies", {label: "Flight Recorder", checked: true});
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", true);
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 1);
 
