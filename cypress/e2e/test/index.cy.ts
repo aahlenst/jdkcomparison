@@ -649,9 +649,6 @@ describe("Home", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("Newest", true);
-		comparisonPage.closeSortOptions();
-
-		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("JDK Name, Z-A");
 		comparisonPage.expectSortOption("JDK Name, Z-A", true);
 		comparisonPage.closeSortOptions();
