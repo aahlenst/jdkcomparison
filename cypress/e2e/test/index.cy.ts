@@ -53,7 +53,7 @@ describe("Home", () => {
 		comparisonPage.expectFeatureText("customisations-notable-features", "Notable Features", ["none", "FairyGC", "none"]);
 
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
-		comparisonPage.expectFeatureText("licensing-license", "License", ["GPL-2.0-WITH-Classpath-exception-2.0", "Proprietary", "GPL-2.0-WITH-Classpath-exception-2.0"]);
+		comparisonPage.expectFeatureText("licensing-license", "License", ["GPLv2+CPE", "Proprietary", "GPLv2+CPE"]);
 		comparisonPage.expectFeaturePresence("licensing-free-in-development", "Free in Development", ["yes", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("licensing-free-in-production", "Free in Production", ["yes", "no", "yes"]);
 

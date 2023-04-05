@@ -63,7 +63,7 @@ export type JDKFeatures = {
 	customisations: FeatureDescription
 	notableFeatures: FeatureDescription
 	/**
-	 * SPDX identifier of the open source license or 'Proprietary'.
+	 * Short name of the open source license or 'Proprietary'.
 	 */
 	license: FeatureDescription
 	freeInDevelopment: FeaturePresence

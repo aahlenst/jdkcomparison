@@ -24,7 +24,7 @@ export const data: Vendor = {
 				// No customisations apart from a few extra backports and a custom trust store.
 				customisations: {text: "few", footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf"},
 				notableFeatures: {text: "none"},
-				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				license: {text: "GPLv2+CPE"},
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
@@ -52,7 +52,7 @@ export const data: Vendor = {
 				// No customisations apart from a few extra backports and a custom trust store.
 				customisations: {text: "few", footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf"},
 				notableFeatures: {text: "none"},
-				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				license: {text: "GPLv2+CPE"},
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
@@ -80,7 +80,7 @@ export const data: Vendor = {
 				// No customisations apart from a few extra backports and a custom trust store.
 				customisations: {text: "few", footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf"},
 				notableFeatures: {text: "none"},
-				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				license: {text: "GPLv2+CPE"},
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
@@ -108,7 +108,7 @@ export const data: Vendor = {
 				// No customisations apart from a few extra backports and a custom trust store.
 				customisations: {text: "few", footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf"},
 				notableFeatures: {text: "none"},
-				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				license: {text: "GPLv2+CPE"},
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties

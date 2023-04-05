@@ -23,7 +23,7 @@ export const data: Vendor = {
 				editions: {text: "none"},
 				customisations: {text: "none"},
 				notableFeatures: {text: "none"},
-				license: {text: "GPL-2.0-WITH-Classpath-exception-2.0"},
+				license: {text: "GPLv2+CPE"},
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.NO},
