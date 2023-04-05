@@ -6,7 +6,7 @@ TEMP_DIR=$(mktemp -d 2>/dev/null || mktemp -d -t "jdkcomparison")
 WRANGLER_PID=
 
 cleanup() {
-	if [ -n "$WRANGLER_PID" ]; then
+	if [ -n "$WRANGLER_PID" ] && ps -p "$WRANGLER_PID" > /dev/null ; then
     	kill -TERM "$WRANGLER_PID"
     fi
 
