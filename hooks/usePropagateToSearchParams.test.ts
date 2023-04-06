@@ -3,6 +3,7 @@ import {ComparisonState} from "@/components/comparison/comparisonContext";
 import {Model} from "@/src/modelTypes";
 import {DynamicSelectionFilter} from "@/src/filter";
 import {ApplyFilter, handleApplyFilter} from "@/hooks/usePropagateToSearchParams";
+import {DefaultComparator} from "@/src/sorting";
 
 describe("handleApplyFilter()", () => {
 
@@ -16,6 +17,7 @@ describe("handleApplyFilter()", () => {
 		filteredData: [],
 		footnotes: [],
 		showDifferencesOnly: false,
+		activeComparator: DefaultComparator
 	};
 
 	beforeEach(() => {
