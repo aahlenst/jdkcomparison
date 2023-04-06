@@ -172,6 +172,8 @@ describe("Comparison in production", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("JDK Name, Z-A");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("JDK Name, Z-A", true);
 		comparisonPage.closeSortOptions();
 

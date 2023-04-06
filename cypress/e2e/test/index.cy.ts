@@ -1,7 +1,7 @@
 import {navigationComponent} from "../navigationComponent";
 import {comparisonPage} from "../comparisonPage";
 
-describe("Home", () => {
+describe("JDK Comparison", () => {
 	it("should display all navigation options", () => {
 		cy.visit("http://localhost:3000/");
 
@@ -567,6 +567,8 @@ describe("Home", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("Newest");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("Newest", true);
 		comparisonPage.closeSortOptions();
 
@@ -578,6 +580,8 @@ describe("Home", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("Vendor, A-Z");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("Vendor, A-Z", true);
 		comparisonPage.closeSortOptions();
 
@@ -589,6 +593,8 @@ describe("Home", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("Vendor, Z-A");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("Vendor, Z-A", true);
 		comparisonPage.closeSortOptions();
 
@@ -600,6 +606,8 @@ describe("Home", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("JDK Name, A-Z");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("JDK Name, A-Z", true);
 		comparisonPage.closeSortOptions();
 
@@ -611,6 +619,8 @@ describe("Home", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("JDK Name, Z-A");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("JDK Name, Z-A", true);
 		comparisonPage.closeSortOptions();
 
@@ -628,6 +638,8 @@ describe("Home", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("JDK Name, Z-A");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("JDK Name, Z-A", true);
 		comparisonPage.closeSortOptions();
 
@@ -650,6 +662,8 @@ describe("Home", () => {
 		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("Newest", true);
 		comparisonPage.clickSortOption("JDK Name, Z-A");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("JDK Name, Z-A", true);
 		comparisonPage.closeSortOptions();
 
@@ -657,6 +671,8 @@ describe("Home", () => {
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("Vendor, A-Z");
+
+		comparisonPage.showSortOptions();
 		comparisonPage.expectSortOption("Vendor, A-Z", true);
 		comparisonPage.closeSortOptions();
 

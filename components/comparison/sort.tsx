@@ -28,10 +28,10 @@ export function Sort() {
 	));
 
 	return (
-		<Menu as="div" className="relative inline-block text-left">
+		<Menu as="div" id="sort-options" className="relative inline-block text-left">
 			<div>
 				<Menu.Button
-					id="sort-options"
+					id="sort-options-button"
 					className="group inline-flex items-baseline justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
 					Sort
 					<ChevronDownIcon
@@ -51,6 +51,7 @@ export function Sort() {
 				leaveTo="transform opacity-0 scale-95"
 			>
 				<Menu.Items
+					id="sort-options-menu"
 					className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
 					<div className="py-1">
 						{sortOptions}

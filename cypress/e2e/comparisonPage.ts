@@ -24,6 +24,9 @@ export const comparisonPage = {
 		cy.get("button.sort-option").each((e, i) => {
 			if (e.text() === name) {
 				e.trigger("click");
+
+				// Menu closes automatically upon clicking an option. Wait for it to disappear.
+				cy.get("#sort-options-menu").should("not.exist");
 			}
 		});
 	},
@@ -37,7 +40,8 @@ export const comparisonPage = {
 		cy.get(`section[id='${sectionId}'] .toggle-section`).click();
 	},
 	closeSortOptions: () => {
-		cy.get("#sort-options").click();
+		cy.get("#sort-options-button").click();
+		cy.get("#sort-options-menu").should("not.exist");
 	},
 	expectActiveFilterOptions: (filterId: string, count: number) => {
 		if (count === 0) {
@@ -167,6 +171,7 @@ export const comparisonPage = {
 		cy.get(`section[id='${sectionId}'] .toggle-section`).click();
 	},
 	showSortOptions: () => {
-		cy.get("#sort-options").click();
+		cy.get("#sort-options-button").click();
+		cy.get("#sort-options-menu").should("not.be.hidden");
 	},
 };
