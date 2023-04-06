@@ -8,7 +8,6 @@ import {Model} from "@/src/modelTypes";
 import {ComparisonProvider} from "@/components/comparison/comparisonContext";
 import {Filters} from "@/components/comparison/filters";
 import {createFilters} from "@/src/filter";
-import {Footnotes} from "@/components/comparison/footnotes";
 
 type ComparisonProps = {
 	data: Model.FeatureComparison[],

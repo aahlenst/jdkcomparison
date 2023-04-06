@@ -14,7 +14,7 @@ export function Navigation() {
 	const router = useRouter();
 
 	return (
-		<Disclosure as="nav" className="bg-white shadow">
+		<Disclosure as="nav" className="fixed left-0 top-0 right-0 h-16 z-40 bg-white shadow">
 			{({open}) => (
 				<>
 					<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

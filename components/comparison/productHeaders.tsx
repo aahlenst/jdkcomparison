@@ -10,7 +10,7 @@ type ProductHeadersProps = {
 export function ProductHeaders({headers}: ProductHeadersProps) {
 	const productHeaders = headers.map(product => {
 		return (
-			<div key={product.id} className="flex flex-col px-4">
+			<div key={product.id} className="flex flex-col px-4 border-r last:border-r-transparent">
 				<div className="product-vendor text-sm text-gray-500">{product.vendor}</div>
 				<div className="product-name font-semibold">{product.name}</div>
 				<div className="product-download mt-4 text-xs">
@@ -26,10 +26,10 @@ export function ProductHeaders({headers}: ProductHeadersProps) {
 	return (
 		<section id="product-header">
 			<div
-				className="feature grid divide-x py-2"
+				className="feature grid overflow-visible py-2"
 				style={{gridTemplateColumns: `repeat(${productHeaders.length + 1}, 12rem)`}}
 			>
-				<div className="flex flex-col place-content-end pr-4">
+				<div className="sticky left-0 flex flex-col place-content-end bg-white pl-2 sm:pl-6 lg:pl-8 pr-4 border-r">
 					<DifferencesOnlyToggle/>
 				</div>
 				{productHeaders}

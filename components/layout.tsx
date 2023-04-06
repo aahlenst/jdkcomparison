@@ -5,7 +5,9 @@ export default function Layout({children}: PropsWithChildren) {
 	return (
 		<>
 			<Navigation/>
-			{children}
+			<div className="relative top-16">
+				{children}
+			</div>
 		</>
 	);
 }

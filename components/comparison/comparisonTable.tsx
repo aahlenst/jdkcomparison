@@ -12,7 +12,7 @@ export function ComparisonTable() {
 	const comparison = useComparison();
 
 	return (
-		<div className="overflow-x-auto m-4 sm:m-6 divide-y space-y-4">
+		<div className="relative top-12 w-max py-2 sm:py-6 lg:py-8 pr-2 sm:pr-6 lg:pr-8 divide-y space-y-4">
 			<ProductHeaders headers={comparison.filteredData}/>
 			<PropertiesSection productData={comparison.filteredData}
 							   showDifferencesOnly={comparison.showDifferencesOnly}/>

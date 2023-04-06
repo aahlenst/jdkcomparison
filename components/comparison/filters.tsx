@@ -24,10 +24,10 @@ export function Filters() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<div id="filters">
+		<div id="filters" className="fixed left-0 top-16 right-0 h-12 z-50 flex items-center bg-white border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8">
 			{/* Mobile filters */}
 			<Transition.Root show={open} as={Fragment}>
-				<Dialog as="div" className="relative z-40 sm:hidden" onClose={setOpen}>
+				<Dialog as="div" className="relative z-50 sm:hidden" onClose={setOpen}>
 					<Transition.Child
 						as={Fragment}
 						enter="transition-opacity ease-linear duration-300"
@@ -40,7 +40,7 @@ export function Filters() {
 						<div className="fixed inset-0 bg-black bg-opacity-25"/>
 					</Transition.Child>
 
-					<div className="fixed inset-0 z-40 flex">
+					<div className="fixed inset-0 z-50 flex">
 						<Transition.Child
 							as={Fragment}
 							enter="transition ease-in-out duration-300 transform"
@@ -88,37 +88,34 @@ export function Filters() {
 			</Transition.Root>
 
 			{/* Desktop filters */}
-			<div className="mx-auto max-w-full text-center">
-				<section aria-labelledby="filter-heading"
-						 className="border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8">
-					<h2 id="filter-heading" className="sr-only">
+			<section aria-labelledby="filter-heading" className="w-full mx-auto text-center">
+				<h2 id="filter-heading" className="sr-only">
+					Filters
+				</h2>
+				<div className="flex items-center justify-between">
+					<Sort/>
+					<button
+						type="button"
+						id="mobile-filters-open"
+						className="inline-block text-sm font-medium text-gray-700 pr-2 sm:pr-0 hover:text-gray-900 sm:hidden"
+						onClick={() => setOpen(true)}
+					>
 						Filters
-					</h2>
-					<div className="flex items-center justify-between">
-						<Sort/>
-						<button
-							type="button"
-							id="mobile-filters-open"
-							className="inline-block text-sm font-medium text-gray-700 pr-2 sm:pr-0 hover:text-gray-900 sm:hidden"
-							onClick={() => setOpen(true)}
-						>
-							Filters
-						</button>
-						<Popover.Group className="hidden divide-x divide-gray-200 sm:flex sm:items-baseline">
-							<CheckboxFilter label="Versions" filter={getFilter("versions", comparison.filters)}
-											onChangeHandler={handleSearchParamsAction}/>
-							<CheckboxFilter label="Vendors" filter={getFilter("vendors", comparison.filters)}
-											onChangeHandler={handleSearchParamsAction}/>
-							<CheckboxFilter label="VMs" filter={getFilter("vms", comparison.filters)}
-											onChangeHandler={handleSearchParamsAction}/>
-							<CheckboxFilter label="Technologies" filter={getFilter("technologies", comparison.filters)}
-											onChangeHandler={handleSearchParamsAction}/>
-							<CheckboxFilter label="Licensing" filter={getFilter("licensing", comparison.filters)}
-											onChangeHandler={handleSearchParamsAction}/>
-						</Popover.Group>
-					</div>
-				</section>
-			</div>
+					</button>
+					<Popover.Group className="hidden divide-x divide-gray-200 sm:flex sm:items-baseline">
+						<CheckboxFilter label="Versions" filter={getFilter("versions", comparison.filters)}
+										onChangeHandler={handleSearchParamsAction}/>
+						<CheckboxFilter label="Vendors" filter={getFilter("vendors", comparison.filters)}
+										onChangeHandler={handleSearchParamsAction}/>
+						<CheckboxFilter label="VMs" filter={getFilter("vms", comparison.filters)}
+										onChangeHandler={handleSearchParamsAction}/>
+						<CheckboxFilter label="Technologies" filter={getFilter("technologies", comparison.filters)}
+										onChangeHandler={handleSearchParamsAction}/>
+						<CheckboxFilter label="Licensing" filter={getFilter("licensing", comparison.filters)}
+										onChangeHandler={handleSearchParamsAction}/>
+					</Popover.Group>
+				</div>
+			</section>
 		</div>
 	);
 }
