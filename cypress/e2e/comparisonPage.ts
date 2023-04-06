@@ -37,7 +37,7 @@ export const comparisonPage = {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
 	},
 	closeSection: (sectionId: string) => {
-		cy.get(`section[id='${sectionId}'] .toggle-section`).click();
+		cy.get(`section[id='${sectionId}'] .toggle-section button`).click();
 	},
 	closeSortOptions: () => {
 		cy.get("#sort-options-button").click();
@@ -168,7 +168,7 @@ export const comparisonPage = {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
 	},
 	showSection: (sectionId: string) => {
-		cy.get(`section[id='${sectionId}'] .toggle-section`).click();
+		cy.get(`section[id='${sectionId}'] .toggle-section button`).click();
 	},
 	showSortOptions: () => {
 		cy.get("#sort-options-button").click();
