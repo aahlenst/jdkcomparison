@@ -89,6 +89,7 @@ jobs:
           check_name: Tests Results of Node.js ${{ matrix.node-version }}
           files: |
             cypress/results/*.xml
+            build/reports/*.xml
 
       - name: Upload Cypress Screenshots and Videos on Failure
         uses: actions/upload-artifact@v3

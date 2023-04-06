@@ -9,7 +9,8 @@ const customJestConfig = {
 	moduleDirectories: ["node_modules", "<rootDir>/"],
 	moduleNameMapper: {
 		"@/(.*)$": "<rootDir>/$1"
-	}
+	},
+	reporters: ["default", ["jest-junit", {outputDirectory: "build/reports", outputName: "jest.xml"}]],
 };
 
 module.exports = createJestConfig(customJestConfig);
