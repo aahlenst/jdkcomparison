@@ -28,7 +28,6 @@ export default function ComparisonPage({data, footnotes}: ComparisonProps) {
 				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>
 					<Filters/>
 					<ComparisonTable/>
-					<Footnotes footnotes={footnotes}/>
 				</ComparisonProvider>
 			</main>
 		</>

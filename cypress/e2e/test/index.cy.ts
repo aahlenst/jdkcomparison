@@ -382,7 +382,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 	});
 
-	it("displays footnotes", () => {
+	it.skip("displays footnotes", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
