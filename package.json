@@ -45,7 +45,7 @@
 		"next-router-mock": "0.9.3",
 		"postcss": "8.4.21",
 		"tailwindcss": "3.3.1",
-		"typescript": "5.0.3",
+		"typescript": "5.0.4",
 		"wrangler": "2.14.0"
 	}
 }
