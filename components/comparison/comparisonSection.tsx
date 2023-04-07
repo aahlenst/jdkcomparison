@@ -11,9 +11,8 @@ export function ComparisonSection({id, label, children}: PropsWithChildren<Compa
 
 	return (
 		<section id={id} className="pt-4">
-			<h2 className="toggle-section cursor-pointer"
-				onClick={() => setOpen(!open)}>
-				<button className="sticky left-0 flex inline-flex items-center pl-2 sm:pl-6 lg:pl-8">
+			<h2 className="toggle-section cursor-pointer" onClick={() => setOpen(!open)}>
+				<button className="sticky left-0 flex inline-flex items-center">
 					<span className="section-label font-semibold">{label}</span>
 					{open &&
 						<SquareMinusIcon className="ml-2 h-4 w-4" role="img" aria-label="Hide section">
