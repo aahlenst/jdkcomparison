@@ -3,7 +3,7 @@ export const mobileNavigationComponent = {
 		cy.get("#logo").click();
 	},
 	closeMobileMenu: () => {
-		cy.get("#mobile-menu-toggle").click();
+		cy.get("#mobile-menu-close").click();
 	},
 	expectNavigationOptions: (name: string[]) => {
 		cy.get(".mobile-navigation-option").should("have.length", name.length);
@@ -21,6 +21,6 @@ export const mobileNavigationComponent = {
 		cy.get(`.mobile-navigation-option-${targetName}`).click();
 	},
 	showMobileMenu: () => {
-		cy.get("#mobile-menu-toggle").click();
+		cy.get("#mobile-menu-open").click();
 	}
 };
