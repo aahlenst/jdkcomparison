@@ -24,9 +24,9 @@ export function ProductHeaders({headers}: ProductHeadersProps) {
 	});
 
 	return (
-		<section id="product-header">
+		<section id="product-header" className="sticky top-28 z-20 bg-white">
 			<div
-				className="feature grid overflow-visible py-2"
+				className="feature grid"
 				style={{gridTemplateColumns: `repeat(${productHeaders.length + 1}, 12rem)`}}
 			>
 				<div className="sticky left-0 flex flex-col place-content-end bg-white px-4 border-r">
