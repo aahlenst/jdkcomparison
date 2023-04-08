@@ -29,7 +29,7 @@ export function ProductHeaders({headers}: ProductHeadersProps) {
 				className="feature grid overflow-visible py-2"
 				style={{gridTemplateColumns: `repeat(${productHeaders.length + 1}, 12rem)`}}
 			>
-				<div className="sticky left-0 flex flex-col place-content-end bg-white pr-4 border-r">
+				<div className="sticky left-0 flex flex-col place-content-end bg-white px-4 border-r">
 					<DifferencesOnlyToggle/>
 				</div>
 				{productHeaders}
