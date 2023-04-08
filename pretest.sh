@@ -11,7 +11,7 @@ cleanup() {
     fi
 
 	# xargs handles 0..n running processes correctly.
-	lsof -t -i:3000 | xargs -r kill -TERM
+	lsof -t -i:3000 -sTCP:LISTEN | xargs -r kill -TERM
 }
 
 trap cleanup EXIT

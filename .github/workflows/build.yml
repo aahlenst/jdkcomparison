@@ -62,7 +62,7 @@ jobs:
         run: |
           npm run dev > /tmp/nextjs-dev.txt 2>&1 &
           npm run e2e:headless
-          lsof -t -i:3000 | xargs -r kill -TERM
+          lsof -t -i:3000 -sTCP:LISTEN | xargs -r kill -TERM
 
       - name: Build
         run: npx @cloudflare/next-on-pages --experimental-minify
@@ -79,8 +79,10 @@ jobs:
       - name: Run acceptance tests
         run: |
           npx wrangler pages dev --port 3000 .vercel/output/static > /tmp/wrangler.txt 2>&1 &
+          WRANGLER_PID=$!
           npm run acceptance
-          lsof -t -i:3000 | xargs -r kill -TERM
+          lsof -t -i:3000 -sTCP:LISTEN | xargs -r kill -TERM
+          if [ -n "$WRANGLER_PID" ] && ps -p "$WRANGLER_PID" > /dev/null ; then kill -TERM "$WRANGLER_PID"; fi;
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
