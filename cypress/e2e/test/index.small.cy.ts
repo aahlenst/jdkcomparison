@@ -25,7 +25,7 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 	it("shows all filters", () => {
 		cy.visit("http://localhost:3000/");
 
-		mobileComparisonPage.expectPageTitle("JDK Comparison");
+		mobileNavigationComponent.expectPageTitle("JDK Comparison");
 
 		mobileComparisonPage.showFilters();
 
@@ -65,7 +65,7 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 	it("retains filter state when opening and closing", () => {
 		cy.visit("http://localhost:3000/");
 
-		mobileComparisonPage.expectPageTitle("JDK Comparison");
+		mobileNavigationComponent.expectPageTitle("JDK Comparison");
 
 		mobileComparisonPage.showFilters();
 
@@ -93,7 +93,7 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 	it("shows feature explanation", () => {
 		cy.visit("http://localhost:3000/");
 
-		mobileComparisonPage.expectPageTitle("JDK Comparison");
+		mobileNavigationComponent.expectPageTitle("JDK Comparison");
 		mobileComparisonPage.showFeatureExplanation("technologies-jfr");
 		mobileComparisonPage.expectFeatureExplanation("Flight Recorder (JFR) is a low-overhead data collection framework");
 		mobileComparisonPage.closeFeatureExplanation();
@@ -102,7 +102,7 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 	it("displays footnotes", () => {
 		cy.visit("http://localhost:3000/");
 
-		mobileComparisonPage.expectPageTitle("JDK Comparison");
+		mobileNavigationComponent.expectPageTitle("JDK Comparison");
 		mobileComparisonPage.expectFootnote("technologies-jfx", 0, 1, "Some clarifications regarding JavaFX");
 		mobileComparisonPage.expectFootnote("support-paid", 1, 2, "Some remark regarding paid support");
 		mobileComparisonPage.expectFootnote("support-eol-date", 1, 3, "Some comment about the end of life date");

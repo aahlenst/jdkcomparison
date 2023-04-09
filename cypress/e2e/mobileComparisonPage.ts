@@ -53,9 +53,6 @@ export const mobileComparisonPage = {
 		cy.get(".mobile-footnote").should("contain.text", excerpt);
 		cy.get("#comparison-modals .mobile-footnote-overlay").trigger("click");
 	},
-	expectPageTitle: (title: string) => {
-		cy.title().should("eq", title);
-	},
 	showFeatureExplanation: (id: string) => {
 		cy.get(`#${id} .feature-explanation-toggle`).click();
 	},
