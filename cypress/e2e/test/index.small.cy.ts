@@ -98,4 +98,13 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 		mobileComparisonPage.expectFeatureExplanation("Flight Recorder (JFR) is a low-overhead data collection framework");
 		mobileComparisonPage.closeFeatureExplanation();
 	});
+
+	it("displays footnotes", () => {
+		cy.visit("http://localhost:3000/");
+
+		mobileComparisonPage.expectPageTitle("JDK Comparison");
+		mobileComparisonPage.expectFootnote("technologies-jfx", 0, 1, "Some clarifications regarding JavaFX");
+		mobileComparisonPage.expectFootnote("support-paid", 1, 2, "Some remark regarding paid support");
+		mobileComparisonPage.expectFootnote("support-eol-date", 1, 3, "Some comment about the end of life date");
+	});
 });

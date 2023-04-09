@@ -103,13 +103,11 @@ export const comparisonPage = {
 			expect(foundOptions).to.deep.contain({label: label, checked: active});
 		});
 	},
-	expectFootnote: (number: number, excerpt: string, backReferences: number = 1) => {
-		for (let i = 1; i <= backReferences; i++) {
-			cy.get(`sup[id='fnref-${number}:${i}']`).should("have.text", `[${number}]`);
-			cy.get(`sup[id='fnref-${number}:${i}'] a`).should("have.attr", "href").and("eq", `#fn-${number}`);
-		}
-		cy.get(`#footnotes li#fn-${number}`).should("exist");
-		cy.get(`#footnotes li#fn-${number}`).should("contain.text", excerpt);
+	expectFootnote: (featureId: string, column: number, number: number, excerpt: string) => {
+		cy.get(`#${featureId} .feature-value`).eq(column).find("sup").should("have.text", `[${number}]`);
+		cy.get(`#${featureId} .feature-value`).eq(column).find("sup a").trigger("click");
+		cy.get(".desktop-footnote").should("contain.text", excerpt);
+		cy.get(`#${featureId} .feature-value`).eq(column).find("sup a").trigger("click");
 	},
 	expectProductNames: (names: string[]) => {
 		cy.get("#product-header .product-name").should("have.length", names.length);

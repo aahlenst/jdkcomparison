@@ -382,13 +382,13 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 	});
 
-	it.skip("displays footnotes", () => {
+	it("displays footnotes", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectFootnote(1, "Some clarifications regarding JavaFX", 2);
-		comparisonPage.expectFootnote(2, "Some remark regarding paid support");
-		comparisonPage.expectFootnote(3, "Some comment about the end of life date");
+		comparisonPage.expectFootnote("technologies-jfx", 0, 1, "Some clarifications regarding JavaFX");
+		comparisonPage.expectFootnote("support-paid", 1, 2, "Some remark regarding paid support");
+		comparisonPage.expectFootnote("support-eol-date", 1, 3, "Some comment about the end of life date");
 	});
 
 	it("can deal with unknown filter in search parameters", () => {

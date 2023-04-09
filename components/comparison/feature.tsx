@@ -2,7 +2,7 @@ import React, {PropsWithChildren} from "react";
 import {Model} from "../../src/modelTypes";
 import {FeatureExplanation} from "./featureExplanation";
 import {FeaturePresence} from "./featurePresence";
-import {FootnoteReference} from "./footnoteReference";
+import {Footnote} from "@/components/comparison/footnote";
 
 type FeatureProps = {
 	id: string,
@@ -20,8 +20,8 @@ export function Feature({id, name, values, children}: PropsWithChildren<FeatureP
 				{"text" in value &&
 					value.text
 				}
-				{"footnoteReference" in value &&
-					<FootnoteReference footnoteReference={value.footnoteReference}/>
+				{"footnoteReference" in value && value.footnoteReference &&
+					<Footnote footnoteReference={value.footnoteReference}/>
 				}
 			</div>
 		);

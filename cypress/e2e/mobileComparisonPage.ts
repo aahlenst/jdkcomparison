@@ -47,6 +47,12 @@ export const mobileComparisonPage = {
 			expect(foundOptions).to.deep.contain({label: label, checked: active});
 		});
 	},
+	expectFootnote: (featureId: string, column: number, number: number, excerpt: string) => {
+		cy.get(`#${featureId} .feature-value`).eq(column).find("sup").should("have.text", `[${number}]`);
+		cy.get(`#${featureId} .feature-value`).eq(column).find("sup a").trigger("click");
+		cy.get(".mobile-footnote").should("contain.text", excerpt);
+		cy.get("#comparison-modals .mobile-footnote-overlay").trigger("click");
+	},
 	expectPageTitle: (title: string) => {
 		cy.title().should("eq", title);
 	},

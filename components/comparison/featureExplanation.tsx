@@ -38,7 +38,7 @@ export function FeatureExplanation({children}: PropsWithChildren) {
 					ref={setPopperElement}
 					style={styles.popper}
 					{...attributes.popper}
-					className="desktop-feature-explanation hidden sm:block absolute left-1/2 z-10 w-screen max-w-sm -translate-x-1/2 transform">
+					className="desktop-feature-explanation popper-tooltip hidden sm:block absolute left-1/2 z-10 w-screen max-w-sm -translate-x-1/2 transform">
 					<div
 						className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-20 bg-white p-3 prose prose-sm max-w-none">
 						{children}
@@ -48,7 +48,7 @@ export function FeatureExplanation({children}: PropsWithChildren) {
 						ref={setArrowElement}
 						style={styles.arrow}
 						{...attributes.arrow}
-						className="absolute w-[10px] h-[10px] -z-10 left-[-5px] before:absolute before:w-[10px] before:h-[10px] before:-z-10 before:content-[''] before:rotate-45 before:bg-black before:opacity-20"
+						className="popper-tooltip-arrow"
 					/>
 				</Popover.Panel>
 			</ClientOnlyPortal>
