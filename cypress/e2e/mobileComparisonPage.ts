@@ -17,8 +17,8 @@ export const mobileComparisonPage = {
 			}
 		});
 	},
-	closeFeatureExplanation: (id: string) => {
-		cy.get(`#${id} .mobile-feature-explanation-overlay`).click();
+	closeFeatureExplanation: () => {
+		cy.get("#comparison-modals .mobile-feature-explanation-overlay").click();
 	},
 	closeFilter: (filterId: string) => {
 		cy.get(`#mobile-menu-filter-${filterId}`).click();
@@ -51,7 +51,7 @@ export const mobileComparisonPage = {
 		cy.title().should("eq", title);
 	},
 	showFeatureExplanation: (id: string) => {
-		cy.get(`#${id} .mobile-feature-explanation-toggle`).click();
+		cy.get(`#${id} .feature-explanation-toggle`).click();
 	},
 	showFilter: (filterId: string) => {
 		cy.get(`#mobile-menu-filter-${filterId}`).click();

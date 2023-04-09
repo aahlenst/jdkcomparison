@@ -24,10 +24,10 @@ export function Filters() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<div id="filters" className="fixed left-0 top-16 right-0 h-12 z-50 flex items-center bg-white border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8">
+		<div id="filters" className="fixed left-0 top-16 right-0 h-12 z-30 flex items-center bg-white border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8">
 			{/* Mobile filters */}
 			<Transition.Root show={open} as={Fragment}>
-				<Dialog as="div" className="relative z-50 sm:hidden" onClose={setOpen}>
+				<Dialog as="div" className="relative z-40 sm:hidden" onClose={setOpen}>
 					<Transition.Child
 						as={Fragment}
 						enter="transition-opacity ease-linear duration-300"
@@ -40,7 +40,7 @@ export function Filters() {
 						<div className="fixed inset-0 bg-black bg-opacity-25"/>
 					</Transition.Child>
 
-					<div className="fixed inset-0 z-50 flex">
+					<div className="fixed inset-0 z-40 flex">
 						<Transition.Child
 							as={Fragment}
 							enter="transition ease-in-out duration-300 transform"

@@ -16,7 +16,7 @@ export function Navigation() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<div className="fixed left-0 top-0 right-0 h-16 z-40 bg-white shadow">
+		<div className="fixed left-0 top-0 right-0 h-16 z-30 bg-white shadow">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<nav className="relative flex h-16 justify-between" aria-label="Main navigation">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -62,7 +62,7 @@ export function Navigation() {
 			</div>
 
 			<Transition.Root show={open} as={Fragment}>
-				<Dialog as="div" className="relative z-50 lg:hidden" onClose={() => setOpen(false)}>
+				<Dialog as="div" className="relative z-40 lg:hidden" onClose={() => setOpen(false)}>
 					<Transition.Child
 						as={Fragment}
 						enter="transition-opacity ease-linear duration-300"
@@ -75,7 +75,7 @@ export function Navigation() {
 						<div className="fixed inset-0 bg-gray-600 bg-opacity-75"/>
 					</Transition.Child>
 
-					<div className="fixed inset-0 z-50 flex">
+					<div className="fixed inset-0 z-40 flex">
 						<Transition.Child
 							as={Fragment}
 							enter="transition ease-in-out duration-300 transform"

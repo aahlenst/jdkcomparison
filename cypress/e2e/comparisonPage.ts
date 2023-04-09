@@ -31,7 +31,7 @@ export const comparisonPage = {
 		});
 	},
 	closeFeatureExplanation: (id: string) => {
-		cy.get(`#${id} .desktop-feature-explanation-toggle`).click();
+		cy.get(`#${id} .feature-explanation-toggle`).click();
 	},
 	closeFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
@@ -162,7 +162,7 @@ export const comparisonPage = {
 		}
 	},
 	showFeatureExplanation: (id: string) => {
-		cy.get(`#${id} .desktop-feature-explanation-toggle`).click();
+		cy.get(`#${id} .feature-explanation-toggle`).click();
 	},
 	showFilter: (filterId: string) => {
 		cy.get(`#desktop-menu-filter-${filterId}`).click();
