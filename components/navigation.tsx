@@ -23,7 +23,7 @@ export function Navigation() {
 						{/* Mobile menu button */}
 						<button
 							id="mobile-menu-open"
-							className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+							className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500"
 							onClick={() => setOpen(true)}
 						>
 							<span className="sr-only">Open main menu</span>
@@ -39,11 +39,11 @@ export function Navigation() {
 						</div>
 						<div className="hidden sm:ml-6 sm:flex sm:space-x-8">
 							<Link href="/"
-								  className={classNames(isActive(router, "/") ? "border-indigo-500 text-gray-900" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700", "desktop-navigation-option desktop-navigation-option-jdk-comparison inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium")}>
+								  className={classNames(isActive(router, "/") ? "border-red-600 text-gray-900" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700", "desktop-navigation-option desktop-navigation-option-jdk-comparison inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium")}>
 								JDK Comparison
 							</Link>
 							<Link href="/faq"
-								  className={classNames(isActive(router, "/faq") ? "border-indigo-500 text-gray-900" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700", "desktop-navigation-option desktop-navigation-option-faq inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium")}>
+								  className={classNames(isActive(router, "/faq") ? "border-red-600 text-gray-900" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700", "desktop-navigation-option desktop-navigation-option-faq inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium")}>
 								FAQ
 							</Link>
 						</div>
@@ -52,7 +52,7 @@ export function Navigation() {
 						className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 						<a href="https://github.com/"
 						   type="button"
-						   className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+						   className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 						>
 							<span className="sr-only">Go to GitHub repository</span>
 							<GitHubIcon className="h-6 w-6" aria-hidden="true"/>
@@ -115,13 +115,13 @@ export function Navigation() {
 									<nav aria-label="Sidebar navigation" className="mt-5">
 										<div className="space-y-1">
 											<Link href="/"
-												  className={classNames(isActive(router, "/") ? "border-indigo-600 bg-indigo-50 text-indigo-600" : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900", "mobile-navigation-option mobile-navigation-option-jdk-comparison group flex items-center border-l-4 px-3 py-2 text-sm font-medium")}
+												  className={classNames(isActive(router, "/") ? "border-red-600 bg-red-50 text-red-600" : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900", "mobile-navigation-option mobile-navigation-option-jdk-comparison group flex items-center border-l-4 px-3 py-2 text-sm font-medium")}
 												  aria-current={isActive(router, "/") ? "page" : undefined}
 											>
 												JDK Comparison
 											</Link>
 											<Link href="/faq"
-												  className={classNames(isActive(router, "/faq") ? "border-indigo-600 bg-indigo-50 text-indigo-600" : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900", "mobile-navigation-option mobile-navigation-option-faq group flex items-center border-l-4 px-3 py-2 text-sm font-medium")}
+												  className={classNames(isActive(router, "/faq") ? "border-red-600 bg-red-50 text-red-600" : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900", "mobile-navigation-option mobile-navigation-option-faq group flex items-center border-l-4 px-3 py-2 text-sm font-medium")}
 												  aria-current={isActive(router, "/faq") ? "page" : undefined}
 											>
 												FAQ

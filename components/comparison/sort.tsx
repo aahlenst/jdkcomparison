@@ -18,7 +18,7 @@ export function Sort() {
 			{({active}) => (
 				<button
 					onClick={() => onClickHandler(comparator.id)}
-					className={classNames(active ? "bg-gray-100" : "", comparator.id === comparison.activeComparator?.id ? "sort-option-active border-indigo-500 bg-indigo-50 text-indigo-700" : "sort-option-inactive border-transparent", "sort-option border-l-4 w-full px-4 py-2 text-left text-sm font-medium text-gray-900")}
+					className={classNames(active ? "bg-gray-100" : "", comparator.id === comparison.activeComparator?.id ? "sort-option-active border-red-600 bg-red-50 text-red-700" : "sort-option-inactive border-transparent", "sort-option border-l-4 w-full px-4 py-2 text-left text-sm font-medium text-gray-900")}
 				>
 					{comparator.label}
 				</button>

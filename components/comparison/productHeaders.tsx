@@ -14,10 +14,12 @@ export function ProductHeaders({headers}: ProductHeadersProps) {
 				<div className="product-vendor text-sm text-gray-500">{product.vendor}</div>
 				<div className="product-name font-semibold">{product.name}</div>
 				<div className="product-download mt-4 text-xs">
-					<a href={product.downloadUrl} className="py-1 underline">Download</a>
+					<a href={product.downloadUrl}
+					   className="py-1 underline hover:no-underline text-blue-600 visited:text-violet-600">Download</a>
 				</div>
 				<div className="product-website mt-2 text-xs">
-					<a href={product.websiteUrl} className="py-1 underline">Website</a>
+					<a href={product.websiteUrl}
+					   className="py-1 underline hover:no-underline text-blue-600 visited:text-violet-600">Website</a>
 				</div>
 			</div>
 		);

@@ -21,10 +21,12 @@ export function Footnote({footnoteReference}: FootnoteProps) {
 
 	return (
 		<Popover as="sup" className="ml-0.5">
+			[
 			<Popover.Button as="a" ref={setReferenceElement} href={`#fn-${footnoteReference.number}`}
-							className="footnote-ref">
-				[{footnote.number}]
+							className="footnote-ref underline hover:no-underline text-blue-600 visited:text-violet-600">
+				{footnote.number}
 			</Popover.Button>
+			]
 			<ClientOnlyPortal selector="#comparison-modals">
 				{/* Overlay, only displayed on smaller screens. */}
 				<Popover.Overlay

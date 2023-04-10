@@ -21,7 +21,7 @@ export function CheckboxFilter({label, filter, onChangeHandler}: CheckboxFilterP
 					name={filter.id}
 					type="checkbox"
 					checked={option.selected}
-					className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+					className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
 					onChange={(e) => {
 						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
 					}}

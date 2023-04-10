@@ -11,6 +11,21 @@ module.exports = {
 			fontFamily: {
 				sans: ["var(--inter-font)", ...defaultTheme.fontFamily.sans],
 			},
+			typography: (theme) => ({
+				DEFAULT: {
+					css: {
+						a: {
+							color: theme("colors.blue.600"),
+							"&:hover": {
+								textDecorationLine: "none"
+							},
+							"&:visited": {
+								color: theme("colors.violet.600")
+							},
+						},
+					},
+				},
+			}),
 		},
 	},
 	plugins: [

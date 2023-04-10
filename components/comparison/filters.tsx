@@ -57,7 +57,7 @@ export function Filters() {
 									<button
 										id="mobile-filters-close"
 										type="button"
-										className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+										className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
 										onClick={() => setOpen(false)}
 									>
 										<span className="sr-only">Close menu</span>
