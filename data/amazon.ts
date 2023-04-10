@@ -75,7 +75,7 @@ export const data: Vendor = {
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
-				customisations: {text: "none", footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d"},
+				customisations: {text: "few", footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d"},
 				notableFeatures: {text: "none"},
 				license: {text: "GPLv2+CPE"},
 				freeInDevelopment: {present: Present.YES},
@@ -102,7 +102,7 @@ export const data: Vendor = {
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "none"},
-				customisations: {text: "none", footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d"},
+				customisations: {text: "few", footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d"},
 				notableFeatures: {text: "none"},
 				license: {text: "GPLv2+CPE"},
 				freeInDevelopment: {present: Present.YES},
@@ -122,10 +122,12 @@ export const data: Vendor = {
 		},
 		{
 			id: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d",
-			markdown: "See the list of additional patches applied to [Amazon Corretto " +
-				"8](https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/patches.html), " +
-				"[11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/patches.html), " +
-				"[17](https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/patches.html)."
+			markdown: "See the change log of the respective Amazon Corretto version for a list of additional patches " +
+				"applied to Amazon Corretto: " +
+				"[8](https://github.com/corretto/corretto-8/blob/develop/CHANGELOG.md), " +
+				"[11](https://github.com/corretto/corretto-11/blob/develop/CHANGELOG.md), " +
+				"[17](https://github.com/corretto/corretto-17/blob/develop/CHANGELOG.md), " +
+				"[20](https://github.com/corretto/corretto-20/blob/develop/CHANGELOG.md)."
 		},
 		{
 			id: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
