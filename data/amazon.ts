@@ -67,7 +67,7 @@ export const data: Vendor = {
 				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
-				editions: {text: "JRE"},
+				editions: {text: "JRE", footnote: "7c5df998-f73e-426f-8955-d6a6df6ab856"},
 				customisations: {text: "few", footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d"},
 				notableFeatures: {text: "none"},
 				license: {text: "GPLv2+CPE"},
@@ -104,7 +104,7 @@ export const data: Vendor = {
 				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
-				editions: {text: "JRE"},
+				editions: {text: "JRE", footnote: "7c5df998-f73e-426f-8955-d6a6df6ab856"},
 				customisations: {text: "few", footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d"},
 				notableFeatures: {text: "none"},
 				license: {text: "GPLv2+CPE"},
@@ -187,6 +187,10 @@ export const data: Vendor = {
 		{
 			id: "fb2b4784-25df-44e6-9ae7-da3adf7dd000",
 			markdown: "ZGC is not available on all platforms and experimental."
+		},
+		{
+			id: "7c5df998-f73e-426f-8955-d6a6df6ab856",
+			markdown: "The JRE is only available on Amazon Linux 2."
 		}
 	]
 };
