@@ -24,7 +24,7 @@ export function SupportSection({productData, showDifferencesOnly}: SupportSectio
 	return (
 		<ComparisonSection id="support" label="Support">
 			{showFeatures.eolDate &&
-				<Feature id="support-eol-date" name="Patches until" values={eolDate}>
+				<Feature id="support-eol-date" name="Patches Until" values={eolDate}>
 					Date (Year-Month) until the JDK receives patches from the vendor.
 				</Feature>
 			}
