@@ -53,6 +53,7 @@ export type JDKFeatures = {
 	javaFX: FeaturePresence
 	flightRecorder: FeaturePresence
 	javaWS: FeaturePresence
+	gc: GarbageCollectors
 	aqavit: FeaturePresence
 	tck: FeaturePresence
 	editions: FeatureDescription
@@ -72,6 +73,17 @@ export type JDKFeatures = {
 	eolDate: FeatureDescription
 	releaseSchedule: FeatureDescription
 	releaseDelay: FeatureDescription
+}
+
+export type GarbageCollectors = {
+	cms: FeaturePresence
+	epsilon: FeaturePresence
+	g1: FeaturePresence
+	parallel: FeaturePresence
+	serial: FeaturePresence
+	shenandoah: FeaturePresence
+	z: FeaturePresence
+	custom: FeatureDescription
 }
 
 export type FeatureDescription = {

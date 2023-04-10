@@ -18,6 +18,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.PARTIALLY, footnote: "9960d648-de3a-42ab-85c7-462cc82a7932"},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.YES},
+					epsilon: {present: Present.NO},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.NO},
+					z: {present: Present.NO},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -45,6 +55,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.YES},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.PARTIALLY, footnote: "50c699b2-feca-4f9a-abda-55d79ba5c472"},
+					z: {present: Present.PARTIALLY, footnote: "fb2b4784-25df-44e6-9ae7-da3adf7dd000"},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -72,6 +92,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.NO},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.YES},
+					z: {present: Present.YES},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -99,6 +129,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.NO},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.YES},
+					z: {present: Present.YES},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "none"},
@@ -140,6 +180,14 @@ export const data: Vendor = {
 			markdown: "See the [Support Calendar](https://aws.amazon.com/corretto/faqs/#support_calendar) of " +
 				"Amazon Corretto for details."
 		},
+		{
+			id: "50c699b2-feca-4f9a-abda-55d79ba5c472",
+			markdown: "Shenandoah GC is not available on all platforms."
+		},
+		{
+			id: "fb2b4784-25df-44e6-9ae7-da3adf7dd000",
+			markdown: "ZGC is not available on all platforms and experimental."
+		}
 	]
 };
 

@@ -18,6 +18,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.NO},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.NO},
+					z: {present: Present.YES},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "none"},
@@ -45,6 +55,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.PARTIALLY},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.YES},
+				gc: {
+					cms: {present: Present.YES},
+					epsilon: {present: Present.NO},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.NO},
+					z: {present: Present.NO},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -72,6 +92,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.YES},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.NO},
+					z: {present: Present.PARTIALLY, footnote: "6576d2d3-c547-4bb6-afea-be54dee845ac"},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "none"},
@@ -99,6 +129,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.NO},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.NO},
+					z: {present: Present.YES},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "none"},
@@ -126,6 +166,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.NO},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.NO},
+					z: {present: Present.YES},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.NO},
 				tck: {present: Present.YES},
 				editions: {text: "none"},
@@ -148,6 +198,10 @@ export const data: Vendor = {
 				"For details, see [Java Client Roadmap " +
 				"Update](https://www.oracle.com/technetwork/java/javase/javaclientroadmapupdatev2020may-6548840.pdf)."
 		},
+		{
+			id: "6576d2d3-c547-4bb6-afea-be54dee845ac",
+			markdown: "ZGC is experimental and not available on all platforms."
+		}
 	]
 };
 

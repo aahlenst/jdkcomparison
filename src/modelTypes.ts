@@ -16,6 +16,14 @@ export namespace Model {
 		jfx: FeaturePresence,
 		jfr: FeaturePresence,
 		jaws: FeaturePresence,
+		cms: FeaturePresence,
+		epsilon: FeaturePresence,
+		g1: FeaturePresence,
+		parallel: FeaturePresence,
+		serial: FeaturePresence,
+		shenandoah: FeaturePresence,
+		z: FeaturePresence,
+		customGCs: FeatureDescription,
 		aqavit: FeaturePresence;
 		tck: FeaturePresence;
 		editions: FeatureDescription;

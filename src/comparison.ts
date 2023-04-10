@@ -75,6 +75,14 @@ function extractFeatureComparisons(vendor: Vendor, footnotes: Model.Footnote[]):
 			eolDate: mapFeatureDescription(jdk.features.eolDate, footnotes),
 			releaseSchedule: mapFeatureDescription(jdk.features.releaseSchedule, footnotes),
 			releaseDelay: mapFeatureDescription(jdk.features.releaseDelay, footnotes),
+			cms:mapFeaturePresence(jdk.features.gc.cms, footnotes),
+			epsilon: mapFeaturePresence(jdk.features.gc.epsilon, footnotes),
+			g1: mapFeaturePresence(jdk.features.gc.g1, footnotes),
+			parallel: mapFeaturePresence(jdk.features.gc.parallel, footnotes),
+			serial: mapFeaturePresence(jdk.features.gc.serial, footnotes),
+			shenandoah: mapFeaturePresence(jdk.features.gc.shenandoah, footnotes),
+			z: mapFeaturePresence(jdk.features.gc.z, footnotes),
+			customGCs: mapFeatureDescription(jdk.features.gc.custom, footnotes),
 		};
 	});
 }

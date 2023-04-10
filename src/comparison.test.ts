@@ -41,6 +41,14 @@ describe("extractComparisonData()", () => {
 		expect(jdk.jfx).toEqual({present: Model.Present.NO});
 		expect(jdk.jfr).toEqual({present: Model.Present.YES});
 		expect(jdk.jaws).toEqual({present: Model.Present.NO});
+		expect(jdk.cms).toEqual({present: Model.Present.NO});
+		expect(jdk.epsilon).toEqual({present: Model.Present.YES});
+		expect(jdk.g1).toEqual({present: Model.Present.YES});
+		expect(jdk.parallel).toEqual({present: Model.Present.YES});
+		expect(jdk.serial).toEqual({present: Model.Present.YES});
+		expect(jdk.shenandoah).toEqual({present: Model.Present.NO});
+		expect(jdk.z).toEqual({present: Model.Present.YES});
+		expect(jdk.customGCs).toEqual({text: "FairyGC"});
 		expect(jdk.aqavit).toEqual({present: Model.Present.YES});
 		expect(jdk.tck).toEqual({present: Model.Present.YES});
 		expect(jdk.editions).toEqual({text: "JRE"});

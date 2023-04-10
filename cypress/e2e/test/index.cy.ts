@@ -31,7 +31,7 @@ describe("JDK Comparison", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Certifications", "Customisations", "Licensing", "Support"]);
 
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeatureText("properties-feature-version", "Feature Version", ["17", "17", "8",]);
@@ -42,6 +42,16 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["no", "no", "yes"]);
 		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", ["yes", "yes", "no"]);
 		comparisonPage.expectFeaturePresence("technologies-jaws", "Java Web Start", ["no", "no", "no"]);
+
+		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturePresence("gcs-cms", "CMS", ["no", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("gcs-epsilon", "Epsilon", ["yes", "yes", "no"]);
+		comparisonPage.expectFeaturePresence("gcs-g1", "G1", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("gcs-parallel", "Parallel", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("gcs-serial", "Serial", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("gcs-shenandoah", "Shenandoah", ["partially", "no", "partially"]);
+		comparisonPage.expectFeaturePresence("gcs-z", "Z", ["partially", "yes", "partially"]);
+		comparisonPage.expectFeatureText("gcs-custom", "Custom GCs", ["none", "FairyGC", "none"]);
 
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturePresence("certifications-aqavit", "Eclipse AQAvit", ["yes", "yes", "yes"]);
@@ -69,9 +79,10 @@ describe("JDK Comparison", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Certifications", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
@@ -79,9 +90,10 @@ describe("JDK Comparison", () => {
 
 		comparisonPage.clickShowDifferencesOnly();
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
+		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "Shenandoah", "Z", "Custom GCs"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Delay"]);
@@ -100,6 +112,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Schedule", "Release Delay", "Paid support"]);
@@ -109,6 +122,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
+		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Schedule", "Release Delay", "Paid support"]);

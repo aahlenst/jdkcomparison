@@ -18,6 +18,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.YES},
+					epsilon: {present: Present.NO},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.NO},
+					z: {present: Present.NO},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -48,6 +58,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.YES},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.PARTIALLY, footnote: "7bdc2d88-3cb4-4879-830e-da51c7a662db"},
+					z: {present: Present.PARTIALLY, footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f"},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -78,6 +98,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.NO},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.PARTIALLY, footnote: "7bdc2d88-3cb4-4879-830e-da51c7a662db"},
+					z: {present: Present.PARTIALLY, footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f"},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -108,6 +138,16 @@ export const data: Vendor = {
 				javaFX: {present: Present.NO},
 				flightRecorder: {present: Present.YES},
 				javaWS: {present: Present.NO},
+				gc: {
+					cms: {present: Present.NO},
+					epsilon: {present: Present.YES},
+					g1: {present: Present.YES},
+					parallel: {present: Present.YES},
+					serial: {present: Present.YES},
+					shenandoah: {present: Present.YES},
+					z: {present: Present.YES},
+					custom: {text: "none"},
+				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -145,6 +185,14 @@ export const data: Vendor = {
 		{
 			id: "62fd52c0-82d0-468a-a413-38277b35bd30",
 			markdown: "See the [Release Roadmap for Eclipse Temurin](https://adoptium.net/support/) for details."
+		},
+		{
+			id: "7bdc2d88-3cb4-4879-830e-da51c7a662db",
+			markdown: "Shenandoah GC is not available on all platforms."
+		},
+		{
+			id: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f",
+			markdown: "ZGC is not available on all platforms and was experimental on OpenJDK 14 and earlier."
 		}
 	]
 };
