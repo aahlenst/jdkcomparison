@@ -30,7 +30,9 @@ export const data: Vendor = {
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},
-				eolDate: {text: "2026-11", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"}
+				eolDate: {text: "2026-11", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "1-2 weeks"},
 			}
 		},
 		{
@@ -58,7 +60,9 @@ export const data: Vendor = {
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},
-				eolDate: {text: "2024-10", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"}
+				eolDate: {text: "2024-10", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "1-2 weeks"},
 			}
 		},
 		{
@@ -86,7 +90,9 @@ export const data: Vendor = {
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},
-				eolDate: {text: "2027-10", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"}
+				eolDate: {text: "2027-10", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "1-2 weeks"},
 			}
 		},
 		{
@@ -114,7 +120,9 @@ export const data: Vendor = {
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {present: Present.PARTIALLY, footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb"},
-				eolDate: {text: "2023-09", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"}
+				eolDate: {text: "2023-09", footnote: "62fd52c0-82d0-468a-a413-38277b35bd30"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "1-2 weeks"},
 			}
 		},
 	],

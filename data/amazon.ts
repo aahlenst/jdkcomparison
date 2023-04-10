@@ -27,7 +27,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.PARTIALLY, footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb"},
-				eolDate: {text: "2026-06", footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5"}
+				eolDate: {text: "2026-06", footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "0-3 days"},
 			}
 		},
 		{
@@ -52,7 +54,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.PARTIALLY, footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb"},
-				eolDate: {text: "2027-09", footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5"}
+				eolDate: {text: "2027-09", footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "0-3 days"},
 			}
 		},
 		{
@@ -77,7 +81,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.PARTIALLY, footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb"},
-				eolDate: {text: "2029-10", footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5"}
+				eolDate: {text: "2029-10", footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "0-3 days"},
 			}
 		},
 		{
@@ -102,7 +108,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.PARTIALLY, footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb"},
-				eolDate: {text: "2023-10", footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5"}
+				eolDate: {text: "2023-10", footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "0-3 days"},
 			}
 		},
 	],

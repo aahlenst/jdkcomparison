@@ -51,6 +51,8 @@ describe("extractComparisonData()", () => {
 		expect(jdk.freeInProduction).toEqual({present: Model.Present.NO});
 		expect(jdk.paidSupport).toEqual({present: Model.Present.NO, footnoteReference: {backReference: 1, number: 1}});
 		expect(jdk.eolDate).toEqual({text: "2027-10", footnoteReference: {backReference: 1, number: 2}});
+		expect(jdk.releaseSchedule).toEqual({text: "OpenJDK"});
+		expect(jdk.releaseDelay).toEqual({text: "none"});
 	});
 
 	test("returns JDKs sorted by descending version, ascending vendor name, ascending JDK name", () => {

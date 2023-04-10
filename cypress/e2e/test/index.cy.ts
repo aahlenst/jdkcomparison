@@ -57,8 +57,10 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturePresence("licensing-free-in-development", "Free in Development", ["yes", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("licensing-free-in-production", "Free in Production", ["yes", "no", "yes"]);
 
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Release Schedule", "Release Delay", "Paid support"]);
 		comparisonPage.expectFeatureText("support-eol-date", "Patches until", ["2027-10", "2027-10[3]", "2026-10"]);
+		comparisonPage.expectFeatureText("support-release-schedule", "Release Schedule", ["OpenJDK", "OpenJDK", "OpenJDK"]);
+		comparisonPage.expectFeatureText("support-release-delay", "Release Delay", ["0-3 days", "none", "0-3 days"]);
 		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
 	});
 
@@ -73,7 +75,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Release Schedule", "Release Delay", "Paid support"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
@@ -82,7 +84,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Production"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Release Delay"]);
 	});
 
 	it("shows single product even if it should only display differences", () => {
@@ -100,7 +102,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Release Schedule", "Release Delay", "Paid support"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
@@ -109,7 +111,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Release Schedule", "Release Delay", "Paid support"]);
 	});
 
 	it("shows all filters", () => {

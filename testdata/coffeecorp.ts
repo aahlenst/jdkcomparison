@@ -27,7 +27,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.NO},
-				eolDate: {text: "2026-10"}
+				eolDate: {text: "2026-10"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "0-3 days"},
 			}
 		},
 		{
@@ -52,7 +54,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.NO},
-				eolDate: {text: "2027-10"}
+				eolDate: {text: "2027-10"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "0-3 days"},
 			}
 		}
 	],

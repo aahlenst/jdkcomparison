@@ -27,7 +27,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.NO},
-				eolDate: {text: "2023-10"}
+				eolDate: {text: "2023-10"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "none"},
 			}
 		},
 		{
@@ -52,7 +54,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.NO},
 				paidSupport: {present: Present.YES},
-				eolDate: {text: "2030-12", footnote: "e51a53a9-3309-4cbe-8bde-39b652246385"}
+				eolDate: {text: "2030-12", footnote: "e51a53a9-3309-4cbe-8bde-39b652246385"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "none"},
 			}
 		},
 		{
@@ -77,7 +81,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.NO},
 				paidSupport: {present: Present.YES},
-				eolDate: {text: "2026-09"}
+				eolDate: {text: "2026-09"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "none"},
 			}
 		},
 		{
@@ -102,7 +108,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.YES},
-				eolDate: {text: "2024-09"}
+				eolDate: {text: "2024-09"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "none"},
 			}
 		},
 		{
@@ -127,7 +135,9 @@ export const data: Vendor = {
 				freeInDevelopment: {present: Present.YES},
 				freeInProduction: {present: Present.YES},
 				paidSupport: {present: Present.YES},
-				eolDate: {text: "2023-09"}
+				eolDate: {text: "2023-09"},
+				releaseSchedule: {text: "OpenJDK"},
+				releaseDelay: {text: "none"},
 			}
 		},
 	],

@@ -70,6 +70,8 @@ export type JDKFeatures = {
 	freeInProduction: FeaturePresence
 	paidSupport: FeaturePresence
 	eolDate: FeatureDescription
+	releaseSchedule: FeatureDescription
+	releaseDelay: FeatureDescription
 }
 
 export type FeatureDescription = {

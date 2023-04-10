@@ -72,7 +72,9 @@ function extractFeatureComparisons(vendor: Vendor, footnotes: Model.Footnote[]):
 			freeInDevelopment: mapFeaturePresence(jdk.features.freeInDevelopment, footnotes),
 			freeInProduction: mapFeaturePresence(jdk.features.freeInProduction, footnotes),
 			paidSupport: mapFeaturePresence(jdk.features.paidSupport, footnotes),
-			eolDate: mapFeatureDescription(jdk.features.eolDate, footnotes)
+			eolDate: mapFeatureDescription(jdk.features.eolDate, footnotes),
+			releaseSchedule: mapFeatureDescription(jdk.features.releaseSchedule, footnotes),
+			releaseDelay: mapFeatureDescription(jdk.features.releaseDelay, footnotes),
 		};
 	});
 }

@@ -36,7 +36,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Paid support"]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches until", "Release Schedule", "Release Delay", "Paid support"]);
 	});
 
 	it("shows all filters", () => {

@@ -25,7 +25,9 @@ export namespace Model {
 		freeInDevelopment: FeaturePresence,
 		freeInProduction: FeaturePresence,
 		paidSupport: FeaturePresence,
-		eolDate: FeatureDescription
+		eolDate: FeatureDescription,
+		releaseSchedule: FeatureDescription,
+		releaseDelay: FeatureDescription,
 	}
 
 	export type Footnote = {
