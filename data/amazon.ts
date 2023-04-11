@@ -182,11 +182,13 @@ export const data: Vendor = {
 		},
 		{
 			id: "50c699b2-feca-4f9a-abda-55d79ba5c472",
-			markdown: "Shenandoah GC is not available on all platforms."
+			markdown: "[Shenandoah GC is not available on all " +
+				"platforms](https://wiki.openjdk.org/display/shenandoah) that Amazon Corretto is offered for."
 		},
 		{
 			id: "fb2b4784-25df-44e6-9ae7-da3adf7dd000",
-			markdown: "ZGC is not available on all platforms and experimental."
+			markdown: "[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that Amazon " +
+				"Corretto is offered for. Furthermore, it is experimental on some platforms depending on the version."
 		},
 		{
 			id: "7c5df998-f73e-426f-8955-d6a6df6ab856",

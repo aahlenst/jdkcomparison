@@ -200,7 +200,8 @@ export const data: Vendor = {
 		},
 		{
 			id: "6576d2d3-c547-4bb6-afea-be54dee845ac",
-			markdown: "ZGC is experimental and not available on all platforms."
+			markdown: "[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that Oracle JDK " +
+				"is offered for and experimental."
 		}
 	]
 };

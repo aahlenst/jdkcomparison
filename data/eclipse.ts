@@ -188,11 +188,13 @@ export const data: Vendor = {
 		},
 		{
 			id: "7bdc2d88-3cb4-4879-830e-da51c7a662db",
-			markdown: "Shenandoah GC is not available on all platforms."
+			markdown: "[Shenandoah GC is not available on all " +
+				"platforms](https://wiki.openjdk.org/display/shenandoah) that Eclipse Temurin is offered for."
 		},
 		{
 			id: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f",
-			markdown: "ZGC is not available on all platforms and was experimental on OpenJDK 14 and earlier."
+			markdown: "[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that Eclipse " +
+				"Temurin is offered for. Furthermore, it is experimental on some platforms depending on the version."
 		}
 	]
 };
