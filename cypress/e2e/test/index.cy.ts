@@ -19,6 +19,13 @@ describe("JDK Comparison", () => {
 		navigationComponent.expectPageTitle("JDK Comparison - FAQ");
 	});
 
+	it("displays GitHub link", () => {
+		cy.visit("http://localhost:3000/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		navigationComponent.expectSecondaryNavigationOption("github-link", "Go to GitHub repository", "https://github.com/aahlenst/jdkcomparison");
+	});
+
 	it("should display all products", () => {
 		cy.visit("http://localhost:3000/");
 

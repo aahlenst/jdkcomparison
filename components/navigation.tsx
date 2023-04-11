@@ -50,12 +50,15 @@ export function Navigation() {
 					</div>
 					<div
 						className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-						<a href="https://github.com/"
+						<a href="https://github.com/aahlenst/jdkcomparison"
 						   type="button"
+						   id="github-link"
 						   className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 						>
 							<span className="sr-only">Go to GitHub repository</span>
-							<GitHubIcon className="h-6 w-6" aria-hidden="true"/>
+							<GitHubIcon className="h-6 w-6" aria-hidden="true">
+								<title>Go to GitHub repository</title>
+							</GitHubIcon>
 						</a>
 					</div>
 				</nav>

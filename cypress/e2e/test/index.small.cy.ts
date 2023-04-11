@@ -1,5 +1,6 @@
 import {mobileNavigationComponent} from "../mobileNavigationComponent";
 import {mobileComparisonPage} from "../mobileComparisonPage";
+import {navigationComponent} from "@/cypress/e2e/navigationComponent";
 
 describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight: 844}, () => {
 	it("should display all navigation options", () => {
@@ -20,6 +21,13 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 
 		mobileNavigationComponent.navigateTo("FAQ");
 		mobileNavigationComponent.expectPageTitle("JDK Comparison - FAQ");
+	});
+
+	it("displays GitHub link", () => {
+		cy.visit("http://localhost:3000/");
+
+		mobileNavigationComponent.expectPageTitle("JDK Comparison");
+		mobileNavigationComponent.expectSecondaryNavigationOption("github-link", "Go to GitHub repository", "https://github.com/aahlenst/jdkcomparison");
 	});
 
 	it("shows all filters", () => {
