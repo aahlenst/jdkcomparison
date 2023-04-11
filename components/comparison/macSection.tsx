@@ -12,11 +12,11 @@ type MacSectionProps = {
 export function MacSection({productData, showDifferencesOnly}: MacSectionProps) {
 	const x64 = productData.map(product => ({...product.macx64, id: product.id}));
 	const aarch64 = productData.map(product => ({...product.macAArch64, id: product.id}));
-	const installer = productData.map(product => ({...product.macInstallers, id: product.id}));
+	const installers = productData.map(product => ({...product.macInstallers, id: product.id}));
 	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
 		x64: x64,
 		aarch64: aarch64,
-		installer: installer
+		installers: installers
 	});
 
 	if (!showSection) {
@@ -31,8 +31,8 @@ export function MacSection({productData, showDifferencesOnly}: MacSectionProps) 
 			{showFeatures.aarch64 &&
 				<Feature id="mac-aarch64" name="ARM, 64-bit" values={aarch64}/>
 			}
-			{showFeatures.installer &&
-				<Feature id="mac-installers" name="Installers" values={installer}/>
+			{showFeatures.installers &&
+				<Feature id="mac-installers" name="Installers" values={installers}/>
 			}
 		</ComparisonSection>
 	);

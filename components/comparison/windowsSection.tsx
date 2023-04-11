@@ -13,13 +13,13 @@ export function WindowsSection({productData, showDifferencesOnly}: WindowsSectio
 	const x32 = productData.map(product => ({...product.windowsx32, id: product.id}));
 	const x64 = productData.map(product => ({...product.windowsx64, id: product.id}));
 	const aarch64 = productData.map(product => ({...product.windowsAArch64, id: product.id}));
-	const installer = productData.map(product => ({...product.windowsInstallers, id: product.id}));
+	const installers = productData.map(product => ({...product.windowsInstallers, id: product.id}));
 	const containers = productData.map(product => ({...product.windowsContainerImages, id: product.id}));
 	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
 		x32: x32,
 		x64: x64,
 		aarch64: aarch64,
-		installer: installer,
+		installers: installers,
 		containers: containers
 	});
 
@@ -38,8 +38,8 @@ export function WindowsSection({productData, showDifferencesOnly}: WindowsSectio
 			{showFeatures.aarch64 &&
 				<Feature id="windows-aarch64" name="ARM, 64-bit" values={aarch64}/>
 			}
-			{showFeatures.installer &&
-				<Feature id="windows-installers" name="Installers" values={installer}/>
+			{showFeatures.installers &&
+				<Feature id="windows-installers" name="Installers" values={installers}/>
 			}
 			{showFeatures.containers &&
 				<Feature id="windows-containers" name="Container Images" values={containers}/>
