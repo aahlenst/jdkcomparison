@@ -5,48 +5,48 @@ export namespace Model {
 	}
 
 	export type FeatureComparison = {
-		id: string,
-		name: string,
-		vendor: string,
-		version: number,
-		downloadUrl: string,
-		websiteUrl: string,
-		virtualMachine: FeatureDescription,
-		classLibraries: FeatureDescription,
-		jfx: FeaturePresence,
-		jfr: FeaturePresence,
-		jaws: FeaturePresence,
-		cms: FeaturePresence,
-		epsilon: FeaturePresence,
-		g1: FeaturePresence,
-		parallel: FeaturePresence,
-		serial: FeaturePresence,
-		shenandoah: FeaturePresence,
-		z: FeaturePresence,
-		customGCs: FeatureDescription,
-		aqavit: FeaturePresence;
-		tck: FeaturePresence;
-		editions: FeatureDescription;
-		customisations: FeatureDescription;
-		notableFeatures: FeatureDescription;
-		license: FeatureDescription,
-		freeInDevelopment: FeaturePresence,
-		freeInProduction: FeaturePresence,
-		paidSupport: FeaturePresence,
-		eolDate: FeatureDescription,
-		releaseSchedule: FeatureDescription,
-		releaseDelay: FeatureDescription,
+		id: string
+		name: string
+		vendor: string
+		version: number
+		downloadUrl: string
+		websiteUrl: string
+		virtualMachine: FeatureDescription
+		classLibraries: FeatureDescription
+		jfx: FeaturePresence
+		jfr: FeaturePresence
+		jaws: FeaturePresence
+		cms: FeaturePresence
+		epsilon: FeaturePresence
+		g1: FeaturePresence
+		parallel: FeaturePresence
+		serial: FeaturePresence
+		shenandoah: FeaturePresence
+		z: FeaturePresence
+		customGCs: FeatureDescription
+		aqavit: FeaturePresence
+		tck: FeaturePresence
+		editions: FeatureDescription
+		customisations: FeatureDescription
+		notableFeatures: FeatureDescription
+		license: FeatureDescription
+		freeInDevelopment: FeaturePresence
+		freeInProduction: FeaturePresence
+		paidSupport: FeaturePresence
+		eolDate: FeatureDescription
+		releaseSchedule: FeatureDescription
+		releaseDelay: FeatureDescription
 	}
 
 	export type Footnote = {
-		id: string,
-		number: number,
-		html: string,
+		id: string
+		number: number
+		html: string
 		backReferences: number
 	}
 
 	export type FootnoteReference = {
-		number: number,
+		number: number
 		backReference: number
 	}
 
@@ -68,9 +68,9 @@ export namespace Model {
 	}
 
 	export interface Filter {
-		readonly id: string,
+		readonly id: string
 
-		readonly options: FilterOption[],
+		readonly options: FilterOption[]
 
 		apply(fc: Model.FeatureComparison): boolean
 

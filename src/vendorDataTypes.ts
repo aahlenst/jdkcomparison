@@ -27,7 +27,7 @@ export type JDK = {
 	 * Uniquely identifies the product. Only lowercase characters, numbers, and minus (-) are allowed. Typically, it is
 	 * a composition of the JDK's name and its version number, for example, `dukecorp-jdk-17`.
 	 */
-	id: string,
+	id: string
 	information: JDKInformation
 	features: JDKFeatures
 }
@@ -36,11 +36,11 @@ export type JDKInformation = {
 	/**
 	 * Human-readable name of the product, possibly including the vendor name, for example, `Dukecorp JDK 17`.
 	 */
-	name: string,
+	name: string
 	/**
 	 * The feature version of the JDK according to {@link https://openjdk.org/jeps/322|JEP 322}.
 	 */
-	version: number,
+	version: number
 	/**
 	 * Full URL to the site where the JDK can be downloaded from.
 	 */
@@ -90,7 +90,7 @@ export type FeatureDescription = {
 	/**
 	 * Textual description of the feature. Plain text only, no Markdown allowed.
 	 */
-	text: string,
+	text: string
 
 	/**
 	 * Optional reference to a {@link Footnote}.
@@ -99,7 +99,7 @@ export type FeatureDescription = {
 }
 
 export type FeaturePresence = {
-	present: Present,
+	present: Present
 	footnote?: FootnoteReference
 }
 
@@ -113,6 +113,6 @@ export enum Present {
 export type FootnoteReference = string
 
 export type Footnote = {
-	id: string,
+	id: string
 	markdown: string
 }
