@@ -42,7 +42,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
 		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
-		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "x86, 64-bit", "ARM, 64-bit", "Installers", "Container Images"]);
+		comparisonPage.expectFeaturesInSection("windows", ["x86, 64-bit", "x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);

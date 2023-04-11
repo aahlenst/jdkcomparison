@@ -29,11 +29,11 @@ export function WindowsSection({productData, showDifferencesOnly}: WindowsSectio
 
 	return (
 		<ComparisonSection id="windows" label="Platforms: Windows">
-			{showFeatures.x32 &&
-				<Feature id="windows-x32" name="x86, 32-bit" values={x32}/>
-			}
 			{showFeatures.x64 &&
 				<Feature id="windows-x64" name="x86, 64-bit" values={x64}/>
+			}
+			{showFeatures.x32 &&
+				<Feature id="windows-x32" name="x86, 32-bit" values={x32}/>
 			}
 			{showFeatures.aarch64 &&
 				<Feature id="windows-aarch64" name="ARM, 64-bit" values={aarch64}/>

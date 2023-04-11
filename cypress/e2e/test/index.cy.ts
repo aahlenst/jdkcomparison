@@ -65,9 +65,9 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", ["yes", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("mac-installers", "Installers", ["yes", "yes", "yes"]);
 
-		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "x86, 64-bit", "ARM, 64-bit", "Installers", "Container Images"]);
-		comparisonPage.expectFeaturePresence("windows-x32", "x86, 32-bit", ["no", "no", "yes"]);
+		comparisonPage.expectFeaturesInSection("windows", ["x86, 64-bit", "x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturePresence("windows-x64", "x86, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("windows-x32", "x86, 32-bit", ["no", "no", "yes"]);
 		comparisonPage.expectFeaturePresence("windows-aarch64", "ARM, 64-bit", ["yes", "no", "no"]);
 		comparisonPage.expectFeaturePresence("windows-installers", "Installers", ["yes", "no", "yes"]);
 		comparisonPage.expectFeaturePresence("windows-containers", "Container Images", ["partially", "no", "partially"]);
@@ -103,7 +103,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
 		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
-		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "x86, 64-bit", "ARM, 64-bit", "Installers", "Container Images"]);
+		comparisonPage.expectFeaturesInSection("windows", ["x86, 64-bit", "x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
