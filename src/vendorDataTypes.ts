@@ -54,6 +54,7 @@ export type JDKFeatures = {
 	flightRecorder: FeaturePresence
 	javaWS: FeaturePresence
 	gc: GarbageCollectors
+	mac: MacSupport
 	windows: WindowsSupport
 	aqavit: FeaturePresence
 	tck: FeaturePresence
@@ -85,6 +86,12 @@ export type GarbageCollectors = {
 	shenandoah: FeaturePresence
 	z: FeaturePresence
 	custom: FeatureDescription
+}
+
+export type MacSupport = {
+	x64: FeaturePresence
+	aarch64: FeaturePresence
+	installers: FeaturePresence
 }
 
 export type WindowsSupport = {

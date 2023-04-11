@@ -28,6 +28,11 @@ export const data: Vendor = {
 					z: {present: Present.PARTIALLY},
 					custom: {text: "none"},
 				},
+				mac: {
+					x64: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					installers: {present: Present.YES},
+				},
 				windows: {
 					x32: {present: Present.YES},
 					x64: {present: Present.YES},
@@ -71,6 +76,11 @@ export const data: Vendor = {
 					shenandoah: {present: Present.PARTIALLY},
 					z: {present: Present.PARTIALLY},
 					custom: {text: "none"},
+				},
+				mac: {
+					x64: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					installers: {present: Present.YES},
 				},
 				windows: {
 					x32: {present: Present.NO},

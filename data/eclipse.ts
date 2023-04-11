@@ -28,6 +28,11 @@ export const data: Vendor = {
 					z: {present: Present.NO},
 					custom: {text: "none"},
 				},
+				mac: {
+					x64: {present: Present.YES},
+					aarch64: {present: Present.NO},
+					installers: {present: Present.YES},
+				},
 				windows: {
 					x32: {present: Present.YES},
 					x64: {present: Present.YES},
@@ -74,6 +79,11 @@ export const data: Vendor = {
 					shenandoah: {present: Present.PARTIALLY, footnote: "7bdc2d88-3cb4-4879-830e-da51c7a662db"},
 					z: {present: Present.PARTIALLY, footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f"},
 					custom: {text: "none"},
+				},
+				mac: {
+					x64: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					installers: {present: Present.YES},
 				},
 				windows: {
 					x32: {present: Present.YES},
@@ -122,6 +132,11 @@ export const data: Vendor = {
 					z: {present: Present.PARTIALLY, footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f"},
 					custom: {text: "none"},
 				},
+				mac: {
+					x64: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					installers: {present: Present.YES},
+				},
 				windows: {
 					x32: {present: Present.YES},
 					x64: {present: Present.YES},
@@ -168,6 +183,11 @@ export const data: Vendor = {
 					shenandoah: {present: Present.YES},
 					z: {present: Present.YES},
 					custom: {text: "none"},
+				},
+				mac: {
+					x64: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					installers: {present: Present.YES},
 				},
 				windows: {
 					x32: {present: Present.NO},

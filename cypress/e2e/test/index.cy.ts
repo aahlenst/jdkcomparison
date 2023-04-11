@@ -38,7 +38,7 @@ describe("JDK Comparison", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: macOS", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
 
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeatureText("properties-feature-version", "Feature Version", ["17", "17", "8",]);
@@ -59,6 +59,11 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturePresence("gcs-shenandoah", "Shenandoah", ["partially", "no", "partially"]);
 		comparisonPage.expectFeaturePresence("gcs-z", "Z", ["partially", "yes", "partially"]);
 		comparisonPage.expectFeatureText("gcs-custom", "Custom GCs", ["none", "FairyGC", "none"]);
+
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
+		comparisonPage.expectFeaturePresence("mac-x64", "x86, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("mac-installers", "Installers", ["yes", "yes", "yes"]);
 
 		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "x86, 64-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturePresence("windows-x32", "x86, 32-bit", ["no", "no", "yes"]);
@@ -93,10 +98,11 @@ describe("JDK Comparison", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: macOS", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "x86, 64-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);

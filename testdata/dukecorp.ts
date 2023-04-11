@@ -28,6 +28,11 @@ export const data: Vendor = {
 					z: {present: Present.YES},
 					custom: {text: "FairyGC"},
 				},
+				mac: {
+					x64: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					installers: {present: Present.YES},
+				},
 				windows: {
 					x32: {present: Present.NO},
 					x64: {present: Present.YES},
