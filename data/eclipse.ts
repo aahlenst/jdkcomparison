@@ -28,6 +28,13 @@ export const data: Vendor = {
 					z: {present: Present.NO},
 					custom: {text: "none"},
 				},
+				windows: {
+					x32: {present: Present.YES},
+					x64: {present: Present.YES},
+					aarch64: {present: Present.NO},
+					installers: {present: Present.YES},
+					containerImages: {present: Present.PARTIALLY, footnote: "f1849822-ba83-43eb-b541-f952d1ac7a48"},
+				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -67,6 +74,13 @@ export const data: Vendor = {
 					shenandoah: {present: Present.PARTIALLY, footnote: "7bdc2d88-3cb4-4879-830e-da51c7a662db"},
 					z: {present: Present.PARTIALLY, footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f"},
 					custom: {text: "none"},
+				},
+				windows: {
+					x32: {present: Present.YES},
+					x64: {present: Present.YES},
+					aarch64: {present: Present.NO},
+					installers: {present: Present.YES},
+					containerImages: {present: Present.PARTIALLY, footnote: "f1849822-ba83-43eb-b541-f952d1ac7a48"},
 				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
@@ -108,6 +122,13 @@ export const data: Vendor = {
 					z: {present: Present.PARTIALLY, footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f"},
 					custom: {text: "none"},
 				},
+				windows: {
+					x32: {present: Present.YES},
+					x64: {present: Present.YES},
+					aarch64: {present: Present.NO},
+					installers: {present: Present.YES},
+					containerImages: {present: Present.PARTIALLY, footnote: "f1849822-ba83-43eb-b541-f952d1ac7a48"},
+				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},
@@ -147,6 +168,13 @@ export const data: Vendor = {
 					shenandoah: {present: Present.YES},
 					z: {present: Present.YES},
 					custom: {text: "none"},
+				},
+				windows: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					aarch64: {present: Present.NO},
+					installers: {present: Present.YES},
+					containerImages: {present: Present.YES},
 				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
@@ -195,6 +223,11 @@ export const data: Vendor = {
 			id: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f",
 			markdown: "[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that Eclipse " +
 				"Temurin is offered for. Furthermore, it is experimental on some platforms depending on the version."
+		},
+		{
+			id: "f1849822-ba83-43eb-b541-f952d1ac7a48",
+			markdown: "For a list of container images with Eclipse Temurin, see the [list of tags published on Docker" +
+				"Hub](https://github.com/docker-library/docs/blob/master/eclipse-temurin/README.md#supported-tags-and-respective-dockerfile-links)."
 		}
 	]
 };

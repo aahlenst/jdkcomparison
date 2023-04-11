@@ -49,6 +49,11 @@ describe("extractComparisonData()", () => {
 		expect(jdk.shenandoah).toEqual({present: Model.Present.NO});
 		expect(jdk.z).toEqual({present: Model.Present.YES});
 		expect(jdk.customGCs).toEqual({text: "FairyGC"});
+		expect(jdk.windowsx32).toEqual({present: Model.Present.NO});
+		expect(jdk.windowsx64).toEqual({present: Model.Present.YES});
+		expect(jdk.windowsAArch64).toEqual({present: Model.Present.NO});
+		expect(jdk.windowsInstallers).toEqual({present: Model.Present.NO});
+		expect(jdk.windowsContainerImages).toEqual({present: Model.Present.NO});
 		expect(jdk.aqavit).toEqual({present: Model.Present.YES});
 		expect(jdk.tck).toEqual({present: Model.Present.YES});
 		expect(jdk.editions).toEqual({text: "JRE"});

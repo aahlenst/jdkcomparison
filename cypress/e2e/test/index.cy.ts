@@ -31,7 +31,7 @@ describe("JDK Comparison", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
 
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeatureText("properties-feature-version", "Feature Version", ["17", "17", "8",]);
@@ -52,6 +52,13 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturePresence("gcs-shenandoah", "Shenandoah", ["partially", "no", "partially"]);
 		comparisonPage.expectFeaturePresence("gcs-z", "Z", ["partially", "yes", "partially"]);
 		comparisonPage.expectFeatureText("gcs-custom", "Custom GCs", ["none", "FairyGC", "none"]);
+
+		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "x86, 64-bit", "ARM, 64-bit", "Installers", "Container Images"]);
+		comparisonPage.expectFeaturePresence("windows-x32", "x86, 32-bit", ["no", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("windows-x64", "x86, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("windows-aarch64", "ARM, 64-bit", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("windows-installers", "Installers", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("windows-containers", "Container Images", ["partially", "no", "partially"]);
 
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturePresence("certifications-aqavit", "Eclipse AQAvit", ["yes", "yes", "yes"]);
@@ -79,10 +86,11 @@ describe("JDK Comparison", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "x86, 64-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
@@ -90,10 +98,11 @@ describe("JDK Comparison", () => {
 
 		comparisonPage.clickShowDifferencesOnly();
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Windows", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Delay"]);

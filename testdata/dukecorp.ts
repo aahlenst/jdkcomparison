@@ -28,6 +28,13 @@ export const data: Vendor = {
 					z: {present: Present.YES},
 					custom: {text: "FairyGC"},
 				},
+				windows: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					aarch64: {present: Present.NO},
+					installers: {present: Present.NO},
+					containerImages: {present: Present.NO},
+				},
 				aqavit: {present: Present.YES},
 				tck: {present: Present.YES},
 				editions: {text: "JRE"},

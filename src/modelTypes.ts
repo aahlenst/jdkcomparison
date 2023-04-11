@@ -24,6 +24,11 @@ export namespace Model {
 		shenandoah: FeaturePresence
 		z: FeaturePresence
 		customGCs: FeatureDescription
+		windowsx32: FeaturePresence
+		windowsx64: FeaturePresence
+		windowsAArch64: FeaturePresence
+		windowsInstallers: FeaturePresence
+		windowsContainerImages: FeaturePresence
 		aqavit: FeaturePresence
 		tck: FeaturePresence
 		editions: FeatureDescription
