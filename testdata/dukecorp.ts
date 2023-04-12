@@ -28,6 +28,21 @@ export const data: Vendor = {
 					z: {present: Present.YES},
 					custom: {text: "FairyGC"},
 				},
+				linux: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.NO},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.NO},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.NO},
+					deb: {present: Present.NO},
+					rpm: {present: Present.NO},
+					containerImages: {present: Present.NO}
+				},
 				mac: {
 					x64: {present: Present.YES},
 					aarch64: {present: Present.YES},

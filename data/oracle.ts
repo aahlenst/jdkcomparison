@@ -28,6 +28,21 @@ export const data: Vendor = {
 					z: {present: Present.YES},
 					custom: {text: "none"},
 				},
+				linux: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.NO},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.NO},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.NO},
+					deb: {present: Present.NO},
+					rpm: {present: Present.NO},
+					containerImages: {present: Present.NO}
+				},
 				mac: {
 					x64: {present: Present.YES},
 					aarch64: {present: Present.YES},
@@ -76,6 +91,22 @@ export const data: Vendor = {
 					shenandoah: {present: Present.NO},
 					z: {present: Present.NO},
 					custom: {text: "none"},
+				},
+				linux: {
+					x32: {present: Present.YES},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.NO},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.NO},
+					aarch32: {present: Present.YES},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.NO},
+					deb: {present: Present.NO},
+					// No repository, no RPM for ARM.
+					rpm: {present: Present.PARTIALLY, footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f"},
+					containerImages: {present: Present.NO}
 				},
 				mac: {
 					x64: {present: Present.YES},
@@ -126,6 +157,23 @@ export const data: Vendor = {
 					z: {present: Present.PARTIALLY, footnote: "6576d2d3-c547-4bb6-afea-be54dee845ac"},
 					custom: {text: "none"},
 				},
+				linux: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.NO},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.NO},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.NO},
+					// No repository, no Deb on AArch64.
+					deb: {present: Present.PARTIALLY, footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f"},
+					// No repository.
+					rpm: {present: Present.PARTIALLY},
+					containerImages: {present: Present.NO}
+				},
 				mac: {
 					x64: {present: Present.YES},
 					aarch64: {present: Present.YES},
@@ -174,6 +222,23 @@ export const data: Vendor = {
 					shenandoah: {present: Present.NO},
 					z: {present: Present.YES},
 					custom: {text: "none"},
+				},
+				linux: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.NO},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.NO},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.NO},
+					// No repository, no Deb on AArch64.
+					deb: {present: Present.PARTIALLY, footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f"},
+					// No repository.
+					rpm: {present: Present.PARTIALLY, footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f"},
+					containerImages: {present: Present.NO}
 				},
 				mac: {
 					x64: {present: Present.YES},
@@ -224,6 +289,23 @@ export const data: Vendor = {
 					z: {present: Present.YES},
 					custom: {text: "none"},
 				},
+				linux: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.NO},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.NO},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.NO},
+					// No repository, no Deb on AArch64.
+					deb: {present: Present.PARTIALLY, footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f"},
+					// No repository.
+					rpm: {present: Present.PARTIALLY, footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f"},
+					containerImages: {present: Present.NO}
+				},
 				mac: {
 					x64: {present: Present.YES},
 					aarch64: {present: Present.YES},
@@ -262,6 +344,11 @@ export const data: Vendor = {
 			id: "6576d2d3-c547-4bb6-afea-be54dee845ac",
 			markdown: "[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that Oracle JDK " +
 				"is offered for and experimental."
+		},
+		{
+			id: "2cef6afe-7ba7-43bb-b282-a9121992742f",
+			markdown: "Oracle only offers individual Linux packages to download, but does not have a central " +
+				"package repository. Furthermore, Linux packages for less common platforms are sometimes missing."
 		}
 	]
 };

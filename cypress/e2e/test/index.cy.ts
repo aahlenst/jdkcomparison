@@ -38,7 +38,7 @@ describe("JDK Comparison", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: macOS", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Linux", "Platforms: macOS", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
 
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeatureText("properties-feature-version", "Feature Version", ["17", "17", "8",]);
@@ -59,6 +59,21 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturePresence("gcs-shenandoah", "Shenandoah", ["partially", "no", "partially"]);
 		comparisonPage.expectFeaturePresence("gcs-z", "Z", ["partially", "yes", "partially"]);
 		comparisonPage.expectFeatureText("gcs-custom", "Custom GCs", ["none", "FairyGC", "none"]);
+
+		comparisonPage.expectFeaturesInSection("linux", ["x86, 64-bit", "x86, 64-bit, musl", "x86, 32-bit", "ARM, 64-bit", "ARM, 64-bit, musl", "ARM, 32-bit", "PPC, 64-bit", "RISC-V, 64-bit", "S390, 64-bit", "APK Packages", "Deb Packages", "RPM Packages", "Container Images"]);
+		comparisonPage.expectFeaturePresence("linux-x64", "x86, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-x64-musl", "x86, 64-bit, musl", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-x32", "x86, 32-bit", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-aarch64", "ARM, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-aarch64-musl", "ARM, 64-bit, musl", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-aarch32", "ARM, 32-bit", ["no", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-ppc64", "PPC, 64-bit", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-riscv64", "RISC-V, 64-bit", ["no", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-s390x", "S390, 64-bit", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-apk", "APK Packages", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-deb", "Deb Packages", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-rpm", "RPM Packages", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-container-images", "Container Images", ["partially", "no", "partially"]);
 
 		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		comparisonPage.expectFeaturePresence("mac-x64", "x86, 64-bit", ["yes", "yes", "yes"]);
@@ -98,10 +113,11 @@ describe("JDK Comparison", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: macOS", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Linux", "Platforms: macOS", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturesInSection("linux", ["x86, 64-bit", "x86, 64-bit, musl", "x86, 32-bit", "ARM, 64-bit", "ARM, 64-bit, musl", "ARM, 32-bit", "PPC, 64-bit", "RISC-V, 64-bit", "S390, 64-bit", "APK Packages", "Deb Packages", "RPM Packages", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		comparisonPage.expectFeaturesInSection("windows", ["x86, 64-bit", "x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
@@ -111,10 +127,11 @@ describe("JDK Comparison", () => {
 
 		comparisonPage.clickShowDifferencesOnly();
 
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Windows", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Linux", "Platforms: Windows", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturesInSection("linux", ["x86, 64-bit, musl", "x86, 32-bit", "ARM, 64-bit, musl", "PPC, 64-bit", "S390, 64-bit", "APK Packages", "Deb Packages", "RPM Packages", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("windows", ["x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Production"]);
@@ -135,6 +152,10 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturesInSection("linux", ["x86, 64-bit", "x86, 64-bit, musl", "x86, 32-bit", "ARM, 64-bit", "ARM, 64-bit, musl", "ARM, 32-bit", "PPC, 64-bit", "RISC-V, 64-bit", "S390, 64-bit", "APK Packages", "Deb Packages", "RPM Packages", "Container Images"]);
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
+		comparisonPage.expectFeaturesInSection("windows", ["x86, 64-bit", "x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
+		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Schedule", "Release Delay", "Paid support"]);
@@ -145,6 +166,10 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturesInSection("linux", ["x86, 64-bit", "x86, 64-bit, musl", "x86, 32-bit", "ARM, 64-bit", "ARM, 64-bit, musl", "ARM, 32-bit", "PPC, 64-bit", "RISC-V, 64-bit", "S390, 64-bit", "APK Packages", "Deb Packages", "RPM Packages", "Container Images"]);
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
+		comparisonPage.expectFeaturesInSection("windows", ["x86, 64-bit", "x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
+		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturesInSection("customisations", ["Editions", "Customisations", "Notable Features"]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Development", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Schedule", "Release Delay", "Paid support"]);

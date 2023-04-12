@@ -33,6 +33,21 @@ export const data: Vendor = {
 					aarch64: {present: Present.YES},
 					installers: {present: Present.YES},
 				},
+				linux: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.YES},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.YES},
+					deb: {present: Present.YES},
+					rpm: {present: Present.YES},
+					containerImages: {present: Present.PARTIALLY, footnote: "124b5cae-4563-4df5-aa71-020d2af224ff"}
+				},
 				windows: {
 					x32: {present: Present.YES},
 					x64: {present: Present.YES},
@@ -76,6 +91,21 @@ export const data: Vendor = {
 					shenandoah: {present: Present.PARTIALLY, footnote: "50c699b2-feca-4f9a-abda-55d79ba5c472"},
 					z: {present: Present.PARTIALLY, footnote: "fb2b4784-25df-44e6-9ae7-da3adf7dd000"},
 					custom: {text: "none"},
+				},
+				linux: {
+					x32: {present: Present.YES},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.YES},
+					aarch32: {present: Present.YES},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.PARTIALLY, footnote: "124b5cae-4563-4df5-aa71-020d2af224ff"},
+					deb: {present: Present.PARTIALLY, footnote: "124b5cae-4563-4df5-aa71-020d2af224ff"},
+					rpm: {present: Present.PARTIALLY, footnote: "124b5cae-4563-4df5-aa71-020d2af224ff"},
+					containerImages: {present: Present.PARTIALLY, footnote: "124b5cae-4563-4df5-aa71-020d2af224ff"}
 				},
 				mac: {
 					x64: {present: Present.YES},
@@ -126,6 +156,22 @@ export const data: Vendor = {
 					z: {present: Present.YES},
 					custom: {text: "none"},
 				},
+				linux: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.YES},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.YES},
+					deb: {present: Present.YES},
+					rpm: {present: Present.YES},
+					// No container images with Alpine Linux on aarch64.
+					containerImages: {present: Present.PARTIALLY, footnote: "124b5cae-4563-4df5-aa71-020d2af224ff"}
+				},
 				mac: {
 					x64: {present: Present.YES},
 					aarch64: {present: Present.YES},
@@ -174,6 +220,22 @@ export const data: Vendor = {
 					shenandoah: {present: Present.YES},
 					z: {present: Present.YES},
 					custom: {text: "none"},
+				},
+				linux: {
+					x32: {present: Present.NO},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.YES},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.NO},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.YES},
+					deb: {present: Present.YES},
+					rpm: {present: Present.YES},
+					// No container images with Alpine Linux on aarch64.
+					containerImages: {present: Present.PARTIALLY, footnote: "124b5cae-4563-4df5-aa71-020d2af224ff"}
 				},
 				mac: {
 					x64: {present: Present.YES},
@@ -241,6 +303,12 @@ export const data: Vendor = {
 		{
 			id: "7c5df998-f73e-426f-8955-d6a6df6ab856",
 			markdown: "The JRE is only available on Amazon Linux 2."
+		},
+		{
+			id: "124b5cae-4563-4df5-aa71-020d2af224ff",
+			markdown: "Some package formats and container images are not offered for less common architectures, for " +
+				"example, x86, 32-bit, and ARM with or without musl. For the full list of available container " +
+				"images, see [the list on Docker Hub](https://hub.docker.com/_/amazoncorretto)."
 		}
 	]
 };

@@ -37,10 +37,11 @@ describe("Comparison in production", () => {
 		cy.visit("http://localhost:3000/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
-		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: macOS", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
+		comparisonPage.expectSections(["Properties", "Technologies", "Garbage Collectors", "Platforms: Linux", "Platforms: macOS", "Platforms: Windows", "Certifications", "Customisations", "Licensing", "Support"]);
 		comparisonPage.expectFeaturesInSection("properties", ["Feature Version", "Virtual Machine", "Class Libraries"]);
 		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder", "Java Web Start"]);
 		comparisonPage.expectFeaturesInSection("gcs", ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z", "Custom GCs"]);
+		comparisonPage.expectFeaturesInSection("linux", ["x86, 64-bit", "x86, 64-bit, musl", "x86, 32-bit", "ARM, 64-bit", "ARM, 64-bit, musl", "ARM, 32-bit", "PPC, 64-bit", "RISC-V, 64-bit", "S390, 64-bit", "APK Packages", "Deb Packages", "RPM Packages", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		comparisonPage.expectFeaturesInSection("windows", ["x86, 64-bit", "x86, 32-bit", "ARM, 64-bit", "Installers", "Container Images"]);
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);

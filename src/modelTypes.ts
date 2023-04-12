@@ -24,9 +24,22 @@ export namespace Model {
 		shenandoah: FeaturePresence
 		z: FeaturePresence
 		customGCs: FeatureDescription
-		macx64: FeaturePresence;
-		macAArch64: FeaturePresence;
-		macInstallers: FeaturePresence;
+		linuxx32: FeaturePresence
+		linuxx64: FeaturePresence
+		linuxx64Musl: FeaturePresence
+		linuxAArch64: FeaturePresence
+		linuxAArch64Musl: FeaturePresence
+		linuxAArch32: FeaturePresence
+		linuxPPC64: FeaturePresence
+		linuxRISCV64: FeaturePresence
+		linuxs390x: FeaturePresence
+		linuxAPK: FeaturePresence
+		linuxDeb: FeaturePresence
+		linuxRPM: FeaturePresence
+		linuxContainerImages: FeaturePresence
+		macx64: FeaturePresence
+		macAArch64: FeaturePresence
+		macInstallers: FeaturePresence
 		windowsx32: FeaturePresence
 		windowsx64: FeaturePresence
 		windowsAArch64: FeaturePresence

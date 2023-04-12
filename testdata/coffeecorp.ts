@@ -28,6 +28,21 @@ export const data: Vendor = {
 					z: {present: Present.PARTIALLY},
 					custom: {text: "none"},
 				},
+				linux: {
+					x32: {present: Present.YES},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.NO},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.NO},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.YES},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.NO},
+					apk: {present: Present.NO},
+					deb: {present: Present.YES},
+					rpm: {present: Present.YES},
+					containerImages: {present: Present.PARTIALLY}
+				},
 				mac: {
 					x64: {present: Present.YES},
 					aarch64: {present: Present.YES},
@@ -76,6 +91,21 @@ export const data: Vendor = {
 					shenandoah: {present: Present.PARTIALLY},
 					z: {present: Present.PARTIALLY},
 					custom: {text: "none"},
+				},
+				linux: {
+					x32: {present: Present.YES},
+					x64: {present: Present.YES},
+					x64Musl: {present: Present.YES},
+					aarch64: {present: Present.YES},
+					aarch64Musl: {present: Present.YES},
+					aarch32: {present: Present.NO},
+					ppc64: {present: Present.YES},
+					riscv64: {present: Present.NO},
+					s390x: {present: Present.YES},
+					apk: {present: Present.YES},
+					deb: {present: Present.YES},
+					rpm: {present: Present.YES},
+					containerImages: {present: Present.PARTIALLY}
 				},
 				mac: {
 					x64: {present: Present.YES},
