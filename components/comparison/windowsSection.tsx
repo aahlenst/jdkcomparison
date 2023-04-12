@@ -4,8 +4,10 @@ import {Model} from "@/src/modelTypes";
 import {useShowDifferencesOnly} from "@/hooks/useShowDifferencesOnly";
 import {ComparisonSection} from "@/components/comparison/comparisonSection";
 
+export type WindowsFeaturesSlice = Pick<Model.FeatureComparison, "id" | "windowsx32" | "windowsx64" | "windowsAArch64" | "windowsInstallers" | "windowsContainerImages">
+
 type WindowsSectionProps = {
-	productData: Model.FeatureComparison[],
+	productData: WindowsFeaturesSlice[],
 	showDifferencesOnly: boolean
 }
 
@@ -14,13 +16,13 @@ export function WindowsSection({productData, showDifferencesOnly}: WindowsSectio
 	const x64 = productData.map(product => ({...product.windowsx64, id: product.id}));
 	const aarch64 = productData.map(product => ({...product.windowsAArch64, id: product.id}));
 	const installers = productData.map(product => ({...product.windowsInstallers, id: product.id}));
-	const containers = productData.map(product => ({...product.windowsContainerImages, id: product.id}));
+	const containerImages = productData.map(product => ({...product.windowsContainerImages, id: product.id}));
 	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
 		x32: x32,
 		x64: x64,
 		aarch64: aarch64,
 		installers: installers,
-		containers: containers
+		containerImages: containerImages
 	});
 
 	if (!showSection) {
@@ -41,8 +43,8 @@ export function WindowsSection({productData, showDifferencesOnly}: WindowsSectio
 			{showFeatures.installers &&
 				<Feature id="windows-installers" name="Installers" values={installers}/>
 			}
-			{showFeatures.containers &&
-				<Feature id="windows-containers" name="Container Images" values={containers}/>
+			{showFeatures.containerImages &&
+				<Feature id="windows-container-images" name="Container Images" values={containerImages}/>
 			}
 		</ComparisonSection>
 	);

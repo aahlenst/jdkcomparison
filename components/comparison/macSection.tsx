@@ -4,8 +4,10 @@ import {Model} from "@/src/modelTypes";
 import {useShowDifferencesOnly} from "@/hooks/useShowDifferencesOnly";
 import {ComparisonSection} from "@/components/comparison/comparisonSection";
 
+export type MacFeaturesSlice = Pick<Model.FeatureComparison, "id" | "macx64" | "macAArch64" | "macInstallers">
+
 type MacSectionProps = {
-	productData: Model.FeatureComparison[],
+	productData: MacFeaturesSlice[],
 	showDifferencesOnly: boolean
 }
 

@@ -85,7 +85,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturePresence("windows-x32", "x86, 32-bit", ["no", "no", "yes"]);
 		comparisonPage.expectFeaturePresence("windows-aarch64", "ARM, 64-bit", ["yes", "no", "no"]);
 		comparisonPage.expectFeaturePresence("windows-installers", "Installers", ["yes", "no", "yes"]);
-		comparisonPage.expectFeaturePresence("windows-containers", "Container Images", ["partially", "no", "partially"]);
+		comparisonPage.expectFeaturePresence("windows-container-images", "Container Images", ["partially", "no", "partially"]);
 
 		comparisonPage.expectFeaturesInSection("certifications", ["Eclipse AQAvit", "TCK for Java SE"]);
 		comparisonPage.expectFeaturePresence("certifications-aqavit", "Eclipse AQAvit", ["yes", "yes", "yes"]);
