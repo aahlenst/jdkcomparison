@@ -20,8 +20,6 @@ export default function ComparisonPage({data, footnotes}: ComparisonProps) {
 		<>
 			<Head>
 				<title>JDK Comparison</title>
-				<meta name="viewport" content="width=device-width, initial-scale=1"/>
-				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 			<main>
 				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>

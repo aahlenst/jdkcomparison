@@ -16,7 +16,7 @@ describe("JDK Comparison", () => {
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
 
 		navigationComponent.navigateTo("FAQ");
-		navigationComponent.expectPageTitle("JDK Comparison - FAQ");
+		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
 	});
 
 	it("displays GitHub link", () => {

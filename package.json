@@ -28,6 +28,9 @@
 	"devDependencies": {
 		"@cloudflare/next-on-pages": "0.8.0",
 		"@jest/globals": "29.5.0",
+		"@mdx-js/loader": "2.3.0",
+		"@mdx-js/react": "2.3.0",
+		"@next/mdx": "13.3.0",
 		"@tailwindcss/aspect-ratio": "0.4.2",
 		"@tailwindcss/forms": "0.5.3",
 		"@tailwindcss/typography": "0.5.9",
@@ -44,6 +47,8 @@
 		"mocha-junit-reporter": "2.2.0",
 		"next-router-mock": "0.9.3",
 		"postcss": "8.4.21",
+		"rehype-autolink-headings": "6.1.1",
+		"rehype-slug": "5.1.0",
 		"tailwindcss": "3.3.1",
 		"typescript": "5.0.4",
 		"wrangler": "2.15.0"

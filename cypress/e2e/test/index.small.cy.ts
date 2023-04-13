@@ -20,7 +20,7 @@ describe("Home on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight
 		mobileNavigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
 
 		mobileNavigationComponent.navigateTo("FAQ");
-		mobileNavigationComponent.expectPageTitle("JDK Comparison - FAQ");
+		mobileNavigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
 	});
 
 	it("displays GitHub link", () => {

@@ -4,7 +4,7 @@ describe("FAQ on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight:
 	it("should display all navigation options", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		mobileNavigationComponent.expectPageTitle("JDK Comparison - FAQ");
+		mobileNavigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
 
 		mobileNavigationComponent.showMobileMenu();
 
@@ -16,7 +16,7 @@ describe("FAQ on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight:
 	it("should navigate to JDK Comparison", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		mobileNavigationComponent.expectPageTitle("JDK Comparison - FAQ");
+		mobileNavigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
 
 		mobileNavigationComponent.showMobileMenu();
 		mobileNavigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
@@ -28,7 +28,7 @@ describe("FAQ on a iPhone 12-sized screen", {viewportWidth: 390, viewportHeight:
 	it("should navigate to Homepage when clicking on logo", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		mobileNavigationComponent.expectPageTitle("JDK Comparison - FAQ");
+		mobileNavigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
 
 		mobileNavigationComponent.clickOnLogo();
 
