@@ -54,6 +54,10 @@ describe("<WindowsSection/>", () => {
 			"no",
 			"no",
 		]);
+		windowsSection.expectFeaturePresence("windows-x32", "x86, 32-bit", [
+			"no",
+			"no",
+		]);
 		windowsSection.expectFeaturePresence("windows-aarch64", "ARM, 64-bit", [
 			"no",
 			"no",
