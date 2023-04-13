@@ -95,6 +95,9 @@ describe("extractComparisonData()", () => {
 		expect(jdk.windowsContainerImages).toEqual({
 			present: Model.Present.NO,
 		});
+		expect(jdk.aixPPC).toEqual({ present: Model.Present.NO });
+		expect(jdk.solarisSPARC).toEqual({ present: Model.Present.NO });
+		expect(jdk.solarisx64).toEqual({ present: Model.Present.NO });
 		expect(jdk.aqavit).toEqual({ present: Model.Present.YES });
 		expect(jdk.tck).toEqual({ present: Model.Present.YES });
 		expect(jdk.editions).toEqual({ text: "JRE" });

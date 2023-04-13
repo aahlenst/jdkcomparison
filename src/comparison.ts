@@ -168,6 +168,18 @@ function extractFeatureComparisons(
 				jdk.features.windows.containerImages,
 				footnotes
 			),
+			aixPPC: mapFeaturePresence(
+				jdk.features.otherPlatforms.aixPPC,
+				footnotes
+			),
+			solarisSPARC: mapFeaturePresence(
+				jdk.features.otherPlatforms.solarisSPARC,
+				footnotes
+			),
+			solarisx64: mapFeaturePresence(
+				jdk.features.otherPlatforms.solarisx64,
+				footnotes
+			),
 			aqavit: mapFeaturePresence(jdk.features.aqavit, footnotes),
 			tck: mapFeaturePresence(jdk.features.tck, footnotes),
 			editions: mapFeatureDescription(jdk.features.editions, footnotes),

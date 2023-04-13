@@ -27,6 +27,7 @@ import { GarbageCollectorsSection } from "@/components/comparison/garbageCollect
 import { WindowsSection } from "@/components/comparison/windowsSection";
 import { MacSection } from "@/components/comparison/macSection";
 import { LinuxSection } from "@/components/comparison/linuxSection";
+import { OtherPlatformsSection } from "@/components/comparison/otherPlatformsSection";
 
 export function ComparisonTable() {
 	const comparison = useComparison();
@@ -56,6 +57,10 @@ export function ComparisonTable() {
 					showDifferencesOnly={comparison.showDifferencesOnly}
 				/>
 				<WindowsSection
+					productData={comparison.filteredData}
+					showDifferencesOnly={comparison.showDifferencesOnly}
+				/>
+				<OtherPlatformsSection
 					productData={comparison.filteredData}
 					showDifferencesOnly={comparison.showDifferencesOnly}
 				/>

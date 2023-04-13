@@ -93,6 +93,7 @@ export type JDKFeatures = {
 	linux: LinuxSupport;
 	mac: MacSupport;
 	windows: WindowsSupport;
+	otherPlatforms: OtherPlatformsSupport;
 	/**
 	 * Indicates whether the JDK has passed the Eclipse AQAvit test suite.
 	 */
@@ -306,6 +307,21 @@ export type WindowsSupport = {
 	 * Indicate the reason for the downgrade in a footnote.
 	 */
 	containerImages: FeaturePresence;
+};
+
+export type OtherPlatformsSupport = {
+	/**
+	 * Indicates whether a binary is produced for AIX, PPC.
+	 */
+	aixPPC: FeaturePresence;
+	/**
+	 * Indicates whether a binary is produced for Solaris, SPARC.
+	 */
+	solarisSPARC: FeaturePresence;
+	/**
+	 * Indicates whether a binary is produced for Solaris, x86, 64-bit.
+	 */
+	solarisx64: FeaturePresence;
 };
 
 export type FeatureDescription = {

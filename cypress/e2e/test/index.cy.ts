@@ -71,6 +71,7 @@ describe("JDK Comparison", () => {
 			"Platforms: Linux",
 			"Platforms: macOS",
 			"Platforms: Windows",
+			"Platforms: Other",
 			"Certifications",
 			"Customisations",
 			"Licensing",
@@ -305,6 +306,27 @@ describe("JDK Comparison", () => {
 			["partially", "no", "partially"]
 		);
 
+		comparisonPage.expectFeaturesInSection("other", [
+			"AIX, PPC",
+			"Solaris, SPARC",
+			"Solaris, x86, 64-bit",
+		]);
+		comparisonPage.expectFeaturePresence("aix-ppc", "AIX, PPC", [
+			"yes",
+			"no",
+			"yes",
+		]);
+		comparisonPage.expectFeaturePresence(
+			"solaris-sparc",
+			"Solaris, SPARC",
+			["no", "no", "yes"]
+		);
+		comparisonPage.expectFeaturePresence(
+			"solaris-x64",
+			"Solaris, x86, 64-bit",
+			["no", "no", "yes"]
+		);
+
 		comparisonPage.expectFeaturesInSection("certifications", [
 			"Eclipse AQAvit",
 			"TCK for Java SE",
@@ -402,6 +424,7 @@ describe("JDK Comparison", () => {
 			"Platforms: Linux",
 			"Platforms: macOS",
 			"Platforms: Windows",
+			"Platforms: Other",
 			"Certifications",
 			"Customisations",
 			"Licensing",
@@ -454,6 +477,11 @@ describe("JDK Comparison", () => {
 			"Installers",
 			"Container Images",
 		]);
+		comparisonPage.expectFeaturesInSection("other", [
+			"AIX, PPC",
+			"Solaris, SPARC",
+			"Solaris, x86, 64-bit",
+		]);
 		comparisonPage.expectFeaturesInSection("certifications", [
 			"Eclipse AQAvit",
 			"TCK for Java SE",
@@ -483,6 +511,7 @@ describe("JDK Comparison", () => {
 			"Garbage Collectors",
 			"Platforms: Linux",
 			"Platforms: Windows",
+			"Platforms: Other",
 			"Customisations",
 			"Licensing",
 			"Support",
@@ -518,6 +547,11 @@ describe("JDK Comparison", () => {
 			"ARM, 64-bit",
 			"Installers",
 			"Container Images",
+		]);
+		comparisonPage.expectFeaturesInSection("other", [
+			"AIX, PPC",
+			"Solaris, SPARC",
+			"Solaris, x86, 64-bit",
 		]);
 		comparisonPage.expectFeaturesInSection("customisations", [
 			"Customisations",
@@ -595,6 +629,11 @@ describe("JDK Comparison", () => {
 			"Installers",
 			"Container Images",
 		]);
+		comparisonPage.expectFeaturesInSection("other", [
+			"AIX, PPC",
+			"Solaris, SPARC",
+			"Solaris, x86, 64-bit",
+		]);
 		comparisonPage.expectFeaturesInSection("certifications", [
 			"Eclipse AQAvit",
 			"TCK for Java SE",
@@ -665,6 +704,11 @@ describe("JDK Comparison", () => {
 			"ARM, 64-bit",
 			"Installers",
 			"Container Images",
+		]);
+		comparisonPage.expectFeaturesInSection("other", [
+			"AIX, PPC",
+			"Solaris, SPARC",
+			"Solaris, x86, 64-bit",
 		]);
 		comparisonPage.expectFeaturesInSection("certifications", [
 			"Eclipse AQAvit",

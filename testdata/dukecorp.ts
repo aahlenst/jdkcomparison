@@ -71,6 +71,11 @@ export const data: Vendor = {
 					installers: { present: Present.NO },
 					containerImages: { present: Present.NO },
 				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
 				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: { text: "JRE" },

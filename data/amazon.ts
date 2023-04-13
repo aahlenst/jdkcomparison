@@ -69,6 +69,11 @@ export const data: Vendor = {
 					installers: { present: Present.YES },
 					containerImages: { present: Present.NO },
 				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
 				editions: {
@@ -164,6 +169,11 @@ export const data: Vendor = {
 					installers: { present: Present.YES },
 					containerImages: { present: Present.NO },
 				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
 				editions: {
@@ -245,6 +255,11 @@ export const data: Vendor = {
 					installers: { present: Present.YES },
 					containerImages: { present: Present.NO },
 				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
 				editions: {
@@ -325,6 +340,11 @@ export const data: Vendor = {
 					aarch64: { present: Present.NO },
 					installers: { present: Present.YES },
 					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
 				},
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },

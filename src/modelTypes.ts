@@ -61,6 +61,9 @@ export namespace Model {
 		windowsAArch64: FeaturePresence;
 		windowsInstallers: FeaturePresence;
 		windowsContainerImages: FeaturePresence;
+		aixPPC: FeaturePresence;
+		solarisSPARC: FeaturePresence;
+		solarisx64: FeaturePresence;
 		aqavit: FeaturePresence;
 		tck: FeaturePresence;
 		editions: FeatureDescription;

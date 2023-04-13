@@ -70,6 +70,7 @@ describe("Comparison in production", () => {
 			"Platforms: Linux",
 			"Platforms: macOS",
 			"Platforms: Windows",
+			"Platforms: Other",
 			"Certifications",
 			"Customisations",
 			"Licensing",
@@ -121,6 +122,11 @@ describe("Comparison in production", () => {
 			"ARM, 64-bit",
 			"Installers",
 			"Container Images",
+		]);
+		comparisonPage.expectFeaturesInSection("other", [
+			"AIX, PPC",
+			"Solaris, SPARC",
+			"Solaris, x86, 64-bit",
 		]);
 		comparisonPage.expectFeaturesInSection("certifications", [
 			"Eclipse AQAvit",
