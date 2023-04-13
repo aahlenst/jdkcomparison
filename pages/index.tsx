@@ -1,20 +1,20 @@
 import Head from "next/head";
-import {GetStaticProps} from "next";
+import { GetStaticProps } from "next";
 import React from "react";
-import {ComparisonTable} from "@/components/comparison/comparisonTable";
-import {Vendor} from "@/src/vendorDataTypes";
-import {extractComparisonData} from "@/src/comparison";
-import {Model} from "@/src/modelTypes";
-import {ComparisonProvider} from "@/components/comparison/comparisonContext";
-import {Filters} from "@/components/comparison/filters";
-import {createFilters} from "@/src/filter";
+import { ComparisonTable } from "@/components/comparison/comparisonTable";
+import { Vendor } from "@/src/vendorDataTypes";
+import { extractComparisonData } from "@/src/comparison";
+import { Model } from "@/src/modelTypes";
+import { ComparisonProvider } from "@/components/comparison/comparisonContext";
+import { Filters } from "@/components/comparison/filters";
+import { createFilters } from "@/src/filter";
 
 type ComparisonProps = {
-	data: Model.FeatureComparison[],
-	footnotes: Model.Footnote[]
-}
+	data: Model.FeatureComparison[];
+	footnotes: Model.Footnote[];
+};
 
-export default function ComparisonPage({data, footnotes}: ComparisonProps) {
+export default function ComparisonPage({ data, footnotes }: ComparisonProps) {
 	const filters: Model.Filter[] = createFilters(data);
 	return (
 		<>
@@ -22,9 +22,13 @@ export default function ComparisonPage({data, footnotes}: ComparisonProps) {
 				<title>JDK Comparison</title>
 			</Head>
 			<main>
-				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>
-					<Filters/>
-					<ComparisonTable/>
+				<ComparisonProvider
+					filters={filters}
+					data={data}
+					footnotes={footnotes}
+				>
+					<Filters />
+					<ComparisonTable />
 				</ComparisonProvider>
 			</main>
 		</>
@@ -51,15 +55,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	} else if (process.env.DATA_SOURCE === "testdata") {
 		data = testData;
 	} else {
-		throw new Error(`Unknown process.env.DATA_SOURCE: ${process.env.DATA_SOURCE}`);
+		throw new Error(
+			`Unknown process.env.DATA_SOURCE: ${process.env.DATA_SOURCE}`
+		);
 	}
 
-	const {productsInComparison, footnotes} = extractComparisonData(data);
+	const { productsInComparison, footnotes } = extractComparisonData(data);
 
 	return {
 		props: {
 			data: productsInComparison,
-			footnotes: footnotes
-		}
+			footnotes: footnotes,
+		},
 	};
 };

@@ -21,6 +21,7 @@ rm -rf .next .vercel
 
 # Check
 find . -name node_modules -prune -o -type f -name "*.sh" -exec shellcheck {} \;
+npx prettier --check .
 npm run lint
 
 # Test

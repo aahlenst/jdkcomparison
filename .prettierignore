@@ -1,0 +1,25 @@
+# Finder, Explorer, ...
+.DS_Store
+._*
+Thumbs.db
+
+# IDE Configuration
+.idea
+.vscode
+
+# Build output
+build/
+.next/
+.vercel/
+coverage/
+cypress/downloads/
+cypress/results/
+cypress/screenshots/
+cypress/videos/
+node_modules/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Local configuration
+.env*.local

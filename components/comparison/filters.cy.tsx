@@ -1,21 +1,33 @@
-import {ComparisonProvider} from "./comparisonContext";
-import {Filters} from "./filters";
-import {DynamicSelectionFilter, LicensingFilter, TechnologiesFilter} from "../../src/filter";
-import {MemoryRouterProvider} from "next-router-mock/MemoryRouterProvider";
+import { ComparisonProvider } from "./comparisonContext";
+import { Filters } from "./filters";
+import {
+	DynamicSelectionFilter,
+	LicensingFilter,
+	TechnologiesFilter,
+} from "../../src/filter";
+import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider";
 
 describe("<Filters/>", () => {
 	const filters = [
 		new TechnologiesFilter(),
 		new LicensingFilter(),
-		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString()),
-		new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor),
-		new DynamicSelectionFilter("vms", ["CoffeeVM", "DukeVM"], (fc) => fc.virtualMachine.toString())
+		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) =>
+			fc.version.toString()
+		),
+		new DynamicSelectionFilter(
+			"vendors",
+			["Coffeecorp", "Dukecorp"],
+			(fc) => fc.vendor
+		),
+		new DynamicSelectionFilter("vms", ["CoffeeVM", "DukeVM"], (fc) =>
+			fc.virtualMachine.toString()
+		),
 	];
 
 	const component = (
 		<MemoryRouterProvider url="/doesnotmatter">
 			<ComparisonProvider filters={filters} data={[]} footnotes={[]}>
-				<Filters/>
+				<Filters />
 			</ComparisonProvider>
 		</MemoryRouterProvider>
 	);
@@ -48,19 +60,35 @@ describe("<Filters/>", () => {
 
 		cy.get(".filter-name").eq(3).should("have.text", "Technologies");
 		cy.get(".filter-name").eq(3).click();
-		cy.get("label[for=technologies-jfr]").should("have.text", "Flight Recorder");
+		cy.get("label[for=technologies-jfr]").should(
+			"have.text",
+			"Flight Recorder"
+		);
 		cy.get("input[id=technologies-jfr]").should("not.be.checked");
 		cy.get("label[for=technologies-jfx]").should("have.text", "JavaFX");
 		cy.get("input[id=technologies-jfx]").should("not.be.checked");
-		cy.get("label[for=technologies-jaws]").should("have.text", "Java Web Start");
+		cy.get("label[for=technologies-jaws]").should(
+			"have.text",
+			"Java Web Start"
+		);
 		cy.get("input[id=technologies-jaws]").should("not.be.checked");
 
 		cy.get(".filter-name").eq(4).should("have.text", "Licensing");
 		cy.get(".filter-name").eq(4).click();
-		cy.get("label[for=licensing-free-in-development]").should("have.text", "Free in Development");
-		cy.get("input[id=licensing-free-in-development]").should("not.be.checked");
-		cy.get("label[for=licensing-free-in-production]").should("have.text", "Free in Production");
-		cy.get("input[id=licensing-free-in-production]").should("not.be.checked");
+		cy.get("label[for=licensing-free-in-development]").should(
+			"have.text",
+			"Free in Development"
+		);
+		cy.get("input[id=licensing-free-in-development]").should(
+			"not.be.checked"
+		);
+		cy.get("label[for=licensing-free-in-production]").should(
+			"have.text",
+			"Free in Production"
+		);
+		cy.get("input[id=licensing-free-in-production]").should(
+			"not.be.checked"
+		);
 	});
 
 	it("updates filters on click", () => {

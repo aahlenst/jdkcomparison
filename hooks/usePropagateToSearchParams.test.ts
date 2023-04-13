@@ -1,15 +1,25 @@
-import {beforeEach, describe, expect} from "@jest/globals";
-import {ComparisonState} from "@/components/comparison/comparisonContext";
-import {Model} from "@/src/modelTypes";
-import {DynamicSelectionFilter} from "@/src/filter";
-import {ApplyFilter, handleApplyFilter} from "@/hooks/usePropagateToSearchParams";
-import {DefaultComparator} from "@/src/sorting";
+import { beforeEach, describe, expect } from "@jest/globals";
+import { ComparisonState } from "@/components/comparison/comparisonContext";
+import { Model } from "@/src/modelTypes";
+import { DynamicSelectionFilter } from "@/src/filter";
+import {
+	ApplyFilter,
+	handleApplyFilter,
+} from "@/hooks/usePropagateToSearchParams";
+import { DefaultComparator } from "@/src/sorting";
 
 describe("handleApplyFilter()", () => {
+	const filterA: Model.Filter = new DynamicSelectionFilter(
+		"filterA",
+		["A", "B", "C"],
+		(fc) => fc.name
+	);
 
-	const filterA: Model.Filter = new DynamicSelectionFilter("filterA", ["A", "B", "C"], fc => fc.name);
-
-	const filterB: Model.Filter = new DynamicSelectionFilter("filterB", ["1", "2", "3"], fc => fc.name);
+	const filterB: Model.Filter = new DynamicSelectionFilter(
+		"filterB",
+		["1", "2", "3"],
+		(fc) => fc.name
+	);
 
 	const state: ComparisonState = {
 		filters: [filterA, filterB],
@@ -17,7 +27,7 @@ describe("handleApplyFilter()", () => {
 		filteredData: [],
 		footnotes: [],
 		showDifferencesOnly: false,
-		activeComparator: DefaultComparator
+		activeComparator: DefaultComparator,
 	};
 
 	beforeEach(() => {
@@ -31,7 +41,7 @@ describe("handleApplyFilter()", () => {
 
 		const searchParams = handleApplyFilter(action, state);
 
-		expect(searchParams).toEqual({"filterA": ["B"]});
+		expect(searchParams).toEqual({ filterA: ["B"] });
 	});
 
 	test("activates filter retaining existing state by adding all to search params", () => {
@@ -41,7 +51,7 @@ describe("handleApplyFilter()", () => {
 
 		const searchParams = handleApplyFilter(action, state);
 
-		expect(searchParams).toEqual({"filterA": ["A", "B"], "filterB": ["3"]});
+		expect(searchParams).toEqual({ filterA: ["A", "B"], filterB: ["3"] });
 	});
 
 	test("deactivates filter by removing it from search params", () => {
@@ -61,6 +71,6 @@ describe("handleApplyFilter()", () => {
 
 		const searchParams = handleApplyFilter(action, state);
 
-		expect(searchParams).toEqual({"filterA": ["A"], "filterB": ["3"]});
+		expect(searchParams).toEqual({ filterA: ["A"], filterB: ["3"] });
 	});
 });

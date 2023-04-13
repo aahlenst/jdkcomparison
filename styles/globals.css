@@ -10,19 +10,19 @@
 }
 
 @layer components {
-	.popper-tooltip[data-popper-placement^='top'] > .popper-tooltip-arrow {
+	.popper-tooltip[data-popper-placement^="top"] > .popper-tooltip-arrow {
 		bottom: -5px;
 	}
 
-	.popper-tooltip[data-popper-placement^='bottom'] > .popper-tooltip-arrow {
+	.popper-tooltip[data-popper-placement^="bottom"] > .popper-tooltip-arrow {
 		top: -5px;
 	}
 
-	.popper-tooltip[data-popper-placement^='left'] > .popper-tooltip-arrow {
+	.popper-tooltip[data-popper-placement^="left"] > .popper-tooltip-arrow {
 		right: -5px;
 	}
 
-	.popper-tooltip[data-popper-placement^='right'] > .popper-tooltip-arrow {
+	.popper-tooltip[data-popper-placement^="right"] > .popper-tooltip-arrow {
 		left: -5px;
 	}
 
@@ -35,7 +35,7 @@
 	}
 
 	.popper-tooltip-arrow::before {
-		content: '';
+		content: "";
 		transform: rotate(45deg);
 		background: #333;
 	}

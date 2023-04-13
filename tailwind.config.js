@@ -17,10 +17,10 @@ module.exports = {
 						a: {
 							color: theme("colors.blue.600"),
 							"&:hover": {
-								textDecorationLine: "none"
+								textDecorationLine: "none",
 							},
 							"&:visited": {
-								color: theme("colors.violet.600")
+								color: theme("colors.violet.600"),
 							},
 						},
 					},

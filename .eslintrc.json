@@ -1,9 +1,6 @@
 {
-	"extends": "next/core-web-vitals",
+	"extends": ["next/core-web-vitals", "eslint-config-prettier"],
 	"rules": {
-		"no-console": ["error"],
-		"no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
-		"quotes": ["error", "double"],
-		"semi": ["error", "always"]
+		"no-console": ["error"]
 	}
 }

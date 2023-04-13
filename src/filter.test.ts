@@ -1,5 +1,5 @@
-import {describe, test, beforeAll, expect} from "@jest/globals";
-import {extractComparisonData} from "@/src/comparison";
+import { describe, test, beforeAll, expect } from "@jest/globals";
+import { extractComparisonData } from "@/src/comparison";
 import {
 	applyFilters,
 	createFilters,
@@ -8,9 +8,9 @@ import {
 	TechnologiesFilter,
 	VendorsFilter,
 	VersionsFilter,
-	VirtualMachinesFilter
+	VirtualMachinesFilter,
 } from "@/src/filter";
-import {Model} from "@/src/modelTypes";
+import { Model } from "@/src/modelTypes";
 
 describe("filter module", () => {
 	let comparisonData: Model.FeatureComparison[];
@@ -19,67 +19,77 @@ describe("filter module", () => {
 		// Reverse alphabetical order to ensure data is being sorted.
 		const testData = [
 			(await import("@/testdata/dukecorp")).default,
-			(await import("@/testdata/coffeecorp")).default
+			(await import("@/testdata/coffeecorp")).default,
 		];
 		comparisonData = extractComparisonData(testData).productsInComparison;
 	});
 
 	test("createFilters() includes all filters", () => {
 		const filters = createFilters(comparisonData)
-			.map(filter => filter.id)
+			.map((filter) => filter.id)
 			.sort((a, b) => a.localeCompare(b, "en"));
 
-		expect(filters).toEqual(["licensing", "technologies", "vendors", "versions", "vms"]);
+		expect(filters).toEqual([
+			"licensing",
+			"technologies",
+			"vendors",
+			"versions",
+			"vms",
+		]);
 	});
 
 	test("applyFilters() only applies filters with active options", () => {
 		const vendorsFilter = new VendorsFilter(comparisonData);
 		const versionsFilter = new VersionsFilter(comparisonData);
 
-		let foundJDKs = comparisonData.map(c => {
-			return {vendor: c.vendor, version: c.version};
+		let foundJDKs = comparisonData.map((c) => {
+			return { vendor: c.vendor, version: c.version };
 		});
 
 		expect(foundJDKs).toHaveLength(3);
-		expect(foundJDKs).toContainEqual({vendor: "Coffeecorp", version: 8});
-		expect(foundJDKs).toContainEqual({vendor: "Coffeecorp", version: 17});
-		expect(foundJDKs).toContainEqual({vendor: "Dukecorp", version: 17});
+		expect(foundJDKs).toContainEqual({ vendor: "Coffeecorp", version: 8 });
+		expect(foundJDKs).toContainEqual({ vendor: "Coffeecorp", version: 17 });
+		expect(foundJDKs).toContainEqual({ vendor: "Dukecorp", version: 17 });
 
 		vendorsFilter.setOptionSelectedByLabel("Coffeecorp", true);
 
-		foundJDKs = applyFilters([vendorsFilter, versionsFilter], comparisonData)
-			.map(c => {
-				return {vendor: c.vendor, version: c.version};
-			});
+		foundJDKs = applyFilters(
+			[vendorsFilter, versionsFilter],
+			comparisonData
+		).map((c) => {
+			return { vendor: c.vendor, version: c.version };
+		});
 
 		expect(foundJDKs).toHaveLength(2);
-		expect(foundJDKs).toContainEqual({vendor: "Coffeecorp", version: 8});
-		expect(foundJDKs).toContainEqual({vendor: "Coffeecorp", version: 17});
+		expect(foundJDKs).toContainEqual({ vendor: "Coffeecorp", version: 8 });
+		expect(foundJDKs).toContainEqual({ vendor: "Coffeecorp", version: 17 });
 	});
 
 	test("applyFilters() applies all filters with active options", () => {
 		const vendorsFilter = new VendorsFilter(comparisonData);
 		const versionsFilter = new VersionsFilter(comparisonData);
 
-		let foundJDKs = comparisonData.map(c => {
-			return {vendor: c.vendor, version: c.version};
+		let foundJDKs = comparisonData.map((c) => {
+			return { vendor: c.vendor, version: c.version };
 		});
 
 		expect(foundJDKs).toHaveLength(3);
-		expect(foundJDKs).toContainEqual({vendor: "Coffeecorp", version: 8});
-		expect(foundJDKs).toContainEqual({vendor: "Coffeecorp", version: 17});
-		expect(foundJDKs).toContainEqual({vendor: "Dukecorp", version: 17});
+		expect(foundJDKs).toContainEqual({ vendor: "Coffeecorp", version: 8 });
+		expect(foundJDKs).toContainEqual({ vendor: "Coffeecorp", version: 17 });
+		expect(foundJDKs).toContainEqual({ vendor: "Dukecorp", version: 17 });
 
 		vendorsFilter.setOptionSelectedByLabel("Coffeecorp", true);
 		versionsFilter.setOptionSelectedByLabel("8", true);
 
-		foundJDKs = applyFilters([vendorsFilter, versionsFilter], comparisonData)
-			.map(c => {
-				return {vendor: c.vendor, version: c.version};
-			});
+		foundJDKs = applyFilters(
+			[vendorsFilter, versionsFilter],
+			comparisonData
+		).map((c) => {
+			return { vendor: c.vendor, version: c.version };
+		});
 
 		expect(foundJDKs).toHaveLength(1);
-		expect(foundJDKs).toContainEqual({vendor: "Coffeecorp", version: 8});
+		expect(foundJDKs).toContainEqual({ vendor: "Coffeecorp", version: 8 });
 	});
 });
 
@@ -90,7 +100,7 @@ describe("VendorsFilter", () => {
 		// Reverse alphabetical order to ensure data is being sorted.
 		const testData = [
 			(await import("@/testdata/dukecorp")).default,
-			(await import("@/testdata/coffeecorp")).default
+			(await import("@/testdata/coffeecorp")).default,
 		];
 		comparisonData = extractComparisonData(testData).productsInComparison;
 	});
@@ -100,20 +110,28 @@ describe("VendorsFilter", () => {
 
 		expect(vendorsFilter.id).toEqual("vendors");
 		expect(vendorsFilter.options.length).toEqual(2);
-		expect(vendorsFilter.options[0]).toEqual({id: "vendors-0", label: "Coffeecorp", selected: false});
-		expect(vendorsFilter.options[1]).toEqual({id: "vendors-1", label: "Dukecorp", selected: false});
+		expect(vendorsFilter.options[0]).toEqual({
+			id: "vendors-0",
+			label: "Coffeecorp",
+			selected: false,
+		});
+		expect(vendorsFilter.options[1]).toEqual({
+			id: "vendors-1",
+			label: "Dukecorp",
+			selected: false,
+		});
 	});
 
 	test("accepts all vendors if none is selected", () => {
 		const vendorsFilter = new VendorsFilter(comparisonData);
 
-		let foundVendors = comparisonData.map(c => c.vendor);
+		let foundVendors = comparisonData.map((c) => c.vendor);
 		expect(foundVendors).toContainEqual("Coffeecorp");
 		expect(foundVendors).toContainEqual("Dukecorp");
 
 		const filteredData = applyFilters([vendorsFilter], comparisonData);
 
-		foundVendors = filteredData.map(c => c.vendor);
+		foundVendors = filteredData.map((c) => c.vendor);
 		expect(foundVendors).toContainEqual("Coffeecorp");
 		expect(foundVendors).toContainEqual("Dukecorp");
 	});
@@ -121,7 +139,7 @@ describe("VendorsFilter", () => {
 	test("removes all vendors that are not selected", () => {
 		const vendorsFilter = new VendorsFilter(comparisonData);
 
-		let foundVendors = comparisonData.map(c => c.vendor);
+		let foundVendors = comparisonData.map((c) => c.vendor);
 		expect(foundVendors).toContainEqual("Coffeecorp");
 		expect(foundVendors).toContainEqual("Dukecorp");
 
@@ -129,7 +147,7 @@ describe("VendorsFilter", () => {
 
 		const filteredData = applyFilters([vendorsFilter], comparisonData);
 
-		foundVendors = filteredData.map(c => c.vendor);
+		foundVendors = filteredData.map((c) => c.vendor);
 		expect(foundVendors).not.toContainEqual("Coffeecorp");
 		expect(foundVendors).toContainEqual("Dukecorp");
 	});
@@ -137,7 +155,7 @@ describe("VendorsFilter", () => {
 	test("includes all vendors that are selected", () => {
 		const vendorsFilter = new VendorsFilter(comparisonData);
 
-		let foundVendors = comparisonData.map(c => c.vendor);
+		let foundVendors = comparisonData.map((c) => c.vendor);
 		expect(foundVendors).toContainEqual("Coffeecorp");
 		expect(foundVendors).toContainEqual("Dukecorp");
 
@@ -146,7 +164,7 @@ describe("VendorsFilter", () => {
 
 		const filteredData = applyFilters([vendorsFilter], comparisonData);
 
-		foundVendors = filteredData.map(c => c.vendor);
+		foundVendors = filteredData.map((c) => c.vendor);
 		expect(foundVendors).toContainEqual("Coffeecorp");
 		expect(foundVendors).toContainEqual("Dukecorp");
 	});
@@ -194,7 +212,7 @@ describe("VirtualMachinesFilter", () => {
 		// Reverse alphabetical order to ensure data is being sorted.
 		const testData = [
 			(await import("@/testdata/dukecorp")).default,
-			(await import("@/testdata/coffeecorp")).default
+			(await import("@/testdata/coffeecorp")).default,
 		];
 		comparisonData = extractComparisonData(testData).productsInComparison;
 	});
@@ -204,20 +222,31 @@ describe("VirtualMachinesFilter", () => {
 
 		expect(virtualMachinesFilter.id).toEqual("vms");
 		expect(virtualMachinesFilter.options.length).toEqual(2);
-		expect(virtualMachinesFilter.options[0]).toEqual({id: "vms-0", label: "CoffeeVM", selected: false});
-		expect(virtualMachinesFilter.options[1]).toEqual({id: "vms-1", label: "DukeVM", selected: false});
+		expect(virtualMachinesFilter.options[0]).toEqual({
+			id: "vms-0",
+			label: "CoffeeVM",
+			selected: false,
+		});
+		expect(virtualMachinesFilter.options[1]).toEqual({
+			id: "vms-1",
+			label: "DukeVM",
+			selected: false,
+		});
 	});
 
 	test("accepts all VMs if none is selected", () => {
 		const virtualMachinesFilter = new VirtualMachinesFilter(comparisonData);
 
-		let foundVMs = comparisonData.map(c => c.virtualMachine.text);
+		let foundVMs = comparisonData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).toContainEqual("CoffeeVM");
 		expect(foundVMs).toContainEqual("DukeVM");
 
-		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
+		const filteredData = applyFilters(
+			[virtualMachinesFilter],
+			comparisonData
+		);
 
-		foundVMs = filteredData.map(c => c.virtualMachine.text);
+		foundVMs = filteredData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).toContainEqual("CoffeeVM");
 		expect(foundVMs).toContainEqual("DukeVM");
 	});
@@ -225,15 +254,18 @@ describe("VirtualMachinesFilter", () => {
 	test("removes all VMs that are not selected", () => {
 		const virtualMachinesFilter = new VirtualMachinesFilter(comparisonData);
 
-		let foundVMs = comparisonData.map(c => c.virtualMachine.text);
+		let foundVMs = comparisonData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).toContainEqual("CoffeeVM");
 		expect(foundVMs).toContainEqual("DukeVM");
 
 		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
 
-		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
+		const filteredData = applyFilters(
+			[virtualMachinesFilter],
+			comparisonData
+		);
 
-		foundVMs = filteredData.map(c => c.virtualMachine.text);
+		foundVMs = filteredData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).not.toContainEqual("CoffeeVM");
 		expect(foundVMs).toContainEqual("DukeVM");
 	});
@@ -241,16 +273,19 @@ describe("VirtualMachinesFilter", () => {
 	test("includes all VMs that are selected", () => {
 		const virtualMachinesFilter = new VirtualMachinesFilter(comparisonData);
 
-		let foundVMs = comparisonData.map(c => c.virtualMachine.text);
+		let foundVMs = comparisonData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).toContainEqual("CoffeeVM");
 		expect(foundVMs).toContainEqual("DukeVM");
 
 		virtualMachinesFilter.setOptionSelectedByLabel("CoffeeVM", true);
 		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
 
-		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
+		const filteredData = applyFilters(
+			[virtualMachinesFilter],
+			comparisonData
+		);
 
-		foundVMs = filteredData.map(c => c.virtualMachine.text);
+		foundVMs = filteredData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).toContainEqual("CoffeeVM");
 		expect(foundVMs).toContainEqual("DukeVM");
 	});
@@ -264,7 +299,9 @@ describe("VirtualMachinesFilter", () => {
 		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
 
 		expect(virtualMachinesFilter.activeOptions()).toHaveLength(2);
-		expect(virtualMachinesFilter.activeOptions()).toContainEqual("CoffeeVM");
+		expect(virtualMachinesFilter.activeOptions()).toContainEqual(
+			"CoffeeVM"
+		);
 		expect(virtualMachinesFilter.activeOptions()).toContainEqual("DukeVM");
 	});
 
@@ -275,7 +312,9 @@ describe("VirtualMachinesFilter", () => {
 		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
 
 		expect(virtualMachinesFilter.activeOptions()).toHaveLength(2);
-		expect(virtualMachinesFilter.activeOptions()).toContainEqual("CoffeeVM");
+		expect(virtualMachinesFilter.activeOptions()).toContainEqual(
+			"CoffeeVM"
+		);
 		expect(virtualMachinesFilter.activeOptions()).toContainEqual("DukeVM");
 
 		virtualMachinesFilter.reset();
@@ -287,7 +326,9 @@ describe("VirtualMachinesFilter", () => {
 		const virtualMachinesFilter = new VirtualMachinesFilter(comparisonData);
 
 		expect(virtualMachinesFilter.hasOptionWithLabel("DukeVM")).toBeTruthy();
-		expect(virtualMachinesFilter.hasOptionWithLabel("Unknown option")).toBeFalsy();
+		expect(
+			virtualMachinesFilter.hasOptionWithLabel("Unknown option")
+		).toBeFalsy();
 	});
 });
 
@@ -298,7 +339,7 @@ describe("VersionsFilter", () => {
 		// Reverse alphabetical order to ensure data is being sorted.
 		const testData = [
 			(await import("@/testdata/dukecorp")).default,
-			(await import("@/testdata/coffeecorp")).default
+			(await import("@/testdata/coffeecorp")).default,
 		];
 		comparisonData = extractComparisonData(testData).productsInComparison;
 	});
@@ -308,20 +349,28 @@ describe("VersionsFilter", () => {
 
 		expect(versionFilter.id).toEqual("versions");
 		expect(versionFilter.options.length).toEqual(2);
-		expect(versionFilter.options[0]).toEqual({id: "versions-0", label: "8", selected: false});
-		expect(versionFilter.options[1]).toEqual({id: "versions-1", label: "17", selected: false});
+		expect(versionFilter.options[0]).toEqual({
+			id: "versions-0",
+			label: "8",
+			selected: false,
+		});
+		expect(versionFilter.options[1]).toEqual({
+			id: "versions-1",
+			label: "17",
+			selected: false,
+		});
 	});
 
 	test("accepts all versions if none is selected", () => {
 		const versionFilter = new VersionsFilter(comparisonData);
 
-		let foundVersions = comparisonData.map(c => c.version);
+		let foundVersions = comparisonData.map((c) => c.version);
 		expect(foundVersions).toContainEqual(8);
 		expect(foundVersions).toContainEqual(17);
 
 		const filtered = applyFilters([versionFilter], comparisonData);
 
-		foundVersions = filtered.map(c => c.version);
+		foundVersions = filtered.map((c) => c.version);
 		expect(foundVersions).toContainEqual(8);
 		expect(foundVersions).toContainEqual(17);
 	});
@@ -330,13 +379,13 @@ describe("VersionsFilter", () => {
 		const versionFilter = new VersionsFilter(comparisonData);
 		versionFilter.setOptionSelectedByLabel("8", true);
 
-		let foundVersions = comparisonData.map(c => c.version);
+		let foundVersions = comparisonData.map((c) => c.version);
 		expect(foundVersions).toContainEqual(8);
 		expect(foundVersions).toContainEqual(17);
 
 		const filtered = applyFilters([versionFilter], comparisonData);
 
-		foundVersions = filtered.map(c => c.version);
+		foundVersions = filtered.map((c) => c.version);
 		expect(foundVersions).toContainEqual(8);
 		expect(foundVersions).not.toContainEqual(17);
 	});
@@ -346,13 +395,13 @@ describe("VersionsFilter", () => {
 		versionFilter.setOptionSelectedByLabel("8", true);
 		versionFilter.setOptionSelectedByLabel("17", true);
 
-		let foundVersions = comparisonData.map(c => c.version);
+		let foundVersions = comparisonData.map((c) => c.version);
 		expect(foundVersions).toContainEqual(8);
 		expect(foundVersions).toContainEqual(17);
 
 		const filtered = applyFilters([versionFilter], comparisonData);
 
-		foundVersions = filtered.map(c => c.version);
+		foundVersions = filtered.map((c) => c.version);
 		expect(foundVersions).toContainEqual(8);
 		expect(foundVersions).toContainEqual(17);
 	});
@@ -395,7 +444,11 @@ describe("VersionsFilter", () => {
 
 describe("DynamicSelectionFilter", () => {
 	test("returns number of selected options set by option ID", () => {
-		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], fc => fc.vendor);
+		const filter = new DynamicSelectionFilter(
+			"a-filter",
+			["A", "B", "C"],
+			(fc) => fc.vendor
+		);
 
 		expect(filter.numberOfSelectedOptions()).toEqual(0);
 
@@ -414,7 +467,11 @@ describe("DynamicSelectionFilter", () => {
 	});
 
 	test("returns number of selected options set by option label", () => {
-		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], fc => fc.vendor);
+		const filter = new DynamicSelectionFilter(
+			"a-filter",
+			["A", "B", "C"],
+			(fc) => fc.vendor
+		);
 
 		expect(filter.numberOfSelectedOptions()).toEqual(0);
 
@@ -433,7 +490,11 @@ describe("DynamicSelectionFilter", () => {
 	});
 
 	test("returns options that are active", () => {
-		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], fc => fc.vendor);
+		const filter = new DynamicSelectionFilter(
+			"a-filter",
+			["A", "B", "C"],
+			(fc) => fc.vendor
+		);
 
 		expect(filter.activeOptions()).toHaveLength(0);
 
@@ -446,7 +507,11 @@ describe("DynamicSelectionFilter", () => {
 	});
 
 	test("deactivates all options when resetting", () => {
-		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], fc => fc.vendor);
+		const filter = new DynamicSelectionFilter(
+			"a-filter",
+			["A", "B", "C"],
+			(fc) => fc.vendor
+		);
 
 		filter.setOptionSelectedByLabel("A", true);
 		filter.setOptionSelectedByLabel("C", true);
@@ -461,7 +526,11 @@ describe("DynamicSelectionFilter", () => {
 	});
 
 	test("supports testing option existence by label", () => {
-		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], fc => fc.vendor);
+		const filter = new DynamicSelectionFilter(
+			"a-filter",
+			["A", "B", "C"],
+			(fc) => fc.vendor
+		);
 
 		expect(filter.hasOptionWithLabel("B")).toBeTruthy();
 		expect(filter.hasOptionWithLabel("Unknown option")).toBeFalsy();
@@ -475,7 +544,7 @@ describe("TechnologiesFilter", () => {
 		// Reverse alphabetical order to ensure data is being sorted.
 		const testData = [
 			(await import("@/testdata/dukecorp")).default,
-			(await import("@/testdata/coffeecorp")).default
+			(await import("@/testdata/coffeecorp")).default,
 		];
 		comparisonData = extractComparisonData(testData).productsInComparison;
 	});
@@ -488,69 +557,165 @@ describe("TechnologiesFilter", () => {
 		expect(technologiesFilter.options[0]).toEqual({
 			id: "technologies-jfr",
 			label: "Flight Recorder",
-			selected: false
+			selected: false,
 		});
 		expect(technologiesFilter.options[1]).toEqual({
 			id: "technologies-jfx",
 			label: "JavaFX",
-			selected: false
+			selected: false,
 		});
 		expect(technologiesFilter.options[2]).toEqual({
 			id: "technologies-jaws",
 			label: "Java Web Start",
-			selected: false
+			selected: false,
 		});
 	});
 
 	test("does not remove items with missing technologies if none is selected", () => {
 		const technologiesFilter = new TechnologiesFilter();
 
-		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, jfx: c.jfx.present}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, jfx: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, jfx: Model.Present.NO});
-		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, jfx: Model.Present.NO});
+		let foundProducts = comparisonData.map((c) => ({
+			vendor: c.vendor,
+			version: c.version,
+			jfx: c.jfx.present,
+		}));
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			jfx: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
 
 		const filteredData = applyFilters([technologiesFilter], comparisonData);
 
-		foundProducts = filteredData.map(c => ({vendor: c.vendor, version: c.version, jfx: c.jfx.present}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, jfx: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, jfx: Model.Present.NO});
-		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, jfx: Model.Present.NO});
+		foundProducts = filteredData.map((c) => ({
+			vendor: c.vendor,
+			version: c.version,
+			jfx: c.jfx.present,
+		}));
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			jfx: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
 	});
 
 	test("removes items with missing technologies", () => {
 		const technologiesFilter = new TechnologiesFilter();
 
-		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, jfx: c.jfx.present}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, jfx: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, jfx: Model.Present.NO});
-		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, jfx: Model.Present.NO});
+		let foundProducts = comparisonData.map((c) => ({
+			vendor: c.vendor,
+			version: c.version,
+			jfx: c.jfx.present,
+		}));
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			jfx: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
 
 		technologiesFilter.setOptionSelectedByLabel("JavaFX", true);
 		let filteredData = applyFilters([technologiesFilter], comparisonData);
 
-		foundProducts = filteredData.map(c => ({vendor: c.vendor, version: c.version, jfx: c.jfx.present}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, jfx: Model.Present.YES});
-		expect(foundProducts).not.toContainEqual({vendor: "Coffeecorp", version: 17, jfx: Model.Present.NO});
-		expect(foundProducts).not.toContainEqual({vendor: "Dukecorp", version: 17, jfx: Model.Present.NO});
+		foundProducts = filteredData.map((c) => ({
+			vendor: c.vendor,
+			version: c.version,
+			jfx: c.jfx.present,
+		}));
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			jfx: Model.Present.YES,
+		});
+		expect(foundProducts).not.toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
+		expect(foundProducts).not.toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
 
 		technologiesFilter.setOptionSelectedByLabel("JavaFX", true);
 		technologiesFilter.setOptionSelectedByLabel("Flight Recorder", true);
 		filteredData = applyFilters([technologiesFilter], comparisonData);
 
-		foundProducts = filteredData.map(c => ({vendor: c.vendor, version: c.version, jfx: c.jfx.present}));
-		expect(foundProducts).not.toContainEqual({vendor: "Coffeecorp", version: 8, jfx: Model.Present.YES});
-		expect(foundProducts).not.toContainEqual({vendor: "Coffeecorp", version: 17, jfx: Model.Present.NO});
-		expect(foundProducts).not.toContainEqual({vendor: "Dukecorp", version: 17, jfx: Model.Present.NO});
+		foundProducts = filteredData.map((c) => ({
+			vendor: c.vendor,
+			version: c.version,
+			jfx: c.jfx.present,
+		}));
+		expect(foundProducts).not.toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			jfx: Model.Present.YES,
+		});
+		expect(foundProducts).not.toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
+		expect(foundProducts).not.toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			jfx: Model.Present.NO,
+		});
 	});
 
 	test("filters by presence of Java Web Start", () => {
 		const technologiesFilter = new TechnologiesFilter();
 
-		let foundProducts = comparisonData.map(c => ({vendor: c.vendor, version: c.version, jaws: c.jaws.present}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, jaws: Model.Present.NO});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, jaws: Model.Present.NO});
-		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, jaws: Model.Present.NO});
+		let foundProducts = comparisonData.map((c) => ({
+			vendor: c.vendor,
+			version: c.version,
+			jaws: c.jaws.present,
+		}));
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			jaws: Model.Present.NO,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			jaws: Model.Present.NO,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			jaws: Model.Present.NO,
+		});
 
 		technologiesFilter.setOptionSelectedByLabel("Java Web Start", true);
 		let filteredData = applyFilters([technologiesFilter], comparisonData);
@@ -606,7 +771,9 @@ describe("TechnologiesFilter", () => {
 
 		expect(technologiesFilter.activeOptions()).toHaveLength(2);
 		expect(technologiesFilter.activeOptions()).toContainEqual("JavaFX");
-		expect(technologiesFilter.activeOptions()).toContainEqual("Flight Recorder");
+		expect(technologiesFilter.activeOptions()).toContainEqual(
+			"Flight Recorder"
+		);
 	});
 
 	test("deactivates all options when resetting", () => {
@@ -617,7 +784,9 @@ describe("TechnologiesFilter", () => {
 
 		expect(technologiesFilter.activeOptions()).toHaveLength(2);
 		expect(technologiesFilter.activeOptions()).toContainEqual("JavaFX");
-		expect(technologiesFilter.activeOptions()).toContainEqual("Flight Recorder");
+		expect(technologiesFilter.activeOptions()).toContainEqual(
+			"Flight Recorder"
+		);
 
 		technologiesFilter.reset();
 
@@ -628,7 +797,9 @@ describe("TechnologiesFilter", () => {
 		const technologiesFilter = new TechnologiesFilter();
 
 		expect(technologiesFilter.hasOptionWithLabel("JavaFX")).toBeTruthy();
-		expect(technologiesFilter.hasOptionWithLabel("Unknown option")).toBeFalsy();
+		expect(
+			technologiesFilter.hasOptionWithLabel("Unknown option")
+		).toBeFalsy();
 	});
 });
 
@@ -639,7 +810,7 @@ describe("LicensingFilter", () => {
 		// Reverse alphabetical order to ensure data is being sorted.
 		const testData = [
 			(await import("@/testdata/dukecorp")).default,
-			(await import("@/testdata/coffeecorp")).default
+			(await import("@/testdata/coffeecorp")).default,
 		];
 		comparisonData = extractComparisonData(testData).productsInComparison;
 	});
@@ -652,75 +823,135 @@ describe("LicensingFilter", () => {
 		expect(licensingFilter.options[0]).toEqual({
 			id: "licensing-free-in-development",
 			label: "Free in Development",
-			selected: false
+			selected: false,
 		});
 		expect(licensingFilter.options[1]).toEqual({
 			id: "licensing-free-in-production",
 			label: "Free in Production",
-			selected: false
+			selected: false,
 		});
 	});
 
 	test("keeps items with missing options if none is selected", () => {
 		const licensingFilter = new LicensingFilter();
 
-		let foundProducts = comparisonData.map(c => ({
+		let foundProducts = comparisonData.map((c) => ({
 			vendor: c.vendor,
 			version: c.version,
-			free: c.freeInProduction.present
+			free: c.freeInProduction.present,
 		}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			free: Model.Present.NO,
+		});
 
 		const filteredData = applyFilters([licensingFilter], comparisonData);
 
-		foundProducts = filteredData.map(c => ({
+		foundProducts = filteredData.map((c) => ({
 			vendor: c.vendor,
 			version: c.version,
-			free: c.freeInProduction.present
+			free: c.freeInProduction.present,
 		}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			free: Model.Present.NO,
+		});
 	});
 
 	test("removes items with missing options", () => {
 		const licensingFilter = new LicensingFilter();
 
-		let foundProducts = comparisonData.map(c => ({
+		let foundProducts = comparisonData.map((c) => ({
 			vendor: c.vendor,
 			version: c.version,
-			free: c.freeInProduction.present
+			free: c.freeInProduction.present,
 		}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			free: Model.Present.NO,
+		});
 
 		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
 		let filteredData = applyFilters([licensingFilter], comparisonData);
 
-		foundProducts = filteredData.map(c => ({
+		foundProducts = filteredData.map((c) => ({
 			vendor: c.vendor,
 			version: c.version,
-			free: c.freeInProduction.present
+			free: c.freeInProduction.present,
 		}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
-		expect(foundProducts).not.toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).not.toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			free: Model.Present.NO,
+		});
 
 		licensingFilter.setOptionSelectedByLabel("Free in Development", true);
 		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
 		filteredData = applyFilters([licensingFilter], comparisonData);
 
-		foundProducts = filteredData.map(c => ({
+		foundProducts = filteredData.map((c) => ({
 			vendor: c.vendor,
 			version: c.version,
-			free: c.freeInProduction.present
+			free: c.freeInProduction.present,
 		}));
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 8, free: Model.Present.YES});
-		expect(foundProducts).toContainEqual({vendor: "Coffeecorp", version: 17, free: Model.Present.YES});
-		expect(foundProducts).not.toContainEqual({vendor: "Dukecorp", version: 17, free: Model.Present.NO});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 8,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).toContainEqual({
+			vendor: "Coffeecorp",
+			version: 17,
+			free: Model.Present.YES,
+		});
+		expect(foundProducts).not.toContainEqual({
+			vendor: "Dukecorp",
+			version: 17,
+			free: Model.Present.NO,
+		});
 	});
 
 	test("returns number of selected options set by option ID", () => {
@@ -728,16 +959,25 @@ describe("LicensingFilter", () => {
 
 		expect(licensingFilter.numberOfSelectedOptions()).toEqual(0);
 
-		licensingFilter.setOptionSelected("licensing-free-in-development", true);
+		licensingFilter.setOptionSelected(
+			"licensing-free-in-development",
+			true
+		);
 		licensingFilter.setOptionSelected("licensing-free-in-production", true);
 
 		expect(licensingFilter.numberOfSelectedOptions()).toEqual(2);
 
-		licensingFilter.setOptionSelected("licensing-free-in-development", false);
+		licensingFilter.setOptionSelected(
+			"licensing-free-in-development",
+			false
+		);
 
 		expect(licensingFilter.numberOfSelectedOptions()).toEqual(1);
 
-		licensingFilter.setOptionSelected("licensing-free-in-production", false);
+		licensingFilter.setOptionSelected(
+			"licensing-free-in-production",
+			false
+		);
 
 		expect(licensingFilter.numberOfSelectedOptions()).toEqual(0);
 	});
@@ -770,8 +1010,12 @@ describe("LicensingFilter", () => {
 		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
 
 		expect(licensingFilter.activeOptions()).toHaveLength(2);
-		expect(licensingFilter.activeOptions()).toContainEqual("Free in Development");
-		expect(licensingFilter.activeOptions()).toContainEqual("Free in Production");
+		expect(licensingFilter.activeOptions()).toContainEqual(
+			"Free in Development"
+		);
+		expect(licensingFilter.activeOptions()).toContainEqual(
+			"Free in Production"
+		);
 	});
 
 	test("deactivates all options when resetting", () => {
@@ -781,8 +1025,12 @@ describe("LicensingFilter", () => {
 		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
 
 		expect(licensingFilter.activeOptions()).toHaveLength(2);
-		expect(licensingFilter.activeOptions()).toContainEqual("Free in Development");
-		expect(licensingFilter.activeOptions()).toContainEqual("Free in Production");
+		expect(licensingFilter.activeOptions()).toContainEqual(
+			"Free in Development"
+		);
+		expect(licensingFilter.activeOptions()).toContainEqual(
+			"Free in Production"
+		);
 
 		licensingFilter.reset();
 
@@ -792,7 +1040,11 @@ describe("LicensingFilter", () => {
 	test("supports testing option existence by label", () => {
 		const licensingFilter = new LicensingFilter();
 
-		expect(licensingFilter.hasOptionWithLabel("Free in Development")).toBeTruthy();
-		expect(licensingFilter.hasOptionWithLabel("Unknown option")).toBeFalsy();
+		expect(
+			licensingFilter.hasOptionWithLabel("Free in Development")
+		).toBeTruthy();
+		expect(
+			licensingFilter.hasOptionWithLabel("Unknown option")
+		).toBeFalsy();
 	});
 });

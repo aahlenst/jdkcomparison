@@ -1,17 +1,20 @@
-import {useRouter} from "next/router";
-import {ComparisonState, useComparison} from "@/components/comparison/comparisonContext";
-import {remove} from "../src/utils";
+import { useRouter } from "next/router";
+import {
+	ComparisonState,
+	useComparison,
+} from "@/components/comparison/comparisonContext";
+import { remove } from "../src/utils";
 
 export type SearchParams = {
-	[key: string]: undefined | string | string[]
-}
+	[key: string]: undefined | string | string[];
+};
 
 interface SearchParamsAction {
-	type: SearchParamsActionType
+	type: SearchParamsActionType;
 }
 
 enum SearchParamsActionType {
-	ApplyFilter = "APPLY_FILTER"
+	ApplyFilter = "APPLY_FILTER",
 }
 
 export class ApplyFilter implements SearchParamsAction {
@@ -38,14 +41,19 @@ export function usePropagateToSearchParams() {
 		let searchParams: SearchParams = {};
 		switch (action.type) {
 			case SearchParamsActionType.ApplyFilter:
-				searchParams = handleApplyFilter(action as ApplyFilter, comparison);
+				searchParams = handleApplyFilter(
+					action as ApplyFilter,
+					comparison
+				);
 				break;
 			default:
 				throw new Error(`Unknown action: ${action}`);
 		}
 
 		async function handleRouterChange() {
-			await router.push({query: searchParams}, undefined, {shallow: true});
+			await router.push({ query: searchParams }, undefined, {
+				shallow: true,
+			});
 		}
 
 		void handleRouterChange();
@@ -54,16 +62,25 @@ export function usePropagateToSearchParams() {
 	return handleSearchParamsAction;
 }
 
-export function handleApplyFilter(action: ApplyFilter, comparison: ComparisonState): SearchParams {
+export function handleApplyFilter(
+	action: ApplyFilter,
+	comparison: ComparisonState
+): SearchParams {
 	const searchParams: SearchParams = {};
 	for (const filter of comparison.filters) {
 		let activeOptions = filter.activeOptions();
 
-		if (filter.id == action.filterId && filter.hasOptionWithLabel(action.option)) {
+		if (
+			filter.id == action.filterId &&
+			filter.hasOptionWithLabel(action.option)
+		) {
 			if (action.active) {
 				activeOptions.push(action.option);
 			} else {
-				activeOptions = remove(activeOptions, item => item === action.option);
+				activeOptions = remove(
+					activeOptions,
+					(item) => item === action.option
+				);
 			}
 		}
 

@@ -20,6 +20,9 @@ jobs:
       - name: Run shellcheck on shell scripts
         run: find . -name node_modules -prune -o -type f -name "*.sh" -exec shellcheck {} \;
 
+      - name: Run Prettier to ensure files are properly formatted
+        run: npx prettier --check .
+
   build:
     name: Build and test
     runs-on: ubuntu-latest
@@ -32,7 +35,7 @@ jobs:
     strategy:
       matrix:
         # Use Node.js LTS and Current. Schedule: https://nodejs.org/en/about/releases/
-        node-version: [ 18.x, 19.x ]
+        node-version: [18.x, 19.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -40,7 +43,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install

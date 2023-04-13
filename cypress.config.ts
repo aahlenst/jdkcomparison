@@ -1,4 +1,4 @@
-import {defineConfig} from "cypress";
+import { defineConfig } from "cypress";
 
 export default defineConfig({
 	component: {
@@ -18,6 +18,6 @@ export default defineConfig({
 	},
 	retries: {
 		runMode: 2,
-		openMode: 0
-	}
+		openMode: 0,
+	},
 });

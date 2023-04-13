@@ -4,5 +4,5 @@ export const faqPage = {
 	},
 	expectSubtitle: (excerpt: string) => {
 		cy.get("main h2").should("contain.text", excerpt);
-	}
+	},
 };

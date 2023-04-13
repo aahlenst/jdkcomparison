@@ -1,9 +1,13 @@
-import {Menu, Transition} from "@headlessui/react";
-import {ChevronDownIcon} from "../icons";
-import {Fragment} from "react";
-import {AllComparators} from "@/src/sorting";
-import {SetActiveComparator, useComparison, useComparisonDispatch} from "@/components/comparison/comparisonContext";
-import {classNames} from "@/src/utils";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "../icons";
+import { Fragment } from "react";
+import { AllComparators } from "@/src/sorting";
+import {
+	SetActiveComparator,
+	useComparison,
+	useComparisonDispatch,
+} from "@/components/comparison/comparisonContext";
+import { classNames } from "@/src/utils";
 
 export function Sort() {
 	const comparison = useComparison();
@@ -13,26 +17,36 @@ export function Sort() {
 		dispatch([new SetActiveComparator(comparator)]);
 	}
 
-	const sortOptions = AllComparators.map(comparator => (
+	const sortOptions = AllComparators.map((comparator) => (
 		<Menu.Item key={comparator.label}>
-			{({active}) => (
+			{({ active }) => (
 				<button
 					onClick={() => onClickHandler(comparator.id)}
-					className={classNames(active ? "bg-gray-100" : "", comparator.id === comparison.activeComparator?.id ? "sort-option-active border-red-600 bg-red-50 text-red-700" : "sort-option-inactive border-transparent", "sort-option border-l-4 w-full px-4 py-2 text-left text-sm font-medium text-gray-900")}
+					className={classNames(
+						active ? "bg-gray-100" : "",
+						comparator.id === comparison.activeComparator?.id
+							? "sort-option-active border-red-600 bg-red-50 text-red-700"
+							: "sort-option-inactive border-transparent",
+						"sort-option border-l-4 w-full px-4 py-2 text-left text-sm font-medium text-gray-900"
+					)}
 				>
 					{comparator.label}
 				</button>
 			)}
-
 		</Menu.Item>
 	));
 
 	return (
-		<Menu as="div" id="sort-options" className="relative inline-block text-left">
+		<Menu
+			as="div"
+			id="sort-options"
+			className="relative inline-block text-left"
+		>
 			<div>
 				<Menu.Button
 					id="sort-options-button"
-					className="group inline-flex items-baseline justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+					className="group inline-flex items-baseline justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
+				>
 					Sort
 					<ChevronDownIcon
 						className="-mr-1 ml-1 h-3 w-3 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -52,10 +66,9 @@ export function Sort() {
 			>
 				<Menu.Items
 					id="sort-options-menu"
-					className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-					<div className="py-1">
-						{sortOptions}
-					</div>
+					className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
+				>
+					<div className="py-1">{sortOptions}</div>
 				</Menu.Items>
 			</Transition>
 		</Menu>

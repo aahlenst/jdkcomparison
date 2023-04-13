@@ -1,16 +1,26 @@
-import {CheckboxFilter} from "./checkboxFilter";
-import {DynamicSelectionFilter} from "../../src/filter";
-import {ApplyFilter} from "@/hooks/usePropagateToSearchParams";
+import { CheckboxFilter } from "./checkboxFilter";
+import { DynamicSelectionFilter } from "../../src/filter";
+import { ApplyFilter } from "@/hooks/usePropagateToSearchParams";
 
 describe("<CheckboxFilter/>", () => {
 	it("renders all options", () => {
-		const filter = new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor);
+		const filter = new DynamicSelectionFilter(
+			"vendors",
+			["Coffeecorp", "Dukecorp"],
+			(fc) => fc.vendor
+		);
 
 		const onChangeHandler = function () {
 			// Do nothing.
 		};
 
-		cy.mount(<CheckboxFilter label="Vendors" filter={filter} onChangeHandler={onChangeHandler}/>);
+		cy.mount(
+			<CheckboxFilter
+				label="Vendors"
+				filter={filter}
+				onChangeHandler={onChangeHandler}
+			/>
+		);
 
 		cy.get(".filter-name").should("have.text", "Vendors");
 		cy.get(".filter-name").click();
@@ -23,7 +33,11 @@ describe("<CheckboxFilter/>", () => {
 	});
 
 	it("enables and disables options on click", () => {
-		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString());
+		const filter = new DynamicSelectionFilter(
+			"versions",
+			["8", "11", "17"],
+			(fc) => fc.version.toString()
+		);
 
 		const onChangeHandler = function (action: ApplyFilter) {
 			for (const option of filter.options) {
@@ -33,43 +47,70 @@ describe("<CheckboxFilter/>", () => {
 			}
 		};
 
-		cy.mount(<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler}/>)
-			.then(({rerender}) => {
-				cy.get(".filter-name").should("have.text", "Versions");
-				cy.get(".filter-name").click();
+		cy.mount(
+			<CheckboxFilter
+				label="Versions"
+				filter={filter}
+				onChangeHandler={onChangeHandler}
+			/>
+		).then(({ rerender }) => {
+			cy.get(".filter-name").should("have.text", "Versions");
+			cy.get(".filter-name").click();
 
-				cy.get("label[for=versions-0]").should("have.text", 8);
-				cy.get("input[id=versions-0]").should("not.be.checked");
+			cy.get("label[for=versions-0]").should("have.text", 8);
+			cy.get("input[id=versions-0]").should("not.be.checked");
 
-				cy.get("label[for=versions-1]").should("have.text", 11);
-				cy.get("input[id=versions-1]").should("not.be.checked");
+			cy.get("label[for=versions-1]").should("have.text", 11);
+			cy.get("input[id=versions-1]").should("not.be.checked");
 
-				cy.get("input[id=versions-0]").click();
+			cy.get("input[id=versions-0]").click();
 
-				rerender(<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler}/>);
+			rerender(
+				<CheckboxFilter
+					label="Versions"
+					filter={filter}
+					onChangeHandler={onChangeHandler}
+				/>
+			);
 
-				cy.get("input[id=versions-0]").should("be.checked");
-				cy.get("input[id=versions-1]").should("not.be.checked");
+			cy.get("input[id=versions-0]").should("be.checked");
+			cy.get("input[id=versions-1]").should("not.be.checked");
 
-				cy.get("input[id=versions-0]").click();
+			cy.get("input[id=versions-0]").click();
 
-				rerender(<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler}/>);
+			rerender(
+				<CheckboxFilter
+					label="Versions"
+					filter={filter}
+					onChangeHandler={onChangeHandler}
+				/>
+			);
 
-				cy.get("input[id=versions-0]").should("not.be.checked");
-				cy.get("input[id=versions-1]").should("not.be.checked");
+			cy.get("input[id=versions-0]").should("not.be.checked");
+			cy.get("input[id=versions-1]").should("not.be.checked");
 
-				cy.get("input[id=versions-0]").click();
-				cy.get("input[id=versions-1]").click();
+			cy.get("input[id=versions-0]").click();
+			cy.get("input[id=versions-1]").click();
 
-				rerender(<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler}/>);
+			rerender(
+				<CheckboxFilter
+					label="Versions"
+					filter={filter}
+					onChangeHandler={onChangeHandler}
+				/>
+			);
 
-				cy.get("input[id=versions-0]").should("be.checked");
-				cy.get("input[id=versions-1]").should("be.checked");
-			});
+			cy.get("input[id=versions-0]").should("be.checked");
+			cy.get("input[id=versions-1]").should("be.checked");
+		});
 	});
 
 	it("retains selected state after reopening", () => {
-		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString());
+		const filter = new DynamicSelectionFilter(
+			"versions",
+			["8", "11", "17"],
+			(fc) => fc.version.toString()
+		);
 
 		const onChangeHandler = function (action: ApplyFilter) {
 			for (const option of filter.options) {
@@ -79,25 +120,36 @@ describe("<CheckboxFilter/>", () => {
 			}
 		};
 
-		cy.mount(<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler}/>)
-			.then(({rerender}) => {
-				cy.get(".filter-name").should("have.text", "Versions");
-				cy.get(".filter-name").click();
+		cy.mount(
+			<CheckboxFilter
+				label="Versions"
+				filter={filter}
+				onChangeHandler={onChangeHandler}
+			/>
+		).then(({ rerender }) => {
+			cy.get(".filter-name").should("have.text", "Versions");
+			cy.get(".filter-name").click();
 
-				cy.get("label[for=versions-0]").should("have.text", 8);
-				cy.get("input[id=versions-0]").should("not.be.checked");
+			cy.get("label[for=versions-0]").should("have.text", 8);
+			cy.get("input[id=versions-0]").should("not.be.checked");
 
-				cy.get("label[for=versions-1]").should("have.text", 11);
-				cy.get("input[id=versions-1]").should("not.be.checked");
+			cy.get("label[for=versions-1]").should("have.text", 11);
+			cy.get("input[id=versions-1]").should("not.be.checked");
 
-				cy.get("input[id=versions-0]").click();
-				cy.get(".filter-name").click();
+			cy.get("input[id=versions-0]").click();
+			cy.get(".filter-name").click();
 
-				rerender(<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler}/>);
+			rerender(
+				<CheckboxFilter
+					label="Versions"
+					filter={filter}
+					onChangeHandler={onChangeHandler}
+				/>
+			);
 
-				cy.get(".filter-name").click();
-				cy.get("input[id=versions-0]").should("be.checked");
-				cy.get("input[id=versions-1]").should("not.be.checked");
-			});
+			cy.get(".filter-name").click();
+			cy.get("input[id=versions-0]").should("be.checked");
+			cy.get("input[id=versions-1]").should("not.be.checked");
+		});
 	});
 });

@@ -1,18 +1,18 @@
 import "@/styles/globals.css";
-import type {AppProps} from "next/app";
-import {StrictMode} from "react";
+import type { AppProps } from "next/app";
+import { StrictMode } from "react";
 import Layout from "@/components/layout";
 
 // Next.js downloads the fonts and saves them locally. No requests are sent to Google by the browser.
 // https://nextjs.org/docs/basic-features/font-optimization
-import {Inter} from "next/font/google";
+import { Inter } from "next/font/google";
 
 const inter = Inter({
 	subsets: ["latin"],
-	preload: true
+	preload: true,
 });
 
-export default function App({Component, pageProps}: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<StrictMode>
 			<Layout>

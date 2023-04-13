@@ -1,16 +1,20 @@
-import {Model} from "@/src/modelTypes";
+import { Model } from "@/src/modelTypes";
 
 type SectionFeatures = {
 	[key: string]: Model.FeaturePresence[] | Model.FeatureDescription[];
 };
 
-type DisplayStatus = [boolean, { [key: string]: boolean }]
+type DisplayStatus = [boolean, { [key: string]: boolean }];
 
-function hasDifferences(values: Model.FeaturePresence[] | Model.FeatureDescription[]): boolean {
-	return new Set(values.map(v => extractValue(v))).size > 1;
+function hasDifferences(
+	values: Model.FeaturePresence[] | Model.FeatureDescription[]
+): boolean {
+	return new Set(values.map((v) => extractValue(v))).size > 1;
 }
 
-function extractValue(feature: Model.FeaturePresence | Model.FeatureDescription): string {
+function extractValue(
+	feature: Model.FeaturePresence | Model.FeatureDescription
+): string {
 	if ("present" in feature) {
 		switch (feature.present) {
 			case Model.Present.YES:
@@ -29,7 +33,10 @@ function extractValue(feature: Model.FeaturePresence | Model.FeatureDescription)
 	throw Error("Unknown feature type");
 }
 
-export const useShowDifferencesOnly = (showDifferencesOnly: boolean, data: SectionFeatures): DisplayStatus => {
+export const useShowDifferencesOnly = (
+	showDifferencesOnly: boolean,
+	data: SectionFeatures
+): DisplayStatus => {
 	const showFeatures: { [key: string]: boolean } = {};
 
 	if (!showDifferencesOnly) {

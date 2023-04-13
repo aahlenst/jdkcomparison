@@ -1,4 +1,4 @@
-import {ProductHeaders} from "./productHeaders";
+import { ProductHeaders } from "./productHeaders";
 
 describe("<ProductHeaders/>", () => {
 	it("renders a product header", () => {
@@ -9,23 +9,26 @@ describe("<ProductHeaders/>", () => {
 				vendor: "Coffeecorp",
 				version: 17,
 				downloadUrl: "https://coffeecorp.com/jdk17",
-				websiteUrl: "https://coffeecorp.com/"
-			}
+				websiteUrl: "https://coffeecorp.com/",
+			},
 		];
 
-		cy.mount(<ProductHeaders headers={productData}/>);
+		cy.mount(<ProductHeaders headers={productData} />);
 
 		productHeadersComponent.expectProductName("Coffeecorp JDK 17");
 		productHeadersComponent.expectVendorName("Coffeecorp");
-		productHeadersComponent.expectDownloadUrl("https://coffeecorp.com/jdk17");
+		productHeadersComponent.expectDownloadUrl(
+			"https://coffeecorp.com/jdk17"
+		);
 		productHeadersComponent.expectWebsiteUrl("https://coffeecorp.com/");
-
 	});
 });
 
 const productHeadersComponent = {
 	expectDownloadUrl: (url: string) => {
-		cy.get(".product-download a").should("have.attr", "href").and("eq", url);
+		cy.get(".product-download a")
+			.should("have.attr", "href")
+			.and("eq", url);
 	},
 	expectProductName: (name: string) => {
 		cy.get(".product-name").should("have.text", name);

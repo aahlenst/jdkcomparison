@@ -1,15 +1,26 @@
-import {beforeEach, describe, expect, jest} from "@jest/globals";
-import {applySearchParamsToState} from "@/hooks/useApplySearchParams";
-import {DynamicSelectionFilter} from "@/src/filter";
-import {ComparisonAction, ComparisonState, ToggleFilter} from "@/components/comparison/comparisonContext";
-import {Model} from "@/src/modelTypes";
-import {DefaultComparator} from "@/src/sorting";
+import { beforeEach, describe, expect, jest } from "@jest/globals";
+import { applySearchParamsToState } from "@/hooks/useApplySearchParams";
+import { DynamicSelectionFilter } from "@/src/filter";
+import {
+	ComparisonAction,
+	ComparisonState,
+	ToggleFilter,
+} from "@/components/comparison/comparisonContext";
+import { Model } from "@/src/modelTypes";
+import { DefaultComparator } from "@/src/sorting";
 import React from "react";
 
 describe("applySearchParamsToState()", () => {
-
-	const filterA: Model.Filter = new DynamicSelectionFilter("filterA", ["A", "B", "C"], fc => fc.name);
-	const filterB: Model.Filter = new DynamicSelectionFilter("filterB", ["1", "2", "3"], fc => fc.name);
+	const filterA: Model.Filter = new DynamicSelectionFilter(
+		"filterA",
+		["A", "B", "C"],
+		(fc) => fc.name
+	);
+	const filterB: Model.Filter = new DynamicSelectionFilter(
+		"filterB",
+		["1", "2", "3"],
+		(fc) => fc.name
+	);
 
 	const state: ComparisonState = {
 		filters: [filterA, filterB],
@@ -17,7 +28,7 @@ describe("applySearchParamsToState()", () => {
 		filteredData: [],
 		footnotes: [],
 		showDifferencesOnly: false,
-		activeComparator: DefaultComparator
+		activeComparator: DefaultComparator,
 	};
 
 	const mockDispatch = jest.fn<React.Dispatch<ComparisonAction[]>>();
@@ -35,30 +46,34 @@ describe("applySearchParamsToState()", () => {
 		expect(mockDispatch.mock.calls).toHaveLength(0);
 
 		filterA.setOptionSelectedByLabel("A", true);
-		applySearchParamsToState({"filterA": "A"}, state, mockDispatch);
+		applySearchParamsToState({ filterA: "A" }, state, mockDispatch);
 
 		expect(mockDispatch.mock.calls).toHaveLength(0);
 
 		filterA.setOptionSelectedByLabel("A", true);
 		filterA.setOptionSelectedByLabel("B", true);
-		applySearchParamsToState({"filterA": ["B", "A"]}, state, mockDispatch);
+		applySearchParamsToState({ filterA: ["B", "A"] }, state, mockDispatch);
 
 		expect(mockDispatch.mock.calls).toHaveLength(0);
 
 		filterB.setOptionSelectedByLabel("1", true);
-		applySearchParamsToState({"filterA": ["B", "A"], "filterB": ["1"]}, state, mockDispatch);
+		applySearchParamsToState(
+			{ filterA: ["B", "A"], filterB: ["1"] },
+			state,
+			mockDispatch
+		);
 
 		expect(mockDispatch.mock.calls).toHaveLength(0);
 	});
 
 	test("dispatches no actions if search params only contain unknown option", () => {
-		applySearchParamsToState({"filterA": "X"}, state, mockDispatch);
+		applySearchParamsToState({ filterA: "X" }, state, mockDispatch);
 
 		expect(mockDispatch.mock.calls).toHaveLength(0);
 	});
 
 	test("dispatches no actions if filter is unknown", () => {
-		applySearchParamsToState({"unknownFilter": "X"}, state, mockDispatch);
+		applySearchParamsToState({ unknownFilter: "X" }, state, mockDispatch);
 
 		expect(mockDispatch.mock.calls).toHaveLength(0);
 	});
@@ -66,7 +81,7 @@ describe("applySearchParamsToState()", () => {
 	test("dispatches actions to reset other filters if filter is unknown", () => {
 		filterA.setOptionSelectedByLabel("C", true);
 
-		applySearchParamsToState({"unknownFilter": "X"}, state, mockDispatch);
+		applySearchParamsToState({ unknownFilter: "X" }, state, mockDispatch);
 
 		expect(mockDispatch.mock.calls).toHaveLength(1);
 
@@ -75,7 +90,11 @@ describe("applySearchParamsToState()", () => {
 	});
 
 	test("dispatches action to enable filters requested by search params", () => {
-		applySearchParamsToState({"filterA": ["B", "A"], "filterB": ["2"]}, state, mockDispatch);
+		applySearchParamsToState(
+			{ filterA: ["B", "A"], filterB: ["2"] },
+			state,
+			mockDispatch
+		);
 
 		expect(mockDispatch.mock.calls).toHaveLength(1);
 
@@ -89,7 +108,11 @@ describe("applySearchParamsToState()", () => {
 		filterA.setOptionSelectedByLabel("C", true);
 		filterB.setOptionSelectedByLabel("1", true);
 
-		applySearchParamsToState({"filterA": ["B", "A"], "filterB": ["2"], "unknownFilter": "X"}, state, mockDispatch);
+		applySearchParamsToState(
+			{ filterA: ["B", "A"], filterB: ["2"], unknownFilter: "X" },
+			state,
+			mockDispatch
+		);
 
 		expect(mockDispatch.mock.calls).toHaveLength(1);
 

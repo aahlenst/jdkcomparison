@@ -1,9 +1,9 @@
-import {MDXPageLayout} from "@/components/mdxPageLayout";
+import { MDXPageLayout } from "@/components/mdxPageLayout";
 
 export const meta = {
 	lead: "Adding some context",
-	title: "Frequently Asked Questions"
-}
+	title: "Frequently Asked Questions",
+};
 
 ## Which JDK Do You Recommend?
 
@@ -21,26 +21,28 @@ on the list.
 
 JDKs that we plan to add, sorted alphabetically:
 
-* [Alibaba Dragonwell](https://dragonwell-jdk.io/)
-* [Azul Platform Prime](https://www.azul.com/downloads/)
-* [Azul Zulu](https://www.azul.com/downloads/)
-* [BellSoft Liberica](https://bell-sw.com/libericajdk/)
-* [IBM Semeru Runtime](https://developer.ibm.com/languages/java/semeru-runtimes/)
-* [Microsoft Build of OpenJDK](https://www.microsoft.com/openjdk)
-* [OpenLogic OpenJDK](https://www.openlogic.com/openjdk-downloads)
-* [Red Hat Build of OpenJDK](https://developers.redhat.com/products/openjdk/download)
-* [SAP SapMachine](https://sap.github.io/SapMachine/)
+-   [Alibaba Dragonwell](https://dragonwell-jdk.io/)
+-   [Azul Platform Prime](https://www.azul.com/downloads/)
+-   [Azul Zulu](https://www.azul.com/downloads/)
+-   [BellSoft Liberica](https://bell-sw.com/libericajdk/)
+-   [IBM Semeru Runtime](https://developer.ibm.com/languages/java/semeru-runtimes/)
+-   [Microsoft Build of OpenJDK](https://www.microsoft.com/openjdk)
+-   [OpenLogic OpenJDK](https://www.openlogic.com/openjdk-downloads)
+-   [Red Hat Build of OpenJDK](https://developers.redhat.com/products/openjdk/download)
+-   [SAP SapMachine](https://sap.github.io/SapMachine/)
 
 JDKs that we do not plan on adding, sorted alphabetically:
 
-* [AdoptOpenJDK](https://adoptopenjdk.net/): Renamed to Eclipse Temurin.
-* [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime): Serves as platform for JetBrains' IntelliJ-based IDE, only.
-* [OJDKBuild](https://github.com/ojdkbuild/ojdkbuild): Discontinued.
-* [Trava OpenJDK](https://github.com/TravaOpenJDK): Seems to primarily target developers, and to be dormant.
+-   [AdoptOpenJDK](https://adoptopenjdk.net/): Renamed to Eclipse Temurin.
+-   [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime): Serves as platform for JetBrains' IntelliJ-based IDE, only.
+-   [OJDKBuild](https://github.com/ojdkbuild/ojdkbuild): Discontinued.
+-   [Trava OpenJDK](https://github.com/TravaOpenJDK): Seems to primarily target developers, and to be dormant.
 
 JDKs we are not sure about:
 
-* [Huawei BiSheng](https://www.openeuler.org/en/other/projects/bishengjdk/): Unclear whether it is targeting an audience outside of Huawei.
-* [Tencent Kona](https://github.com/Tencent/): Unclear whether it is targeting an audience outside of Tencent.
+-   [Huawei BiSheng](https://www.openeuler.org/en/other/projects/bishengjdk/): Unclear whether it is targeting an audience outside of Huawei.
+-   [Tencent Kona](https://github.com/Tencent/): Unclear whether it is targeting an audience outside of Tencent.
 
-export default ({children}) => <MDXPageLayout meta={meta}>{children}</MDXPageLayout>
+export default ({ children }) => (
+	<MDXPageLayout meta={meta}>{children}</MDXPageLayout>
+);

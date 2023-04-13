@@ -1,18 +1,22 @@
-import {navigationComponent} from "../navigationComponent";
-import {faqPage} from "../faqPage";
+import { navigationComponent } from "../navigationComponent";
+import { faqPage } from "../faqPage";
 
 describe("FAQ", () => {
 	it("should display all navigation options", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
+		navigationComponent.expectPageTitle(
+			"Frequently Asked Questions – JDK Comparison"
+		);
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
 	});
 
 	it("should navigate to JDK Comparison", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
+		navigationComponent.expectPageTitle(
+			"Frequently Asked Questions – JDK Comparison"
+		);
 
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
 
@@ -24,7 +28,9 @@ describe("FAQ", () => {
 	it("should navigate to Homepage when clicking on logo", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
+		navigationComponent.expectPageTitle(
+			"Frequently Asked Questions – JDK Comparison"
+		);
 
 		navigationComponent.clickOnLogo();
 
@@ -34,14 +40,18 @@ describe("FAQ", () => {
 	it("displays title", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
+		navigationComponent.expectPageTitle(
+			"Frequently Asked Questions – JDK Comparison"
+		);
 		faqPage.expectTitle("Frequently Asked Questions");
 	});
 
 	it("displays content as HTML", () => {
 		cy.visit("http://localhost:3000/faq");
 
-		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
+		navigationComponent.expectPageTitle(
+			"Frequently Asked Questions – JDK Comparison"
+		);
 		faqPage.expectSubtitle("Which JDK Do You Recommend?");
 	});
 });

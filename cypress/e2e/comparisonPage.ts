@@ -45,9 +45,13 @@ export const comparisonPage = {
 	},
 	expectActiveFilterOptions: (filterId: string, count: number) => {
 		if (count === 0) {
-			cy.get(`#desktop-menu-filter-${filterId} .active-filter-options`).should("not.exist");
+			cy.get(
+				`#desktop-menu-filter-${filterId} .active-filter-options`
+			).should("not.exist");
 		} else {
-			cy.get(`#desktop-menu-filter-${filterId} .active-filter-options`).should("have.text", count.toString());
+			cy.get(
+				`#desktop-menu-filter-${filterId} .active-filter-options`
+			).should("have.text", count.toString());
 		}
 	},
 	expectFeatureExplanation: (excerpt: string) => {
@@ -62,76 +66,125 @@ export const comparisonPage = {
 		}
 	},
 	expectFeaturesInSection: (sectionId: string, featureNames: string[]) => {
-		cy.get(`section[id='${sectionId}'] .feature .feature-name`).should("have.length", featureNames.length);
+		cy.get(`section[id='${sectionId}'] .feature .feature-name`).should(
+			"have.length",
+			featureNames.length
+		);
 
 		for (let i = 0; i < featureNames.length; i++) {
 			const name = featureNames[i];
-			cy.get(`section[id='${sectionId}'] .feature .feature-name`).eq(i).should("have.text", name);
+			cy.get(`section[id='${sectionId}'] .feature .feature-name`)
+				.eq(i)
+				.should("have.text", name);
 		}
 	},
-	expectFeaturePresence: (featureId: string, name: string, presenceClassNames: string[]) => {
+	expectFeaturePresence: (
+		featureId: string,
+		name: string,
+		presenceClassNames: string[]
+	) => {
 		cy.get(`#${featureId} .feature-name`).should("have.text", name);
-		cy.get(`#${featureId} .feature-value`).should("have.length", presenceClassNames.length);
+		cy.get(`#${featureId} .feature-value`).should(
+			"have.length",
+			presenceClassNames.length
+		);
 
 		for (let i = 0; i < presenceClassNames.length; i++) {
-			cy.get(`#${featureId} .feature-value svg`).eq(i).should("have.class", `present-${presenceClassNames[i]}`);
+			cy.get(`#${featureId} .feature-value svg`)
+				.eq(i)
+				.should("have.class", `present-${presenceClassNames[i]}`);
 		}
 	},
 	expectFeatureText: (featureId: string, name: string, values: string[]) => {
 		cy.get(`#${featureId} .feature-name`).should("have.text", name);
-		cy.get(`#${featureId} .feature-value`).should("have.length", values.length);
+		cy.get(`#${featureId} .feature-value`).should(
+			"have.length",
+			values.length
+		);
 
 		for (let i = 0; i < values.length; i++) {
-			cy.get(`#${featureId} .feature-value`).eq(i).should("have.text", values[i]);
+			cy.get(`#${featureId} .feature-value`)
+				.eq(i)
+				.should("have.text", values[i]);
 		}
 	},
 	expectFilter: (name: string) => {
-		cy.get("#filters .filter-name").should($l => {
+		cy.get("#filters .filter-name").should(($l) => {
 			const foundNames = $l.map((i, el) => Cypress.$(el).text()).get();
 			expect(foundNames).to.contain(name);
 		});
 	},
 	expectFilterOption: (id: string, label: string, active: boolean) => {
-		cy.get(`#filter-${id} > div`).should($opt => {
-			const foundOptions = $opt.map((i, el) => {
-				return {
-					label: Cypress.$(el).find("label").text(),
-					checked: Cypress.$(el).find("input").prop("checked")
-				};
-			}).get();
+		cy.get(`#filter-${id} > div`).should(($opt) => {
+			const foundOptions = $opt
+				.map((i, el) => {
+					return {
+						label: Cypress.$(el).find("label").text(),
+						checked: Cypress.$(el).find("input").prop("checked"),
+					};
+				})
+				.get();
 
-			expect(foundOptions).to.deep.contain({label: label, checked: active});
+			expect(foundOptions).to.deep.contain({
+				label: label,
+				checked: active,
+			});
 		});
 	},
-	expectFootnote: (featureId: string, column: number, number: number, excerpt: string) => {
-		cy.get(`#${featureId} .feature-value`).eq(column).find("sup").should("have.text", `[${number}]`);
-		cy.get(`#${featureId} .feature-value`).eq(column).find("sup a").trigger("click");
+	expectFootnote: (
+		featureId: string,
+		column: number,
+		number: number,
+		excerpt: string
+	) => {
+		cy.get(`#${featureId} .feature-value`)
+			.eq(column)
+			.find("sup")
+			.should("have.text", `[${number}]`);
+		cy.get(`#${featureId} .feature-value`)
+			.eq(column)
+			.find("sup a")
+			.trigger("click");
 		cy.get(".desktop-footnote").should("contain.text", excerpt);
-		cy.get(`#${featureId} .feature-value`).eq(column).find("sup a").trigger("click");
+		cy.get(`#${featureId} .feature-value`)
+			.eq(column)
+			.find("sup a")
+			.trigger("click");
 	},
 	expectProductNames: (names: string[]) => {
-		cy.get("#product-header .product-name").should("have.length", names.length);
+		cy.get("#product-header .product-name").should(
+			"have.length",
+			names.length
+		);
 
 		for (let i = 0; i < names.length; i++) {
 			const name = names[i];
-			cy.get("#product-header .product-name").eq(i).should("have.text", name);
+			cy.get("#product-header .product-name")
+				.eq(i)
+				.should("have.text", name);
 		}
 	},
 	expectProductNamesIncomplete: (names: string[]) => {
-		cy.get("#product-header .product-name").should(match => {
-			const foundProducts = match.map((i, el) => {
-				return el.textContent;
-			}).get();
+		cy.get("#product-header .product-name").should((match) => {
+			const foundProducts = match
+				.map((i, el) => {
+					return el.textContent;
+				})
+				.get();
 
-			const filteredProducts = foundProducts.filter(p => names.includes(p));
+			const filteredProducts = foundProducts.filter((p) =>
+				names.includes(p)
+			);
 			expect(filteredProducts).to.deep.eq(names);
 		});
 	},
 	expectProductNamesMissing: (names: string[]) => {
-		cy.get("#product-header .product-name").should(match => {
-			const foundProducts = match.map((i, el) => {
-				return el.textContent;
-			}).get();
+		cy.get("#product-header .product-name").should((match) => {
+			const foundProducts = match
+				.map((i, el) => {
+					return el.textContent;
+				})
+				.get();
 
 			for (const name of names) {
 				expect(foundProducts).not.to.contain(name);
@@ -147,14 +200,18 @@ export const comparisonPage = {
 	},
 	expectSortOption: (name: string, active: boolean) => {
 		if (active) {
-			cy.get(".sort-option-active").should($l => {
-				const foundNames = $l.map((i, el) => Cypress.$(el).text()).get();
+			cy.get(".sort-option-active").should(($l) => {
+				const foundNames = $l
+					.map((i, el) => Cypress.$(el).text())
+					.get();
 				expect(foundNames).to.have.length(1);
 				expect(foundNames).to.contain(name);
 			});
 		} else {
-			cy.get(".sort-option-inactive").should($l => {
-				const foundNames = $l.map((i, el) => Cypress.$(el).text()).get();
+			cy.get(".sort-option-inactive").should(($l) => {
+				const foundNames = $l
+					.map((i, el) => Cypress.$(el).text())
+					.get();
 				expect(foundNames).to.contain(name);
 			});
 		}

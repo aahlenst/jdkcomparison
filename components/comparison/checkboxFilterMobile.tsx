@@ -1,19 +1,23 @@
-import {Disclosure} from "@headlessui/react";
-import {ChevronDownIcon} from "../icons";
-import {Model} from "@/src/modelTypes";
-import {ApplyFilter} from "@/hooks/usePropagateToSearchParams";
+import { Disclosure } from "@headlessui/react";
+import { ChevronDownIcon } from "../icons";
+import { Model } from "@/src/modelTypes";
+import { ApplyFilter } from "@/hooks/usePropagateToSearchParams";
 
 type CheckboxFilterMobileProps = {
-	label: string
-	filter: Model.Filter,
-	onChangeHandler: (action: ApplyFilter) => void
-}
+	label: string;
+	filter: Model.Filter;
+	onChangeHandler: (action: ApplyFilter) => void;
+};
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
 
-export function CheckboxFilterMobile({label, filter, onChangeHandler}: CheckboxFilterMobileProps) {
+export function CheckboxFilterMobile({
+	label,
+	filter,
+	onChangeHandler,
+}: CheckboxFilterMobileProps) {
 	const fields = filter.options.map((option) => {
 		return (
 			<div key={option.id} className="flex items-center">
@@ -24,10 +28,19 @@ export function CheckboxFilterMobile({label, filter, onChangeHandler}: CheckboxF
 					checked={option.selected}
 					className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
 					onChange={(e) => {
-						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
+						onChangeHandler(
+							new ApplyFilter(
+								filter.id,
+								option.label,
+								e.target.checked
+							)
+						);
 					}}
 				/>
-				<label htmlFor={option.id} className="ml-3 text-sm text-gray-500">
+				<label
+					htmlFor={option.id}
+					className="ml-3 text-sm text-gray-500"
+				>
 					{option.label}
 				</label>
 			</div>
@@ -36,19 +49,25 @@ export function CheckboxFilterMobile({label, filter, onChangeHandler}: CheckboxF
 
 	return (
 		<Disclosure as="div" className="border-t border-gray-200 px-4 py-6">
-			{({open}) => (
+			{({ open }) => (
 				<>
 					<h3 className="-mx-2 -my-3 flow-root">
 						<Disclosure.Button
 							id={`mobile-menu-filter-${filter.id}`}
-							className="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400">
-							<span className="filter-name font-medium text-gray-900">{label}</span>
+							className="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400"
+						>
+							<span className="filter-name font-medium text-gray-900">
+								{label}
+							</span>
 							<span className="ml-6 flex items-center">
-                                <ChevronDownIcon
-									className={classNames(open ? "-rotate-180" : "rotate-0", "h-5 w-5 transform")}
+								<ChevronDownIcon
+									className={classNames(
+										open ? "-rotate-180" : "rotate-0",
+										"h-5 w-5 transform"
+									)}
 									aria-hidden="true"
 								/>
-                              </span>
+							</span>
 						</Disclosure.Button>
 					</h3>
 					<Disclosure.Panel className="pt-6">

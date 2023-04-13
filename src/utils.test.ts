@@ -1,5 +1,11 @@
-import {expect, test} from "@jest/globals";
-import {classNames, difference, intersection, remove, symmetricDifference} from "./utils";
+import { expect, test } from "@jest/globals";
+import {
+	classNames,
+	difference,
+	intersection,
+	remove,
+	symmetricDifference,
+} from "./utils";
 
 describe("utils", () => {
 	test("difference()", () => {

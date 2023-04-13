@@ -1,9 +1,9 @@
-import {PropsWithChildren, useEffect, useRef, useState} from "react";
-import {createPortal} from "react-dom";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 type ClientOnlyPortalProps = {
-	selector: string
-}
+	selector: string;
+};
 
 /**
  * Renders wrapped components into a different part of the DOM using a React Portal.
@@ -12,7 +12,10 @@ type ClientOnlyPortalProps = {
  * @param children anything that can be rendered with React
  * @see https://github.com/vercel/next.js/tree/canary/examples/with-portals
  */
-export function ClientOnlyPortal({selector, children}: PropsWithChildren<ClientOnlyPortalProps>) {
+export function ClientOnlyPortal({
+	selector,
+	children,
+}: PropsWithChildren<ClientOnlyPortalProps>) {
 	const ref = useRef<Element | DocumentFragment | null | undefined>();
 	const [mounted, setMounted] = useState(false);
 
