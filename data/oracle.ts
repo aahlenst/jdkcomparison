@@ -307,7 +307,10 @@ export const data: Vendor = {
 				notableFeatures: { text: "none" },
 				license: { text: "Proprietary" },
 				freeInDevelopment: { present: Present.YES },
-				freeInProduction: { present: Present.YES },
+				freeInProduction: {
+					present: Present.PARTIALLY,
+					footnote: "3fcf888c-5cde-4f1f-a433-2b4d42720030",
+				},
 				paidSupport: { present: Present.YES },
 				eolDate: { text: "2024-09" },
 				releaseSchedule: { text: "OpenJDK" },
@@ -385,7 +388,10 @@ export const data: Vendor = {
 				notableFeatures: { text: "none" },
 				license: { text: "Proprietary" },
 				freeInDevelopment: { present: Present.YES },
-				freeInProduction: { present: Present.YES },
+				freeInProduction: {
+					present: Present.PARTIALLY,
+					footnote: "3fcf888c-5cde-4f1f-a433-2b4d42720030",
+				},
 				paidSupport: { present: Present.YES },
 				eolDate: { text: "2023-09" },
 				releaseSchedule: { text: "OpenJDK" },
@@ -412,6 +418,13 @@ export const data: Vendor = {
 			markdown:
 				"Oracle only offers individual Linux packages to download, but does not have a central " +
 				"package repository. Furthermore, Linux packages for less common platforms are sometimes missing.",
+		},
+		{
+			id: "3fcf888c-5cde-4f1f-a433-2b4d42720030",
+			markdown:
+				"Production use is governed under the [Oracle No-Fee Terms and " +
+				"Conditions](https://www.oracle.com/downloads/licenses/no-fee-license.html) that impose some " +
+				'limitations. For example, they restrict the free usage to "internal business operations".',
 		},
 	],
 };
