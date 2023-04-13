@@ -64,7 +64,10 @@ export const data: Vendor = {
 				},
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
-				editions: { text: "JRE" },
+				editions: {
+					text: "JRE",
+					footnote: "6eb275d4-578e-454c-aba3-a5c5e4b03295",
+				},
 				customisations: {
 					text: "few",
 					footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d",
@@ -381,6 +384,11 @@ export const data: Vendor = {
 			markdown:
 				"[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that Amazon " +
 				"Corretto is offered for. Furthermore, it is experimental on some platforms depending on the version.",
+		},
+		{
+			id: "6eb275d4-578e-454c-aba3-a5c5e4b03295",
+			markdown:
+				"The JRE is only available on Windows and Amazon Linux 2.",
 		},
 		{
 			id: "7c5df998-f73e-426f-8955-d6a6df6ab856",
