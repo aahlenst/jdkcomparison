@@ -106,6 +106,7 @@ describe("extractComparisonData()", () => {
 		expect(jdk.license).toEqual({ text: "Proprietary" });
 		expect(jdk.freeInDevelopment).toEqual({ present: Model.Present.YES });
 		expect(jdk.freeInProduction).toEqual({ present: Model.Present.NO });
+		expect(jdk.sbom).toEqual({ present: Model.Present.UNKNOWN });
 		expect(jdk.paidSupport).toEqual({
 			present: Model.Present.NO,
 			footnoteReference: { backReference: 1, number: 1 },

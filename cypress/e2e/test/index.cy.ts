@@ -86,6 +86,7 @@ describe("JDK Comparison", () => {
 			"Certifications",
 			"Customisations",
 			"Licensing",
+			"Security",
 			"Support",
 		]);
 
@@ -395,6 +396,13 @@ describe("JDK Comparison", () => {
 			["yes", "no", "yes"]
 		);
 
+		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
+		comparisonPage.expectFeaturePresence("security-sbom", "SBOM", [
+			"yes",
+			"unknown",
+			"yes",
+		]);
+
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
 			"Release Schedule",
@@ -439,6 +447,7 @@ describe("JDK Comparison", () => {
 			"Certifications",
 			"Customisations",
 			"Licensing",
+			"Security",
 			"Support",
 		]);
 		comparisonPage.expectFeaturesInSection("properties", [
@@ -507,6 +516,7 @@ describe("JDK Comparison", () => {
 			"Free in Development",
 			"Free in Production",
 		]);
+		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
 			"Release Schedule",
@@ -525,6 +535,7 @@ describe("JDK Comparison", () => {
 			"Platforms: Other",
 			"Customisations",
 			"Licensing",
+			"Security",
 			"Support",
 		]);
 		comparisonPage.expectFeaturesInSection("properties", [
@@ -572,6 +583,7 @@ describe("JDK Comparison", () => {
 			"License",
 			"Free in Production",
 		]);
+		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
 			"Release Delay",
@@ -659,6 +671,7 @@ describe("JDK Comparison", () => {
 			"Free in Development",
 			"Free in Production",
 		]);
+		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
 			"Release Schedule",
@@ -735,6 +748,7 @@ describe("JDK Comparison", () => {
 			"Free in Development",
 			"Free in Production",
 		]);
+		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
 			"Release Schedule",

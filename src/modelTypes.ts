@@ -72,6 +72,7 @@ export namespace Model {
 		license: FeatureDescription;
 		freeInDevelopment: FeaturePresence;
 		freeInProduction: FeaturePresence;
+		sbom: FeaturePresence;
 		paidSupport: FeaturePresence;
 		eolDate: FeatureDescription;
 		releaseSchedule: FeatureDescription;

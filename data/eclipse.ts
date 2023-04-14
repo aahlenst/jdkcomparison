@@ -83,6 +83,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
+				sbom: {
+					present: Present.YES,
+					footnote: "d2ecefd1-6d2a-4621-a5a7-f425acae6973",
+				},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {
@@ -174,6 +178,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
+				sbom: {
+					present: Present.YES,
+					footnote: "d2ecefd1-6d2a-4621-a5a7-f425acae6973",
+				},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {
@@ -265,6 +273,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
+				sbom: {
+					present: Present.YES,
+					footnote: "d2ecefd1-6d2a-4621-a5a7-f425acae6973",
+				},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {
@@ -347,6 +359,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
+				sbom: {
+					present: Present.YES,
+					footnote: "d2ecefd1-6d2a-4621-a5a7-f425acae6973",
+				},
 				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
 				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
 				paidSupport: {
@@ -402,6 +418,15 @@ export const data: Vendor = {
 			markdown:
 				"For a list of container images with Eclipse Temurin, see the [list of tags published on Docker" +
 				"Hub](https://github.com/docker-library/docs/blob/master/eclipse-temurin/README.md#supported-tags-and-respective-dockerfile-links).",
+		},
+		{
+			id: "d2ecefd1-6d2a-4621-a5a7-f425acae6973",
+			markdown:
+				"SBOMs are published in the [CycloneDX](https://cyclonedx.org/) format. They can be found on Eclipse " +
+				"Temurin's GitHub Releases: [8](https://github.com/adoptium/temurin8-binaries/releases/), " +
+				"[11](https://github.com/adoptium/temurin11-binaries/releases/), " +
+				"[17](https://github.com/adoptium/temurin17-binaries/releases/), " +
+				"[20](https://github.com/adoptium/temurin20-binaries/releases/).",
 		},
 	],
 };

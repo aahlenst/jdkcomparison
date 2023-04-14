@@ -28,6 +28,7 @@ import { WindowsSection } from "@/components/comparison/windowsSection";
 import { MacSection } from "@/components/comparison/macSection";
 import { LinuxSection } from "@/components/comparison/linuxSection";
 import { OtherPlatformsSection } from "@/components/comparison/otherPlatformsSection";
+import { SecuritySection } from "@/components/comparison/securitySection";
 
 export function ComparisonTable() {
 	const comparison = useComparison();
@@ -73,6 +74,10 @@ export function ComparisonTable() {
 					showDifferencesOnly={comparison.showDifferencesOnly}
 				/>
 				<LicensingSection
+					productData={comparison.filteredData}
+					showDifferencesOnly={comparison.showDifferencesOnly}
+				/>
+				<SecuritySection
 					productData={comparison.filteredData}
 					showDifferencesOnly={comparison.showDifferencesOnly}
 				/>

@@ -88,6 +88,7 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
 				paidSupport: {
 					present: Present.PARTIALLY,
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
@@ -188,6 +189,7 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
 				paidSupport: {
 					present: Present.PARTIALLY,
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
@@ -274,6 +276,7 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
 				paidSupport: {
 					present: Present.PARTIALLY,
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
@@ -357,6 +360,7 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
 				paidSupport: {
 					present: Present.PARTIALLY,
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",

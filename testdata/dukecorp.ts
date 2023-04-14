@@ -84,6 +84,7 @@ export const data: Vendor = {
 				license: { text: "Proprietary" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.NO },
+				sbom: { present: Present.UNKNOWN },
 				paidSupport: {
 					present: Present.NO,
 					footnote: "f4b31750-2c0d-4332-bfe7-6d30daa959a1",

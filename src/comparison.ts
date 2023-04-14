@@ -200,6 +200,7 @@ function extractFeatureComparisons(
 				jdk.features.freeInProduction,
 				footnotes
 			),
+			sbom: mapFeaturePresence(jdk.features.sbom, footnotes),
 			paidSupport: mapFeaturePresence(
 				jdk.features.paidSupport,
 				footnotes

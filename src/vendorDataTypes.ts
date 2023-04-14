@@ -129,6 +129,10 @@ export type JDKFeatures = {
 	 */
 	freeInProduction: FeaturePresence;
 	/**
+	 * Indicates whether a Software Bill of Materials is published for the JDK.
+	 */
+	sbom: FeaturePresence;
+	/**
 	 * Whether paid support can be purchased or not. Support included in a purchased license qualifies as
 	 * {@link Present.YES}, too.
 	 */

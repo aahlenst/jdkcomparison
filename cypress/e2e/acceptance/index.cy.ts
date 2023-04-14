@@ -85,6 +85,7 @@ describe("Comparison in production", () => {
 			"Certifications",
 			"Customisations",
 			"Licensing",
+			"Security",
 			"Support",
 		]);
 		comparisonPage.expectFeaturesInSection("properties", [
@@ -153,6 +154,7 @@ describe("Comparison in production", () => {
 			"Free in Development",
 			"Free in Production",
 		]);
+		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
 			"Release Schedule",
