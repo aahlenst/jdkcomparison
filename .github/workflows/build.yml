@@ -3,6 +3,9 @@ name: Build, test, and deploy
 on:
   push:
   pull_request:
+  schedule:
+    # Run once per week to ensure that the pipeline is okay.
+    - cron: "23 13 * * 0"
 
 permissions:
   contents: read
