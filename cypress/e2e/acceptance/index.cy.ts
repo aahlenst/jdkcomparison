@@ -296,9 +296,7 @@ describe("Comparison in production", () => {
 			"Oracle JDK 8",
 		]);
 
-		cy.visit(
-			"http://localhost:3000/?versions=8&versions=11&technologies=Flight%20Recorder"
-		);
+		cy.visit("/?versions=8&versions=11&technologies=Flight%20Recorder");
 
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", "8", true);

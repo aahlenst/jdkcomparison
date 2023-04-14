@@ -9,6 +9,7 @@ permissions:
 
 env:
   ARTIFACT_NAME: jdkcomparison-site
+  NODE_VERSION: 19.x
 
 jobs:
   common-checks:
@@ -77,21 +78,11 @@ jobs:
           name: ${{ env.ARTIFACT_NAME }}
           path: .vercel/output/static
 
-      # Start development server of Cloudflare Pages and put it into the background before running the acceptance tests.
-      # Stop it afterwards by looking for the PID of the process that listens on port 3000.
-      - name: Run acceptance tests
-        run: |
-          npx wrangler pages dev --port 3000 .vercel/output/static > /tmp/wrangler.txt 2>&1 &
-          WRANGLER_PID=$!
-          npm run acceptance
-          lsof -t -i:3000 -sTCP:LISTEN | xargs -r kill -TERM
-          if [ -n "$WRANGLER_PID" ] && ps -p "$WRANGLER_PID" > /dev/null ; then kill -TERM "$WRANGLER_PID"; fi;
-
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          check_name: Tests Results of Node.js ${{ matrix.node-version }}
+          check_name: Test Results of Node.js ${{ matrix.node-version }}
           files: |
             cypress/results/*.xml
             build/reports/*.xml
@@ -100,17 +91,119 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-node.js-${{ matrix.node-version }}
+          name: cypress-tests-node.js-${{ matrix.node-version }}
           path: |
             cypress/screenshots/
             cypress/videos/
           if-no-files-found: ignore
 
-  deploy:
-    name: Deploy to Cloudlfare Pages
+  deploy-preview:
+    name: Deploy preview
     runs-on: ubuntu-latest
     needs:
       - build
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    outputs:
+      preview-url: ${{ steps.cloudflare-deployment.outputs.url }}
+    steps:
+      - name: Set PREVIEW_NAME for main branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "PREVIEW_NAME=main-preview" >> $GITHUB_ENV
+
+      - name: Set PREVIEW_NAME for all branches other than main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "PREVIEW_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: site
+
+      - name: Publish to Cloudflare Pages
+        id: cloudflare-deployment
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 6db44e986b34e7b9e118f48872f9e729
+          projectName: jdkcomparison
+          directory: site
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # Tells Cloudflare Pages which branch this deployment originates from.
+          branch: ${{ env.PREVIEW_NAME }}
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            ### <span aria-hidden="true">✅</span> Your deployment is ready!
+
+            | Name | Link |
+            |-|-|
+            |Deployed Commit | ${{ github.sha }} |
+            |Workflow Log    | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
+            |Preview URL     | ${{ steps.cloudflare-deployment.outputs.url }} |
+            |Environment     | ${{ steps.cloudflare-deployment.outputs.environment }} |
+            ---
+
+  acceptance:
+    name: Run acceptance tests
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - deploy-preview
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    env:
+      CYPRESS_BASE_URL: ${{ needs.deploy-preview.outputs.preview-url }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run acceptance tests
+        run: |
+          echo "Run acceptance tests against ${{ env.CYPRESS_BASE_URL }}"
+          npm run acceptance
+
+      - name: Publish Acceptance Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          check_name: Acceptance Test Results
+          files: |
+            cypress/results/*.xml
+            build/reports/*.xml
+
+      - name: Upload Cypress Screenshots and Videos on Failure
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-acceptance-tests
+          path: |
+            cypress/screenshots/
+            cypress/videos/
+          if-no-files-found: ignore
+
+  deploy-to-production:
+    name: Deploy to production
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - acceptance
     permissions:
       contents: read
       deployments: write
@@ -133,15 +226,3 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           # Tells Cloudflare Pages which branch this deployment originates from.
           branch: ${{ github.ref_name }}
-      - uses: mshick/add-pr-comment@v2
-        with:
-          message: |
-            ### <span aria-hidden="true">✅</span> Your deployment is ready!
-
-            | Name | Link |
-            |-|-|
-            |Deployed Commit | ${{ github.sha }} |
-            |Workflow Log    | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
-            |Preview URL     | ${{ steps.cloudflare-deployment.outputs.url }} |
-            |Environment     | ${{ steps.cloudflare-deployment.outputs.environment }} |
-            ---

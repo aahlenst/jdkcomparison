@@ -1324,9 +1324,7 @@ describe("JDK Comparison", () => {
 			"Dukecorp JDK 17",
 		]);
 
-		cy.visit(
-			"http://localhost:3000/?technologies=JavaFX&technologies=Flight%20Recorder"
-		);
+		cy.visit("/?technologies=JavaFX&technologies=Flight%20Recorder");
 		comparisonPage.showFilter("technologies");
 		comparisonPage.expectFilterOption(
 			"technologies",
@@ -1344,7 +1342,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectProductNames([]);
 
 		cy.visit(
-			"http://localhost:3000/?technologies=JavaFX&technologies=Flight%20Recorder&technologies=Java%20Web%20Start"
+			"/?technologies=JavaFX&technologies=Flight%20Recorder&technologies=Java%20Web%20Start"
 		);
 		comparisonPage.showFilter("technologies");
 		comparisonPage.expectFilterOption(
@@ -1405,7 +1403,7 @@ describe("JDK Comparison", () => {
 		]);
 
 		cy.visit(
-			"http://localhost:3000/?licensing=Free%20in%20Development&licensing=Free%20in%20Production"
+			"/?licensing=Free%20in%20Development&licensing=Free%20in%20Production"
 		);
 		comparisonPage.showFilter("licensing");
 		comparisonPage.expectFilterOption(
