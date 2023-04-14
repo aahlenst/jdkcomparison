@@ -22,7 +22,7 @@ describe(
 	{ viewportWidth: 390, viewportHeight: 844 },
 	() => {
 		it("should display all navigation options", () => {
-			cy.visit("http://localhost:3000/");
+			cy.visit("/");
 
 			mobileNavigationComponent.expectPageTitle("JDK Comparison");
 			mobileNavigationComponent.showMobileMenu();
@@ -34,7 +34,7 @@ describe(
 		});
 
 		it("should navigate to FAQ", () => {
-			cy.visit("http://localhost:3000/");
+			cy.visit("/");
 
 			mobileNavigationComponent.expectPageTitle("JDK Comparison");
 			mobileNavigationComponent.showMobileMenu();
@@ -50,7 +50,7 @@ describe(
 		});
 
 		it("displays GitHub link", () => {
-			cy.visit("http://localhost:3000/");
+			cy.visit("/");
 
 			mobileNavigationComponent.expectPageTitle("JDK Comparison");
 			mobileNavigationComponent.expectSecondaryNavigationOption(
@@ -61,7 +61,7 @@ describe(
 		});
 
 		it("shows all filters", () => {
-			cy.visit("http://localhost:3000/");
+			cy.visit("/");
 
 			mobileNavigationComponent.expectPageTitle("JDK Comparison");
 
@@ -129,7 +129,7 @@ describe(
 		});
 
 		it("retains filter state when opening and closing", () => {
-			cy.visit("http://localhost:3000/");
+			cy.visit("/");
 
 			mobileNavigationComponent.expectPageTitle("JDK Comparison");
 
@@ -157,7 +157,7 @@ describe(
 		});
 
 		it("shows feature explanation", () => {
-			cy.visit("http://localhost:3000/");
+			cy.visit("/");
 
 			mobileNavigationComponent.expectPageTitle("JDK Comparison");
 			mobileComparisonPage.showFeatureExplanation("technologies-jfr");
@@ -168,7 +168,7 @@ describe(
 		});
 
 		it("displays footnotes", () => {
-			cy.visit("http://localhost:3000/");
+			cy.visit("/");
 
 			mobileNavigationComponent.expectPageTitle("JDK Comparison");
 			mobileComparisonPage.expectFootnote(

@@ -21,7 +21,7 @@ describe(
 	{ viewportWidth: 390, viewportHeight: 844 },
 	() => {
 		it("should display all navigation options", () => {
-			cy.visit("http://localhost:3000/faq");
+			cy.visit("/faq");
 
 			mobileNavigationComponent.expectPageTitle(
 				"Frequently Asked Questions – JDK Comparison"
@@ -38,7 +38,7 @@ describe(
 		});
 
 		it("should navigate to JDK Comparison", () => {
-			cy.visit("http://localhost:3000/faq");
+			cy.visit("/faq");
 
 			mobileNavigationComponent.expectPageTitle(
 				"Frequently Asked Questions – JDK Comparison"
@@ -55,7 +55,7 @@ describe(
 		});
 
 		it("should navigate to Homepage when clicking on logo", () => {
-			cy.visit("http://localhost:3000/faq");
+			cy.visit("/faq");
 
 			mobileNavigationComponent.expectPageTitle(
 				"Frequently Asked Questions – JDK Comparison"

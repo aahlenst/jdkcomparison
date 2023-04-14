@@ -19,14 +19,14 @@ import { comparisonPage } from "../comparisonPage";
 
 describe("Comparison in production", () => {
 	it("should display all navigation options", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
 	});
 
 	it("should navigate to FAQ", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
@@ -38,7 +38,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("displays GitHub link", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		navigationComponent.expectSecondaryNavigationOption(
@@ -49,7 +49,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("should display all products", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNamesIncomplete([
@@ -60,7 +60,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("should display all sections", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectSections([
@@ -151,7 +151,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("shows all filters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.expectFilter("Versions");
 		comparisonPage.expectFilter("Vendors");
@@ -196,7 +196,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("shows feature explanation", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.showFeatureExplanation("technologies-jfr");
@@ -207,7 +207,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("allows filtering by vendor", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNamesIncomplete([
@@ -250,7 +250,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("hides and reveals sections", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeaturesInSection("technologies", [
@@ -273,7 +273,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("preselects filters according to search parameters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", "8", false);
@@ -323,7 +323,7 @@ describe("Comparison in production", () => {
 	});
 
 	it("retains sort order while filtering", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.expectProductNamesIncomplete([
 			"Eclipse Temurin 11",

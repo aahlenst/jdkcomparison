@@ -19,14 +19,14 @@ import { comparisonPage } from "../comparisonPage";
 
 describe("JDK Comparison", () => {
 	it("should display all navigation options", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
 	});
 
 	it("should navigate to FAQ", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
@@ -38,7 +38,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("displays GitHub link", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		navigationComponent.expectSecondaryNavigationOption(
@@ -49,7 +49,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("should display all products", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames([
@@ -60,7 +60,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("should display all sections", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
@@ -413,7 +413,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("should display only features with different values", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
@@ -568,7 +568,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("shows single product even if it should only display differences", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames([
@@ -733,7 +733,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("shows all filters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.expectFilter("Versions");
 		comparisonPage.expectFilter("Vendors");
@@ -785,7 +785,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("retains filter state when opening and closing", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.expectFilter("Versions");
 
@@ -804,7 +804,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("updates number of active filters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.expectFilter("Versions");
 		comparisonPage.expectActiveFilterOptions("versions", 0);
@@ -838,7 +838,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("shows feature explanation", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.showFeatureExplanation("technologies-jfr");
@@ -849,7 +849,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("allows filtering by version", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames([
@@ -892,7 +892,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("allows filtering by vendor", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames([
@@ -923,7 +923,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("allows filtering by technology", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames([
@@ -991,7 +991,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("allows filtering by virtual machine", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames([
@@ -1034,7 +1034,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("allows filtering by licensing option", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectProductNames([
@@ -1104,7 +1104,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("hides and reveals sections", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFeaturesInSection("technologies", [
@@ -1127,7 +1127,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("displays footnotes", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.expectFootnote(
@@ -1151,7 +1151,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("can deal with unknown filter in search parameters", () => {
-		cy.visit("http://localhost:3000/?something=123");
+		cy.visit("/?something=123");
 		comparisonPage.expectActiveFilterOptions("versions", 0);
 		comparisonPage.expectActiveFilterOptions("vendors", 0);
 		comparisonPage.expectActiveFilterOptions("vms", 0);
@@ -1165,7 +1165,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("can deal with unknown option in filter in search parameters", () => {
-		cy.visit("http://localhost:3000/?versions=8&versions=-10");
+		cy.visit("/?versions=8&versions=-10");
 		comparisonPage.expectActiveFilterOptions("versions", 1);
 		comparisonPage.expectActiveFilterOptions("vendors", 0);
 		comparisonPage.expectActiveFilterOptions("vms", 0);
@@ -1175,7 +1175,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("preselects Versions filter according to search parameters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", "8", false);
 		comparisonPage.expectFilterOption("versions", "17", false);
@@ -1187,7 +1187,7 @@ describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		cy.visit("http://localhost:3000/?versions=8");
+		cy.visit("/?versions=8");
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", "8", true);
 		comparisonPage.expectFilterOption("versions", "17", false);
@@ -1195,7 +1195,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectActiveFilterOptions("versions", 1);
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
 
-		cy.visit("http://localhost:3000/?versions=8&versions=17");
+		cy.visit("/?versions=8&versions=17");
 		comparisonPage.showFilter("versions");
 		comparisonPage.expectFilterOption("versions", "8", true);
 		comparisonPage.expectFilterOption("versions", "17", true);
@@ -1209,7 +1209,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("preselects Vendors filter according to search parameters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 		comparisonPage.showFilter("vendors");
 		comparisonPage.expectFilterOption("vendors", "Coffeecorp", false);
 		comparisonPage.expectFilterOption("vendors", "Dukecorp", false);
@@ -1221,7 +1221,7 @@ describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		cy.visit("http://localhost:3000/?vendors=Coffeecorp");
+		cy.visit("/?vendors=Coffeecorp");
 		comparisonPage.showFilter("vendors");
 		comparisonPage.expectFilterOption("vendors", "Coffeecorp", true);
 		comparisonPage.expectFilterOption("vendors", "Dukecorp", false);
@@ -1232,7 +1232,7 @@ describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		cy.visit("http://localhost:3000/?vendors=Dukecorp&vendors=Coffeecorp");
+		cy.visit("/?vendors=Dukecorp&vendors=Coffeecorp");
 		comparisonPage.showFilter("vendors");
 		comparisonPage.expectFilterOption("vendors", "Coffeecorp", true);
 		comparisonPage.expectFilterOption("vendors", "Dukecorp", true);
@@ -1246,7 +1246,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("preselects VMs filter according to search parameters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 		comparisonPage.showFilter("vms");
 		comparisonPage.expectFilterOption("vms", "CoffeeVM", false);
 		comparisonPage.expectFilterOption("vms", "DukeVM", false);
@@ -1258,7 +1258,7 @@ describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		cy.visit("http://localhost:3000/?vms=CoffeeVM");
+		cy.visit("/?vms=CoffeeVM");
 		comparisonPage.showFilter("vms");
 		comparisonPage.expectFilterOption("vms", "CoffeeVM", true);
 		comparisonPage.expectFilterOption("vms", "DukeVM", false);
@@ -1269,7 +1269,7 @@ describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		cy.visit("http://localhost:3000/?vms=DukeVM&vms=CoffeeVM");
+		cy.visit("/?vms=DukeVM&vms=CoffeeVM");
 		comparisonPage.showFilter("vms");
 		comparisonPage.expectFilterOption("vms", "CoffeeVM", true);
 		comparisonPage.expectFilterOption("vms", "DukeVM", true);
@@ -1283,7 +1283,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("preselects Technologies filter according to search parameters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 		comparisonPage.showFilter("technologies");
 		comparisonPage.expectFilterOption(
 			"technologies",
@@ -1304,7 +1304,7 @@ describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		cy.visit("http://localhost:3000/?technologies=Flight%20Recorder");
+		cy.visit("/?technologies=Flight%20Recorder");
 		comparisonPage.showFilter("technologies");
 		comparisonPage.expectFilterOption(
 			"technologies",
@@ -1364,7 +1364,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("preselects Licensing filter according to search parameters", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 		comparisonPage.showFilter("licensing");
 		comparisonPage.expectFilterOption(
 			"licensing",
@@ -1384,7 +1384,7 @@ describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		cy.visit("http://localhost:3000/?licensing=Free%20in%20Development");
+		cy.visit("/?licensing=Free%20in%20Development");
 		comparisonPage.showFilter("licensing");
 		comparisonPage.expectFilterOption(
 			"licensing",
@@ -1427,7 +1427,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("displays JDKs sorted by descending versions by default", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.expectProductNames([
 			"Coffeecorp JDK 17",
@@ -1440,7 +1440,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("displays JDKs sorted by descending versions", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("Newest");
@@ -1457,7 +1457,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("displays JDKs sorted by ascending vendor name", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("Vendor, A-Z");
@@ -1474,7 +1474,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("displays JDKs sorted by descending vendor name", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("Vendor, Z-A");
@@ -1491,7 +1491,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("displays JDKs sorted by ascending JDK name", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("JDK Name, A-Z");
@@ -1508,7 +1508,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("displays JDKs sorted by descending JDK name", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.showSortOptions();
 		comparisonPage.clickSortOption("JDK Name, Z-A");
@@ -1525,7 +1525,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("retains sort order while filtering", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Dukecorp");
@@ -1556,7 +1556,7 @@ describe("JDK Comparison", () => {
 	});
 
 	it("retains original sort order when changing sort options repeatedly", () => {
-		cy.visit("http://localhost:3000/");
+		cy.visit("/");
 
 		comparisonPage.expectProductNames([
 			"Coffeecorp JDK 17",

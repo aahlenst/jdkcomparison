@@ -19,7 +19,7 @@ import { faqPage } from "../faqPage";
 
 describe("FAQ", () => {
 	it("should display all navigation options", () => {
-		cy.visit("http://localhost:3000/faq");
+		cy.visit("/faq");
 
 		navigationComponent.expectPageTitle(
 			"Frequently Asked Questions – JDK Comparison"
@@ -28,7 +28,7 @@ describe("FAQ", () => {
 	});
 
 	it("should navigate to JDK Comparison", () => {
-		cy.visit("http://localhost:3000/faq");
+		cy.visit("/faq");
 
 		navigationComponent.expectPageTitle(
 			"Frequently Asked Questions – JDK Comparison"
@@ -42,7 +42,7 @@ describe("FAQ", () => {
 	});
 
 	it("should navigate to Homepage when clicking on logo", () => {
-		cy.visit("http://localhost:3000/faq");
+		cy.visit("/faq");
 
 		navigationComponent.expectPageTitle(
 			"Frequently Asked Questions – JDK Comparison"
@@ -54,7 +54,7 @@ describe("FAQ", () => {
 	});
 
 	it("displays title", () => {
-		cy.visit("http://localhost:3000/faq");
+		cy.visit("/faq");
 
 		navigationComponent.expectPageTitle(
 			"Frequently Asked Questions – JDK Comparison"
@@ -63,7 +63,7 @@ describe("FAQ", () => {
 	});
 
 	it("displays content as HTML", () => {
-		cy.visit("http://localhost:3000/faq");
+		cy.visit("/faq");
 
 		navigationComponent.expectPageTitle(
 			"Frequently Asked Questions – JDK Comparison"
