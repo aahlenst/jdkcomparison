@@ -60,6 +60,17 @@ describe(
 			);
 		});
 
+		it("displays e-mail link", () => {
+			cy.visit("/");
+
+			mobileNavigationComponent.expectPageTitle("JDK Comparison");
+			mobileNavigationComponent.expectSecondaryNavigationOption(
+				"e-mail-link",
+				"Send an e-mail",
+				"mailto:hello@jdkcomparison.com"
+			);
+		});
+
 		it("shows all filters", () => {
 			cy.visit("/");
 

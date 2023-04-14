@@ -15,7 +15,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 import { Dialog, Transition } from "@headlessui/react";
-import { BarsIcon, GitHubIcon, XMarkIcon } from "@/components/icons";
+import {
+	BarsIcon,
+	EnvelopeIcon,
+	GitHubIcon,
+	XMarkIcon,
+} from "@/components/icons";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import logo from "../public/logo.svg";
@@ -42,13 +47,15 @@ export function Navigation() {
 						{/* Mobile menu button */}
 						<button
 							id="mobile-menu-open"
-							className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500"
+							className="inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500"
 							onClick={() => setOpen(true)}
 						>
 							<span className="sr-only">Open main menu</span>
 							<BarsIcon
 								className="block h-6 w-6"
 								aria-hidden="true"
+								stroke="currentColor"
+								fill="currentColor"
 							/>
 						</button>
 					</div>
@@ -93,15 +100,36 @@ export function Navigation() {
 					</div>
 					<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 						<a
+							href="mailto:hello@jdkcomparison.com"
+							type="button"
+							id="e-mail-link"
+							className="rounded-full bg-white p-1 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+						>
+							<span className="sr-only">Send an e-mail</span>
+							<EnvelopeIcon
+								className="h-6 w-6"
+								aria-hidden="true"
+								stroke="currentColor"
+								fill="currentColor"
+							>
+								<title>Send an e-mail</title>
+							</EnvelopeIcon>
+						</a>
+						<a
 							href="https://github.com/aahlenst/jdkcomparison"
 							type="button"
 							id="github-link"
-							className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+							className="rounded-full bg-white p-1 ml-3 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 						>
 							<span className="sr-only">
 								Go to GitHub repository
 							</span>
-							<GitHubIcon className="h-6 w-6" aria-hidden="true">
+							<GitHubIcon
+								className="h-6 w-6"
+								aria-hidden="true"
+								stroke="currentColor"
+								fill="currentColor"
+							>
 								<title>Go to GitHub repository</title>
 							</GitHubIcon>
 						</a>

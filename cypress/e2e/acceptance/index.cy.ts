@@ -48,6 +48,17 @@ describe("Comparison in production", () => {
 		);
 	});
 
+	it("displays e-mail link", () => {
+		cy.visit("/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		navigationComponent.expectSecondaryNavigationOption(
+			"e-mail-link",
+			"Send an e-mail",
+			"mailto:hello@jdkcomparison.com"
+		);
+	});
+
 	it("should display all products", () => {
 		cy.visit("/");
 
