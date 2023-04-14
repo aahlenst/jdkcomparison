@@ -32,6 +32,11 @@ function isActive(router: NextRouter, path: string): boolean {
 	return router.pathname === path;
 }
 
+const mainNavigation = [
+	{ id: "jdk-comparison", href: "/", label: "JDK Comparison" },
+	{ id: "faq", href: "/faq", label: "FAQ" },
+];
+
 export function Navigation() {
 	const router = useRouter();
 	const [open, setOpen] = useState(false);
@@ -74,28 +79,25 @@ export function Navigation() {
 							</Link>
 						</div>
 						<div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-							<Link
-								href="/"
-								className={classNames(
-									isActive(router, "/")
-										? "border-red-600 text-gray-900"
-										: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-									"desktop-navigation-option desktop-navigation-option-jdk-comparison inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium"
-								)}
-							>
-								JDK Comparison
-							</Link>
-							<Link
-								href="/faq"
-								className={classNames(
-									isActive(router, "/faq")
-										? "border-red-600 text-gray-900"
-										: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-									"desktop-navigation-option desktop-navigation-option-faq inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium"
-								)}
-							>
-								FAQ
-							</Link>
+							{mainNavigation.map((item) => (
+								<Link
+									key={item.id}
+									href={item.href}
+									className={classNames(
+										isActive(router, item.href)
+											? "border-red-600 text-gray-900"
+											: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+										`desktop-navigation-option desktop-navigation-option-${item.id} inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium`
+									)}
+									aria-current={
+										isActive(router, item.href)
+											? "page"
+											: undefined
+									}
+								>
+									{item.label}
+								</Link>
+							))}
 						</div>
 					</div>
 					<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -206,38 +208,31 @@ export function Navigation() {
 										className="mt-5"
 									>
 										<div className="space-y-1">
-											<Link
-												href="/"
-												className={classNames(
-													isActive(router, "/")
-														? "border-red-600 bg-red-50 text-red-600"
-														: "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-													"mobile-navigation-option mobile-navigation-option-jdk-comparison group flex items-center border-l-4 px-3 py-2 text-sm font-medium"
-												)}
-												aria-current={
-													isActive(router, "/")
-														? "page"
-														: undefined
-												}
-											>
-												JDK Comparison
-											</Link>
-											<Link
-												href="/faq"
-												className={classNames(
-													isActive(router, "/faq")
-														? "border-red-600 bg-red-50 text-red-600"
-														: "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-													"mobile-navigation-option mobile-navigation-option-faq group flex items-center border-l-4 px-3 py-2 text-sm font-medium"
-												)}
-												aria-current={
-													isActive(router, "/faq")
-														? "page"
-														: undefined
-												}
-											>
-												FAQ
-											</Link>
+											{mainNavigation.map((item) => (
+												<Link
+													key={item.id}
+													href={item.href}
+													className={classNames(
+														isActive(
+															router,
+															item.href
+														)
+															? "border-red-600 bg-red-50 text-red-600"
+															: "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+														`mobile-navigation-option mobile-navigation-option-${item.id} group flex items-center border-l-4 px-3 py-2 text-sm font-medium`
+													)}
+													aria-current={
+														isActive(
+															router,
+															item.href
+														)
+															? "page"
+															: undefined
+													}
+												>
+													{item.label}
+												</Link>
+											))}
 										</div>
 									</nav>
 								</div>
