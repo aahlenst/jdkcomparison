@@ -1686,4 +1686,29 @@ describe("JDK Comparison", () => {
 			"Dukecorp JDK 17",
 		]);
 	});
+
+	it("displays message if no JDK matches selection", () => {
+		cy.visit("/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+
+		comparisonPage.showFilter("platforms");
+		comparisonPage.clickFilterOption("platforms", "Solaris, x86, 64-bit");
+		comparisonPage.expectFilterOption(
+			"platforms",
+			"Solaris, x86, 64-bit",
+			true
+		);
+		comparisonPage.closeFilter("platforms");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.clickFilterOption("versions", "17");
+		comparisonPage.expectFilterOption("versions", "17", true);
+		comparisonPage.closeFilter("versions");
+
+		comparisonPage.expectMessage("No JDKs match your selection.");
+		comparisonPage.expectProductNames([]);
+	});
 });

@@ -29,9 +29,14 @@ import { MacSection } from "@/components/comparison/macSection";
 import { LinuxSection } from "@/components/comparison/linuxSection";
 import { OtherPlatformsSection } from "@/components/comparison/otherPlatformsSection";
 import { SecuritySection } from "@/components/comparison/securitySection";
+import { ComparisonMessage } from "@/components/comparison/comparisonMessage";
 
 export function ComparisonTable() {
 	const comparison = useComparison();
+
+	if (comparison.filteredData.length < 1) {
+		return <ComparisonMessage message="No JDKs match your selection." />;
+	}
 
 	return (
 		<>

@@ -399,4 +399,25 @@ describe("Comparison in production", () => {
 			"Eclipse Temurin 11",
 		]);
 	});
+
+	it("displays message if no JDK matches selection", () => {
+		cy.visit("/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+
+		comparisonPage.showFilter("platforms");
+		comparisonPage.clickFilterOption("platforms", "Solaris, SPARC");
+		comparisonPage.expectFilterOption("platforms", "Solaris, SPARC", true);
+		comparisonPage.closeFilter("platforms");
+
+		comparisonPage.expectProductNamesIncomplete(["Oracle JDK 8"]);
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.clickFilterOption("versions", "17");
+		comparisonPage.expectFilterOption("versions", "17", true);
+		comparisonPage.closeFilter("versions");
+
+		comparisonPage.expectMessage("No JDKs match your selection.");
+		comparisonPage.expectProductNames([]);
+	});
 });

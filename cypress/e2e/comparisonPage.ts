@@ -167,6 +167,10 @@ export const comparisonPage = {
 			.find("sup a")
 			.trigger("click");
 	},
+	expectMessage: (message: string) => {
+		cy.get("#comparison-message").should("be.visible");
+		cy.get("#comparison-message").should("have.text", message);
+	},
 	expectProductNames: (names: string[]) => {
 		cy.get("#product-header .product-name").should(
 			"have.length",
