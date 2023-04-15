@@ -90,7 +90,7 @@ export const data: Vendor = {
 				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: {
-					text: "JRE, OpenJFX",
+					text: "JRE",
 					footnote: "96bee46b-fcbb-4929-ad24-c0e94d2d2bed",
 				},
 				customisations: {
@@ -107,6 +107,107 @@ export const data: Vendor = {
 				},
 				eolDate: {
 					text: "2030-12",
+					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
+				},
+				releaseSchedule: { text: "OpenJDK" },
+				releaseDelay: { text: "0-3 days" },
+			},
+		},
+		{
+			id: "zulu-11",
+			information: {
+				name: "Zulu 11",
+				version: 11,
+				downloadSite:
+					"https://www.azul.com/downloads/?version=java-11-lts#zulu",
+			},
+			features: {
+				virtualMachine: { text: "HotSpot" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.YES },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: {
+						present: Present.PARTIALLY,
+						footnote: "9f045370-85d4-4923-9c84-f6257d2cf882",
+					},
+					z: {
+						present: Present.PARTIALLY,
+						footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f",
+					},
+					custom: { text: "none" },
+				},
+				// Azul support matrix: https://docs.azul.com/core/zulu-openjdk/supported-platforms
+				mac: {
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: { present: Present.YES },
+				},
+				linux: {
+					x32: { present: Present.YES },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.YES },
+					aarch32: { present: Present.YES },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					deb: {
+						// Only x86, 64-bit and ARM, 64-bit
+						present: Present.PARTIALLY,
+						footnote: "b8e647d8-44e4-4241-9064-23d35315e5ac",
+					},
+					rpm: {
+						// Only x86, 64-bit and ARM, 64-bit
+						present: Present.PARTIALLY,
+						footnote: "b8e647d8-44e4-4241-9064-23d35315e5ac",
+					},
+					containerImages: {
+						// Only x86, 64-bit and ARM, 64-bit
+						present: Present.PARTIALLY,
+						footnote: "fdc63639-fa45-489e-9264-6419a212f398",
+					},
+				},
+				windows: {
+					x32: { present: Present.YES },
+					x64: { present: Present.YES },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.YES },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.YES },
+					solarisx64: { present: Present.YES },
+				},
+				aqavit: { present: Present.YES },
+				tck: { present: Present.YES },
+				editions: {
+					text: "JRE, OpenJFX",
+					footnote: "96bee46b-fcbb-4929-ad24-c0e94d2d2bed",
+				},
+				customisations: {
+					text: "few",
+					footnote: "c8237922-a8c7-46f8-b913-ccf318ea3f96",
+				},
+				notableFeatures: { text: "none" },
+				license: { text: "GPLv2+CPE" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.YES,
+				},
+				eolDate: {
+					text: "2026-09",
 					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -154,6 +255,18 @@ export const data: Vendor = {
 				"Azul provides [builds](https://www.azul.com/products/components/icedtea-web/) of " +
 				"[IcedTea-Web](https://github.com/AdoptOpenJDK/IcedTea-Web), an open source implementation of Web " +
 				"Start. Those can be used with Azul Zulu.",
+		},
+		{
+			id: "9f045370-85d4-4923-9c84-f6257d2cf882",
+			markdown:
+				"[Shenandoah GC is not available on all " +
+				"platforms](https://wiki.openjdk.org/display/shenandoah) that Azul Zulu is offered for.",
+		},
+		{
+			id: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f",
+			markdown:
+				"[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that Azul Zulu is " +
+				"offered for. Furthermore, it is experimental on some platforms depending on the version.",
 		},
 	],
 };
