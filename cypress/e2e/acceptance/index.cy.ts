@@ -59,7 +59,19 @@ describe("Comparison in production", () => {
 		);
 	});
 
-	it("should display all products", () => {
+	it("should include all vendors", () => {
+		cy.visit("/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+
+		comparisonPage.expectVendorCount(4);
+		comparisonPage.expectVendor("Amazon");
+		comparisonPage.expectVendor("Azul");
+		comparisonPage.expectVendor("Eclipse Foundation");
+		comparisonPage.expectVendor("Oracle");
+	});
+
+	it("should display products", () => {
 		cy.visit("/");
 
 		navigationComponent.expectPageTitle("JDK Comparison");
@@ -182,6 +194,7 @@ describe("Comparison in production", () => {
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.expectFilterOption("vendors", "Amazon", false);
+		comparisonPage.expectFilterOption("vendors", "Azul", false);
 		comparisonPage.expectFilterOption(
 			"vendors",
 			"Eclipse Foundation",

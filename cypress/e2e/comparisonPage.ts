@@ -236,6 +236,22 @@ export const comparisonPage = {
 			});
 		}
 	},
+	expectVendor: (name: string) => {
+		cy.get(".product-vendor").should((e) => {
+			const foundNames = e.map((i, el) => Cypress.$(el).text()).get();
+			const uniqueNames = [...new Set<string>(foundNames)];
+
+			expect(uniqueNames).to.contain(name);
+		});
+	},
+	expectVendorCount: (count: number) => {
+		cy.get(".product-vendor").should((e) => {
+			const foundNames = e.map((i, el) => Cypress.$(el).text()).get();
+			const uniqueNames = [...new Set<string>(foundNames)];
+
+			expect(uniqueNames).length(count);
+		});
+	},
 	showFeatureExplanation: (id: string) => {
 		cy.get(`#${id} .feature-explanation-toggle`).click();
 	},
