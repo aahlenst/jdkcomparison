@@ -34,10 +34,36 @@ function getFilter(id: string, filters: Model.Filter[]): Model.Filter {
 	return filter;
 }
 
+const filtersToDisplay = [
+	{ id: "versions", label: "Versions" },
+	{ id: "vendors", label: "Vendors" },
+	{ id: "vms", label: "VMs" },
+	{ id: "technologies", label: "Technologies" },
+	{ id: "platforms", label: "Platforms" },
+	{ id: "licensing", label: "Licensing" },
+];
+
 export function Filters() {
 	const comparison = useComparison();
 	const handleSearchParamsAction = usePropagateToSearchParams();
 	const [open, setOpen] = useState(false);
+
+	const mobileFilters = filtersToDisplay.map((filter) => (
+		<CheckboxFilterMobile
+			key={filter.id}
+			label={filter.label}
+			filter={getFilter(filter.id, comparison.filters)}
+			onChangeHandler={handleSearchParamsAction}
+		/>
+	));
+	const desktopFilters = filtersToDisplay.map((filter) => (
+		<CheckboxFilter
+			key={filter.id}
+			label={filter.label}
+			filter={getFilter(filter.id, comparison.filters)}
+			onChangeHandler={handleSearchParamsAction}
+		/>
+	));
 
 	return (
 		<div
@@ -48,7 +74,7 @@ export function Filters() {
 			<Transition.Root show={open} as={Fragment}>
 				<Dialog
 					as="div"
-					className="relative z-40 sm:hidden"
+					className="relative z-40 md:hidden"
 					onClose={setOpen}
 				>
 					<Transition.Child
@@ -93,58 +119,7 @@ export function Filters() {
 										/>
 									</button>
 								</div>
-								<form className="mt-4">
-									<CheckboxFilterMobile
-										label="Versions"
-										filter={getFilter(
-											"versions",
-											comparison.filters
-										)}
-										onChangeHandler={
-											handleSearchParamsAction
-										}
-									/>
-									<CheckboxFilterMobile
-										label="Vendors"
-										filter={getFilter(
-											"vendors",
-											comparison.filters
-										)}
-										onChangeHandler={
-											handleSearchParamsAction
-										}
-									/>
-									<CheckboxFilterMobile
-										label="VMs"
-										filter={getFilter(
-											"vms",
-											comparison.filters
-										)}
-										onChangeHandler={
-											handleSearchParamsAction
-										}
-									/>
-									<CheckboxFilterMobile
-										label="Technologies"
-										filter={getFilter(
-											"technologies",
-											comparison.filters
-										)}
-										onChangeHandler={
-											handleSearchParamsAction
-										}
-									/>
-									<CheckboxFilterMobile
-										label="Licensing"
-										filter={getFilter(
-											"licensing",
-											comparison.filters
-										)}
-										onChangeHandler={
-											handleSearchParamsAction
-										}
-									/>
-								</form>
+								<form className="mt-4">{mobileFilters}</form>
 							</Dialog.Panel>
 						</Transition.Child>
 					</div>
@@ -164,40 +139,13 @@ export function Filters() {
 					<button
 						type="button"
 						id="mobile-filters-open"
-						className="inline-block text-sm font-medium text-gray-700 pr-2 sm:pr-0 hover:text-gray-900 sm:hidden"
+						className="inline-block text-sm font-medium text-gray-700 pr-2 md:pr-0 hover:text-gray-900 md:hidden"
 						onClick={() => setOpen(true)}
 					>
 						Filters
 					</button>
-					<Popover.Group className="hidden divide-x divide-gray-200 sm:flex sm:items-baseline">
-						<CheckboxFilter
-							label="Versions"
-							filter={getFilter("versions", comparison.filters)}
-							onChangeHandler={handleSearchParamsAction}
-						/>
-						<CheckboxFilter
-							label="Vendors"
-							filter={getFilter("vendors", comparison.filters)}
-							onChangeHandler={handleSearchParamsAction}
-						/>
-						<CheckboxFilter
-							label="VMs"
-							filter={getFilter("vms", comparison.filters)}
-							onChangeHandler={handleSearchParamsAction}
-						/>
-						<CheckboxFilter
-							label="Technologies"
-							filter={getFilter(
-								"technologies",
-								comparison.filters
-							)}
-							onChangeHandler={handleSearchParamsAction}
-						/>
-						<CheckboxFilter
-							label="Licensing"
-							filter={getFilter("licensing", comparison.filters)}
-							onChangeHandler={handleSearchParamsAction}
-						/>
+					<Popover.Group className="hidden divide-x divide-gray-200 md:flex md:items-baseline">
+						{desktopFilters}
 					</Popover.Group>
 				</div>
 			</section>

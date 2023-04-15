@@ -170,6 +170,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFilter("Vendors");
 		comparisonPage.expectFilter("VMs");
 		comparisonPage.expectFilter("Technologies");
+		comparisonPage.expectFilter("Platforms");
 		comparisonPage.expectFilter("Licensing");
 
 		comparisonPage.showFilter("versions");
@@ -206,6 +207,27 @@ describe("Comparison in production", () => {
 			false
 		);
 		comparisonPage.closeFilter("technologies");
+
+		comparisonPage.showFilter("platforms");
+		comparisonPage.expectFilterOption("platforms", "AIX, PPC", false);
+		comparisonPage.expectFilterOption(
+			"platforms",
+			"macOS, x86, 64-bit",
+			false
+		);
+
+		comparisonPage.showFilter("licensing");
+		comparisonPage.expectFilterOption(
+			"licensing",
+			"Free in Development",
+			false
+		);
+		comparisonPage.expectFilterOption(
+			"licensing",
+			"Free in Production",
+			false
+		);
+		comparisonPage.closeFilter("licensing");
 	});
 
 	it("shows feature explanation", () => {

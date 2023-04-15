@@ -19,6 +19,7 @@ import { Filters } from "./filters";
 import {
 	DynamicSelectionFilter,
 	LicensingFilter,
+	PlatformsFilter,
 	TechnologiesFilter,
 } from "../../src/filter";
 import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider";
@@ -27,6 +28,7 @@ describe("<Filters/>", () => {
 	const filters = [
 		new TechnologiesFilter(),
 		new LicensingFilter(),
+		new PlatformsFilter(),
 		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) =>
 			fc.version.toString()
 		),
@@ -89,8 +91,18 @@ describe("<Filters/>", () => {
 		);
 		cy.get("input[id=technologies-jaws]").should("not.be.checked");
 
-		cy.get(".filter-name").eq(4).should("have.text", "Licensing");
+		cy.get(".filter-name").eq(4).should("have.text", "Platforms");
 		cy.get(".filter-name").eq(4).click();
+		cy.get("label[for=platforms-aix-ppc]").should("have.text", "AIX, PPC");
+		cy.get("input[id=platforms-aix-ppc]").should("not.be.checked");
+		cy.get("label[for=platforms-windows-x64]").should(
+			"have.text",
+			"Windows, x86, 64-bit"
+		);
+		cy.get("input[id=platforms-windows-x64]").should("not.be.checked");
+
+		cy.get(".filter-name").eq(5).should("have.text", "Licensing");
+		cy.get(".filter-name").eq(5).click();
 		cy.get("label[for=licensing-free-in-development]").should(
 			"have.text",
 			"Free in Development"

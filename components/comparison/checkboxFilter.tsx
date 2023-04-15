@@ -92,7 +92,7 @@ export function CheckboxFilter({
 				leaveFrom="transform opacity-100 scale-100"
 				leaveTo="transform opacity-0 scale-95"
 			>
-				<Popover.Panel className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+				<Popover.Panel className="absolute max-h-72 overflow-auto right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
 					<form id={`filter-${filter.id}`} className="space-y-4">
 						{fields}
 					</form>

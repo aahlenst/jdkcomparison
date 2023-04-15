@@ -14,19 +14,22 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { describe, test, beforeAll, expect } from "@jest/globals";
+import { beforeAll, describe, expect, test } from "@jest/globals";
 import { extractComparisonData } from "@/src/comparison";
 import {
 	applyFilters,
 	createFilters,
 	DynamicSelectionFilter,
 	LicensingFilter,
+	PlatformsFilter,
+	PlatformsFilterFeatures,
 	TechnologiesFilter,
 	VendorsFilter,
 	VersionsFilter,
 	VirtualMachinesFilter,
 } from "@/src/filter";
 import { Model } from "@/src/modelTypes";
+import Present = Model.Present;
 
 describe("filter module", () => {
 	let comparisonData: Model.FeatureComparison[];
@@ -47,6 +50,7 @@ describe("filter module", () => {
 
 		expect(filters).toEqual([
 			"licensing",
+			"platforms",
 			"technologies",
 			"vendors",
 			"versions",
@@ -1061,6 +1065,154 @@ describe("LicensingFilter", () => {
 		).toBeTruthy();
 		expect(
 			licensingFilter.hasOptionWithLabel("Unknown option")
+		).toBeFalsy();
+	});
+});
+
+describe("PlatformsFilter", () => {
+	let yesJDK: PlatformsFilterFeatures;
+
+	beforeEach(() => {
+		yesJDK = {
+			aixPPC: { present: Model.Present.YES },
+			linuxAArch32: { present: Model.Present.YES },
+			linuxAArch64: { present: Model.Present.YES },
+			linuxAArch64Musl: { present: Model.Present.YES },
+			linuxPPC64: { present: Model.Present.YES },
+			linuxRISCV64: { present: Model.Present.YES },
+			linuxs390x: { present: Model.Present.YES },
+			linuxx32: { present: Model.Present.YES },
+			linuxx64: { present: Model.Present.YES },
+			linuxx64Musl: { present: Model.Present.YES },
+			solarisSPARC: { present: Model.Present.YES },
+			solarisx64: { present: Model.Present.YES },
+			windowsAArch64: { present: Model.Present.YES },
+			windowsx32: { present: Model.Present.YES },
+			windowsx64: { present: Model.Present.YES },
+			macAArch64: { present: Model.Present.YES },
+			macx64: { present: Model.Present.YES },
+		};
+	});
+
+	test.each([
+		["AIX, PPC", "aixPPC"],
+		["Linux, ARM, 32-bit", "linuxAArch32"],
+		["Linux, ARM, 64-bit", "linuxAArch64"],
+		["Linux, ARM, 64-bit, musl", "linuxAArch64Musl"],
+		["Linux, PPC, 64-bit", "linuxPPC64"],
+		["Linux, RISC-V, 64-bit", "linuxRISCV64"],
+		["Linux, S390, 64-bit", "linuxs390x"],
+		["Linux, x86, 32-bit", "linuxx32"],
+		["Linux, x86, 64-bit", "linuxx64"],
+		["Linux, x86, 64-bit, musl", "linuxx64Musl"],
+		["Solaris, SPARC", "solarisSPARC"],
+		["Solaris, x86, 64-bit", "solarisx64"],
+		["Windows, ARM, 64-bit", "windowsAArch64"],
+		["Windows, x86, 32-bit", "windowsx32"],
+		["Windows, x86, 64-bit", "windowsx64"],
+		["macOS, ARM, 64-bit", "macAArch64"],
+		["macOS, x86, 64-bit", "macx64"],
+	])("filters '%s'", (label: string, property: string) => {
+		const platformsFilter = new PlatformsFilter();
+		platformsFilter.setOptionSelectedByLabel(label, true);
+
+		expect(platformsFilter.apply(yesJDK)).toBeTruthy();
+
+		yesJDK[property as keyof typeof yesJDK].present = Present.PARTIALLY;
+
+		expect(platformsFilter.apply(yesJDK)).toBeTruthy();
+
+		yesJDK[property as keyof typeof yesJDK].present = Present.NO;
+
+		expect(platformsFilter.apply(yesJDK)).toBeFalsy();
+
+		yesJDK[property as keyof typeof yesJDK].present = Present.UNKNOWN;
+
+		expect(platformsFilter.apply(yesJDK)).toBeFalsy();
+	});
+
+	test("returns number of selected options set by option ID", () => {
+		const platformsFilter = new PlatformsFilter();
+
+		expect(platformsFilter.numberOfSelectedOptions()).toEqual(0);
+
+		platformsFilter.setOptionSelected("platforms-linux-aarch32", true);
+		platformsFilter.setOptionSelected("platforms-linux-aarch64", true);
+
+		expect(platformsFilter.numberOfSelectedOptions()).toEqual(2);
+
+		platformsFilter.setOptionSelected("platforms-linux-aarch32", false);
+
+		expect(platformsFilter.numberOfSelectedOptions()).toEqual(1);
+
+		platformsFilter.setOptionSelected("platforms-linux-aarch64", false);
+
+		expect(platformsFilter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("returns number of selected options set by option label", () => {
+		const platformsFilter = new PlatformsFilter();
+
+		expect(platformsFilter.numberOfSelectedOptions()).toEqual(0);
+
+		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 32-bit", true);
+		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 64-bit", true);
+
+		expect(platformsFilter.numberOfSelectedOptions()).toEqual(2);
+
+		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 32-bit", false);
+
+		expect(platformsFilter.numberOfSelectedOptions()).toEqual(1);
+
+		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 64-bit", false);
+
+		expect(platformsFilter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("returns options that are active", () => {
+		const platformsFilter = new PlatformsFilter();
+
+		expect(platformsFilter.activeOptions()).toHaveLength(0);
+
+		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 32-bit", true);
+		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 64-bit", true);
+
+		expect(platformsFilter.activeOptions()).toHaveLength(2);
+		expect(platformsFilter.activeOptions()).toContainEqual(
+			"Linux, ARM, 32-bit"
+		);
+		expect(platformsFilter.activeOptions()).toContainEqual(
+			"Linux, ARM, 64-bit"
+		);
+	});
+
+	test("deactivates all options when resetting", () => {
+		const platformsFilter = new PlatformsFilter();
+
+		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 32-bit", true);
+		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 64-bit", true);
+
+		expect(platformsFilter.activeOptions()).toHaveLength(2);
+		expect(platformsFilter.activeOptions()).toContainEqual(
+			"Linux, ARM, 32-bit"
+		);
+		expect(platformsFilter.activeOptions()).toContainEqual(
+			"Linux, ARM, 64-bit"
+		);
+
+		platformsFilter.reset();
+
+		expect(platformsFilter.activeOptions()).toHaveLength(0);
+	});
+
+	test("supports testing option existence by label", () => {
+		const platformsFilter = new PlatformsFilter();
+
+		expect(
+			platformsFilter.hasOptionWithLabel("Linux, ARM, 32-bit")
+		).toBeTruthy();
+		expect(
+			platformsFilter.hasOptionWithLabel("Unknown option")
 		).toBeFalsy();
 	});
 });

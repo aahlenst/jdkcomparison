@@ -24,6 +24,7 @@ export function createFilters(
 		new VendorsFilter(comparisons),
 		new VirtualMachinesFilter(comparisons),
 		new TechnologiesFilter(),
+		new PlatformsFilter(),
 		new LicensingFilter(),
 	];
 }
@@ -46,6 +47,10 @@ export function applyFilters(
 		}
 	}
 	return filteredComparisons;
+}
+
+interface FeatureSupplier<T> {
+	supplier: (fc: T) => Model.FeaturePresence;
 }
 
 abstract class AbstractFilter implements Model.Filter {
@@ -217,5 +222,150 @@ export class LicensingFilter extends AbstractFilter {
 				acceptedPresences.has(fc.freeInDevelopment.present)) &&
 			(!freeInProd || acceptedPresences.has(fc.freeInProduction.present))
 		);
+	}
+}
+
+export type PlatformsFilterFeatures = Pick<
+	Model.FeatureComparison,
+	| "aixPPC"
+	| "linuxAArch32"
+	| "linuxAArch64"
+	| "linuxAArch64Musl"
+	| "linuxPPC64"
+	| "linuxRISCV64"
+	| "linuxs390x"
+	| "linuxx32"
+	| "linuxx64"
+	| "linuxx64Musl"
+	| "solarisSPARC"
+	| "solarisx64"
+	| "windowsAArch64"
+	| "windowsx32"
+	| "windowsx64"
+	| "macAArch64"
+	| "macx64"
+>;
+
+export class PlatformsFilter extends AbstractFilter {
+	readonly id: string = "platforms";
+	readonly options: (Model.FilterOption &
+		FeatureSupplier<PlatformsFilterFeatures>)[] = [
+		{
+			id: "platforms-aix-ppc",
+			label: "AIX, PPC",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.aixPPC,
+		},
+		{
+			id: "platforms-macos-aarch64",
+			label: "macOS, ARM, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.macAArch64,
+		},
+		{
+			id: "platforms-macos-x64",
+			label: "macOS, x86, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.macx64,
+		},
+		{
+			id: "platforms-linux-aarch32",
+			label: "Linux, ARM, 32-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxAArch32,
+		},
+		{
+			id: "platforms-linux-aarch64",
+			label: "Linux, ARM, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxAArch64,
+		},
+		{
+			id: "platforms-linux-aarch64-musl",
+			label: "Linux, ARM, 64-bit, musl",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxAArch64Musl,
+		},
+		{
+			id: "platforms-linux-ppc64",
+			label: "Linux, PPC, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxPPC64,
+		},
+		{
+			id: "platforms-linux-riscv64",
+			label: "Linux, RISC-V, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxRISCV64,
+		},
+		{
+			id: "platforms-linux-s390x",
+			label: "Linux, S390, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxs390x,
+		},
+		{
+			id: "platforms-linux-x32",
+			label: "Linux, x86, 32-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxx32,
+		},
+		{
+			id: "platforms-linux-x64",
+			label: "Linux, x86, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxx64,
+		},
+		{
+			id: "platforms-linux-x64-musl",
+			label: "Linux, x86, 64-bit, musl",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.linuxx64Musl,
+		},
+		{
+			id: "platforms-solaris-sparc",
+			label: "Solaris, SPARC",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.solarisSPARC,
+		},
+		{
+			id: "platforms-solaris-x64",
+			label: "Solaris, x86, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.solarisx64,
+		},
+		{
+			id: "platforms-windows-aarch64",
+			label: "Windows, ARM, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.windowsAArch64,
+		},
+		{
+			id: "platforms-windows-x32",
+			label: "Windows, x86, 32-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.windowsx32,
+		},
+		{
+			id: "platforms-windows-x64",
+			label: "Windows, x86, 64-bit",
+			selected: false,
+			supplier: (f: PlatformsFilterFeatures) => f.windowsx64,
+		},
+	];
+
+	apply(f: PlatformsFilterFeatures): boolean {
+		for (const option of this.options.filter((option) => option.selected)) {
+			const presence = option.supplier(f);
+
+			if (
+				presence.present !== Model.Present.YES &&
+				presence.present !== Model.Present.PARTIALLY
+			) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

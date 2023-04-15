@@ -764,6 +764,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilter("Vendors");
 		comparisonPage.expectFilter("VMs");
 		comparisonPage.expectFilter("Technologies");
+		comparisonPage.expectFilter("Platforms");
 		comparisonPage.expectFilter("Licensing");
 
 		comparisonPage.showFilter("versions");
@@ -794,6 +795,14 @@ describe("JDK Comparison", () => {
 			false
 		);
 		comparisonPage.closeFilter("technologies");
+
+		comparisonPage.showFilter("platforms");
+		comparisonPage.expectFilterOption("platforms", "AIX, PPC", false);
+		comparisonPage.expectFilterOption(
+			"platforms",
+			"macOS, x86, 64-bit",
+			false
+		);
 
 		comparisonPage.showFilter("licensing");
 		comparisonPage.expectFilterOption(
@@ -1056,6 +1065,34 @@ describe("JDK Comparison", () => {
 			"Dukecorp JDK 17",
 			"Coffeecorp JDK 8",
 		]);
+	});
+
+	it("allows filtering by platforms", () => {
+		cy.visit("/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames([
+			"Coffeecorp JDK 17",
+			"Dukecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
+		comparisonPage.showFilter("platforms");
+		comparisonPage.clickFilterOption("platforms", "AIX, PPC");
+		comparisonPage.expectFilterOption("platforms", "AIX, PPC", true);
+		comparisonPage.closeFilter("platforms");
+
+		comparisonPage.expectProductNames([
+			"Coffeecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
+		comparisonPage.showFilter("platforms");
+		comparisonPage.clickFilterOption("platforms", "Solaris, SPARC");
+		comparisonPage.expectFilterOption("platforms", "Solaris, SPARC", true);
+		comparisonPage.closeFilter("platforms");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
 	});
 
 	it("allows filtering by licensing option", () => {
@@ -1384,6 +1421,40 @@ describe("JDK Comparison", () => {
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 3);
 		comparisonPage.expectProductNames([]);
+	});
+
+	it("preselects Platforms filter according to search parameters", () => {
+		cy.visit("/");
+
+		comparisonPage.showFilter("platforms");
+		comparisonPage.expectFilterOption("platforms", "AIX, PPC", false);
+		comparisonPage.expectFilterOption("platforms", "Solaris, SPARC", false);
+		comparisonPage.closeFilter("platforms");
+		comparisonPage.expectActiveFilterOptions("platforms", 0);
+		comparisonPage.expectProductNames([
+			"Coffeecorp JDK 17",
+			"Dukecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
+		cy.visit("/?platforms=AIX, PPC");
+		comparisonPage.showFilter("platforms");
+		comparisonPage.expectFilterOption("platforms", "AIX, PPC", true);
+		comparisonPage.expectFilterOption("platforms", "Solaris, SPARC", false);
+		comparisonPage.closeFilter("platforms");
+		comparisonPage.expectActiveFilterOptions("platforms", 1);
+		comparisonPage.expectProductNames([
+			"Coffeecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
+		cy.visit("/?platforms=AIX, PPC&platforms=Solaris, SPARC");
+		comparisonPage.showFilter("platforms");
+		comparisonPage.expectFilterOption("platforms", "AIX, PPC", true);
+		comparisonPage.expectFilterOption("platforms", "Solaris, SPARC", true);
+		comparisonPage.closeFilter("platforms");
+		comparisonPage.expectActiveFilterOptions("platforms", 2);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
 	});
 
 	it("preselects Licensing filter according to search parameters", () => {
