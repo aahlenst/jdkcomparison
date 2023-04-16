@@ -109,6 +109,11 @@ export type JDKFeatures = {
 	/**
 	 * Indicates the level of changes incorporated into the vendor's JDK in comparison to OpenJDK excluding ports (ports
 	 * are handled separately). Possible values: none, few, medium, many
+	 *
+	 *  - none: OpenJDK without changes.
+	 *  - few: Additional backports, crash fixes, minimal user-visible changes (for example, TLS 1.3)
+	 *  - medium: Additional subsystems, substantial changes to existing subsystems
+	 *  - many: Large changes or additions, for example, custom garbage collectors, virtual machine
 	 */
 	customisations: FeatureDescription;
 	/**
