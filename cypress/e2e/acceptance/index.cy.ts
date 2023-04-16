@@ -64,10 +64,11 @@ describe("Comparison in production", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectVendorCount(5);
+		comparisonPage.expectVendorCount(6);
 		comparisonPage.expectVendor("Amazon");
 		comparisonPage.expectVendor("Azul");
 		comparisonPage.expectVendor("Eclipse Foundation");
+		comparisonPage.expectVendor("Microsoft");
 		comparisonPage.expectVendor("Oracle");
 		comparisonPage.expectVendor("SAP");
 	});
@@ -202,7 +203,9 @@ describe("Comparison in production", () => {
 			"Eclipse Foundation",
 			false
 		);
+		comparisonPage.expectFilterOption("vendors", "Microsoft", false);
 		comparisonPage.expectFilterOption("vendors", "Oracle", false);
+		comparisonPage.expectFilterOption("vendors", "SAP", false);
 		comparisonPage.closeFilter("vendors");
 
 		comparisonPage.showFilter("vms");
