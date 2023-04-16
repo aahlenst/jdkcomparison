@@ -38,7 +38,7 @@ export function Feature({
 		return (
 			<div
 				key={value.id}
-				className="feature-value py-2 px-4 border-r last:border-r-transparent"
+				className="feature-value py-2 px-4 content-center border-r text-sm last:border-r-transparent"
 			>
 				{"present" in value && (
 					<FeaturePresence present={value.present} />
@@ -59,7 +59,7 @@ export function Feature({
 				gridTemplateColumns: `repeat(${features.length + 1}, 12rem)`,
 			}}
 		>
-			<div className="sticky left-0 z-10 group inline-flex items-center bg-white px-4 border-r">
+			<div className="sticky left-0 z-10 inline-flex items-center bg-white py-2 px-4 border-r">
 				<span className="feature-name mr-1 text-sm font-medium">
 					{name}
 				</span>

@@ -85,7 +85,10 @@ export const data: Vendor = {
 					text: "few",
 					footnote: "69b47908-13e0-497c-b995-c0cf573f3f0f",
 				},
-				notableFeatures: { text: "none" },
+				notableFeatures: {
+					text: "High Memory Reports, MallocTracer, Vitals",
+					footnote: "18e1d490-3582-46be-9340-271140e3ada5",
+				},
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
@@ -178,7 +181,10 @@ export const data: Vendor = {
 					text: "few",
 					footnote: "69b47908-13e0-497c-b995-c0cf573f3f0f",
 				},
-				notableFeatures: { text: "none" },
+				notableFeatures: {
+					text: "High Memory Reports, MallocTracer, Vitals",
+					footnote: "18e1d490-3582-46be-9340-271140e3ada5",
+				},
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
@@ -271,7 +277,10 @@ export const data: Vendor = {
 					text: "few",
 					footnote: "69b47908-13e0-497c-b995-c0cf573f3f0f",
 				},
-				notableFeatures: { text: "none" },
+				notableFeatures: {
+					text: "High Memory Reports, MallocTracer, Vitals",
+					footnote: "18e1d490-3582-46be-9340-271140e3ada5",
+				},
 				license: { text: "GPLv2+CPE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
@@ -341,6 +350,15 @@ export const data: Vendor = {
 				"According to [SapMachine's " +
 				"FAQ](https://github.com/SAP/SapMachine/wiki/Frequently-Asked-Questions#Are-SapMachine-builds-verified-by-the-Java-Compatibility-Kit-JCK), " +
 				"TCK certification of short-term releases is only performed on some platforms.",
+		},
+		{
+			id: "18e1d490-3582-46be-9340-271140e3ada5",
+			markdown:
+				"To learn more, see " +
+				"[High Memory Reports](https://github.com/SAP/SapMachine/wiki/SapMachine-High-Memory-Reports), " +
+				"[MallocTracer](https://github.com/SAP/SapMachine/wiki/SapMachine-MallocTracer), " +
+				"[Vitals](https://github.com/SAP/SapMachine/wiki/SapMachine-Vitals). " +
+				"Please note that not all features are available on all platforms.",
 		},
 	],
 };
