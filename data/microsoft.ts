@@ -55,7 +55,10 @@ export const data: Vendor = {
 					s390x: { present: Present.NO },
 					apk: { present: Present.NO },
 					deb: { present: Present.YES },
-					rpm: { present: Present.YES },
+					rpm: {
+						present: Present.PARTIALLY,
+						footnote: "edcc7c9a-671d-4547-a5a7-8f1271fd8c4a",
+					},
 					containerImages: {
 						present: Present.PARTIALLY,
 						footnote: "8fb6356a-0057-43ea-9372-443fb576145b",
@@ -137,7 +140,10 @@ export const data: Vendor = {
 					s390x: { present: Present.NO },
 					apk: { present: Present.NO },
 					deb: { present: Present.YES },
-					rpm: { present: Present.YES },
+					rpm: {
+						present: Present.PARTIALLY,
+						footnote: "edcc7c9a-671d-4547-a5a7-8f1271fd8c4a",
+					},
 					containerImages: {
 						present: Present.PARTIALLY,
 						footnote: "8fb6356a-0057-43ea-9372-443fb576145b",
@@ -214,6 +220,12 @@ export const data: Vendor = {
 				"See Microsoft's [Support](https://learn.microsoft.com/en-us/java/openjdk/support) document for " +
 				"detailed information regarding the update schedule and end of life dates for Microsoft Build of " +
 				"OpenJDK.",
+		},
+		{
+			id: "edcc7c9a-671d-4547-a5a7-8f1271fd8c4a",
+			markdown:
+				"The RPMs published by Microsoft are [not compatible with " +
+				"SUSE](https://github.com/microsoft/openjdk/issues/389).",
 		},
 	],
 };
