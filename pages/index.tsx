@@ -64,6 +64,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 		(await import("@/data/azul")).default,
 		(await import("@/data/eclipse")).default,
 		(await import("@/data/oracle")).default,
+		(await import("@/data/sap")).default,
 	];
 
 	let data: Vendor[];

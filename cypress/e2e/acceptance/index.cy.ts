@@ -64,11 +64,12 @@ describe("Comparison in production", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectVendorCount(4);
+		comparisonPage.expectVendorCount(5);
 		comparisonPage.expectVendor("Amazon");
 		comparisonPage.expectVendor("Azul");
 		comparisonPage.expectVendor("Eclipse Foundation");
 		comparisonPage.expectVendor("Oracle");
+		comparisonPage.expectVendor("SAP");
 	});
 
 	it("should display products", () => {
