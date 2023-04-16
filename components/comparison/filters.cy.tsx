@@ -18,9 +18,11 @@ import { ComparisonProvider } from "./comparisonContext";
 import { Filters } from "./filters";
 import {
 	DynamicSelectionFilter,
+	GarbageCollectorsFilter,
 	LicensingFilter,
 	PlatformsFilter,
 	TechnologiesFilter,
+	VersionsFilter,
 } from "../../src/filter";
 import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider";
 
@@ -29,6 +31,7 @@ describe("<Filters/>", () => {
 		new TechnologiesFilter(),
 		new LicensingFilter(),
 		new PlatformsFilter(),
+		new GarbageCollectorsFilter(),
 		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) =>
 			fc.version.toString()
 		),
@@ -91,8 +94,15 @@ describe("<Filters/>", () => {
 		);
 		cy.get("input[id=technologies-jaws]").should("not.be.checked");
 
-		cy.get(".filter-name").eq(4).should("have.text", "Platforms");
+		cy.get(".filter-name").eq(4).should("have.text", "GCs");
 		cy.get(".filter-name").eq(4).click();
+		cy.get("label[for=gcs-cms]").should("have.text", "CMS");
+		cy.get("input[id=gcs-cms]").should("not.be.checked");
+		cy.get("label[for=gcs-z]").should("have.text", "Z");
+		cy.get("input[id=gcs-z]").should("not.be.checked");
+
+		cy.get(".filter-name").eq(5).should("have.text", "Platforms");
+		cy.get(".filter-name").eq(5).click();
 		cy.get("label[for=platforms-aix-ppc]").should("have.text", "AIX, PPC");
 		cy.get("input[id=platforms-aix-ppc]").should("not.be.checked");
 		cy.get("label[for=platforms-windows-x64]").should(
@@ -101,8 +111,8 @@ describe("<Filters/>", () => {
 		);
 		cy.get("input[id=platforms-windows-x64]").should("not.be.checked");
 
-		cy.get(".filter-name").eq(5).should("have.text", "Licensing");
-		cy.get(".filter-name").eq(5).click();
+		cy.get(".filter-name").eq(6).should("have.text", "Licensing");
+		cy.get(".filter-name").eq(6).click();
 		cy.get("label[for=licensing-free-in-development]").should(
 			"have.text",
 			"Free in Development"

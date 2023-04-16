@@ -20,6 +20,8 @@ import {
 	applyFilters,
 	createFilters,
 	DynamicSelectionFilter,
+	GarbageCollectorsFilter,
+	GarbageCollectorsFilterFeatures,
 	LicensingFilter,
 	PlatformsFilter,
 	PlatformsFilterFeatures,
@@ -49,6 +51,7 @@ describe("filter module", () => {
 			.sort((a, b) => a.localeCompare(b, "en"));
 
 		expect(filters).toEqual([
+			"gcs",
 			"licensing",
 			"platforms",
 			"technologies",
@@ -1214,5 +1217,121 @@ describe("PlatformsFilter", () => {
 		expect(
 			platformsFilter.hasOptionWithLabel("Unknown option")
 		).toBeFalsy();
+	});
+});
+
+describe("GarbageCollectorsFilter", () => {
+	let yesJDK: GarbageCollectorsFilterFeatures;
+
+	beforeEach(() => {
+		yesJDK = {
+			cms: { present: Model.Present.YES },
+			epsilon: { present: Model.Present.YES },
+			g1: { present: Model.Present.YES },
+			parallel: { present: Model.Present.YES },
+			serial: { present: Model.Present.YES },
+			shenandoah: { present: Model.Present.YES },
+			z: { present: Model.Present.YES },
+		};
+	});
+
+	test.each([
+		["CMS", "cms"],
+		["Epsilon", "epsilon"],
+		["G1", "g1"],
+		["Parallel", "parallel"],
+		["Serial", "serial"],
+		["Shenandoah", "shenandoah"],
+		["Z", "z"],
+	])("filters '%s'", (label: string, property: string) => {
+		const gcFilter = new GarbageCollectorsFilter();
+		gcFilter.setOptionSelectedByLabel(label, true);
+
+		expect(gcFilter.apply(yesJDK)).toBeTruthy();
+
+		yesJDK[property as keyof typeof yesJDK].present = Present.PARTIALLY;
+
+		expect(gcFilter.apply(yesJDK)).toBeTruthy();
+
+		yesJDK[property as keyof typeof yesJDK].present = Present.NO;
+
+		expect(gcFilter.apply(yesJDK)).toBeFalsy();
+
+		yesJDK[property as keyof typeof yesJDK].present = Present.UNKNOWN;
+
+		expect(gcFilter.apply(yesJDK)).toBeFalsy();
+	});
+
+	test("returns number of selected options set by option ID", () => {
+		const gcFilter = new GarbageCollectorsFilter();
+
+		expect(gcFilter.numberOfSelectedOptions()).toEqual(0);
+
+		gcFilter.setOptionSelected("gcs-parallel", true);
+		gcFilter.setOptionSelected("gcs-serial", true);
+
+		expect(gcFilter.numberOfSelectedOptions()).toEqual(2);
+
+		gcFilter.setOptionSelected("gcs-parallel", false);
+
+		expect(gcFilter.numberOfSelectedOptions()).toEqual(1);
+
+		gcFilter.setOptionSelected("gcs-serial", false);
+
+		expect(gcFilter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("returns number of selected options set by option label", () => {
+		const gcFilter = new GarbageCollectorsFilter();
+
+		expect(gcFilter.numberOfSelectedOptions()).toEqual(0);
+
+		gcFilter.setOptionSelectedByLabel("Parallel", true);
+		gcFilter.setOptionSelectedByLabel("Serial", true);
+
+		expect(gcFilter.numberOfSelectedOptions()).toEqual(2);
+
+		gcFilter.setOptionSelectedByLabel("Parallel", false);
+
+		expect(gcFilter.numberOfSelectedOptions()).toEqual(1);
+
+		gcFilter.setOptionSelectedByLabel("Serial", false);
+
+		expect(gcFilter.numberOfSelectedOptions()).toEqual(0);
+	});
+
+	test("returns options that are active", () => {
+		const gcFilter = new GarbageCollectorsFilter();
+
+		expect(gcFilter.activeOptions()).toHaveLength(0);
+
+		gcFilter.setOptionSelectedByLabel("Parallel", true);
+		gcFilter.setOptionSelectedByLabel("Serial", true);
+
+		expect(gcFilter.activeOptions()).toHaveLength(2);
+		expect(gcFilter.activeOptions()).toContainEqual("Parallel");
+		expect(gcFilter.activeOptions()).toContainEqual("Serial");
+	});
+
+	test("deactivates all options when resetting", () => {
+		const gcFilter = new GarbageCollectorsFilter();
+
+		gcFilter.setOptionSelectedByLabel("Parallel", true);
+		gcFilter.setOptionSelectedByLabel("Serial", true);
+
+		expect(gcFilter.activeOptions()).toHaveLength(2);
+		expect(gcFilter.activeOptions()).toContainEqual("Parallel");
+		expect(gcFilter.activeOptions()).toContainEqual("Serial");
+
+		gcFilter.reset();
+
+		expect(gcFilter.activeOptions()).toHaveLength(0);
+	});
+
+	test("supports testing option existence by label", () => {
+		const gcFilter = new GarbageCollectorsFilter();
+
+		expect(gcFilter.hasOptionWithLabel("Serial")).toBeTruthy();
+		expect(gcFilter.hasOptionWithLabel("Unknown option")).toBeFalsy();
 	});
 });

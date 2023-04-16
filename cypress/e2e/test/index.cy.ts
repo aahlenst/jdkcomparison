@@ -764,6 +764,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilter("Vendors");
 		comparisonPage.expectFilter("VMs");
 		comparisonPage.expectFilter("Technologies");
+		comparisonPage.expectFilter("GCs");
 		comparisonPage.expectFilter("Platforms");
 		comparisonPage.expectFilter("Licensing");
 
@@ -796,6 +797,11 @@ describe("JDK Comparison", () => {
 		);
 		comparisonPage.closeFilter("technologies");
 
+		comparisonPage.showFilter("gcs");
+		comparisonPage.expectFilterOption("gcs", "CMS", false);
+		comparisonPage.expectFilterOption("gcs", "Z", false);
+		comparisonPage.closeFilter("gcs");
+
 		comparisonPage.showFilter("platforms");
 		comparisonPage.expectFilterOption("platforms", "AIX, PPC", false);
 		comparisonPage.expectFilterOption(
@@ -803,6 +809,7 @@ describe("JDK Comparison", () => {
 			"macOS, x86, 64-bit",
 			false
 		);
+		comparisonPage.closeFilter("platforms");
 
 		comparisonPage.showFilter("licensing");
 		comparisonPage.expectFilterOption(
@@ -1067,6 +1074,36 @@ describe("JDK Comparison", () => {
 		]);
 	});
 
+	it("allows filtering by garbage collectors", () => {
+		cy.visit("/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames([
+			"Coffeecorp JDK 17",
+			"Dukecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
+		comparisonPage.showFilter("gcs");
+		comparisonPage.clickFilterOption("gcs", "Shenandoah");
+		comparisonPage.expectFilterOption("gcs", "Shenandoah", true);
+		comparisonPage.expectFilterOption("gcs", "CMS", false);
+		comparisonPage.closeFilter("gcs");
+
+		comparisonPage.expectProductNames([
+			"Coffeecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
+		comparisonPage.showFilter("gcs");
+		comparisonPage.clickFilterOption("gcs", "CMS");
+		comparisonPage.expectFilterOption("gcs", "Shenandoah", true);
+		comparisonPage.expectFilterOption("gcs", "CMS", true);
+		comparisonPage.closeFilter("gcs");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+	});
+
 	it("allows filtering by platforms", () => {
 		cy.visit("/");
 
@@ -1218,6 +1255,8 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectActiveFilterOptions("vendors", 0);
 		comparisonPage.expectActiveFilterOptions("vms", 0);
 		comparisonPage.expectActiveFilterOptions("technologies", 0);
+		comparisonPage.expectActiveFilterOptions("gcs", 0);
+		comparisonPage.expectActiveFilterOptions("platforms", 0);
 		comparisonPage.expectActiveFilterOptions("licensing", 0);
 		comparisonPage.expectProductNames([
 			"Coffeecorp JDK 17",
@@ -1232,6 +1271,8 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectActiveFilterOptions("vendors", 0);
 		comparisonPage.expectActiveFilterOptions("vms", 0);
 		comparisonPage.expectActiveFilterOptions("technologies", 0);
+		comparisonPage.expectActiveFilterOptions("gcs", 0);
+		comparisonPage.expectActiveFilterOptions("platforms", 0);
 		comparisonPage.expectActiveFilterOptions("licensing", 0);
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
 	});
@@ -1455,6 +1496,43 @@ describe("JDK Comparison", () => {
 		comparisonPage.closeFilter("platforms");
 		comparisonPage.expectActiveFilterOptions("platforms", 2);
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+	});
+
+	it("preselects Garbage Collectors filter according to search params", () => {
+		cy.visit("/");
+
+		navigationComponent.expectPageTitle("JDK Comparison");
+		comparisonPage.expectProductNames([
+			"Coffeecorp JDK 17",
+			"Dukecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
+		comparisonPage.showFilter("gcs");
+		comparisonPage.expectFilterOption("gcs", "Shenandoah", false);
+		comparisonPage.expectFilterOption("gcs", "CMS", false);
+		comparisonPage.closeFilter("gcs");
+
+		cy.visit("/?gcs=Shenandoah");
+
+		comparisonPage.expectProductNames([
+			"Coffeecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
+		comparisonPage.showFilter("gcs");
+		comparisonPage.expectFilterOption("gcs", "Shenandoah", true);
+		comparisonPage.expectFilterOption("gcs", "CMS", false);
+		comparisonPage.closeFilter("gcs");
+
+		cy.visit("/?gcs=Shenandoah&gcs=CMS");
+
+		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
+
+		comparisonPage.showFilter("gcs");
+		comparisonPage.expectFilterOption("gcs", "Shenandoah", true);
+		comparisonPage.expectFilterOption("gcs", "CMS", true);
+		comparisonPage.closeFilter("gcs");
 	});
 
 	it("preselects Licensing filter according to search parameters", () => {

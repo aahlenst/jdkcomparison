@@ -26,6 +26,7 @@ export function createFilters(
 		new TechnologiesFilter(),
 		new PlatformsFilter(),
 		new LicensingFilter(),
+		new GarbageCollectorsFilter(),
 	];
 }
 
@@ -355,6 +356,75 @@ export class PlatformsFilter extends AbstractFilter {
 	];
 
 	apply(f: PlatformsFilterFeatures): boolean {
+		for (const option of this.options.filter((option) => option.selected)) {
+			const presence = option.supplier(f);
+
+			if (
+				presence.present !== Model.Present.YES &&
+				presence.present !== Model.Present.PARTIALLY
+			) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+}
+
+export type GarbageCollectorsFilterFeatures = Pick<
+	Model.FeatureComparison,
+	"cms" | "epsilon" | "g1" | "parallel" | "serial" | "shenandoah" | "z"
+>;
+
+export class GarbageCollectorsFilter extends AbstractFilter {
+	readonly id: string = "gcs";
+	readonly options: (Model.FilterOption &
+		FeatureSupplier<GarbageCollectorsFilterFeatures>)[] = [
+		{
+			id: "gcs-cms",
+			label: "CMS",
+			selected: false,
+			supplier: (f: GarbageCollectorsFilterFeatures) => f.cms,
+		},
+		{
+			id: "gcs-epsilon",
+			label: "Epsilon",
+			selected: false,
+			supplier: (f: GarbageCollectorsFilterFeatures) => f.epsilon,
+		},
+		{
+			id: "gcs-g1",
+			label: "G1",
+			selected: false,
+			supplier: (f: GarbageCollectorsFilterFeatures) => f.g1,
+		},
+		{
+			id: "gcs-parallel",
+			label: "Parallel",
+			selected: false,
+			supplier: (f: GarbageCollectorsFilterFeatures) => f.parallel,
+		},
+		{
+			id: "gcs-serial",
+			label: "Serial",
+			selected: false,
+			supplier: (f: GarbageCollectorsFilterFeatures) => f.serial,
+		},
+		{
+			id: "gcs-shenandoah",
+			label: "Shenandoah",
+			selected: false,
+			supplier: (f: GarbageCollectorsFilterFeatures) => f.shenandoah,
+		},
+		{
+			id: "gcs-z",
+			label: "Z",
+			selected: false,
+			supplier: (f: GarbageCollectorsFilterFeatures) => f.z,
+		},
+	];
+
+	apply(f: GarbageCollectorsFilterFeatures): boolean {
 		for (const option of this.options.filter((option) => option.selected)) {
 			const presence = option.supplier(f);
 

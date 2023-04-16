@@ -125,6 +125,24 @@ describe(
 			);
 			mobileComparisonPage.closeFilter("technologies");
 
+			mobileComparisonPage.showFilter("gcs");
+			mobileComparisonPage.expectFilterOption("gcs", "CMS", false);
+			mobileComparisonPage.expectFilterOption("gcs", "Z", false);
+			mobileComparisonPage.closeFilter("gcs");
+
+			mobileComparisonPage.showFilter("platforms");
+			mobileComparisonPage.expectFilterOption(
+				"platforms",
+				"AIX, PPC",
+				false
+			);
+			mobileComparisonPage.expectFilterOption(
+				"platforms",
+				"Windows, x86, 64-bit",
+				false
+			);
+			mobileComparisonPage.closeFilter("platforms");
+
 			mobileComparisonPage.showFilter("licensing");
 			mobileComparisonPage.expectFilterOption(
 				"licensing",

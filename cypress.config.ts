@@ -12,6 +12,8 @@ export default defineConfig({
 		setupNodeEvents(on, config) {
 			// implement node event listeners here
 		},
+		viewportWidth: 1024, // lg breakpoint of Tailwind, required due to filters.
+		viewportHeight: 768,
 	},
 	reporter: "cypress-multi-reporters",
 	reporterOptions: {

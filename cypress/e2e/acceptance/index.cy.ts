@@ -183,6 +183,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFilter("Vendors");
 		comparisonPage.expectFilter("VMs");
 		comparisonPage.expectFilter("Technologies");
+		comparisonPage.expectFilter("GCs");
 		comparisonPage.expectFilter("Platforms");
 		comparisonPage.expectFilter("Licensing");
 
@@ -222,6 +223,11 @@ describe("Comparison in production", () => {
 		);
 		comparisonPage.closeFilter("technologies");
 
+		comparisonPage.showFilter("gcs");
+		comparisonPage.expectFilterOption("gcs", "CMS", false);
+		comparisonPage.expectFilterOption("gcs", "Z", false);
+		comparisonPage.closeFilter("gcs");
+
 		comparisonPage.showFilter("platforms");
 		comparisonPage.expectFilterOption("platforms", "AIX, PPC", false);
 		comparisonPage.expectFilterOption(
@@ -229,6 +235,7 @@ describe("Comparison in production", () => {
 			"macOS, x86, 64-bit",
 			false
 		);
+		comparisonPage.closeFilter("platforms");
 
 		comparisonPage.showFilter("licensing");
 		comparisonPage.expectFilterOption(

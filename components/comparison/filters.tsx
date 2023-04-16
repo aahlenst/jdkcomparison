@@ -39,6 +39,7 @@ const filtersToDisplay = [
 	{ id: "vendors", label: "Vendors" },
 	{ id: "vms", label: "VMs" },
 	{ id: "technologies", label: "Technologies" },
+	{ id: "gcs", label: "GCs" },
 	{ id: "platforms", label: "Platforms" },
 	{ id: "licensing", label: "Licensing" },
 ];
@@ -74,7 +75,7 @@ export function Filters() {
 			<Transition.Root show={open} as={Fragment}>
 				<Dialog
 					as="div"
-					className="relative z-40 md:hidden"
+					className="relative z-40 lg:hidden"
 					onClose={setOpen}
 				>
 					<Transition.Child
@@ -139,12 +140,12 @@ export function Filters() {
 					<button
 						type="button"
 						id="mobile-filters-open"
-						className="inline-block text-sm font-medium text-gray-700 pr-2 md:pr-0 hover:text-gray-900 md:hidden"
+						className="inline-block text-sm font-medium text-gray-700 pr-2 md:pr-0 hover:text-gray-900 lg:hidden"
 						onClick={() => setOpen(true)}
 					>
 						Filters
 					</button>
-					<Popover.Group className="hidden divide-x divide-gray-200 md:flex md:items-baseline">
+					<Popover.Group className="hidden divide-x divide-gray-200 lg:flex lg:items-baseline">
 						{desktopFilters}
 					</Popover.Group>
 				</div>
