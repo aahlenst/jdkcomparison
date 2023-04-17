@@ -20,8 +20,13 @@ import { Model } from "@/src/modelTypes";
 import { ComparisonSection } from "./comparisonSection";
 import { useShowDifferencesOnly } from "@/hooks/useShowDifferencesOnly";
 
+export type CustomisationsFeaturesSlice = Pick<
+	Model.FeatureComparison,
+	"id" | "editions" | "customisations" | "notableFeatures"
+>;
+
 type CustomisationsSectionProps = {
-	productData: Model.FeatureComparison[];
+	productData: CustomisationsFeaturesSlice[];
 	showDifferencesOnly: boolean;
 };
 

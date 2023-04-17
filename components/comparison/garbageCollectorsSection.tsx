@@ -20,8 +20,13 @@ import { Model } from "@/src/modelTypes";
 import { ComparisonSection } from "./comparisonSection";
 import { useShowDifferencesOnly } from "@/hooks/useShowDifferencesOnly";
 
+export type GarbageCollectorsFeaturesSlice = Pick<
+	Model.FeatureComparison,
+	"id" | "cms" | "epsilon" | "g1" | "parallel" | "serial" | "shenandoah" | "z" | "customGCs"
+>;
+
 type GarbageCollectorsSectionProps = {
-	productData: Model.FeatureComparison[];
+	productData: GarbageCollectorsFeaturesSlice[];
 	showDifferencesOnly: boolean;
 };
 
@@ -140,7 +145,7 @@ export function GarbageCollectorsSection({
 					is <a href="https://openjdk.org/jeps/377">production-ready since OpenJDK 15</a>.
 				</Feature>
 			)}
-			{showFeatures.z && <Feature id="gcs-custom" name="Custom GCs" values={custom} />}
+			{showFeatures.custom && <Feature id="gcs-custom" name="Custom GCs" values={custom} />}
 		</ComparisonSection>
 	);
 }

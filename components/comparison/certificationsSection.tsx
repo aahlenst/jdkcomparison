@@ -20,8 +20,10 @@ import { ComparisonSection } from "@/components/comparison/comparisonSection";
 import { Feature } from "@/components/comparison/feature";
 import React from "react";
 
+export type CertificationsFeaturesSlice = Pick<Model.FeatureComparison, "id" | "aqavit" | "tck">;
+
 type CertificationsSectionProps = {
-	productData: Model.FeatureComparison[];
+	productData: CertificationsFeaturesSlice[];
 	showDifferencesOnly: boolean;
 };
 
