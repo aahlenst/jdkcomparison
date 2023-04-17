@@ -13,6 +13,33 @@ This comparison aims to give you an overview of what JDKs are available and help
 
 If you are looking for an opinionated guide, other sites offer that, for example, [whichjdk.com](https://whichjdk.com/).
 
+## Is the JDK That Ticks All the Boxes the Best?
+
+No.
+
+More precisely, it might be the best, but not because it ticks all the boxes.
+
+The primary reason is that ticked boxes (or full circles, as they are currently displayed) **indicate presence, not
+quality**.
+
+## How Do I Find the Best JDK for Me?
+
+1. Jot down your requirements.
+2. Create a shortlist with the help of the comparison table.
+3. Examine each entry on the shortlist.
+4. Pick the one that fits your requirements best.
+
+Examining each entry on the shortlist should include the following tasks:
+
+-   Try each JDK and all the functionality you need, at least on your machine and in your test environment.
+-   Watch whether you receive updates promptly and whether the quality is acceptable.
+-   If you require specific functionality (for example, a garbage collector) on an older JDK, ask the vendor whether
+    they maintain that functionality and apply at least backports to it. Areas notorious for widely varying levels of
+    support are garbage collectors, platform support (especially anything beyond x86, 64-bit, and ARM, 64-bit), and
+    functionality like JavaFX or Web Start that has been removed from OpenJDK.
+-   If you require support, talk to the vendor about their offering and ask them to walk you through how they would
+    handle a specific issue you had in the past.
+
 ## What JDKs Do You Plan on Adding? Why Are Some Missing?
 
 The plan is to include all JDKs that are intended for production use and target a broader audience. Therefore, builds
