@@ -21,4 +21,29 @@ export const faqPage = {
 	expectSubtitle: (excerpt: string) => {
 		cy.get("main h2").should("contain.text", excerpt);
 	},
+	expectValidOverview: () => {
+		// Takes all links in the overview section.
+		cy.get("h2:nth-of-type(1) + ul li a").each((e) => {
+			const text = e.text();
+			const href = e.attr("href");
+			const anchor = href?.substring(1); // Chop off #.
+
+			// Checks whether the anchor exists outside "Overview".
+			cy.get(`h2:nth-of-type(n+2)#${anchor}`).should("exist");
+
+			// Checks whether there is a matching title outside "Overview".
+			cy.get(`h2:nth-of-type(n+2)#${anchor}`).should("have.text", text);
+		});
+	},
+	expectAllFAQInOverview: () => {
+		// Look at each heading after "Overview".
+		cy.get("h2:nth-of-type(n+2)").each((e) => {
+			const text = e.text();
+			const id = e.attr("id");
+
+			// Check if there is a matching link in "Overview".
+			cy.get(`h2:nth-of-type(1) + ul li a[href='#${id}']`).should("exist");
+			cy.get(`h2:nth-of-type(1) + ul li a[href='#${id}']`).should("have.text", text);
+		});
+	},
 };

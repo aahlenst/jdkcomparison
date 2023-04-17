@@ -1,6 +1,4 @@
 import nextMDX from "@next/mdx";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
@@ -11,7 +9,8 @@ const nextConfig = {
 export default nextMDX({
 	extension: /\.mdx?$/,
 	options: {
+		providerImportSource: "@mdx-js/react",
 		remarkPlugins: [],
-		rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+		rehypePlugins: [],
 	},
 })(nextConfig);

@@ -60,4 +60,14 @@ describe("FAQ", () => {
 		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
 		faqPage.expectSubtitle("Which JDK Do You Recommend?");
 	});
+
+	it("displays overview with valid anchors and matching titles", () => {
+		cy.visit("/faq");
+		faqPage.expectValidOverview();
+	});
+
+	it("displays all FAQ in overview", () => {
+		cy.visit("/faq");
+		faqPage.expectAllFAQInOverview();
+	});
 });

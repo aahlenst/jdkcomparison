@@ -16,6 +16,8 @@
  */
 import { PropsWithChildren } from "react";
 import Head from "next/head";
+import { MDXProvider } from "@mdx-js/react";
+import { Heading } from "@/components/heading";
 
 export type PageMetadata = {
 	lead?: string;
@@ -24,6 +26,15 @@ export type PageMetadata = {
 
 export type MDXPageLayoutProps = {
 	meta: PageMetadata;
+};
+
+const components = {
+	h1: (props: PropsWithChildren) => Heading(1, props),
+	h2: (props: PropsWithChildren) => Heading(2, props),
+	h3: (props: PropsWithChildren) => Heading(3, props),
+	h4: (props: PropsWithChildren) => Heading(4, props),
+	h5: (props: PropsWithChildren) => Heading(5, props),
+	h6: (props: PropsWithChildren) => Heading(6, props),
 };
 
 export function MDXPageLayout({ meta, children }: PropsWithChildren<MDXPageLayoutProps>) {
@@ -42,7 +53,9 @@ export function MDXPageLayout({ meta, children }: PropsWithChildren<MDXPageLayou
 					<h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
 						{meta.title}
 					</h1>
-					<div className="mt-10 max-w-2xl prose">{children}</div>
+					<div className="mt-10 max-w-2xl prose">
+						<MDXProvider components={components}>{children}</MDXProvider>
+					</div>
 				</div>
 			</main>
 		</>
