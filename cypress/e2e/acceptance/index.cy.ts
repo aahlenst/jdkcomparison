@@ -99,6 +99,7 @@ describe("Comparison in production", () => {
 			"Licensing",
 			"Security",
 			"Support",
+			"Additional Information",
 		]);
 		comparisonPage.expectFeaturesInSection("properties", [
 			"Feature Version",
@@ -169,6 +170,7 @@ describe("Comparison in production", () => {
 			"Release Delay",
 			"Paid support",
 		]);
+		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 	});
 
 	it("shows all filters", () => {

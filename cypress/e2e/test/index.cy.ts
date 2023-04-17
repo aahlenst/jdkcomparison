@@ -86,6 +86,7 @@ describe("JDK Comparison", () => {
 			"Licensing",
 			"Security",
 			"Support",
+			"Additional Information",
 		]);
 
 		comparisonPage.expectFeaturesInSection("properties", [
@@ -315,6 +316,18 @@ describe("JDK Comparison", () => {
 			"0-3 days",
 		]);
 		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
+
+		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
+		comparisonPage.expectFeatureText("information-country-of-origin", "Country of Origin", [
+			"Coffeeland",
+			"United States of Duke",
+			"Coffeeland",
+		]);
+		comparisonPage.expectFeatureText("information-remarks", "Remarks", [
+			"Mug included",
+			"none",
+			"Mug included",
+		]);
 	});
 
 	it("should display only features with different values", () => {
@@ -335,6 +348,7 @@ describe("JDK Comparison", () => {
 			"Licensing",
 			"Security",
 			"Support",
+			"Additional Information",
 		]);
 		comparisonPage.expectFeaturesInSection("properties", [
 			"Feature Version",
@@ -405,6 +419,7 @@ describe("JDK Comparison", () => {
 			"Release Delay",
 			"Paid support",
 		]);
+		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
@@ -419,6 +434,7 @@ describe("JDK Comparison", () => {
 			"Licensing",
 			"Security",
 			"Support",
+			"Additional Information",
 		]);
 		comparisonPage.expectFeaturesInSection("properties", [
 			"Feature Version",
@@ -461,6 +477,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Delay"]);
+		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 	});
 
 	it("shows single product even if it should only display differences", () => {
@@ -547,6 +564,7 @@ describe("JDK Comparison", () => {
 			"Release Delay",
 			"Paid support",
 		]);
+		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 
 		comparisonPage.clickShowDifferencesOnly();
 
@@ -620,6 +638,7 @@ describe("JDK Comparison", () => {
 			"Release Delay",
 			"Paid support",
 		]);
+		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 	});
 
 	it("shows all filters", () => {

@@ -92,6 +92,7 @@ export const data: Vendor = {
 				eolDate: { text: "2026-10" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "0-3 days" },
+				remarks: { text: "Mug included" },
 			},
 		},
 		{
@@ -165,6 +166,7 @@ export const data: Vendor = {
 				eolDate: { text: "2027-10" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "0-3 days" },
+				remarks: { text: "Mug included" },
 			},
 		},
 	],

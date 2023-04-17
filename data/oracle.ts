@@ -80,6 +80,7 @@ export const data: Vendor = {
 				eolDate: { text: "2023-10" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
+				remarks: { text: "none" },
 			},
 		},
 		{
@@ -157,6 +158,7 @@ export const data: Vendor = {
 				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
+				remarks: { text: "none" },
 			},
 		},
 		{
@@ -235,6 +237,7 @@ export const data: Vendor = {
 				eolDate: { text: "2026-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
+				remarks: { text: "none" },
 			},
 		},
 		{
@@ -316,6 +319,7 @@ export const data: Vendor = {
 				eolDate: { text: "2024-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
+				remarks: { text: "none" },
 			},
 		},
 		{
@@ -397,6 +401,7 @@ export const data: Vendor = {
 				eolDate: { text: "2023-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
+				remarks: { text: "none" },
 			},
 		},
 	],

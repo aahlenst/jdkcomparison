@@ -27,6 +27,7 @@ export namespace Model {
 		version: number;
 		downloadUrl: string;
 		websiteUrl: string;
+		countryOfOrigin: string;
 		virtualMachine: FeatureDescription;
 		classLibraries: FeatureDescription;
 		jfx: FeaturePresence;
@@ -77,6 +78,7 @@ export namespace Model {
 		eolDate: FeatureDescription;
 		releaseSchedule: FeatureDescription;
 		releaseDelay: FeatureDescription;
+		remarks: FeatureDescription;
 	};
 
 	export type Footnote = {

@@ -30,6 +30,7 @@ import { LinuxSection } from "@/components/comparison/linuxSection";
 import { OtherPlatformsSection } from "@/components/comparison/otherPlatformsSection";
 import { SecuritySection } from "@/components/comparison/securitySection";
 import { ComparisonMessage } from "@/components/comparison/comparisonMessage";
+import { InformationSection } from "@/components/comparison/informationSection";
 
 export function ComparisonTable() {
 	const comparison = useComparison();
@@ -87,6 +88,10 @@ export function ComparisonTable() {
 					showDifferencesOnly={comparison.showDifferencesOnly}
 				/>
 				<SupportSection
+					productData={comparison.filteredData}
+					showDifferencesOnly={comparison.showDifferencesOnly}
+				/>
+				<InformationSection
 					productData={comparison.filteredData}
 					showDifferencesOnly={comparison.showDifferencesOnly}
 				/>

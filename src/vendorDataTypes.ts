@@ -158,6 +158,11 @@ export type JDKFeatures = {
 	 * Treat JDKs with highly inconsistent release schedules (for example, IBM Semeru Runtime) as custom schedules.
 	 */
 	releaseDelay: FeatureDescription;
+
+	/**
+	 * Field to add remarks and information that fits nowhere else.
+	 */
+	remarks: FeatureDescription;
 };
 
 export type GarbageCollectors = {

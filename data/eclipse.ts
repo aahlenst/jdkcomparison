@@ -98,6 +98,7 @@ export const data: Vendor = {
 				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "1-2 weeks" },
+				remarks: { text: "none" },
 			},
 		},
 		{
@@ -192,6 +193,7 @@ export const data: Vendor = {
 				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "1-2 weeks" },
+				remarks: { text: "none" },
 			},
 		},
 		{
@@ -286,6 +288,7 @@ export const data: Vendor = {
 				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "1-2 weeks" },
+				remarks: { text: "none" },
 			},
 		},
 		{
@@ -371,6 +374,7 @@ export const data: Vendor = {
 				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "1-2 weeks" },
+				remarks: { text: "none" },
 			},
 		},
 	],

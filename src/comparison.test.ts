@@ -56,6 +56,12 @@ describe("extractComparisonData()", () => {
 		const jdk = productsInComparison[0];
 
 		expect(jdk.id).toEqual("dukecorp-jdk-17");
+		expect(jdk.vendor).toEqual("Dukecorp");
+		expect(jdk.countryOfOrigin).toEqual("United States of Duke");
+		expect(jdk.websiteUrl).toEqual("https://dukecorp.com/");
+		expect(jdk.name).toEqual("Dukecorp JDK 17");
+		expect(jdk.version).toEqual(17);
+		expect(jdk.downloadUrl).toEqual("https://dukecorp.com/jdk17");
 		expect(jdk.virtualMachine).toEqual({ text: "DukeVM" });
 		expect(jdk.classLibraries).toEqual({ text: "OpenJDK" });
 		expect(jdk.jfx).toEqual({ present: Model.Present.NO });

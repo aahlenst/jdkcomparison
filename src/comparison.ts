@@ -87,6 +87,7 @@ function extractFeatureComparisons(
 			version: jdk.information.version,
 			downloadUrl: jdk.information.downloadSite,
 			websiteUrl: vendor.website,
+			countryOfOrigin: vendor.countryOfOrigin,
 			virtualMachine: mapFeatureDescription(jdk.features.virtualMachine, footnotes),
 			classLibraries: mapFeatureDescription(jdk.features.classLibraries, footnotes),
 			jfx: mapFeaturePresence(jdk.features.javaFX, footnotes),
@@ -140,6 +141,7 @@ function extractFeatureComparisons(
 			eolDate: mapFeatureDescription(jdk.features.eolDate, footnotes),
 			releaseSchedule: mapFeatureDescription(jdk.features.releaseSchedule, footnotes),
 			releaseDelay: mapFeatureDescription(jdk.features.releaseDelay, footnotes),
+			remarks: mapFeatureDescription(jdk.features.remarks, footnotes),
 		};
 	});
 }
