@@ -43,10 +43,7 @@ type LinuxSectionProps = {
 	showDifferencesOnly: boolean;
 };
 
-export function LinuxSection({
-	productData,
-	showDifferencesOnly,
-}: LinuxSectionProps) {
+export function LinuxSection({ productData, showDifferencesOnly }: LinuxSectionProps) {
 	const x64 = productData.map((product) => ({
 		...product.linuxx64,
 		id: product.id,
@@ -99,24 +96,21 @@ export function LinuxSection({
 		...product.linuxContainerImages,
 		id: product.id,
 	}));
-	const [showSection, showFeatures] = useShowDifferencesOnly(
-		showDifferencesOnly,
-		{
-			x64: x64,
-			x64Musl: x64Musl,
-			x32: x32,
-			aarch64: aarch64,
-			aarch64Musl: aarch64Musl,
-			aarch32: aarch32,
-			ppc64: ppc64,
-			riscv64: riscv64,
-			s390x: s390x,
-			apk: apk,
-			deb: deb,
-			rpm: rpm,
-			containerImages: containerImages,
-		}
-	);
+	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
+		x64: x64,
+		x64Musl: x64Musl,
+		x32: x32,
+		aarch64: aarch64,
+		aarch64Musl: aarch64Musl,
+		aarch32: aarch32,
+		ppc64: ppc64,
+		riscv64: riscv64,
+		s390x: s390x,
+		apk: apk,
+		deb: deb,
+		rpm: rpm,
+		containerImages: containerImages,
+	});
 
 	if (!showSection) {
 		return <></>;
@@ -124,67 +118,35 @@ export function LinuxSection({
 
 	return (
 		<ComparisonSection id="linux" label="Platforms: Linux">
-			{showFeatures.x64 && (
-				<Feature id="linux-x64" name="x86, 64-bit" values={x64} />
-			)}
+			{showFeatures.x64 && <Feature id="linux-x64" name="x86, 64-bit" values={x64} />}
 			{showFeatures.x64Musl && (
-				<Feature
-					id="linux-x64-musl"
-					name="x86, 64-bit, musl"
-					values={x64Musl}
-				>
-					<a href="https://musl.libc.org/">Musl</a> is an alternative
-					C standard library implementation used by some Linux
-					distributions such as{" "}
-					<a href="https://alpinelinux.org/">Alpine Linux</a>. Users
-					of such a Linux distribution <strong>must</strong> use a JDK
-					that was built against musl.
+				<Feature id="linux-x64-musl" name="x86, 64-bit, musl" values={x64Musl}>
+					<a href="https://musl.libc.org/">Musl</a> is an alternative C standard library
+					implementation used by some Linux distributions such as{" "}
+					<a href="https://alpinelinux.org/">Alpine Linux</a>. Users of such a Linux
+					distribution <strong>must</strong> use a JDK that was built against musl.
 				</Feature>
 			)}
-			{showFeatures.x32 && (
-				<Feature id="linux-x32" name="x86, 32-bit" values={x32} />
-			)}
+			{showFeatures.x32 && <Feature id="linux-x32" name="x86, 32-bit" values={x32} />}
 			{showFeatures.aarch64 && (
-				<Feature
-					id="linux-aarch64"
-					name="ARM, 64-bit"
-					values={aarch64}
-				/>
+				<Feature id="linux-aarch64" name="ARM, 64-bit" values={aarch64} />
 			)}
 			{showFeatures.aarch64Musl && (
-				<Feature
-					id="linux-aarch64-musl"
-					name="ARM, 64-bit, musl"
-					values={aarch64Musl}
-				>
-					<a href="https://musl.libc.org/">Musl</a> is an alternative
-					C standard library implementation used by some Linux
-					distributions such as{" "}
-					<a href="https://alpinelinux.org/">Alpine Linux</a>. Users
-					of such a Linux distribution <strong>must</strong> use a JDK
-					that was built against musl.
+				<Feature id="linux-aarch64-musl" name="ARM, 64-bit, musl" values={aarch64Musl}>
+					<a href="https://musl.libc.org/">Musl</a> is an alternative C standard library
+					implementation used by some Linux distributions such as{" "}
+					<a href="https://alpinelinux.org/">Alpine Linux</a>. Users of such a Linux
+					distribution <strong>must</strong> use a JDK that was built against musl.
 				</Feature>
 			)}
 			{showFeatures.aarch32 && (
-				<Feature
-					id="linux-aarch32"
-					name="ARM, 32-bit"
-					values={aarch32}
-				/>
+				<Feature id="linux-aarch32" name="ARM, 32-bit" values={aarch32} />
 			)}
-			{showFeatures.ppc64 && (
-				<Feature id="linux-ppc64" name="PPC, 64-bit" values={ppc64} />
-			)}
+			{showFeatures.ppc64 && <Feature id="linux-ppc64" name="PPC, 64-bit" values={ppc64} />}
 			{showFeatures.riscv64 && (
-				<Feature
-					id="linux-riscv64"
-					name="RISC-V, 64-bit"
-					values={riscv64}
-				/>
+				<Feature id="linux-riscv64" name="RISC-V, 64-bit" values={riscv64} />
 			)}
-			{showFeatures.s390x && (
-				<Feature id="linux-s390x" name="S390, 64-bit" values={s390x} />
-			)}
+			{showFeatures.s390x && <Feature id="linux-s390x" name="S390, 64-bit" values={s390x} />}
 			{showFeatures.apk && (
 				<Feature id="linux-apk" name="APK Packages" values={apk}>
 					APK is the package format used by Alpine Linux.
@@ -192,16 +154,14 @@ export function LinuxSection({
 			)}
 			{showFeatures.deb && (
 				<Feature id="linux-deb" name="Deb Packages" values={deb}>
-					Deb is the package format of Debian and its derivatives like
-					Ubuntu.
+					Deb is the package format of Debian and its derivatives like Ubuntu.
 				</Feature>
 			)}
 			{showFeatures.rpm && (
 				<Feature id="linux-rpm" name="RPM Packages" values={rpm}>
-					RPM packages are used by the Red Hat families of Linux
-					distributions as well as SUSE and its derivatives. Due to
-					small incompatibilities between Red Hat distributions and
-					SUSE, separate packages are usually required for each
+					RPM packages are used by the Red Hat families of Linux distributions as well as
+					SUSE and its derivatives. Due to small incompatibilities between Red Hat
+					distributions and SUSE, separate packages are usually required for each
 					distribution family.
 				</Feature>
 			)}

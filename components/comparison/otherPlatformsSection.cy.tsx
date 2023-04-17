@@ -37,71 +37,41 @@ describe("<OtherPlatformsSection/>", () => {
 	});
 
 	it("displays all features", () => {
-		cy.mount(
-			<OtherPlatformsSection
-				productData={data}
-				showDifferencesOnly={false}
-			/>
-		);
+		cy.mount(<OtherPlatformsSection productData={data} showDifferencesOnly={false} />);
 
 		otherPlatformsSection.expectFeatures([
 			"AIX, PPC",
 			"Solaris, SPARC",
 			"Solaris, x86, 64-bit",
 		]);
-		otherPlatformsSection.expectFeaturePresence("aix-ppc", "AIX, PPC", [
+		otherPlatformsSection.expectFeaturePresence("aix-ppc", "AIX, PPC", ["no", "no"]);
+		otherPlatformsSection.expectFeaturePresence("solaris-sparc", "Solaris, SPARC", [
 			"no",
 			"no",
 		]);
-		otherPlatformsSection.expectFeaturePresence(
-			"solaris-sparc",
-			"Solaris, SPARC",
-			["no", "no"]
-		);
-		otherPlatformsSection.expectFeaturePresence(
-			"solaris-x64",
-			"Solaris, x86, 64-bit",
-			["no", "no"]
-		);
+		otherPlatformsSection.expectFeaturePresence("solaris-x64", "Solaris, x86, 64-bit", [
+			"no",
+			"no",
+		]);
 	});
 
 	it("displays all features of a single product despite differences only on", () => {
 		data = remove(data, (item) => item.id === "no-jdk-2");
 
-		cy.mount(
-			<OtherPlatformsSection
-				productData={data}
-				showDifferencesOnly={false}
-			/>
-		);
+		cy.mount(<OtherPlatformsSection productData={data} showDifferencesOnly={false} />);
 
 		otherPlatformsSection.expectFeatures([
 			"AIX, PPC",
 			"Solaris, SPARC",
 			"Solaris, x86, 64-bit",
 		]);
-		otherPlatformsSection.expectFeaturePresence("aix-ppc", "AIX, PPC", [
-			"no",
-		]);
-		otherPlatformsSection.expectFeaturePresence(
-			"solaris-sparc",
-			"Solaris, SPARC",
-			["no"]
-		);
-		otherPlatformsSection.expectFeaturePresence(
-			"solaris-x64",
-			"Solaris, x86, 64-bit",
-			["no"]
-		);
+		otherPlatformsSection.expectFeaturePresence("aix-ppc", "AIX, PPC", ["no"]);
+		otherPlatformsSection.expectFeaturePresence("solaris-sparc", "Solaris, SPARC", ["no"]);
+		otherPlatformsSection.expectFeaturePresence("solaris-x64", "Solaris, x86, 64-bit", ["no"]);
 	});
 
 	it("disappears if all features are identical and differences only is on", () => {
-		cy.mount(
-			<OtherPlatformsSection
-				productData={data}
-				showDifferencesOnly={true}
-			/>
-		);
+		cy.mount(<OtherPlatformsSection productData={data} showDifferencesOnly={true} />);
 
 		otherPlatformsSection.exists(false);
 	});
@@ -109,54 +79,34 @@ describe("<OtherPlatformsSection/>", () => {
 	it("displays AIX, PPC if features are different and differences only is on", () => {
 		data[0].aixPPC.present = Present.YES;
 
-		cy.mount(
-			<OtherPlatformsSection
-				productData={data}
-				showDifferencesOnly={true}
-			/>
-		);
+		cy.mount(<OtherPlatformsSection productData={data} showDifferencesOnly={true} />);
 
 		otherPlatformsSection.expectFeatures(["AIX, PPC"]);
-		otherPlatformsSection.expectFeaturePresence("aix-ppc", "AIX, PPC", [
-			"yes",
-			"no",
-		]);
+		otherPlatformsSection.expectFeaturePresence("aix-ppc", "AIX, PPC", ["yes", "no"]);
 	});
 
 	it("displays Solaris, SPARC if features are different and differences only is on", () => {
 		data[0].solarisSPARC.present = Present.YES;
 
-		cy.mount(
-			<OtherPlatformsSection
-				productData={data}
-				showDifferencesOnly={true}
-			/>
-		);
+		cy.mount(<OtherPlatformsSection productData={data} showDifferencesOnly={true} />);
 
 		otherPlatformsSection.expectFeatures(["Solaris, SPARC"]);
-		otherPlatformsSection.expectFeaturePresence(
-			"solaris-sparc",
-			"Solaris, SPARC",
-			["yes", "no"]
-		);
+		otherPlatformsSection.expectFeaturePresence("solaris-sparc", "Solaris, SPARC", [
+			"yes",
+			"no",
+		]);
 	});
 
 	it("displays Solaris, x86, 64-bit if features are different and differences only is on", () => {
 		data[0].solarisx64.present = Present.YES;
 
-		cy.mount(
-			<OtherPlatformsSection
-				productData={data}
-				showDifferencesOnly={true}
-			/>
-		);
+		cy.mount(<OtherPlatformsSection productData={data} showDifferencesOnly={true} />);
 
 		otherPlatformsSection.expectFeatures(["Solaris, x86, 64-bit"]);
-		otherPlatformsSection.expectFeaturePresence(
-			"solaris-x64",
-			"Solaris, x86, 64-bit",
-			["yes", "no"]
-		);
+		otherPlatformsSection.expectFeaturePresence("solaris-x64", "Solaris, x86, 64-bit", [
+			"yes",
+			"no",
+		]);
 	});
 });
 
@@ -176,21 +126,12 @@ const otherPlatformsSection = {
 
 		for (let i = 0; i < featureNames.length; i++) {
 			const name = featureNames[i];
-			cy.get("section[id='other'] .feature .feature-name")
-				.eq(i)
-				.should("have.text", name);
+			cy.get("section[id='other'] .feature .feature-name").eq(i).should("have.text", name);
 		}
 	},
-	expectFeaturePresence: (
-		featureId: string,
-		name: string,
-		presenceClassNames: string[]
-	) => {
+	expectFeaturePresence: (featureId: string, name: string, presenceClassNames: string[]) => {
 		cy.get(`#${featureId} .feature-name`).should("have.text", name);
-		cy.get(`#${featureId} .feature-value`).should(
-			"have.length",
-			presenceClassNames.length
-		);
+		cy.get(`#${featureId} .feature-value`).should("have.length", presenceClassNames.length);
 
 		for (let i = 0; i < presenceClassNames.length; i++) {
 			cy.get(`#${featureId} .feature-value svg`)

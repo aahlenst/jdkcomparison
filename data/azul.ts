@@ -17,8 +17,7 @@ export const data: Vendor = {
 			information: {
 				name: "Zulu 8",
 				version: 8,
-				downloadSite:
-					"https://www.azul.com/downloads/?version=java-8-lts#zulu",
+				downloadSite: "https://www.azul.com/downloads/?version=java-8-lts#zulu",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -118,8 +117,7 @@ export const data: Vendor = {
 			information: {
 				name: "Zulu 11",
 				version: 11,
-				downloadSite:
-					"https://www.azul.com/downloads/?version=java-11-lts#zulu",
+				downloadSite: "https://www.azul.com/downloads/?version=java-11-lts#zulu",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -219,8 +217,7 @@ export const data: Vendor = {
 			information: {
 				name: "Zulu 17",
 				version: 17,
-				downloadSite:
-					"https://www.azul.com/downloads/?version=java-17-lts#zulu",
+				downloadSite: "https://www.azul.com/downloads/?version=java-17-lts#zulu",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -323,8 +320,7 @@ export const data: Vendor = {
 			information: {
 				name: "Zulu 20",
 				version: 20,
-				downloadSite:
-					"https://www.azul.com/downloads/?version=java-20-lts#zulu",
+				downloadSite: "https://www.azul.com/downloads/?version=java-20-lts#zulu",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },

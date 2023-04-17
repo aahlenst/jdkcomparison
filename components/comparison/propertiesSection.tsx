@@ -25,10 +25,7 @@ type PropertiesSectionProps = {
 	showDifferencesOnly: boolean;
 };
 
-export function PropertiesSection({
-	productData,
-	showDifferencesOnly,
-}: PropertiesSectionProps) {
+export function PropertiesSection({ productData, showDifferencesOnly }: PropertiesSectionProps) {
 	const featureVersion = productData.map((product) => ({
 		text: product.version.toString(),
 		id: product.id,
@@ -41,14 +38,11 @@ export function PropertiesSection({
 		...product.classLibraries,
 		id: product.id,
 	}));
-	const [showSection, showFeatures] = useShowDifferencesOnly(
-		showDifferencesOnly,
-		{
-			featureVersion: featureVersion,
-			vm: vm,
-			classLibraries: classLibraries,
-		}
-	);
+	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
+		featureVersion: featureVersion,
+		vm: vm,
+		classLibraries: classLibraries,
+	});
 
 	if (!showSection) {
 		return <></>;
@@ -63,13 +57,7 @@ export function PropertiesSection({
 					values={featureVersion}
 				/>
 			)}
-			{showFeatures.vm && (
-				<Feature
-					id="properties-vm"
-					name="Virtual Machine"
-					values={vm}
-				/>
-			)}
+			{showFeatures.vm && <Feature id="properties-vm" name="Virtual Machine" values={vm} />}
 			{showFeatures.classLibraries && (
 				<Feature
 					id="properties-class-libraries"

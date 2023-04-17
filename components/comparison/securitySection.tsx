@@ -20,28 +20,19 @@ import { ComparisonSection } from "@/components/comparison/comparisonSection";
 import { Feature } from "@/components/comparison/feature";
 import React from "react";
 
-export type SecurityFeaturesSlice = Pick<
-	Model.FeatureComparison,
-	"id" | "sbom"
->;
+export type SecurityFeaturesSlice = Pick<Model.FeatureComparison, "id" | "sbom">;
 
 type SecuritySectionProps = {
 	productData: SecurityFeaturesSlice[];
 	showDifferencesOnly: boolean;
 };
 
-export function SecuritySection({
-	productData,
-	showDifferencesOnly,
-}: SecuritySectionProps) {
+export function SecuritySection({ productData, showDifferencesOnly }: SecuritySectionProps) {
 	const sbom = productData.map((product) => ({
 		...product.sbom,
 		id: product.id,
 	}));
-	const [showSection, showFeatures] = useShowDifferencesOnly(
-		showDifferencesOnly,
-		{ sbom: sbom }
-	);
+	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, { sbom: sbom });
 
 	if (!showSection) {
 		return <></>;

@@ -73,11 +73,7 @@ describe("applySearchParamsToState()", () => {
 		expect(mockDispatch.mock.calls).toHaveLength(0);
 
 		filterB.setOptionSelectedByLabel("1", true);
-		applySearchParamsToState(
-			{ filterA: ["B", "A"], filterB: ["1"] },
-			state,
-			mockDispatch
-		);
+		applySearchParamsToState({ filterA: ["B", "A"], filterB: ["1"] }, state, mockDispatch);
 
 		expect(mockDispatch.mock.calls).toHaveLength(0);
 	});
@@ -106,11 +102,7 @@ describe("applySearchParamsToState()", () => {
 	});
 
 	test("dispatches action to enable filters requested by search params", () => {
-		applySearchParamsToState(
-			{ filterA: ["B", "A"], filterB: ["2"] },
-			state,
-			mockDispatch
-		);
+		applySearchParamsToState({ filterA: ["B", "A"], filterB: ["2"] }, state, mockDispatch);
 
 		expect(mockDispatch.mock.calls).toHaveLength(1);
 

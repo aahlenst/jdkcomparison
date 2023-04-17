@@ -39,9 +39,7 @@ describe("sortFeatureComparisons()", () => {
 	});
 
 	test("sorts with comparator", () => {
-		sortFeatureComparisons(comparisonData, [
-			new AscendingVersionComparator(),
-		]);
+		sortFeatureComparisons(comparisonData, [new AscendingVersionComparator()]);
 
 		const sortedData = comparisonData.map((fc) => ({
 			vendor: fc.vendor,

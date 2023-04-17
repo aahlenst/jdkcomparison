@@ -18,10 +18,7 @@ import { beforeEach, describe, expect } from "@jest/globals";
 import { ComparisonState } from "@/components/comparison/comparisonContext";
 import { Model } from "@/src/modelTypes";
 import { DynamicSelectionFilter } from "@/src/filter";
-import {
-	ApplyFilter,
-	handleApplyFilter,
-} from "@/hooks/usePropagateToSearchParams";
+import { ApplyFilter, handleApplyFilter } from "@/hooks/usePropagateToSearchParams";
 import { DefaultComparator } from "@/src/sorting";
 
 describe("handleApplyFilter()", () => {

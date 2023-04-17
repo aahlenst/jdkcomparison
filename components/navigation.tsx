@@ -15,12 +15,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 import { Dialog, Transition } from "@headlessui/react";
-import {
-	BarsIcon,
-	EnvelopeIcon,
-	GitHubIcon,
-	XMarkIcon,
-} from "@/components/icons";
+import { BarsIcon, EnvelopeIcon, GitHubIcon, XMarkIcon } from "@/components/icons";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import logo from "../public/logo.svg";
@@ -44,10 +39,7 @@ export function Navigation() {
 	return (
 		<div className="fixed left-0 top-0 right-0 h-16 z-30 bg-white shadow">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-				<nav
-					className="relative flex h-16 justify-between"
-					aria-label="Main navigation"
-				>
+				<nav className="relative flex h-16 justify-between" aria-label="Main navigation">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 						{/* Mobile menu button */}
 						<button
@@ -67,9 +59,7 @@ export function Navigation() {
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 						<div className="flex flex-shrink-0 items-center">
 							<Link href="/">
-								<span className="sr-only">
-									Back to homepage.
-								</span>
+								<span className="sr-only">Back to homepage.</span>
 								<Image
 									id="logo"
 									src={logo}
@@ -89,11 +79,7 @@ export function Navigation() {
 											: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
 										`desktop-navigation-option desktop-navigation-option-${item.id} inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium`
 									)}
-									aria-current={
-										isActive(router, item.href)
-											? "page"
-											: undefined
-									}
+									aria-current={isActive(router, item.href) ? "page" : undefined}
 								>
 									{item.label}
 								</Link>
@@ -123,9 +109,7 @@ export function Navigation() {
 							id="github-link"
 							className="rounded-full bg-white p-1 ml-3 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 						>
-							<span className="sr-only">
-								Go to GitHub repository
-							</span>
+							<span className="sr-only">Go to GitHub repository</span>
 							<GitHubIcon
 								className="h-6 w-6"
 								aria-hidden="true"
@@ -140,11 +124,7 @@ export function Navigation() {
 			</div>
 
 			<Transition.Root show={open} as={Fragment}>
-				<Dialog
-					as="div"
-					className="relative z-40 lg:hidden"
-					onClose={() => setOpen(false)}
-				>
+				<Dialog as="div" className="relative z-40 lg:hidden" onClose={() => setOpen(false)}>
 					<Transition.Child
 						as={Fragment}
 						enter="transition-opacity ease-linear duration-300"
@@ -184,9 +164,7 @@ export function Navigation() {
 											className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
 											onClick={() => setOpen(false)}
 										>
-											<span className="sr-only">
-												Close sidebar
-											</span>
+											<span className="sr-only">Close sidebar</span>
 											<XMarkIcon
 												className="h-6 w-6 text-white"
 												aria-hidden="true"
@@ -203,29 +181,20 @@ export function Navigation() {
 											className="h-8 w-auto"
 										/>
 									</div>
-									<nav
-										aria-label="Sidebar navigation"
-										className="mt-5"
-									>
+									<nav aria-label="Sidebar navigation" className="mt-5">
 										<div className="space-y-1">
 											{mainNavigation.map((item) => (
 												<Link
 													key={item.id}
 													href={item.href}
 													className={classNames(
-														isActive(
-															router,
-															item.href
-														)
+														isActive(router, item.href)
 															? "border-red-600 bg-red-50 text-red-600"
 															: "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
 														`mobile-navigation-option mobile-navigation-option-${item.id} group flex items-center border-l-4 px-3 py-2 text-sm font-medium`
 													)}
 													aria-current={
-														isActive(
-															router,
-															item.href
-														)
+														isActive(router, item.href)
 															? "page"
 															: undefined
 													}

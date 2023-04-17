@@ -22,15 +22,11 @@ type SectionFeatures = {
 
 type DisplayStatus = [boolean, { [key: string]: boolean }];
 
-function hasDifferences(
-	values: Model.FeaturePresence[] | Model.FeatureDescription[]
-): boolean {
+function hasDifferences(values: Model.FeaturePresence[] | Model.FeatureDescription[]): boolean {
 	return new Set(values.map((v) => extractValue(v))).size > 1;
 }
 
-function extractValue(
-	feature: Model.FeaturePresence | Model.FeatureDescription
-): string {
+function extractValue(feature: Model.FeaturePresence | Model.FeatureDescription): string {
 	if ("present" in feature) {
 		switch (feature.present) {
 			case Model.Present.YES:

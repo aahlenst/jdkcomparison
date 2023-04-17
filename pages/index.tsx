@@ -38,11 +38,7 @@ export default function ComparisonPage({ data, footnotes }: ComparisonProps) {
 				<title>JDK Comparison</title>
 			</Head>
 			<main>
-				<ComparisonProvider
-					filters={filters}
-					data={data}
-					footnotes={footnotes}
-				>
+				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>
 					<Filters />
 					<ComparisonTable />
 				</ComparisonProvider>
@@ -74,9 +70,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	} else if (process.env.DATA_SOURCE === "testdata") {
 		data = testData;
 	} else {
-		throw new Error(
-			`Unknown process.env.DATA_SOURCE: ${process.env.DATA_SOURCE}`
-		);
+		throw new Error(`Unknown process.env.DATA_SOURCE: ${process.env.DATA_SOURCE}`);
 	}
 
 	const { productsInComparison, footnotes } = extractComparisonData(data);

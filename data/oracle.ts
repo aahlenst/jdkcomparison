@@ -87,8 +87,7 @@ export const data: Vendor = {
 			information: {
 				name: "Oracle JDK 8",
 				version: 8,
-				downloadSite:
-					"https://www.oracle.com/java/technologies/downloads/#java8",
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java8",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -165,8 +164,7 @@ export const data: Vendor = {
 			information: {
 				name: "Oracle JDK 11",
 				version: 11,
-				downloadSite:
-					"https://www.oracle.com/java/technologies/downloads/#java11",
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java11",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -244,8 +242,7 @@ export const data: Vendor = {
 			information: {
 				name: "Oracle JDK 17",
 				version: 17,
-				downloadSite:
-					"https://www.oracle.com/java/technologies/downloads/#java17",
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java17",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -326,8 +323,7 @@ export const data: Vendor = {
 			information: {
 				name: "Oracle JDK 20",
 				version: 20,
-				downloadSite:
-					"https://www.oracle.com/java/technologies/downloads/#java20",
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java20",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },

@@ -73,11 +73,7 @@ export function Filters() {
 		>
 			{/* Mobile filters */}
 			<Transition.Root show={open} as={Fragment}>
-				<Dialog
-					as="div"
-					className="relative z-40 lg:hidden"
-					onClose={setOpen}
-				>
+				<Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
 					<Transition.Child
 						as={Fragment}
 						enter="transition-opacity ease-linear duration-300"
@@ -102,22 +98,15 @@ export function Filters() {
 						>
 							<Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
 								<div className="flex items-center justify-between px-4">
-									<h2 className="text-lg font-medium text-gray-900">
-										Filters
-									</h2>
+									<h2 className="text-lg font-medium text-gray-900">Filters</h2>
 									<button
 										id="mobile-filters-close"
 										type="button"
 										className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
 										onClick={() => setOpen(false)}
 									>
-										<span className="sr-only">
-											Close menu
-										</span>
-										<XMarkIcon
-											className="h-6 w-6"
-											aria-hidden="true"
-										/>
+										<span className="sr-only">Close menu</span>
+										<XMarkIcon className="h-6 w-6" aria-hidden="true" />
 									</button>
 								</div>
 								<form className="mt-4">{mobileFilters}</form>
@@ -128,10 +117,7 @@ export function Filters() {
 			</Transition.Root>
 
 			{/* Desktop filters */}
-			<section
-				aria-labelledby="filter-heading"
-				className="w-full mx-auto text-center"
-			>
+			<section aria-labelledby="filter-heading" className="w-full mx-auto text-center">
 				<h2 id="filter-heading" className="sr-only">
 					Filters
 				</h2>

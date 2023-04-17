@@ -24,16 +24,10 @@ export const mobileNavigationComponent = {
 	expectNavigationOptions: (name: string[]) => {
 		cy.get(".mobile-navigation-option").should("have.length", name.length);
 		for (let i = 0; i < name.length; i++) {
-			cy.get(".mobile-navigation-option")
-				.eq(i)
-				.should("have.text", name[i]);
+			cy.get(".mobile-navigation-option").eq(i).should("have.text", name[i]);
 		}
 	},
-	expectSecondaryNavigationOption: (
-		id: string,
-		title: string,
-		url: string
-	) => {
+	expectSecondaryNavigationOption: (id: string, title: string, url: string) => {
 		cy.get(`#${id}`).should("exist");
 		cy.get(`#${id} svg title`).should("have.text", title);
 		cy.get(`a#${id}`).should("have.attr", "href").and("eq", url);

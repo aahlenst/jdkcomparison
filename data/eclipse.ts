@@ -17,8 +17,7 @@ export const data: Vendor = {
 			information: {
 				name: "Eclipse Temurin 8",
 				version: 8,
-				downloadSite:
-					"https://adoptium.net/temurin/releases/?version=8",
+				downloadSite: "https://adoptium.net/temurin/releases/?version=8",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -106,8 +105,7 @@ export const data: Vendor = {
 			information: {
 				name: "Eclipse Temurin 11",
 				version: 11,
-				downloadSite:
-					"https://adoptium.net/temurin/releases/?version=11",
+				downloadSite: "https://adoptium.net/temurin/releases/?version=11",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -201,8 +199,7 @@ export const data: Vendor = {
 			information: {
 				name: "Eclipse Temurin 17",
 				version: 17,
-				downloadSite:
-					"https://adoptium.net/temurin/releases/?version=17",
+				downloadSite: "https://adoptium.net/temurin/releases/?version=17",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -296,8 +293,7 @@ export const data: Vendor = {
 			information: {
 				name: "Eclipse Temurin 20",
 				version: 20,
-				downloadSite:
-					"https://adoptium.net/temurin/releases/?version=20",
+				downloadSite: "https://adoptium.net/temurin/releases/?version=20",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },

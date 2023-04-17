@@ -12,10 +12,7 @@ const customJestConfig = {
 	},
 	reporters: [
 		"default",
-		[
-			"jest-junit",
-			{ outputDirectory: "build/reports", outputName: "jest.xml" },
-		],
+		["jest-junit", { outputDirectory: "build/reports", outputName: "jest.xml" }],
 	],
 };
 

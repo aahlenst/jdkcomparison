@@ -76,10 +76,7 @@ describe("filter module", () => {
 
 		vendorsFilter.setOptionSelectedByLabel("Coffeecorp", true);
 
-		foundJDKs = applyFilters(
-			[vendorsFilter, versionsFilter],
-			comparisonData
-		).map((c) => {
+		foundJDKs = applyFilters([vendorsFilter, versionsFilter], comparisonData).map((c) => {
 			return { vendor: c.vendor, version: c.version };
 		});
 
@@ -104,10 +101,7 @@ describe("filter module", () => {
 		vendorsFilter.setOptionSelectedByLabel("Coffeecorp", true);
 		versionsFilter.setOptionSelectedByLabel("8", true);
 
-		foundJDKs = applyFilters(
-			[vendorsFilter, versionsFilter],
-			comparisonData
-		).map((c) => {
+		foundJDKs = applyFilters([vendorsFilter, versionsFilter], comparisonData).map((c) => {
 			return { vendor: c.vendor, version: c.version };
 		});
 
@@ -264,10 +258,7 @@ describe("VirtualMachinesFilter", () => {
 		expect(foundVMs).toContainEqual("CoffeeVM");
 		expect(foundVMs).toContainEqual("DukeVM");
 
-		const filteredData = applyFilters(
-			[virtualMachinesFilter],
-			comparisonData
-		);
+		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
 
 		foundVMs = filteredData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).toContainEqual("CoffeeVM");
@@ -283,10 +274,7 @@ describe("VirtualMachinesFilter", () => {
 
 		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
 
-		const filteredData = applyFilters(
-			[virtualMachinesFilter],
-			comparisonData
-		);
+		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
 
 		foundVMs = filteredData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).not.toContainEqual("CoffeeVM");
@@ -303,10 +291,7 @@ describe("VirtualMachinesFilter", () => {
 		virtualMachinesFilter.setOptionSelectedByLabel("CoffeeVM", true);
 		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
 
-		const filteredData = applyFilters(
-			[virtualMachinesFilter],
-			comparisonData
-		);
+		const filteredData = applyFilters([virtualMachinesFilter], comparisonData);
 
 		foundVMs = filteredData.map((c) => c.virtualMachine.text);
 		expect(foundVMs).toContainEqual("CoffeeVM");
@@ -322,9 +307,7 @@ describe("VirtualMachinesFilter", () => {
 		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
 
 		expect(virtualMachinesFilter.activeOptions()).toHaveLength(2);
-		expect(virtualMachinesFilter.activeOptions()).toContainEqual(
-			"CoffeeVM"
-		);
+		expect(virtualMachinesFilter.activeOptions()).toContainEqual("CoffeeVM");
 		expect(virtualMachinesFilter.activeOptions()).toContainEqual("DukeVM");
 	});
 
@@ -335,9 +318,7 @@ describe("VirtualMachinesFilter", () => {
 		virtualMachinesFilter.setOptionSelectedByLabel("DukeVM", true);
 
 		expect(virtualMachinesFilter.activeOptions()).toHaveLength(2);
-		expect(virtualMachinesFilter.activeOptions()).toContainEqual(
-			"CoffeeVM"
-		);
+		expect(virtualMachinesFilter.activeOptions()).toContainEqual("CoffeeVM");
 		expect(virtualMachinesFilter.activeOptions()).toContainEqual("DukeVM");
 
 		virtualMachinesFilter.reset();
@@ -349,9 +330,7 @@ describe("VirtualMachinesFilter", () => {
 		const virtualMachinesFilter = new VirtualMachinesFilter(comparisonData);
 
 		expect(virtualMachinesFilter.hasOptionWithLabel("DukeVM")).toBeTruthy();
-		expect(
-			virtualMachinesFilter.hasOptionWithLabel("Unknown option")
-		).toBeFalsy();
+		expect(virtualMachinesFilter.hasOptionWithLabel("Unknown option")).toBeFalsy();
 	});
 });
 
@@ -467,11 +446,7 @@ describe("VersionsFilter", () => {
 
 describe("DynamicSelectionFilter", () => {
 	test("returns number of selected options set by option ID", () => {
-		const filter = new DynamicSelectionFilter(
-			"a-filter",
-			["A", "B", "C"],
-			(fc) => fc.vendor
-		);
+		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], (fc) => fc.vendor);
 
 		expect(filter.numberOfSelectedOptions()).toEqual(0);
 
@@ -490,11 +465,7 @@ describe("DynamicSelectionFilter", () => {
 	});
 
 	test("returns number of selected options set by option label", () => {
-		const filter = new DynamicSelectionFilter(
-			"a-filter",
-			["A", "B", "C"],
-			(fc) => fc.vendor
-		);
+		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], (fc) => fc.vendor);
 
 		expect(filter.numberOfSelectedOptions()).toEqual(0);
 
@@ -513,11 +484,7 @@ describe("DynamicSelectionFilter", () => {
 	});
 
 	test("returns options that are active", () => {
-		const filter = new DynamicSelectionFilter(
-			"a-filter",
-			["A", "B", "C"],
-			(fc) => fc.vendor
-		);
+		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], (fc) => fc.vendor);
 
 		expect(filter.activeOptions()).toHaveLength(0);
 
@@ -530,11 +497,7 @@ describe("DynamicSelectionFilter", () => {
 	});
 
 	test("deactivates all options when resetting", () => {
-		const filter = new DynamicSelectionFilter(
-			"a-filter",
-			["A", "B", "C"],
-			(fc) => fc.vendor
-		);
+		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], (fc) => fc.vendor);
 
 		filter.setOptionSelectedByLabel("A", true);
 		filter.setOptionSelectedByLabel("C", true);
@@ -549,11 +512,7 @@ describe("DynamicSelectionFilter", () => {
 	});
 
 	test("supports testing option existence by label", () => {
-		const filter = new DynamicSelectionFilter(
-			"a-filter",
-			["A", "B", "C"],
-			(fc) => fc.vendor
-		);
+		const filter = new DynamicSelectionFilter("a-filter", ["A", "B", "C"], (fc) => fc.vendor);
 
 		expect(filter.hasOptionWithLabel("B")).toBeTruthy();
 		expect(filter.hasOptionWithLabel("Unknown option")).toBeFalsy();
@@ -794,9 +753,7 @@ describe("TechnologiesFilter", () => {
 
 		expect(technologiesFilter.activeOptions()).toHaveLength(2);
 		expect(technologiesFilter.activeOptions()).toContainEqual("JavaFX");
-		expect(technologiesFilter.activeOptions()).toContainEqual(
-			"Flight Recorder"
-		);
+		expect(technologiesFilter.activeOptions()).toContainEqual("Flight Recorder");
 	});
 
 	test("deactivates all options when resetting", () => {
@@ -807,9 +764,7 @@ describe("TechnologiesFilter", () => {
 
 		expect(technologiesFilter.activeOptions()).toHaveLength(2);
 		expect(technologiesFilter.activeOptions()).toContainEqual("JavaFX");
-		expect(technologiesFilter.activeOptions()).toContainEqual(
-			"Flight Recorder"
-		);
+		expect(technologiesFilter.activeOptions()).toContainEqual("Flight Recorder");
 
 		technologiesFilter.reset();
 
@@ -820,9 +775,7 @@ describe("TechnologiesFilter", () => {
 		const technologiesFilter = new TechnologiesFilter();
 
 		expect(technologiesFilter.hasOptionWithLabel("JavaFX")).toBeTruthy();
-		expect(
-			technologiesFilter.hasOptionWithLabel("Unknown option")
-		).toBeFalsy();
+		expect(technologiesFilter.hasOptionWithLabel("Unknown option")).toBeFalsy();
 	});
 });
 
@@ -982,25 +935,16 @@ describe("LicensingFilter", () => {
 
 		expect(licensingFilter.numberOfSelectedOptions()).toEqual(0);
 
-		licensingFilter.setOptionSelected(
-			"licensing-free-in-development",
-			true
-		);
+		licensingFilter.setOptionSelected("licensing-free-in-development", true);
 		licensingFilter.setOptionSelected("licensing-free-in-production", true);
 
 		expect(licensingFilter.numberOfSelectedOptions()).toEqual(2);
 
-		licensingFilter.setOptionSelected(
-			"licensing-free-in-development",
-			false
-		);
+		licensingFilter.setOptionSelected("licensing-free-in-development", false);
 
 		expect(licensingFilter.numberOfSelectedOptions()).toEqual(1);
 
-		licensingFilter.setOptionSelected(
-			"licensing-free-in-production",
-			false
-		);
+		licensingFilter.setOptionSelected("licensing-free-in-production", false);
 
 		expect(licensingFilter.numberOfSelectedOptions()).toEqual(0);
 	});
@@ -1033,12 +977,8 @@ describe("LicensingFilter", () => {
 		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
 
 		expect(licensingFilter.activeOptions()).toHaveLength(2);
-		expect(licensingFilter.activeOptions()).toContainEqual(
-			"Free in Development"
-		);
-		expect(licensingFilter.activeOptions()).toContainEqual(
-			"Free in Production"
-		);
+		expect(licensingFilter.activeOptions()).toContainEqual("Free in Development");
+		expect(licensingFilter.activeOptions()).toContainEqual("Free in Production");
 	});
 
 	test("deactivates all options when resetting", () => {
@@ -1048,12 +988,8 @@ describe("LicensingFilter", () => {
 		licensingFilter.setOptionSelectedByLabel("Free in Production", true);
 
 		expect(licensingFilter.activeOptions()).toHaveLength(2);
-		expect(licensingFilter.activeOptions()).toContainEqual(
-			"Free in Development"
-		);
-		expect(licensingFilter.activeOptions()).toContainEqual(
-			"Free in Production"
-		);
+		expect(licensingFilter.activeOptions()).toContainEqual("Free in Development");
+		expect(licensingFilter.activeOptions()).toContainEqual("Free in Production");
 
 		licensingFilter.reset();
 
@@ -1063,12 +999,8 @@ describe("LicensingFilter", () => {
 	test("supports testing option existence by label", () => {
 		const licensingFilter = new LicensingFilter();
 
-		expect(
-			licensingFilter.hasOptionWithLabel("Free in Development")
-		).toBeTruthy();
-		expect(
-			licensingFilter.hasOptionWithLabel("Unknown option")
-		).toBeFalsy();
+		expect(licensingFilter.hasOptionWithLabel("Free in Development")).toBeTruthy();
+		expect(licensingFilter.hasOptionWithLabel("Unknown option")).toBeFalsy();
 	});
 });
 
@@ -1181,12 +1113,8 @@ describe("PlatformsFilter", () => {
 		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 64-bit", true);
 
 		expect(platformsFilter.activeOptions()).toHaveLength(2);
-		expect(platformsFilter.activeOptions()).toContainEqual(
-			"Linux, ARM, 32-bit"
-		);
-		expect(platformsFilter.activeOptions()).toContainEqual(
-			"Linux, ARM, 64-bit"
-		);
+		expect(platformsFilter.activeOptions()).toContainEqual("Linux, ARM, 32-bit");
+		expect(platformsFilter.activeOptions()).toContainEqual("Linux, ARM, 64-bit");
 	});
 
 	test("deactivates all options when resetting", () => {
@@ -1196,12 +1124,8 @@ describe("PlatformsFilter", () => {
 		platformsFilter.setOptionSelectedByLabel("Linux, ARM, 64-bit", true);
 
 		expect(platformsFilter.activeOptions()).toHaveLength(2);
-		expect(platformsFilter.activeOptions()).toContainEqual(
-			"Linux, ARM, 32-bit"
-		);
-		expect(platformsFilter.activeOptions()).toContainEqual(
-			"Linux, ARM, 64-bit"
-		);
+		expect(platformsFilter.activeOptions()).toContainEqual("Linux, ARM, 32-bit");
+		expect(platformsFilter.activeOptions()).toContainEqual("Linux, ARM, 64-bit");
 
 		platformsFilter.reset();
 
@@ -1211,12 +1135,8 @@ describe("PlatformsFilter", () => {
 	test("supports testing option existence by label", () => {
 		const platformsFilter = new PlatformsFilter();
 
-		expect(
-			platformsFilter.hasOptionWithLabel("Linux, ARM, 32-bit")
-		).toBeTruthy();
-		expect(
-			platformsFilter.hasOptionWithLabel("Unknown option")
-		).toBeFalsy();
+		expect(platformsFilter.hasOptionWithLabel("Linux, ARM, 32-bit")).toBeTruthy();
+		expect(platformsFilter.hasOptionWithLabel("Unknown option")).toBeFalsy();
 	});
 });
 

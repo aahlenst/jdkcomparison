@@ -21,11 +21,8 @@ import { InfoIcon } from "../icons";
 import { ClientOnlyPortal } from "@/components/clientOnlyPortal";
 
 export function FeatureExplanation({ children }: PropsWithChildren) {
-	const [referenceElement, setReferenceElement] =
-		useState<HTMLElement | null>(null);
-	const [popperElement, setPopperElement] = useState<HTMLElement | null>(
-		null
-	);
+	const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
+	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
 	const [arrowElement, setArrowElement] = useState<HTMLElement | null>(null);
 	const { styles, attributes } = usePopper(referenceElement, popperElement, {
 		modifiers: [
@@ -37,15 +34,8 @@ export function FeatureExplanation({ children }: PropsWithChildren) {
 
 	return (
 		<Popover>
-			<Popover.Button
-				ref={setReferenceElement}
-				className="feature-explanation-toggle"
-			>
-				<InfoIcon
-					className="w-3.5 h-3.5 mx-2"
-					role="img"
-					aria-label="Show explanation"
-				>
+			<Popover.Button ref={setReferenceElement} className="feature-explanation-toggle">
+				<InfoIcon className="w-3.5 h-3.5 mx-2" role="img" aria-label="Show explanation">
 					<title>Show explanation</title>
 				</InfoIcon>
 			</Popover.Button>

@@ -29,28 +29,19 @@ describe("useShowDifferencesOnly", () => {
 	const mixed = { a: identical.a, b: different.b };
 
 	test("show section and all features if showDifferencesOnly is false", () => {
-		const [showSection, showFeatures] = useShowDifferencesOnly(
-			false,
-			identical
-		);
+		const [showSection, showFeatures] = useShowDifferencesOnly(false, identical);
 		expect(showSection).toBeTruthy();
 		expect(showFeatures.a).toBeTruthy();
 	});
 
 	test("hide section if showDifferencesOnly is true and features are identical", () => {
-		const [showSection, showFeatures] = useShowDifferencesOnly(
-			true,
-			identical
-		);
+		const [showSection, showFeatures] = useShowDifferencesOnly(true, identical);
 		expect(showSection).toBeFalsy();
 		expect(showFeatures.a).toBeFalsy();
 	});
 
 	test("show section if showDifferencesOnly is true and features are different", () => {
-		const [showSection, showFeatures] = useShowDifferencesOnly(
-			true,
-			different
-		);
+		const [showSection, showFeatures] = useShowDifferencesOnly(true, different);
 		expect(showSection).toBeTruthy();
 		expect(showFeatures.b).toBeTruthy();
 	});
@@ -67,10 +58,7 @@ describe("useShowDifferencesOnly", () => {
 			a: [{ present: Present.YES }],
 			b: [{ present: Present.YES }],
 		};
-		const [showSection, showFeatures] = useShowDifferencesOnly(
-			true,
-			oneValue
-		);
+		const [showSection, showFeatures] = useShowDifferencesOnly(true, oneValue);
 		expect(showSection).toBeTruthy();
 		expect(showFeatures.a).toBeTruthy();
 		expect(showFeatures.b).toBeTruthy();

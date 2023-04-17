@@ -26,10 +26,7 @@ export type MDXPageLayoutProps = {
 	meta: PageMetadata;
 };
 
-export function MDXPageLayout({
-	meta,
-	children,
-}: PropsWithChildren<MDXPageLayoutProps>) {
+export function MDXPageLayout({ meta, children }: PropsWithChildren<MDXPageLayoutProps>) {
 	return (
 		<>
 			<Head>

@@ -25,10 +25,7 @@ type LicensingSectionProps = {
 	showDifferencesOnly: boolean;
 };
 
-export function LicensingSection({
-	productData,
-	showDifferencesOnly,
-}: LicensingSectionProps) {
+export function LicensingSection({ productData, showDifferencesOnly }: LicensingSectionProps) {
 	const license = productData.map((product) => ({
 		...product.license,
 		id: product.id,
@@ -41,10 +38,11 @@ export function LicensingSection({
 		...product.freeInProduction,
 		id: product.id,
 	}));
-	const [showSection, showFeatures] = useShowDifferencesOnly(
-		showDifferencesOnly,
-		{ license: license, freeInDev: freeInDev, freeInProd: freeInProd }
-	);
+	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
+		license: license,
+		freeInDev: freeInDev,
+		freeInProd: freeInProd,
+	});
 
 	if (!showSection) {
 		return <></>;
@@ -53,11 +51,7 @@ export function LicensingSection({
 	return (
 		<ComparisonSection id="licensing" label="Licensing">
 			{showFeatures.license && (
-				<Feature
-					id="licensing-license"
-					name="License"
-					values={license}
-				/>
+				<Feature id="licensing-license" name="License" values={license} />
 			)}
 			{showFeatures.freeInDev && (
 				<Feature

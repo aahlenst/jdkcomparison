@@ -26,11 +26,7 @@ type CheckboxFilterProps = {
 	onChangeHandler: (action: ApplyFilter) => void;
 };
 
-export function CheckboxFilter({
-	label,
-	filter,
-	onChangeHandler,
-}: CheckboxFilterProps) {
+export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilterProps) {
 	const numberOfSelectedOptions = filter.numberOfSelectedOptions();
 	const fields = filter.options.map((option) => {
 		return (
@@ -42,13 +38,7 @@ export function CheckboxFilter({
 					checked={option.selected}
 					className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
 					onChange={(e) => {
-						onChangeHandler(
-							new ApplyFilter(
-								filter.id,
-								option.label,
-								e.target.checked
-							)
-						);
+						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
 					}}
 				/>
 				<label

@@ -28,19 +28,13 @@ export const mobileComparisonPage = {
 					cy.url().should("not.eq", oldURL);
 
 					// Ensure that new filter state was applied to state.
-					mobileComparisonPage.expectFilterOption(
-						id,
-						option,
-						!oldState
-					);
+					mobileComparisonPage.expectFilterOption(id, option, !oldState);
 				});
 			}
 		});
 	},
 	closeFeatureExplanation: () => {
-		cy.get(
-			"#comparison-modals .mobile-feature-explanation-overlay"
-		).click();
+		cy.get("#comparison-modals .mobile-feature-explanation-overlay").click();
 	},
 	closeFilter: (filterId: string) => {
 		cy.get(`#mobile-menu-filter-${filterId}`).click();
@@ -74,20 +68,12 @@ export const mobileComparisonPage = {
 			});
 		});
 	},
-	expectFootnote: (
-		featureId: string,
-		column: number,
-		number: number,
-		excerpt: string
-	) => {
+	expectFootnote: (featureId: string, column: number, number: number, excerpt: string) => {
 		cy.get(`#${featureId} .feature-value`)
 			.eq(column)
 			.find("sup")
 			.should("have.text", `[${number}]`);
-		cy.get(`#${featureId} .feature-value`)
-			.eq(column)
-			.find("sup a")
-			.trigger("click");
+		cy.get(`#${featureId} .feature-value`).eq(column).find("sup a").trigger("click");
 		cy.get(".mobile-footnote").should("contain.text", excerpt);
 		cy.get("#comparison-modals .mobile-footnote-overlay").trigger("click");
 	},

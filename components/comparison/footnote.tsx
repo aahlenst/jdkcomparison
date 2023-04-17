@@ -27,15 +27,9 @@ type FootnoteProps = {
 
 export function Footnote({ footnoteReference }: FootnoteProps) {
 	const comparison = useComparison();
-	const footnote = resolveFootnote(
-		comparison.footnotes,
-		footnoteReference.number
-	);
-	const [referenceElement, setReferenceElement] =
-		useState<HTMLElement | null>(null);
-	const [popperElement, setPopperElement] = useState<HTMLElement | null>(
-		null
-	);
+	const footnote = resolveFootnote(comparison.footnotes, footnoteReference.number);
+	const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
+	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
 	const [arrowElement, setArrowElement] = useState<HTMLElement | null>(null);
 	const { styles, attributes } = usePopper(referenceElement, popperElement, {
 		modifiers: [
@@ -90,10 +84,7 @@ export function Footnote({ footnoteReference }: FootnoteProps) {
 	);
 }
 
-function resolveFootnote(
-	footnotes: Model.Footnote[],
-	number: number
-): Model.Footnote {
+function resolveFootnote(footnotes: Model.Footnote[], number: number): Model.Footnote {
 	const footnote = footnotes.find((f) => f.number === number);
 	if (footnote === undefined) {
 		throw new Error(`Unknown footnote: ${number}`);

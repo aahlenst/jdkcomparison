@@ -32,9 +32,7 @@ describe("JDK Comparison", () => {
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
 
 		navigationComponent.navigateTo("FAQ");
-		navigationComponent.expectPageTitle(
-			"Frequently Asked Questions – JDK Comparison"
-		);
+		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
 	});
 
 	it("displays GitHub link", () => {
@@ -95,42 +93,38 @@ describe("JDK Comparison", () => {
 			"Virtual Machine",
 			"Class Libraries",
 		]);
-		comparisonPage.expectFeatureText(
-			"properties-feature-version",
-			"Feature Version",
-			["17", "17", "8"]
-		);
+		comparisonPage.expectFeatureText("properties-feature-version", "Feature Version", [
+			"17",
+			"17",
+			"8",
+		]);
 		comparisonPage.expectFeatureText("properties-vm", "Virtual Machine", [
 			"CoffeeVM",
 			"DukeVM",
 			"CoffeeVM",
 		]);
-		comparisonPage.expectFeatureText(
-			"properties-class-libraries",
-			"Class Libraries",
-			["OpenJDK", "OpenJDK", "OpenJDK"]
-		);
+		comparisonPage.expectFeatureText("properties-class-libraries", "Class Libraries", [
+			"OpenJDK",
+			"OpenJDK",
+			"OpenJDK",
+		]);
 
 		comparisonPage.expectFeaturesInSection("technologies", [
 			"JavaFX",
 			"Flight Recorder",
 			"Java Web Start",
 		]);
-		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", [
-			"no",
-			"no",
+		comparisonPage.expectFeaturePresence("technologies-jfx", "JavaFX", ["no", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("technologies-jfr", "Flight Recorder", [
 			"yes",
+			"yes",
+			"no",
 		]);
-		comparisonPage.expectFeaturePresence(
-			"technologies-jfr",
-			"Flight Recorder",
-			["yes", "yes", "no"]
-		);
-		comparisonPage.expectFeaturePresence(
-			"technologies-jaws",
-			"Java Web Start",
-			["no", "no", "no"]
-		);
+		comparisonPage.expectFeaturePresence("technologies-jaws", "Java Web Start", [
+			"no",
+			"no",
+			"no",
+		]);
 
 		comparisonPage.expectFeaturesInSection("gcs", [
 			"CMS",
@@ -142,46 +136,18 @@ describe("JDK Comparison", () => {
 			"Z",
 			"Custom GCs",
 		]);
-		comparisonPage.expectFeaturePresence("gcs-cms", "CMS", [
-			"no",
-			"no",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence("gcs-epsilon", "Epsilon", [
-			"yes",
-			"yes",
-			"no",
-		]);
-		comparisonPage.expectFeaturePresence("gcs-g1", "G1", [
-			"yes",
-			"yes",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence("gcs-parallel", "Parallel", [
-			"yes",
-			"yes",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence("gcs-serial", "Serial", [
-			"yes",
-			"yes",
-			"yes",
-		]);
+		comparisonPage.expectFeaturePresence("gcs-cms", "CMS", ["no", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("gcs-epsilon", "Epsilon", ["yes", "yes", "no"]);
+		comparisonPage.expectFeaturePresence("gcs-g1", "G1", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("gcs-parallel", "Parallel", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("gcs-serial", "Serial", ["yes", "yes", "yes"]);
 		comparisonPage.expectFeaturePresence("gcs-shenandoah", "Shenandoah", [
 			"partially",
 			"no",
 			"partially",
 		]);
-		comparisonPage.expectFeaturePresence("gcs-z", "Z", [
-			"partially",
-			"yes",
-			"partially",
-		]);
-		comparisonPage.expectFeatureText("gcs-custom", "Custom GCs", [
-			"none",
-			"FairyGC",
-			"none",
-		]);
+		comparisonPage.expectFeaturePresence("gcs-z", "Z", ["partially", "yes", "partially"]);
+		comparisonPage.expectFeatureText("gcs-custom", "Custom GCs", ["none", "FairyGC", "none"]);
 
 		comparisonPage.expectFeaturesInSection("linux", [
 			"x86, 64-bit",
@@ -198,92 +164,36 @@ describe("JDK Comparison", () => {
 			"RPM Packages",
 			"Container Images",
 		]);
-		comparisonPage.expectFeaturePresence("linux-x64", "x86, 64-bit", [
-			"yes",
-			"yes",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence(
-			"linux-x64-musl",
-			"x86, 64-bit, musl",
-			["yes", "no", "no"]
-		);
-		comparisonPage.expectFeaturePresence("linux-x32", "x86, 32-bit", [
-			"yes",
-			"no",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence("linux-aarch64", "ARM, 64-bit", [
-			"yes",
-			"yes",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence(
-			"linux-aarch64-musl",
-			"ARM, 64-bit, musl",
-			["yes", "no", "no"]
-		);
-		comparisonPage.expectFeaturePresence("linux-aarch32", "ARM, 32-bit", [
-			"no",
-			"no",
-			"no",
-		]);
-		comparisonPage.expectFeaturePresence("linux-ppc64", "PPC, 64-bit", [
-			"yes",
-			"no",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence(
-			"linux-riscv64",
-			"RISC-V, 64-bit",
-			["no", "no", "no"]
-		);
-		comparisonPage.expectFeaturePresence("linux-s390x", "S390, 64-bit", [
+		comparisonPage.expectFeaturePresence("linux-x64", "x86, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-x64-musl", "x86, 64-bit, musl", [
 			"yes",
 			"no",
 			"no",
 		]);
-		comparisonPage.expectFeaturePresence("linux-apk", "APK Packages", [
+		comparisonPage.expectFeaturePresence("linux-x32", "x86, 32-bit", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-aarch64", "ARM, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-aarch64-musl", "ARM, 64-bit, musl", [
 			"yes",
 			"no",
 			"no",
 		]);
-		comparisonPage.expectFeaturePresence("linux-deb", "Deb Packages", [
-			"yes",
+		comparisonPage.expectFeaturePresence("linux-aarch32", "ARM, 32-bit", ["no", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-ppc64", "PPC, 64-bit", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-riscv64", "RISC-V, 64-bit", ["no", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-s390x", "S390, 64-bit", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-apk", "APK Packages", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("linux-deb", "Deb Packages", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-rpm", "RPM Packages", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("linux-container-images", "Container Images", [
+			"partially",
 			"no",
-			"yes",
+			"partially",
 		]);
-		comparisonPage.expectFeaturePresence("linux-rpm", "RPM Packages", [
-			"yes",
-			"no",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence(
-			"linux-container-images",
-			"Container Images",
-			["partially", "no", "partially"]
-		);
 
-		comparisonPage.expectFeaturesInSection("mac", [
-			"x86, 64-bit",
-			"ARM, 64-bit",
-			"Installers",
-		]);
-		comparisonPage.expectFeaturePresence("mac-x64", "x86, 64-bit", [
-			"yes",
-			"yes",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", [
-			"yes",
-			"yes",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence("mac-installers", "Installers", [
-			"yes",
-			"yes",
-			"yes",
-		]);
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
+		comparisonPage.expectFeaturePresence("mac-x64", "x86, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("mac-installers", "Installers", ["yes", "yes", "yes"]);
 
 		comparisonPage.expectFeaturesInSection("windows", [
 			"x86, 64-bit",
@@ -292,88 +202,72 @@ describe("JDK Comparison", () => {
 			"Installers",
 			"Container Images",
 		]);
-		comparisonPage.expectFeaturePresence("windows-x64", "x86, 64-bit", [
+		comparisonPage.expectFeaturePresence("windows-x64", "x86, 64-bit", ["yes", "yes", "yes"]);
+		comparisonPage.expectFeaturePresence("windows-x32", "x86, 32-bit", ["no", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("windows-aarch64", "ARM, 64-bit", ["yes", "no", "no"]);
+		comparisonPage.expectFeaturePresence("windows-installers", "Installers", [
 			"yes",
-			"yes",
-			"yes",
-		]);
-		comparisonPage.expectFeaturePresence("windows-x32", "x86, 32-bit", [
-			"no",
 			"no",
 			"yes",
 		]);
-		comparisonPage.expectFeaturePresence("windows-aarch64", "ARM, 64-bit", [
-			"yes",
+		comparisonPage.expectFeaturePresence("windows-container-images", "Container Images", [
+			"partially",
 			"no",
-			"no",
+			"partially",
 		]);
-		comparisonPage.expectFeaturePresence(
-			"windows-installers",
-			"Installers",
-			["yes", "no", "yes"]
-		);
-		comparisonPage.expectFeaturePresence(
-			"windows-container-images",
-			"Container Images",
-			["partially", "no", "partially"]
-		);
 
 		comparisonPage.expectFeaturesInSection("other", [
 			"AIX, PPC",
 			"Solaris, SPARC",
 			"Solaris, x86, 64-bit",
 		]);
-		comparisonPage.expectFeaturePresence("aix-ppc", "AIX, PPC", [
-			"yes",
+		comparisonPage.expectFeaturePresence("aix-ppc", "AIX, PPC", ["yes", "no", "yes"]);
+		comparisonPage.expectFeaturePresence("solaris-sparc", "Solaris, SPARC", [
+			"no",
 			"no",
 			"yes",
 		]);
-		comparisonPage.expectFeaturePresence(
-			"solaris-sparc",
-			"Solaris, SPARC",
-			["no", "no", "yes"]
-		);
-		comparisonPage.expectFeaturePresence(
-			"solaris-x64",
-			"Solaris, x86, 64-bit",
-			["no", "no", "yes"]
-		);
+		comparisonPage.expectFeaturePresence("solaris-x64", "Solaris, x86, 64-bit", [
+			"no",
+			"no",
+			"yes",
+		]);
 
 		comparisonPage.expectFeaturesInSection("certifications", [
 			"Eclipse AQAvit",
 			"TCK for Java SE",
 		]);
-		comparisonPage.expectFeaturePresence(
-			"certifications-aqavit",
-			"Eclipse AQAvit",
-			["yes", "yes", "yes"]
-		);
-		comparisonPage.expectFeaturePresence(
-			"certifications-tck",
-			"TCK for Java SE",
-			["yes", "yes", "yes"]
-		);
+		comparisonPage.expectFeaturePresence("certifications-aqavit", "Eclipse AQAvit", [
+			"yes",
+			"yes",
+			"yes",
+		]);
+		comparisonPage.expectFeaturePresence("certifications-tck", "TCK for Java SE", [
+			"yes",
+			"yes",
+			"yes",
+		]);
 
 		comparisonPage.expectFeaturesInSection("customisations", [
 			"Editions",
 			"Customisations",
 			"Notable Features",
 		]);
-		comparisonPage.expectFeatureText(
-			"customisations-editions",
-			"Editions",
-			["JRE", "JRE", "JRE"]
-		);
-		comparisonPage.expectFeatureText(
-			"customisations-customisations",
-			"Customisations",
-			["few", "many", "medium"]
-		);
-		comparisonPage.expectFeatureText(
-			"customisations-notable-features",
-			"Notable Features",
-			["none", "FairyGC", "none"]
-		);
+		comparisonPage.expectFeatureText("customisations-editions", "Editions", [
+			"JRE",
+			"JRE",
+			"JRE",
+		]);
+		comparisonPage.expectFeatureText("customisations-customisations", "Customisations", [
+			"few",
+			"many",
+			"medium",
+		]);
+		comparisonPage.expectFeatureText("customisations-notable-features", "Notable Features", [
+			"none",
+			"FairyGC",
+			"none",
+		]);
 
 		comparisonPage.expectFeaturesInSection("licensing", [
 			"License",
@@ -390,18 +284,14 @@ describe("JDK Comparison", () => {
 			"Free in Development",
 			["yes", "yes", "yes"]
 		);
-		comparisonPage.expectFeaturePresence(
-			"licensing-free-in-production",
-			"Free in Production",
-			["yes", "no", "yes"]
-		);
-
-		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
-		comparisonPage.expectFeaturePresence("security-sbom", "SBOM", [
+		comparisonPage.expectFeaturePresence("licensing-free-in-production", "Free in Production", [
 			"yes",
-			"unknown",
+			"no",
 			"yes",
 		]);
+
+		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
+		comparisonPage.expectFeaturePresence("security-sbom", "SBOM", ["yes", "unknown", "yes"]);
 
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
@@ -414,21 +304,17 @@ describe("JDK Comparison", () => {
 			"2027-10[3]",
 			"2026-10",
 		]);
-		comparisonPage.expectFeatureText(
-			"support-release-schedule",
-			"Release Schedule",
-			["OpenJDK", "OpenJDK", "OpenJDK"]
-		);
-		comparisonPage.expectFeatureText(
-			"support-release-delay",
-			"Release Delay",
-			["0-3 days", "none", "0-3 days"]
-		);
-		comparisonPage.expectFeaturePresence("support-paid", "Paid support", [
-			"no",
-			"no",
-			"no",
+		comparisonPage.expectFeatureText("support-release-schedule", "Release Schedule", [
+			"OpenJDK",
+			"OpenJDK",
+			"OpenJDK",
 		]);
+		comparisonPage.expectFeatureText("support-release-delay", "Release Delay", [
+			"0-3 days",
+			"none",
+			"0-3 days",
+		]);
+		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
 	});
 
 	it("should display only features with different values", () => {
@@ -485,11 +371,7 @@ describe("JDK Comparison", () => {
 			"RPM Packages",
 			"Container Images",
 		]);
-		comparisonPage.expectFeaturesInSection("mac", [
-			"x86, 64-bit",
-			"ARM, 64-bit",
-			"Installers",
-		]);
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		comparisonPage.expectFeaturesInSection("windows", [
 			"x86, 64-bit",
 			"x86, 32-bit",
@@ -542,10 +424,7 @@ describe("JDK Comparison", () => {
 			"Feature Version",
 			"Virtual Machine",
 		]);
-		comparisonPage.expectFeaturesInSection("technologies", [
-			"JavaFX",
-			"Flight Recorder",
-		]);
+		comparisonPage.expectFeaturesInSection("technologies", ["JavaFX", "Flight Recorder"]);
 		comparisonPage.expectFeaturesInSection("gcs", [
 			"CMS",
 			"Epsilon",
@@ -579,15 +458,9 @@ describe("JDK Comparison", () => {
 			"Customisations",
 			"Notable Features",
 		]);
-		comparisonPage.expectFeaturesInSection("licensing", [
-			"License",
-			"Free in Production",
-		]);
+		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
-		comparisonPage.expectFeaturesInSection("support", [
-			"Patches Until",
-			"Release Delay",
-		]);
+		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Delay"]);
 	});
 
 	it("shows single product even if it should only display differences", () => {
@@ -640,11 +513,7 @@ describe("JDK Comparison", () => {
 			"RPM Packages",
 			"Container Images",
 		]);
-		comparisonPage.expectFeaturesInSection("mac", [
-			"x86, 64-bit",
-			"ARM, 64-bit",
-			"Installers",
-		]);
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		comparisonPage.expectFeaturesInSection("windows", [
 			"x86, 64-bit",
 			"x86, 32-bit",
@@ -717,11 +586,7 @@ describe("JDK Comparison", () => {
 			"RPM Packages",
 			"Container Images",
 		]);
-		comparisonPage.expectFeaturesInSection("mac", [
-			"x86, 64-bit",
-			"ARM, 64-bit",
-			"Installers",
-		]);
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		comparisonPage.expectFeaturesInSection("windows", [
 			"x86, 64-bit",
 			"x86, 32-bit",
@@ -784,17 +649,9 @@ describe("JDK Comparison", () => {
 		comparisonPage.closeFilter("vms");
 
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", false);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		comparisonPage.closeFilter("technologies");
 
 		comparisonPage.showFilter("gcs");
@@ -804,24 +661,12 @@ describe("JDK Comparison", () => {
 
 		comparisonPage.showFilter("platforms");
 		comparisonPage.expectFilterOption("platforms", "AIX, PPC", false);
-		comparisonPage.expectFilterOption(
-			"platforms",
-			"macOS, x86, 64-bit",
-			false
-		);
+		comparisonPage.expectFilterOption("platforms", "macOS, x86, 64-bit", false);
 		comparisonPage.closeFilter("platforms");
 
 		comparisonPage.showFilter("licensing");
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Development",
-			false
-		);
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Production",
-			false
-		);
+		comparisonPage.expectFilterOption("licensing", "Free in Development", false);
+		comparisonPage.expectFilterOption("licensing", "Free in Production", false);
 		comparisonPage.closeFilter("licensing");
 	});
 
@@ -914,10 +759,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilterOption("versions", "17", true);
 		comparisonPage.closeFilter("versions");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Dukecorp JDK 17",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Dukecorp JDK 17"]);
 
 		comparisonPage.showFilter("versions");
 		comparisonPage.clickFilterOption("versions", "8");
@@ -948,10 +790,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilterOption("vendors", "Dukecorp", false);
 		comparisonPage.closeFilter("vendors");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Coffeecorp");
@@ -975,17 +814,9 @@ describe("JDK Comparison", () => {
 
 		comparisonPage.showFilter("technologies");
 		comparisonPage.clickFilterOption("technologies", "JavaFX");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", true);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		comparisonPage.closeFilter("technologies");
 
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);
@@ -993,38 +824,19 @@ describe("JDK Comparison", () => {
 		comparisonPage.showFilter("technologies");
 		comparisonPage.clickFilterOption("technologies", "JavaFX");
 		comparisonPage.clickFilterOption("technologies", "Flight Recorder");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			true
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", true);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", false);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		comparisonPage.closeFilter("technologies");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Dukecorp JDK 17",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Dukecorp JDK 17"]);
 
 		comparisonPage.showFilter("technologies");
 		comparisonPage.clickFilterOption("technologies", "Flight Recorder");
 		comparisonPage.clickFilterOption("technologies", "Java Web Start");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", false);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			true
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", true);
 
 		comparisonPage.closeFilter("technologies");
 
@@ -1047,10 +859,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilterOption("vms", "DukeVM", false);
 		comparisonPage.closeFilter("vms");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		comparisonPage.showFilter("vms");
 		comparisonPage.clickFilterOption("vms", "CoffeeVM");
@@ -1090,10 +899,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilterOption("gcs", "CMS", false);
 		comparisonPage.closeFilter("gcs");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		comparisonPage.showFilter("gcs");
 		comparisonPage.clickFilterOption("gcs", "CMS");
@@ -1119,10 +925,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilterOption("platforms", "AIX, PPC", true);
 		comparisonPage.closeFilter("platforms");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		comparisonPage.showFilter("platforms");
 		comparisonPage.clickFilterOption("platforms", "Solaris, SPARC");
@@ -1144,16 +947,8 @@ describe("JDK Comparison", () => {
 
 		comparisonPage.showFilter("licensing");
 		comparisonPage.clickFilterOption("licensing", "Free in Development");
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Development",
-			true
-		);
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Production",
-			false
-		);
+		comparisonPage.expectFilterOption("licensing", "Free in Development", true);
+		comparisonPage.expectFilterOption("licensing", "Free in Production", false);
 		comparisonPage.closeFilter("licensing");
 
 		comparisonPage.expectProductNames([
@@ -1165,41 +960,19 @@ describe("JDK Comparison", () => {
 		comparisonPage.showFilter("licensing");
 		comparisonPage.clickFilterOption("licensing", "Free in Development");
 		comparisonPage.clickFilterOption("licensing", "Free in Production");
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Development",
-			false
-		);
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Production",
-			true
-		);
+		comparisonPage.expectFilterOption("licensing", "Free in Development", false);
+		comparisonPage.expectFilterOption("licensing", "Free in Production", true);
 		comparisonPage.closeFilter("licensing");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		comparisonPage.showFilter("licensing");
 		comparisonPage.clickFilterOption("licensing", "Free in Development");
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Development",
-			true
-		);
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Production",
-			true
-		);
+		comparisonPage.expectFilterOption("licensing", "Free in Development", true);
+		comparisonPage.expectFilterOption("licensing", "Free in Production", true);
 		comparisonPage.closeFilter("licensing");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 	});
 
 	it("hides and reveals sections", () => {
@@ -1235,12 +1008,7 @@ describe("JDK Comparison", () => {
 			1,
 			"Some clarifications regarding JavaFX"
 		);
-		comparisonPage.expectFootnote(
-			"support-paid",
-			1,
-			2,
-			"Some remark regarding paid support"
-		);
+		comparisonPage.expectFootnote("support-paid", 1, 2, "Some remark regarding paid support");
 		comparisonPage.expectFootnote(
 			"support-eol-date",
 			1,
@@ -1330,10 +1098,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilterOption("vendors", "Dukecorp", false);
 		comparisonPage.closeFilter("vendors");
 		comparisonPage.expectActiveFilterOptions("vendors", 1);
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		cy.visit("/?vendors=Dukecorp&vendors=Coffeecorp");
 		comparisonPage.showFilter("vendors");
@@ -1367,10 +1132,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilterOption("vms", "DukeVM", false);
 		comparisonPage.closeFilter("vms");
 		comparisonPage.expectActiveFilterOptions("vms", 1);
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		cy.visit("/?vms=DukeVM&vms=CoffeeVM");
 		comparisonPage.showFilter("vms");
@@ -1388,17 +1150,9 @@ describe("JDK Comparison", () => {
 	it("preselects Technologies filter according to search parameters", () => {
 		cy.visit("/");
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", false);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 0);
 		comparisonPage.expectProductNames([
@@ -1409,37 +1163,18 @@ describe("JDK Comparison", () => {
 
 		cy.visit("/?technologies=Flight%20Recorder");
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			true
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", true);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", false);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 1);
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Dukecorp JDK 17",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Dukecorp JDK 17"]);
 
 		cy.visit("/?technologies=JavaFX&technologies=Flight%20Recorder");
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			true
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", true);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", true);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 2);
 		comparisonPage.expectProductNames([]);
@@ -1448,17 +1183,9 @@ describe("JDK Comparison", () => {
 			"/?technologies=JavaFX&technologies=Flight%20Recorder&technologies=Java%20Web%20Start"
 		);
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			true
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", true);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", true);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			true
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", true);
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 3);
 		comparisonPage.expectProductNames([]);
@@ -1484,10 +1211,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFilterOption("platforms", "Solaris, SPARC", false);
 		comparisonPage.closeFilter("platforms");
 		comparisonPage.expectActiveFilterOptions("platforms", 1);
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		cy.visit("/?platforms=AIX, PPC&platforms=Solaris, SPARC");
 		comparisonPage.showFilter("platforms");
@@ -1515,10 +1239,7 @@ describe("JDK Comparison", () => {
 
 		cy.visit("/?gcs=Shenandoah");
 
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 
 		comparisonPage.showFilter("gcs");
 		comparisonPage.expectFilterOption("gcs", "Shenandoah", true);
@@ -1538,16 +1259,8 @@ describe("JDK Comparison", () => {
 	it("preselects Licensing filter according to search parameters", () => {
 		cy.visit("/");
 		comparisonPage.showFilter("licensing");
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Development",
-			false
-		);
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Production",
-			false
-		);
+		comparisonPage.expectFilterOption("licensing", "Free in Development", false);
+		comparisonPage.expectFilterOption("licensing", "Free in Production", false);
 		comparisonPage.closeFilter("licensing");
 		comparisonPage.expectActiveFilterOptions("licensing", 0);
 		comparisonPage.expectProductNames([
@@ -1558,16 +1271,8 @@ describe("JDK Comparison", () => {
 
 		cy.visit("/?licensing=Free%20in%20Development");
 		comparisonPage.showFilter("licensing");
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Development",
-			true
-		);
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Production",
-			false
-		);
+		comparisonPage.expectFilterOption("licensing", "Free in Development", true);
+		comparisonPage.expectFilterOption("licensing", "Free in Production", false);
 		comparisonPage.closeFilter("licensing");
 		comparisonPage.expectActiveFilterOptions("licensing", 1);
 		comparisonPage.expectProductNames([
@@ -1576,26 +1281,13 @@ describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		cy.visit(
-			"/?licensing=Free%20in%20Development&licensing=Free%20in%20Production"
-		);
+		cy.visit("/?licensing=Free%20in%20Development&licensing=Free%20in%20Production");
 		comparisonPage.showFilter("licensing");
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Development",
-			true
-		);
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Production",
-			true
-		);
+		comparisonPage.expectFilterOption("licensing", "Free in Development", true);
+		comparisonPage.expectFilterOption("licensing", "Free in Production", true);
 		comparisonPage.closeFilter("licensing");
 		comparisonPage.expectActiveFilterOptions("licensing", 2);
-		comparisonPage.expectProductNames([
-			"Coffeecorp JDK 17",
-			"Coffeecorp JDK 8",
-		]);
+		comparisonPage.expectProductNames(["Coffeecorp JDK 17", "Coffeecorp JDK 8"]);
 	});
 
 	it("displays JDKs sorted by descending versions by default", () => {
@@ -1772,11 +1464,7 @@ describe("JDK Comparison", () => {
 
 		comparisonPage.showFilter("platforms");
 		comparisonPage.clickFilterOption("platforms", "Solaris, x86, 64-bit");
-		comparisonPage.expectFilterOption(
-			"platforms",
-			"Solaris, x86, 64-bit",
-			true
-		);
+		comparisonPage.expectFilterOption("platforms", "Solaris, x86, 64-bit", true);
 		comparisonPage.closeFilter("platforms");
 
 		comparisonPage.expectProductNames(["Coffeecorp JDK 8"]);

@@ -28,21 +28,14 @@ type FeatureProps = {
 		| (Model.FeatureDescription & Model.Keyable)[];
 };
 
-export function Feature({
-	id,
-	name,
-	values,
-	children,
-}: PropsWithChildren<FeatureProps>) {
+export function Feature({ id, name, values, children }: PropsWithChildren<FeatureProps>) {
 	const features = values.map((value) => {
 		return (
 			<div
 				key={value.id}
 				className="feature-value py-2 px-4 content-center border-r text-sm last:border-r-transparent"
 			>
-				{"present" in value && (
-					<FeaturePresence present={value.present} />
-				)}
+				{"present" in value && <FeaturePresence present={value.present} />}
 				{"text" in value && value.text}
 				{"footnoteReference" in value && value.footnoteReference && (
 					<Footnote footnoteReference={value.footnoteReference} />
@@ -60,12 +53,8 @@ export function Feature({
 			}}
 		>
 			<div className="sticky left-0 z-10 inline-flex items-center bg-white py-2 px-4 border-r">
-				<span className="feature-name mr-1 text-sm font-medium">
-					{name}
-				</span>
-				{children && (
-					<FeatureExplanation>{children}</FeatureExplanation>
-				)}
+				<span className="feature-name mr-1 text-sm font-medium">{name}</span>
+				{children && <FeatureExplanation>{children}</FeatureExplanation>}
 			</div>
 			{features}
 		</div>

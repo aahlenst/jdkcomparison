@@ -32,9 +32,7 @@ export function DifferencesOnlyToggle() {
 				name="show-differences-only"
 				checked={comparison.showDifferencesOnly}
 				className="h-4 w-4 mt-0.5 ml-1 rounded border-gray-300 text-red-600 focus:ring-red-500"
-				onChange={(e) =>
-					dispatch([new ToggleShowDifferencesOnly(e.target.checked)])
-				}
+				onChange={(e) => dispatch([new ToggleShowDifferencesOnly(e.target.checked)])}
 			/>
 			<label
 				htmlFor="show-differences-only"

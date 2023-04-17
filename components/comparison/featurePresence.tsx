@@ -16,12 +16,7 @@
  */
 import { Model } from "../../src/modelTypes";
 import React from "react";
-import {
-	CircleHalfStrokeIcon,
-	CircleIcon,
-	MinusIcon,
-	QuestionIcon,
-} from "../icons";
+import { CircleHalfStrokeIcon, CircleIcon, MinusIcon, QuestionIcon } from "../icons";
 
 type FeaturePresenceProps = {
 	present: Model.Present;
@@ -32,11 +27,7 @@ export function FeaturePresence({ present }: FeaturePresenceProps) {
 	switch (present) {
 		case Model.Present.YES:
 			presenceIcon = (
-				<CircleIcon
-					className="present-yes h-4 w-4 inline"
-					role="img"
-					aria-label="yes"
-				>
+				<CircleIcon className="present-yes h-4 w-4 inline" role="img" aria-label="yes">
 					<title>yes</title>
 				</CircleIcon>
 			);
@@ -54,11 +45,7 @@ export function FeaturePresence({ present }: FeaturePresenceProps) {
 			break;
 		case Model.Present.NO:
 			presenceIcon = (
-				<MinusIcon
-					className="present-no h-4 w-4 inline"
-					role="img"
-					aria-label="no"
-				>
+				<MinusIcon className="present-no h-4 w-4 inline" role="img" aria-label="no">
 					<title>no</title>
 				</MinusIcon>
 			);

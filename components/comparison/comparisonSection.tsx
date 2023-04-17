@@ -31,10 +31,7 @@ export function ComparisonSection({
 
 	return (
 		<section id={id}>
-			<h2
-				className="toggle-section cursor-pointer py-2"
-				onClick={() => setOpen(!open)}
-			>
+			<h2 className="toggle-section cursor-pointer py-2" onClick={() => setOpen(!open)}>
 				<button className="sticky left-0 flex inline-flex items-center px-4">
 					<span className="section-label font-semibold">{label}</span>
 					{open && (

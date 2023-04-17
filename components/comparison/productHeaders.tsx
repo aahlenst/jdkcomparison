@@ -29,13 +29,8 @@ type ProductHeadersProps = {
 export function ProductHeaders({ headers }: ProductHeadersProps) {
 	const productHeaders = headers.map((product) => {
 		return (
-			<div
-				key={product.id}
-				className="flex flex-col px-4 border-r last:border-r-transparent"
-			>
-				<div className="product-vendor text-sm text-gray-500">
-					{product.vendor}
-				</div>
+			<div key={product.id} className="flex flex-col px-4 border-r last:border-r-transparent">
+				<div className="product-vendor text-sm text-gray-500">{product.vendor}</div>
 				<div className="product-name font-semibold">{product.name}</div>
 				<div className="product-download mt-4 text-xs">
 					<a
@@ -62,9 +57,7 @@ export function ProductHeaders({ headers }: ProductHeadersProps) {
 			<div
 				className="feature grid"
 				style={{
-					gridTemplateColumns: `repeat(${
-						productHeaders.length + 1
-					}, 12rem)`,
+					gridTemplateColumns: `repeat(${productHeaders.length + 1}, 12rem)`,
 				}}
 			>
 				<div className="sticky left-0 flex flex-col place-content-end bg-white px-4 border-r">

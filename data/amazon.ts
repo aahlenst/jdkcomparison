@@ -418,8 +418,7 @@ export const data: Vendor = {
 		},
 		{
 			id: "6eb275d4-578e-454c-aba3-a5c5e4b03295",
-			markdown:
-				"The JRE is only available on Windows and Amazon Linux 2.",
+			markdown: "The JRE is only available on Windows and Amazon Linux 2.",
 		},
 		{
 			id: "7c5df998-f73e-426f-8955-d6a6df6ab856",

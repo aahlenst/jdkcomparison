@@ -16,9 +16,7 @@
  */
 import { Model } from "../src/modelTypes";
 
-export function createFilters(
-	comparisons: Model.FeatureComparison[]
-): Model.Filter[] {
+export function createFilters(comparisons: Model.FeatureComparison[]): Model.Filter[] {
 	return [
 		new VersionsFilter(comparisons),
 		new VendorsFilter(comparisons),
@@ -105,11 +103,7 @@ export class DynamicSelectionFilter extends AbstractFilter {
 
 	private readonly supplier: (fc: Model.FeatureComparison) => string;
 
-	constructor(
-		id: string,
-		options: string[],
-		supplier: (fc: Model.FeatureComparison) => string
-	) {
+	constructor(id: string, options: string[], supplier: (fc: Model.FeatureComparison) => string) {
 		super();
 
 		this.id = id;
@@ -121,22 +115,16 @@ export class DynamicSelectionFilter extends AbstractFilter {
 
 	apply(fc: Model.FeatureComparison): boolean {
 		const selectedOptions = new Set(
-			this.options
-				.filter((option) => option.selected)
-				.map((option) => option.label)
+			this.options.filter((option) => option.selected).map((option) => option.label)
 		);
-		return (
-			selectedOptions.size < 1 || selectedOptions.has(this.supplier(fc))
-		);
+		return selectedOptions.size < 1 || selectedOptions.has(this.supplier(fc));
 	}
 }
 
 export class VendorsFilter extends DynamicSelectionFilter {
 	constructor(comparisons: Model.FeatureComparison[]) {
 		const vendors = new Set(comparisons.map((c) => c.vendor));
-		const sortedVendors = [...vendors].sort((a, b) =>
-			a.localeCompare(b, "en")
-		);
+		const sortedVendors = [...vendors].sort((a, b) => a.localeCompare(b, "en"));
 		super("vendors", sortedVendors, (fc) => fc.vendor);
 	}
 }
@@ -144,9 +132,7 @@ export class VendorsFilter extends DynamicSelectionFilter {
 export class VersionsFilter extends DynamicSelectionFilter {
 	constructor(comparisons: Model.FeatureComparison[]) {
 		const versions = new Set(comparisons.map((c) => c.version));
-		const sortedVersions = [...versions]
-			.sort((a, b) => a - b)
-			.map((v) => v.toString());
+		const sortedVersions = [...versions].sort((a, b) => a - b).map((v) => v.toString());
 
 		super("versions", sortedVersions, (fc) => fc.version.toString());
 	}
@@ -170,19 +156,10 @@ export class TechnologiesFilter extends AbstractFilter {
 	];
 
 	apply(fc: Model.FeatureComparison): boolean {
-		const jfrRequired = this.options.some(
-			(o) => o.id === "technologies-jfr" && o.selected
-		);
-		const jfxRequired = this.options.some(
-			(o) => o.id === "technologies-jfx" && o.selected
-		);
-		const jawsRequired = this.options.some(
-			(o) => o.id === "technologies-jaws" && o.selected
-		);
-		const acceptedPresences = new Set([
-			Model.Present.YES,
-			Model.Present.PARTIALLY,
-		]);
+		const jfrRequired = this.options.some((o) => o.id === "technologies-jfr" && o.selected);
+		const jfxRequired = this.options.some((o) => o.id === "technologies-jfx" && o.selected);
+		const jawsRequired = this.options.some((o) => o.id === "technologies-jaws" && o.selected);
+		const acceptedPresences = new Set([Model.Present.YES, Model.Present.PARTIALLY]);
 		return (
 			(!jfrRequired || acceptedPresences.has(fc.jfr.present)) &&
 			(!jfxRequired || acceptedPresences.has(fc.jfx.present)) &&
@@ -214,13 +191,9 @@ export class LicensingFilter extends AbstractFilter {
 		const freeInProd = this.options.some(
 			(o) => o.id === "licensing-free-in-production" && o.selected
 		);
-		const acceptedPresences = new Set([
-			Model.Present.YES,
-			Model.Present.PARTIALLY,
-		]);
+		const acceptedPresences = new Set([Model.Present.YES, Model.Present.PARTIALLY]);
 		return (
-			(!freeInDev ||
-				acceptedPresences.has(fc.freeInDevelopment.present)) &&
+			(!freeInDev || acceptedPresences.has(fc.freeInDevelopment.present)) &&
 			(!freeInProd || acceptedPresences.has(fc.freeInProduction.present))
 		);
 	}
@@ -249,8 +222,7 @@ export type PlatformsFilterFeatures = Pick<
 
 export class PlatformsFilter extends AbstractFilter {
 	readonly id: string = "platforms";
-	readonly options: (Model.FilterOption &
-		FeatureSupplier<PlatformsFilterFeatures>)[] = [
+	readonly options: (Model.FilterOption & FeatureSupplier<PlatformsFilterFeatures>)[] = [
 		{
 			id: "platforms-aix-ppc",
 			label: "AIX, PPC",
@@ -378,8 +350,7 @@ export type GarbageCollectorsFilterFeatures = Pick<
 
 export class GarbageCollectorsFilter extends AbstractFilter {
 	readonly id: string = "gcs";
-	readonly options: (Model.FilterOption &
-		FeatureSupplier<GarbageCollectorsFilterFeatures>)[] = [
+	readonly options: (Model.FilterOption & FeatureSupplier<GarbageCollectorsFilterFeatures>)[] = [
 		{
 			id: "gcs-cms",
 			label: "CMS",

@@ -14,10 +14,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import {
-	MacFeaturesSlice,
-	MacSection,
-} from "@/components/comparison/macSection";
+import { MacFeaturesSlice, MacSection } from "@/components/comparison/macSection";
 import { Model } from "@/src/modelTypes";
 import Present = Model.Present;
 import { remove } from "../../src/utils";
@@ -40,18 +37,9 @@ describe("<MacSection/>", () => {
 		cy.mount(<MacSection productData={data} showDifferencesOnly={false} />);
 
 		macSection.expectFeatures(["x86, 64-bit", "ARM, 64-bit", "Installers"]);
-		macSection.expectFeaturePresence("mac-x64", "x86, 64-bit", [
-			"no",
-			"no",
-		]);
-		macSection.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", [
-			"no",
-			"no",
-		]);
-		macSection.expectFeaturePresence("mac-installers", "Installers", [
-			"no",
-			"no",
-		]);
+		macSection.expectFeaturePresence("mac-x64", "x86, 64-bit", ["no", "no"]);
+		macSection.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", ["no", "no"]);
+		macSection.expectFeaturePresence("mac-installers", "Installers", ["no", "no"]);
 	});
 
 	it("displays all features of a single product despite differences only on", () => {
@@ -62,9 +50,7 @@ describe("<MacSection/>", () => {
 		macSection.expectFeatures(["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		macSection.expectFeaturePresence("mac-x64", "x86, 64-bit", ["no"]);
 		macSection.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", ["no"]);
-		macSection.expectFeaturePresence("mac-installers", "Installers", [
-			"no",
-		]);
+		macSection.expectFeaturePresence("mac-installers", "Installers", ["no"]);
 	});
 
 	it("disappears if all features are identical and differences only is on", () => {
@@ -79,10 +65,7 @@ describe("<MacSection/>", () => {
 		cy.mount(<MacSection productData={data} showDifferencesOnly={true} />);
 
 		macSection.expectFeatures(["x86, 64-bit"]);
-		macSection.expectFeaturePresence("mac-x64", "x86, 64-bit", [
-			"yes",
-			"no",
-		]);
+		macSection.expectFeaturePresence("mac-x64", "x86, 64-bit", ["yes", "no"]);
 	});
 
 	it("displays ARM, 64-bit if features are different and differences only is on", () => {
@@ -91,10 +74,7 @@ describe("<MacSection/>", () => {
 		cy.mount(<MacSection productData={data} showDifferencesOnly={true} />);
 
 		macSection.expectFeatures(["ARM, 64-bit"]);
-		macSection.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", [
-			"yes",
-			"no",
-		]);
+		macSection.expectFeaturePresence("mac-aarch64", "ARM, 64-bit", ["yes", "no"]);
 	});
 
 	it("displays Installers if features are different and differences only is on", () => {
@@ -103,10 +83,7 @@ describe("<MacSection/>", () => {
 		cy.mount(<MacSection productData={data} showDifferencesOnly={true} />);
 
 		macSection.expectFeatures(["Installers"]);
-		macSection.expectFeaturePresence("mac-installers", "Installers", [
-			"partially",
-			"no",
-		]);
+		macSection.expectFeaturePresence("mac-installers", "Installers", ["partially", "no"]);
 	});
 });
 
@@ -126,21 +103,12 @@ const macSection = {
 
 		for (let i = 0; i < featureNames.length; i++) {
 			const name = featureNames[i];
-			cy.get("section[id='mac'] .feature .feature-name")
-				.eq(i)
-				.should("have.text", name);
+			cy.get("section[id='mac'] .feature .feature-name").eq(i).should("have.text", name);
 		}
 	},
-	expectFeaturePresence: (
-		featureId: string,
-		name: string,
-		presenceClassNames: string[]
-	) => {
+	expectFeaturePresence: (featureId: string, name: string, presenceClassNames: string[]) => {
 		cy.get(`#${featureId} .feature-name`).should("have.text", name);
-		cy.get(`#${featureId} .feature-value`).should(
-			"have.length",
-			presenceClassNames.length
-		);
+		cy.get(`#${featureId} .feature-value`).should("have.length", presenceClassNames.length);
 
 		for (let i = 0; i < presenceClassNames.length; i++) {
 			cy.get(`#${featureId} .feature-value svg`)

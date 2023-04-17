@@ -33,18 +33,14 @@ describe("<ProductHeaders/>", () => {
 
 		productHeadersComponent.expectProductName("Coffeecorp JDK 17");
 		productHeadersComponent.expectVendorName("Coffeecorp");
-		productHeadersComponent.expectDownloadUrl(
-			"https://coffeecorp.com/jdk17"
-		);
+		productHeadersComponent.expectDownloadUrl("https://coffeecorp.com/jdk17");
 		productHeadersComponent.expectWebsiteUrl("https://coffeecorp.com/");
 	});
 });
 
 const productHeadersComponent = {
 	expectDownloadUrl: (url: string) => {
-		cy.get(".product-download a")
-			.should("have.attr", "href")
-			.and("eq", url);
+		cy.get(".product-download a").should("have.attr", "href").and("eq", url);
 	},
 	expectProductName: (name: string) => {
 		cy.get(".product-name").should("have.text", name);

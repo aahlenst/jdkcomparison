@@ -44,19 +44,10 @@ export function CheckboxFilterMobile({
 					checked={option.selected}
 					className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
 					onChange={(e) => {
-						onChangeHandler(
-							new ApplyFilter(
-								filter.id,
-								option.label,
-								e.target.checked
-							)
-						);
+						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
 					}}
 				/>
-				<label
-					htmlFor={option.id}
-					className="ml-3 text-sm text-gray-500"
-				>
+				<label htmlFor={option.id} className="ml-3 text-sm text-gray-500">
 					{option.label}
 				</label>
 			</div>
@@ -72,9 +63,7 @@ export function CheckboxFilterMobile({
 							id={`mobile-menu-filter-${filter.id}`}
 							className="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400"
 						>
-							<span className="filter-name font-medium text-gray-900">
-								{label}
-							</span>
+							<span className="filter-name font-medium text-gray-900">{label}</span>
 							<span className="ml-6 flex items-center">
 								<ChevronDownIcon
 									className={classNames(

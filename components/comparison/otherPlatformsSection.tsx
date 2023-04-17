@@ -46,14 +46,11 @@ export function OtherPlatformsSection({
 		...product.solarisx64,
 		id: product.id,
 	}));
-	const [showSection, showFeatures] = useShowDifferencesOnly(
-		showDifferencesOnly,
-		{
-			aixPPC: aixPPC,
-			solarisSPARC: solarisSPARC,
-			solarisx64: solarisx64,
-		}
-	);
+	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
+		aixPPC: aixPPC,
+		solarisSPARC: solarisSPARC,
+		solarisx64: solarisx64,
+	});
 
 	if (!showSection) {
 		return <></>;
@@ -61,22 +58,12 @@ export function OtherPlatformsSection({
 
 	return (
 		<ComparisonSection id="other" label="Platforms: Other">
-			{showFeatures.aixPPC && (
-				<Feature id="aix-ppc" name="AIX, PPC" values={aixPPC} />
-			)}
+			{showFeatures.aixPPC && <Feature id="aix-ppc" name="AIX, PPC" values={aixPPC} />}
 			{showFeatures.solarisSPARC && (
-				<Feature
-					id="solaris-sparc"
-					name="Solaris, SPARC"
-					values={solarisSPARC}
-				/>
+				<Feature id="solaris-sparc" name="Solaris, SPARC" values={solarisSPARC} />
 			)}
 			{showFeatures.solarisx64 && (
-				<Feature
-					id="solaris-x64"
-					name="Solaris, x86, 64-bit"
-					values={solarisx64}
-				/>
+				<Feature id="solaris-x64" name="Solaris, x86, 64-bit" values={solarisx64} />
 			)}
 		</ComparisonSection>
 	);

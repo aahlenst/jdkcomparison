@@ -41,14 +41,11 @@ export function CustomisationsSection({
 		...product.notableFeatures,
 		id: product.id,
 	}));
-	const [showSection, showFeatures] = useShowDifferencesOnly(
-		showDifferencesOnly,
-		{
-			editions: editions,
-			customisations: customisations,
-			notableFeatures: notableFeatures,
-		}
-	);
+	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
+		editions: editions,
+		customisations: customisations,
+		notableFeatures: notableFeatures,
+	});
 
 	if (!showSection) {
 		return <></>;
@@ -57,11 +54,7 @@ export function CustomisationsSection({
 	return (
 		<ComparisonSection id="customisations" label="Customisations">
 			{showFeatures.editions && (
-				<Feature
-					id="customisations-editions"
-					name="Editions"
-					values={editions}
-				/>
+				<Feature id="customisations-editions" name="Editions" values={editions} />
 			)}
 			{showFeatures.customisations && (
 				<Feature
@@ -69,9 +62,9 @@ export function CustomisationsSection({
 					name="Customisations"
 					values={customisations}
 				>
-					Level of customisations applied to OpenJDK baseline.
-					Considers everything from bug fixes to user-facing features
-					except ports (for ports, see platform support).
+					Level of customisations applied to OpenJDK baseline. Considers everything from
+					bug fixes to user-facing features except ports (for ports, see platform
+					support).
 				</Feature>
 			)}
 			{showFeatures.notableFeatures && (
@@ -80,8 +73,7 @@ export function CustomisationsSection({
 					name="Notable Features"
 					values={notableFeatures}
 				>
-					Limited to features otherwise not found in JDKs offered by
-					other vendors.
+					Limited to features otherwise not found in JDKs offered by other vendors.
 				</Feature>
 			)}
 		</ComparisonSection>

@@ -28,10 +28,7 @@ type ClientOnlyPortalProps = {
  * @param children anything that can be rendered with React
  * @see https://github.com/vercel/next.js/tree/canary/examples/with-portals
  */
-export function ClientOnlyPortal({
-	selector,
-	children,
-}: PropsWithChildren<ClientOnlyPortalProps>) {
+export function ClientOnlyPortal({ selector, children }: PropsWithChildren<ClientOnlyPortalProps>) {
 	const ref = useRef<Element | DocumentFragment | null | undefined>();
 	const [mounted, setMounted] = useState(false);
 

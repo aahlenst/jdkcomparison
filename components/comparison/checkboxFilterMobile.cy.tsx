@@ -49,10 +49,8 @@ describe("<CheckboxFilterMobile/>", () => {
 	});
 
 	it("enables and disables options on click", () => {
-		const filter = new DynamicSelectionFilter(
-			"versions",
-			["8", "11", "17"],
-			(fc) => fc.version.toString()
+		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) =>
+			fc.version.toString()
 		);
 
 		const onChangeHandler = function (action: ApplyFilter) {
@@ -122,10 +120,8 @@ describe("<CheckboxFilterMobile/>", () => {
 	});
 
 	it("retains selected state after reopening", () => {
-		const filter = new DynamicSelectionFilter(
-			"versions",
-			["8", "11", "17"],
-			(fc) => fc.version.toString()
+		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) =>
+			fc.version.toString()
 		);
 
 		const onChangeHandler = function (action: ApplyFilter) {

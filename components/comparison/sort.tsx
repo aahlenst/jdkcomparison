@@ -53,11 +53,7 @@ export function Sort() {
 	));
 
 	return (
-		<Menu
-			as="div"
-			id="sort-options"
-			className="relative inline-block text-left"
-		>
+		<Menu as="div" id="sort-options" className="relative inline-block text-left">
 			<div>
 				<Menu.Button
 					id="sort-options-button"

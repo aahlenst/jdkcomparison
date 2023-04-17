@@ -15,10 +15,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 import { useRouter } from "next/router";
-import {
-	ComparisonState,
-	useComparison,
-} from "@/components/comparison/comparisonContext";
+import { ComparisonState, useComparison } from "@/components/comparison/comparisonContext";
 import { remove } from "../src/utils";
 
 export type SearchParams = {
@@ -57,10 +54,7 @@ export function usePropagateToSearchParams() {
 		let searchParams: SearchParams = {};
 		switch (action.type) {
 			case SearchParamsActionType.ApplyFilter:
-				searchParams = handleApplyFilter(
-					action as ApplyFilter,
-					comparison
-				);
+				searchParams = handleApplyFilter(action as ApplyFilter, comparison);
 				break;
 			default:
 				throw new Error(`Unknown action: ${action}`);
@@ -78,25 +72,16 @@ export function usePropagateToSearchParams() {
 	return handleSearchParamsAction;
 }
 
-export function handleApplyFilter(
-	action: ApplyFilter,
-	comparison: ComparisonState
-): SearchParams {
+export function handleApplyFilter(action: ApplyFilter, comparison: ComparisonState): SearchParams {
 	const searchParams: SearchParams = {};
 	for (const filter of comparison.filters) {
 		let activeOptions = filter.activeOptions();
 
-		if (
-			filter.id == action.filterId &&
-			filter.hasOptionWithLabel(action.option)
-		) {
+		if (filter.id == action.filterId && filter.hasOptionWithLabel(action.option)) {
 			if (action.active) {
 				activeOptions.push(action.option);
 			} else {
-				activeOptions = remove(
-					activeOptions,
-					(item) => item === action.option
-				);
+				activeOptions = remove(activeOptions, (item) => item === action.option);
 			}
 		}
 

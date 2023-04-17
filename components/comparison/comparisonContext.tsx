@@ -19,11 +19,7 @@ import { useImmerReducer } from "use-immer";
 import { Model } from "../../src/modelTypes";
 import { applyFilters } from "../../src/filter";
 import { useApplySearchParams } from "@/hooks/useApplySearchParams";
-import {
-	AllComparators,
-	DefaultComparator,
-	sortFeatureComparisons,
-} from "@/src/sorting";
+import { AllComparators, DefaultComparator, sortFeatureComparisons } from "@/src/sorting";
 import produce from "immer";
 
 type ComparisonProviderProps = {
@@ -92,9 +88,7 @@ const ComparisonContext = createContext<ComparisonState>({
 	activeComparator: DefaultComparator,
 });
 
-const ComparisonDispatchContext = createContext<
-	React.Dispatch<ComparisonAction[]>
->(() => {});
+const ComparisonDispatchContext = createContext<React.Dispatch<ComparisonAction[]>>(() => {});
 
 export function ComparisonProvider({
 	children,
@@ -102,9 +96,7 @@ export function ComparisonProvider({
 	data,
 	footnotes,
 }: PropsWithChildren<ComparisonProviderProps>) {
-	const sortedData = produce(data, (draft) =>
-		sortFeatureComparisons(draft, [DefaultComparator])
-	);
+	const sortedData = produce(data, (draft) => sortFeatureComparisons(draft, [DefaultComparator]));
 
 	const initialState: ComparisonState = {
 		filters: filters,
@@ -115,10 +107,7 @@ export function ComparisonProvider({
 		activeComparator: DefaultComparator,
 	};
 
-	const [comparison, dispatch] = useImmerReducer(
-		comparisonReducer,
-		initialState
-	);
+	const [comparison, dispatch] = useImmerReducer(comparisonReducer, initialState);
 
 	useApplySearchParams(comparison, dispatch);
 
@@ -156,10 +145,7 @@ export function comparisonReducer(
 				handleToggleFilter(draft, action as ToggleFilter);
 				break;
 			case ComparisonActionType.ToggleShowDifferencesOnly:
-				handleToggleShowDifferencesOnly(
-					draft,
-					action as ToggleShowDifferencesOnly
-				);
+				handleToggleShowDifferencesOnly(draft, action as ToggleShowDifferencesOnly);
 				break;
 			default:
 				throw new Error(`Unknown action: ${action}`);
@@ -174,22 +160,14 @@ export function comparisonReducer(
 	return draft;
 }
 
-function handleSetActiveComparator(
-	draft: ComparisonState,
-	action: SetActiveComparator
-): void {
-	const newComparator = AllComparators.find(
-		(c) => c.id === action.comparator
-	);
+function handleSetActiveComparator(draft: ComparisonState, action: SetActiveComparator): void {
+	const newComparator = AllComparators.find((c) => c.id === action.comparator);
 	if (newComparator !== undefined) {
 		draft.activeComparator = newComparator;
 	}
 }
 
-function handleToggleFilter(
-	draft: ComparisonState,
-	action: ToggleFilter
-): void {
+function handleToggleFilter(draft: ComparisonState, action: ToggleFilter): void {
 	for (const filter of draft.filters) {
 		if (filter.hasOptionWithLabel(action.optionLabel)) {
 			filter.setOptionSelectedByLabel(action.optionLabel, action.active);

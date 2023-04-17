@@ -329,8 +329,7 @@ export const data: Vendor = {
 		},
 		{
 			id: "2f3ac1c8-77cc-46a1-830f-18f9a19e991c",
-			markdown:
-				"SapMachine only offers disk images (DMG), but no installers (PKG).",
+			markdown: "SapMachine only offers disk images (DMG), but no installers (PKG).",
 		},
 		{
 			id: "2c2cc179-3ff9-4c15-a974-240cbf339c99",

@@ -55,39 +55,24 @@ export function applySearchParamsToState(
 
 		let optionsRequestedBySearchParams: string[] = [];
 		if (Object.hasOwn(searchParams, filter.id)) {
-			optionsRequestedBySearchParams = extractFilterLabels(
-				searchParams[filter.id]
-			)
+			optionsRequestedBySearchParams = extractFilterLabels(searchParams[filter.id])
 				.filter((o) => filter.hasOptionWithLabel(o))
 				.sort();
 		}
 
 		// Search Params match internal state of filter. Therefore, no updates are required.
-		if (
-			symmetricDifference(activeOptions, optionsRequestedBySearchParams)
-				.length == 0
-		) {
+		if (symmetricDifference(activeOptions, optionsRequestedBySearchParams).length == 0) {
 			continue;
 		}
 
-		const optionsToActivate = difference(
-			optionsRequestedBySearchParams,
-			activeOptions
-		);
-		const optionsToDisable = difference(
-			activeOptions,
-			optionsRequestedBySearchParams
-		);
+		const optionsToActivate = difference(optionsRequestedBySearchParams, activeOptions);
+		const optionsToDisable = difference(activeOptions, optionsRequestedBySearchParams);
 
 		for (const optionToActivate of optionsToActivate) {
-			pendingActions.push(
-				new ToggleFilter(filter.id, optionToActivate, true)
-			);
+			pendingActions.push(new ToggleFilter(filter.id, optionToActivate, true));
 		}
 		for (const optionToDisable of optionsToDisable) {
-			pendingActions.push(
-				new ToggleFilter(filter.id, optionToDisable, false)
-			);
+			pendingActions.push(new ToggleFilter(filter.id, optionToDisable, false));
 		}
 	}
 
@@ -97,9 +82,7 @@ export function applySearchParamsToState(
 	dispatch(pendingActions);
 }
 
-function extractFilterLabels(
-	searchParamValues: undefined | string | string[]
-): string[] {
+function extractFilterLabels(searchParamValues: undefined | string | string[]): string[] {
 	if (searchParamValues === undefined) {
 		return [];
 	}

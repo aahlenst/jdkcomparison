@@ -30,10 +30,7 @@ type MacSectionProps = {
 	showDifferencesOnly: boolean;
 };
 
-export function MacSection({
-	productData,
-	showDifferencesOnly,
-}: MacSectionProps) {
+export function MacSection({ productData, showDifferencesOnly }: MacSectionProps) {
 	const x64 = productData.map((product) => ({
 		...product.macx64,
 		id: product.id,
@@ -46,14 +43,11 @@ export function MacSection({
 		...product.macInstallers,
 		id: product.id,
 	}));
-	const [showSection, showFeatures] = useShowDifferencesOnly(
-		showDifferencesOnly,
-		{
-			x64: x64,
-			aarch64: aarch64,
-			installers: installers,
-		}
-	);
+	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
+		x64: x64,
+		aarch64: aarch64,
+		installers: installers,
+	});
 
 	if (!showSection) {
 		return <></>;
@@ -61,18 +55,12 @@ export function MacSection({
 
 	return (
 		<ComparisonSection id="mac" label="Platforms: macOS">
-			{showFeatures.x64 && (
-				<Feature id="mac-x64" name="x86, 64-bit" values={x64} />
-			)}
+			{showFeatures.x64 && <Feature id="mac-x64" name="x86, 64-bit" values={x64} />}
 			{showFeatures.aarch64 && (
 				<Feature id="mac-aarch64" name="ARM, 64-bit" values={aarch64} />
 			)}
 			{showFeatures.installers && (
-				<Feature
-					id="mac-installers"
-					name="Installers"
-					values={installers}
-				/>
+				<Feature id="mac-installers" name="Installers" values={installers} />
 			)}
 		</ComparisonSection>
 	);

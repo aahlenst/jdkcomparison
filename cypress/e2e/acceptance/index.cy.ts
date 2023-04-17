@@ -32,9 +32,7 @@ describe("Comparison in production", () => {
 		navigationComponent.expectNavigationOptions(["JDK Comparison", "FAQ"]);
 
 		navigationComponent.navigateTo("FAQ");
-		navigationComponent.expectPageTitle(
-			"Frequently Asked Questions – JDK Comparison"
-		);
+		navigationComponent.expectPageTitle("Frequently Asked Questions – JDK Comparison");
 	});
 
 	it("displays GitHub link", () => {
@@ -137,11 +135,7 @@ describe("Comparison in production", () => {
 			"RPM Packages",
 			"Container Images",
 		]);
-		comparisonPage.expectFeaturesInSection("mac", [
-			"x86, 64-bit",
-			"ARM, 64-bit",
-			"Installers",
-		]);
+		comparisonPage.expectFeaturesInSection("mac", ["x86, 64-bit", "ARM, 64-bit", "Installers"]);
 		comparisonPage.expectFeaturesInSection("windows", [
 			"x86, 64-bit",
 			"x86, 32-bit",
@@ -198,11 +192,7 @@ describe("Comparison in production", () => {
 		comparisonPage.showFilter("vendors");
 		comparisonPage.expectFilterOption("vendors", "Amazon", false);
 		comparisonPage.expectFilterOption("vendors", "Azul", false);
-		comparisonPage.expectFilterOption(
-			"vendors",
-			"Eclipse Foundation",
-			false
-		);
+		comparisonPage.expectFilterOption("vendors", "Eclipse Foundation", false);
 		comparisonPage.expectFilterOption("vendors", "Microsoft", false);
 		comparisonPage.expectFilterOption("vendors", "Oracle", false);
 		comparisonPage.expectFilterOption("vendors", "SAP", false);
@@ -213,17 +203,9 @@ describe("Comparison in production", () => {
 		comparisonPage.closeFilter("vms");
 
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
 		comparisonPage.expectFilterOption("technologies", "JavaFX", false);
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Java Web Start",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Java Web Start", false);
 		comparisonPage.closeFilter("technologies");
 
 		comparisonPage.showFilter("gcs");
@@ -233,24 +215,12 @@ describe("Comparison in production", () => {
 
 		comparisonPage.showFilter("platforms");
 		comparisonPage.expectFilterOption("platforms", "AIX, PPC", false);
-		comparisonPage.expectFilterOption(
-			"platforms",
-			"macOS, x86, 64-bit",
-			false
-		);
+		comparisonPage.expectFilterOption("platforms", "macOS, x86, 64-bit", false);
 		comparisonPage.closeFilter("platforms");
 
 		comparisonPage.showFilter("licensing");
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Development",
-			false
-		);
-		comparisonPage.expectFilterOption(
-			"licensing",
-			"Free in Production",
-			false
-		);
+		comparisonPage.expectFilterOption("licensing", "Free in Development", false);
+		comparisonPage.expectFilterOption("licensing", "Free in Production", false);
 		comparisonPage.closeFilter("licensing");
 	});
 
@@ -277,35 +247,21 @@ describe("Comparison in production", () => {
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
-		comparisonPage.expectFilterOption(
-			"vendors",
-			"Eclipse Foundation",
-			true
-		);
+		comparisonPage.expectFilterOption("vendors", "Eclipse Foundation", true);
 		comparisonPage.closeFilter("vendors");
 
-		comparisonPage.expectProductNamesIncomplete([
-			"Eclipse Temurin 17",
-			"Eclipse Temurin 8",
-		]);
+		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 17", "Eclipse Temurin 8"]);
 		comparisonPage.expectProductNamesMissing(["OpenJDK 20"]);
 
 		comparisonPage.showFilter("vendors");
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
 		comparisonPage.clickFilterOption("vendors", "Oracle");
-		comparisonPage.expectFilterOption(
-			"vendors",
-			"Eclipse Foundation",
-			false
-		);
+		comparisonPage.expectFilterOption("vendors", "Eclipse Foundation", false);
 		comparisonPage.expectFilterOption("vendors", "Oracle", true);
 		comparisonPage.closeFilter("vendors");
 
 		comparisonPage.expectProductNamesIncomplete(["OpenJDK 20"]);
-		comparisonPage.expectProductNamesMissing([
-			"Eclipse Temurin 8",
-			"Eclipse Temurin 17",
-		]);
+		comparisonPage.expectProductNamesMissing(["Eclipse Temurin 8", "Eclipse Temurin 17"]);
 	});
 
 	it("hides and reveals sections", () => {
@@ -341,11 +297,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectActiveFilterOptions("versions", 0);
 
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			false
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", false);
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 0);
 
@@ -364,18 +316,11 @@ describe("Comparison in production", () => {
 		comparisonPage.expectActiveFilterOptions("versions", 2);
 
 		comparisonPage.showFilter("technologies");
-		comparisonPage.expectFilterOption(
-			"technologies",
-			"Flight Recorder",
-			true
-		);
+		comparisonPage.expectFilterOption("technologies", "Flight Recorder", true);
 		comparisonPage.closeFilter("technologies");
 		comparisonPage.expectActiveFilterOptions("technologies", 1);
 
-		comparisonPage.expectProductNamesIncomplete([
-			"Corretto 8",
-			"Oracle JDK 8",
-		]);
+		comparisonPage.expectProductNamesIncomplete(["Corretto 8", "Oracle JDK 8"]);
 		comparisonPage.expectProductNamesMissing(["Eclipse Temurin 17"]);
 	});
 
@@ -396,10 +341,7 @@ describe("Comparison in production", () => {
 		comparisonPage.clickFilterOption("vendors", "Eclipse Foundation");
 		comparisonPage.closeFilter("vendors");
 
-		comparisonPage.expectProductNamesIncomplete([
-			"Eclipse Temurin 11",
-			"Eclipse Temurin 8",
-		]);
+		comparisonPage.expectProductNamesIncomplete(["Eclipse Temurin 11", "Eclipse Temurin 8"]);
 		comparisonPage.expectProductNamesMissing(["Oracle JDK 8"]);
 
 		comparisonPage.showSortOptions();

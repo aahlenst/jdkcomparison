@@ -32,14 +32,8 @@ describe("<Filters/>", () => {
 		new LicensingFilter(),
 		new PlatformsFilter(),
 		new GarbageCollectorsFilter(),
-		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) =>
-			fc.version.toString()
-		),
-		new DynamicSelectionFilter(
-			"vendors",
-			["Coffeecorp", "Dukecorp"],
-			(fc) => fc.vendor
-		),
+		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString()),
+		new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor),
 		new DynamicSelectionFilter("vms", ["CoffeeVM", "DukeVM"], (fc) =>
 			fc.virtualMachine.toString()
 		),
@@ -81,17 +75,11 @@ describe("<Filters/>", () => {
 
 		cy.get(".filter-name").eq(3).should("have.text", "Technologies");
 		cy.get(".filter-name").eq(3).click();
-		cy.get("label[for=technologies-jfr]").should(
-			"have.text",
-			"Flight Recorder"
-		);
+		cy.get("label[for=technologies-jfr]").should("have.text", "Flight Recorder");
 		cy.get("input[id=technologies-jfr]").should("not.be.checked");
 		cy.get("label[for=technologies-jfx]").should("have.text", "JavaFX");
 		cy.get("input[id=technologies-jfx]").should("not.be.checked");
-		cy.get("label[for=technologies-jaws]").should(
-			"have.text",
-			"Java Web Start"
-		);
+		cy.get("label[for=technologies-jaws]").should("have.text", "Java Web Start");
 		cy.get("input[id=technologies-jaws]").should("not.be.checked");
 
 		cy.get(".filter-name").eq(4).should("have.text", "GCs");
@@ -105,10 +93,7 @@ describe("<Filters/>", () => {
 		cy.get(".filter-name").eq(5).click();
 		cy.get("label[for=platforms-aix-ppc]").should("have.text", "AIX, PPC");
 		cy.get("input[id=platforms-aix-ppc]").should("not.be.checked");
-		cy.get("label[for=platforms-windows-x64]").should(
-			"have.text",
-			"Windows, x86, 64-bit"
-		);
+		cy.get("label[for=platforms-windows-x64]").should("have.text", "Windows, x86, 64-bit");
 		cy.get("input[id=platforms-windows-x64]").should("not.be.checked");
 
 		cy.get(".filter-name").eq(6).should("have.text", "Licensing");
@@ -117,16 +102,9 @@ describe("<Filters/>", () => {
 			"have.text",
 			"Free in Development"
 		);
-		cy.get("input[id=licensing-free-in-development]").should(
-			"not.be.checked"
-		);
-		cy.get("label[for=licensing-free-in-production]").should(
-			"have.text",
-			"Free in Production"
-		);
-		cy.get("input[id=licensing-free-in-production]").should(
-			"not.be.checked"
-		);
+		cy.get("input[id=licensing-free-in-development]").should("not.be.checked");
+		cy.get("label[for=licensing-free-in-production]").should("have.text", "Free in Production");
+		cy.get("input[id=licensing-free-in-production]").should("not.be.checked");
 	});
 
 	it("updates filters on click", () => {

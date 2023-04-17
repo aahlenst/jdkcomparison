@@ -15,13 +15,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 import { expect, test } from "@jest/globals";
-import {
-	classNames,
-	difference,
-	intersection,
-	remove,
-	symmetricDifference,
-} from "./utils";
+import { classNames, difference, intersection, remove, symmetricDifference } from "./utils";
 
 describe("utils", () => {
 	test("difference()", () => {

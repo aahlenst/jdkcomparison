@@ -14,12 +14,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import {
-	FeatureDescription,
-	FeaturePresence,
-	Present,
-	Vendor,
-} from "@/src/vendorDataTypes";
+import { FeatureDescription, FeaturePresence, Present, Vendor } from "@/src/vendorDataTypes";
 import { micromark } from "micromark";
 import { Model } from "@/src/modelTypes";
 import FootnoteReference = Model.FootnoteReference;
@@ -62,10 +57,7 @@ export function extractComparisonData(vendors: Vendor[]): Model.Comparison {
 		);
 	}
 
-	sortFeatureComparisons(
-		aggregatedFeatureComparisons,
-		FeatureComparisonComparatorChain
-	);
+	sortFeatureComparisons(aggregatedFeatureComparisons, FeatureComparisonComparatorChain);
 	return {
 		productsInComparison: aggregatedFeatureComparisons,
 		footnotes: aggregatedFootnotes,
@@ -95,14 +87,8 @@ function extractFeatureComparisons(
 			version: jdk.information.version,
 			downloadUrl: jdk.information.downloadSite,
 			websiteUrl: vendor.website,
-			virtualMachine: mapFeatureDescription(
-				jdk.features.virtualMachine,
-				footnotes
-			),
-			classLibraries: mapFeatureDescription(
-				jdk.features.classLibraries,
-				footnotes
-			),
+			virtualMachine: mapFeatureDescription(jdk.features.virtualMachine, footnotes),
+			classLibraries: mapFeatureDescription(jdk.features.classLibraries, footnotes),
 			jfx: mapFeaturePresence(jdk.features.javaFX, footnotes),
 			jfr: mapFeaturePresence(jdk.features.flightRecorder, footnotes),
 			jaws: mapFeaturePresence(jdk.features.javaWS, footnotes),
@@ -111,109 +97,49 @@ function extractFeatureComparisons(
 			g1: mapFeaturePresence(jdk.features.gc.g1, footnotes),
 			parallel: mapFeaturePresence(jdk.features.gc.parallel, footnotes),
 			serial: mapFeaturePresence(jdk.features.gc.serial, footnotes),
-			shenandoah: mapFeaturePresence(
-				jdk.features.gc.shenandoah,
-				footnotes
-			),
+			shenandoah: mapFeaturePresence(jdk.features.gc.shenandoah, footnotes),
 			z: mapFeaturePresence(jdk.features.gc.z, footnotes),
 			customGCs: mapFeatureDescription(jdk.features.gc.custom, footnotes),
 			linuxx32: mapFeaturePresence(jdk.features.linux.x32, footnotes),
 			linuxx64: mapFeaturePresence(jdk.features.linux.x64, footnotes),
-			linuxx64Musl: mapFeaturePresence(
-				jdk.features.linux.x64Musl,
-				footnotes
-			),
-			linuxAArch32: mapFeaturePresence(
-				jdk.features.linux.aarch32,
-				footnotes
-			),
-			linuxAArch64: mapFeaturePresence(
-				jdk.features.linux.aarch64,
-				footnotes
-			),
-			linuxAArch64Musl: mapFeaturePresence(
-				jdk.features.linux.aarch64Musl,
-				footnotes
-			),
+			linuxx64Musl: mapFeaturePresence(jdk.features.linux.x64Musl, footnotes),
+			linuxAArch32: mapFeaturePresence(jdk.features.linux.aarch32, footnotes),
+			linuxAArch64: mapFeaturePresence(jdk.features.linux.aarch64, footnotes),
+			linuxAArch64Musl: mapFeaturePresence(jdk.features.linux.aarch64Musl, footnotes),
 			linuxPPC64: mapFeaturePresence(jdk.features.linux.ppc64, footnotes),
-			linuxRISCV64: mapFeaturePresence(
-				jdk.features.linux.riscv64,
-				footnotes
-			),
+			linuxRISCV64: mapFeaturePresence(jdk.features.linux.riscv64, footnotes),
 			linuxs390x: mapFeaturePresence(jdk.features.linux.s390x, footnotes),
 			linuxAPK: mapFeaturePresence(jdk.features.linux.apk, footnotes),
 			linuxDeb: mapFeaturePresence(jdk.features.linux.deb, footnotes),
 			linuxRPM: mapFeaturePresence(jdk.features.linux.rpm, footnotes),
-			linuxContainerImages: mapFeaturePresence(
-				jdk.features.linux.containerImages,
-				footnotes
-			),
+			linuxContainerImages: mapFeaturePresence(jdk.features.linux.containerImages, footnotes),
 			macx64: mapFeaturePresence(jdk.features.mac.x64, footnotes),
 			macAArch64: mapFeaturePresence(jdk.features.mac.aarch64, footnotes),
-			macInstallers: mapFeaturePresence(
-				jdk.features.mac.installers,
-				footnotes
-			),
+			macInstallers: mapFeaturePresence(jdk.features.mac.installers, footnotes),
 			windowsx32: mapFeaturePresence(jdk.features.windows.x32, footnotes),
 			windowsx64: mapFeaturePresence(jdk.features.windows.x64, footnotes),
-			windowsAArch64: mapFeaturePresence(
-				jdk.features.windows.aarch64,
-				footnotes
-			),
-			windowsInstallers: mapFeaturePresence(
-				jdk.features.windows.installers,
-				footnotes
-			),
+			windowsAArch64: mapFeaturePresence(jdk.features.windows.aarch64, footnotes),
+			windowsInstallers: mapFeaturePresence(jdk.features.windows.installers, footnotes),
 			windowsContainerImages: mapFeaturePresence(
 				jdk.features.windows.containerImages,
 				footnotes
 			),
-			aixPPC: mapFeaturePresence(
-				jdk.features.otherPlatforms.aixPPC,
-				footnotes
-			),
-			solarisSPARC: mapFeaturePresence(
-				jdk.features.otherPlatforms.solarisSPARC,
-				footnotes
-			),
-			solarisx64: mapFeaturePresence(
-				jdk.features.otherPlatforms.solarisx64,
-				footnotes
-			),
+			aixPPC: mapFeaturePresence(jdk.features.otherPlatforms.aixPPC, footnotes),
+			solarisSPARC: mapFeaturePresence(jdk.features.otherPlatforms.solarisSPARC, footnotes),
+			solarisx64: mapFeaturePresence(jdk.features.otherPlatforms.solarisx64, footnotes),
 			aqavit: mapFeaturePresence(jdk.features.aqavit, footnotes),
 			tck: mapFeaturePresence(jdk.features.tck, footnotes),
 			editions: mapFeatureDescription(jdk.features.editions, footnotes),
-			customisations: mapFeatureDescription(
-				jdk.features.customisations,
-				footnotes
-			),
-			notableFeatures: mapFeatureDescription(
-				jdk.features.notableFeatures,
-				footnotes
-			),
+			customisations: mapFeatureDescription(jdk.features.customisations, footnotes),
+			notableFeatures: mapFeatureDescription(jdk.features.notableFeatures, footnotes),
 			license: mapFeatureDescription(jdk.features.license, footnotes),
-			freeInDevelopment: mapFeaturePresence(
-				jdk.features.freeInDevelopment,
-				footnotes
-			),
-			freeInProduction: mapFeaturePresence(
-				jdk.features.freeInProduction,
-				footnotes
-			),
+			freeInDevelopment: mapFeaturePresence(jdk.features.freeInDevelopment, footnotes),
+			freeInProduction: mapFeaturePresence(jdk.features.freeInProduction, footnotes),
 			sbom: mapFeaturePresence(jdk.features.sbom, footnotes),
-			paidSupport: mapFeaturePresence(
-				jdk.features.paidSupport,
-				footnotes
-			),
+			paidSupport: mapFeaturePresence(jdk.features.paidSupport, footnotes),
 			eolDate: mapFeatureDescription(jdk.features.eolDate, footnotes),
-			releaseSchedule: mapFeatureDescription(
-				jdk.features.releaseSchedule,
-				footnotes
-			),
-			releaseDelay: mapFeatureDescription(
-				jdk.features.releaseDelay,
-				footnotes
-			),
+			releaseSchedule: mapFeatureDescription(jdk.features.releaseSchedule, footnotes),
+			releaseDelay: mapFeatureDescription(jdk.features.releaseDelay, footnotes),
 		};
 	});
 }
@@ -247,10 +173,7 @@ function mapFeaturePresence(
 
 	// Next.JS does not accept properties that are `undefined` because they cannot be serialized to JSON.
 	if (presence.footnote !== undefined) {
-		retVal.footnoteReference = resolveFootnote(
-			presence.footnote,
-			footnotes
-		);
+		retVal.footnoteReference = resolveFootnote(presence.footnote, footnotes);
 	}
 
 	return retVal;
@@ -266,10 +189,7 @@ function mapFeatureDescription(
 
 	// Next.JS does not accept properties that are `undefined` because they cannot be serialized to JSON.
 	if (description.footnote !== undefined) {
-		retVal.footnoteReference = resolveFootnote(
-			description.footnote,
-			footnotes
-		);
+		retVal.footnoteReference = resolveFootnote(description.footnote, footnotes);
 	}
 
 	return retVal;
