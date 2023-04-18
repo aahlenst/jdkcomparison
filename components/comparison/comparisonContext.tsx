@@ -20,7 +20,7 @@ import { Model } from "../../src/modelTypes";
 import { applyFilters } from "../../src/filter";
 import { useApplySearchParams } from "@/hooks/useApplySearchParams";
 import { AllComparators, DefaultComparator, sortFeatureComparisons } from "@/src/sorting";
-import produce from "immer";
+import { produce } from "immer";
 
 type ComparisonProviderProps = {
 	filters: Model.Filter[];
