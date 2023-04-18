@@ -168,7 +168,7 @@ describe("Comparison in production", () => {
 			"Patches Until",
 			"Release Schedule",
 			"Release Delay",
-			"Paid support",
+			"Paid Support",
 		]);
 		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 	});

@@ -20,6 +20,22 @@ import Present = Model.Present;
 import { remove } from "../../src/utils";
 
 describe("<LinuxSection/>", () => {
+	const features: [string, string, (s: LinuxFeaturesSlice) => Model.FeaturePresence][] = [
+		["x86, 64-bit", "x64", (s) => s.linuxx64],
+		["x86, 64-bit, musl", "x64-musl", (s) => s.linuxx64Musl],
+		["x86, 32-bit", "x32", (s) => s.linuxx32],
+		["ARM, 64-bit", "aarch64", (s) => s.linuxAArch64],
+		["ARM, 64-bit, musl", "aarch64-musl", (s) => s.linuxAArch64Musl],
+		["ARM, 32-bit", "aarch32", (s) => s.linuxAArch32],
+		["PPC, 64-bit", "ppc64", (s) => s.linuxPPC64],
+		["RISC-V, 64-bit", "riscv64", (s) => s.linuxRISCV64],
+		["S390, 64-bit", "s390x", (s) => s.linuxs390x],
+		["APK Packages", "apk", (s) => s.linuxAPK],
+		["Deb Packages", "deb", (s) => s.linuxDeb],
+		["RPM Packages", "rpm", (s) => s.linuxRPM],
+		["Container Images", "container-images", (s) => s.linuxContainerImages],
+	];
+
 	let data: LinuxFeaturesSlice[] = [];
 
 	beforeEach(() => {
@@ -46,37 +62,10 @@ describe("<LinuxSection/>", () => {
 	it("displays all features", () => {
 		cy.mount(<LinuxSection productData={data} showDifferencesOnly={false} />);
 
-		linuxSection.expectFeatures([
-			"x86, 64-bit",
-			"x86, 64-bit, musl",
-			"x86, 32-bit",
-			"ARM, 64-bit",
-			"ARM, 64-bit, musl",
-			"ARM, 32-bit",
-			"PPC, 64-bit",
-			"RISC-V, 64-bit",
-			"S390, 64-bit",
-			"APK Packages",
-			"Deb Packages",
-			"RPM Packages",
-			"Container Images",
-		]);
-		linuxSection.expectFeaturePresence("linux-x64", "x86, 64-bit", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-x64-musl", "x86, 64-bit, musl", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-x32", "x86, 32-bit", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-aarch64", "ARM, 64-bit", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-aarch64-musl", "ARM, 64-bit, musl", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-aarch32", "ARM, 32-bit", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-ppc64", "PPC, 64-bit", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-riscv64", "RISC-V, 64-bit", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-s390x", "S390, 64-bit", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-apk", "APK Packages", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-deb", "Deb Packages", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-rpm", "RPM Packages", ["no", "no"]);
-		linuxSection.expectFeaturePresence("linux-container-images", "Container Images", [
-			"no",
-			"no",
-		]);
+		linuxSection.expectFeatures(features.map((f) => f[0]));
+		features.forEach(([label, id, supplier]) => {
+			linuxSection.expectFeaturePresence(`linux-${id}`, label, ["no", "no"]);
+		});
 	});
 
 	it("displays all features of a single product despite differences only on", () => {
@@ -84,34 +73,10 @@ describe("<LinuxSection/>", () => {
 
 		cy.mount(<LinuxSection productData={data} showDifferencesOnly={false} />);
 
-		linuxSection.expectFeatures([
-			"x86, 64-bit",
-			"x86, 64-bit, musl",
-			"x86, 32-bit",
-			"ARM, 64-bit",
-			"ARM, 64-bit, musl",
-			"ARM, 32-bit",
-			"PPC, 64-bit",
-			"RISC-V, 64-bit",
-			"S390, 64-bit",
-			"APK Packages",
-			"Deb Packages",
-			"RPM Packages",
-			"Container Images",
-		]);
-		linuxSection.expectFeaturePresence("linux-x64", "x86, 64-bit", ["no"]);
-		linuxSection.expectFeaturePresence("linux-x64-musl", "x86, 64-bit, musl", ["no"]);
-		linuxSection.expectFeaturePresence("linux-x32", "x86, 32-bit", ["no"]);
-		linuxSection.expectFeaturePresence("linux-aarch64", "ARM, 64-bit", ["no"]);
-		linuxSection.expectFeaturePresence("linux-aarch64-musl", "ARM, 64-bit, musl", ["no"]);
-		linuxSection.expectFeaturePresence("linux-aarch32", "ARM, 32-bit", ["no"]);
-		linuxSection.expectFeaturePresence("linux-ppc64", "PPC, 64-bit", ["no"]);
-		linuxSection.expectFeaturePresence("linux-riscv64", "RISC-V, 64-bit", ["no"]);
-		linuxSection.expectFeaturePresence("linux-s390x", "S390, 64-bit", ["no"]);
-		linuxSection.expectFeaturePresence("linux-apk", "APK Packages", ["no"]);
-		linuxSection.expectFeaturePresence("linux-deb", "Deb Packages", ["no"]);
-		linuxSection.expectFeaturePresence("linux-rpm", "RPM Packages", ["no"]);
-		linuxSection.expectFeaturePresence("linux-container-images", "Container Images", ["no"]);
+		linuxSection.expectFeatures(features.map((f) => f[0]));
+		features.forEach(([label, id, supplier]) => {
+			linuxSection.expectFeaturePresence(`linux-${id}`, label, ["no"]);
+		});
 	});
 
 	it("disappears if all features are identical and differences only is on", () => {
@@ -120,127 +85,15 @@ describe("<LinuxSection/>", () => {
 		linuxSection.exists(false);
 	});
 
-	it("displays x86, 64-bit if features are different and differences only is on", () => {
-		data[0].linuxx64.present = Present.YES;
+	features.forEach(([label, id, supplier]) => {
+		it(`displays ${label} if features are different and differences only is on`, () => {
+			supplier(data[0]).present = Present.YES;
 
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
+			cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
 
-		linuxSection.expectFeatures(["x86, 64-bit"]);
-		linuxSection.expectFeaturePresence("linux-x64", "x86, 64-bit", ["yes", "no"]);
-	});
-
-	it("displays x86, 64-bit, musl if features are different and differences only is on", () => {
-		data[0].linuxx64Musl.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["x86, 64-bit, musl"]);
-		linuxSection.expectFeaturePresence("linux-x64-musl", "x86, 64-bit, musl", ["yes", "no"]);
-	});
-
-	it("displays x86, 32-bit if features are different and differences only is on", () => {
-		data[0].linuxx32.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["x86, 32-bit"]);
-		linuxSection.expectFeaturePresence("linux-x32", "x86, 32-bit", ["yes", "no"]);
-	});
-
-	it("displays ARM, 64-bit if features are different and differences only is on", () => {
-		data[0].linuxAArch64.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["ARM, 64-bit"]);
-		linuxSection.expectFeaturePresence("linux-aarch64", "ARM, 64-bit", ["yes", "no"]);
-	});
-
-	it("displays ARM, 64-bit, musl if features are different and differences only is on", () => {
-		data[0].linuxAArch64Musl.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["ARM, 64-bit, musl"]);
-		linuxSection.expectFeaturePresence("linux-aarch64-musl", "ARM, 64-bit, musl", [
-			"yes",
-			"no",
-		]);
-	});
-
-	it("displays ARM, 32-bit if features are different and differences only is on", () => {
-		data[0].linuxAArch32.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["ARM, 32-bit"]);
-		linuxSection.expectFeaturePresence("linux-aarch32", "ARM, 32-bit", ["yes", "no"]);
-	});
-
-	it("displays PPC, 64-bit if features are different and differences only is on", () => {
-		data[0].linuxPPC64.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["PPC, 64-bit"]);
-		linuxSection.expectFeaturePresence("linux-ppc64", "PPC, 64-bit", ["yes", "no"]);
-	});
-
-	it("displays RISC-V, 64-bit if features are different and differences only is on", () => {
-		data[0].linuxRISCV64.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["RISC-V, 64-bit"]);
-		linuxSection.expectFeaturePresence("linux-riscv64", "RISC-V, 64-bit", ["yes", "no"]);
-	});
-
-	it("displays S390, 64-bit if features are different and differences only is on", () => {
-		data[0].linuxs390x.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["S390, 64-bit"]);
-		linuxSection.expectFeaturePresence("linux-s390x", "S390, 64-bit", ["yes", "no"]);
-	});
-
-	it("displays APK Packages if features are different and differences only is on", () => {
-		data[0].linuxAPK.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["APK Packages"]);
-		linuxSection.expectFeaturePresence("linux-apk", "APK Packages", ["yes", "no"]);
-	});
-
-	it("displays Deb Packages if features are different and differences only is on", () => {
-		data[0].linuxDeb.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["Deb Packages"]);
-		linuxSection.expectFeaturePresence("linux-deb", "Deb Packages", ["yes", "no"]);
-	});
-
-	it("displays RPM Packages if features are different and differences only is on", () => {
-		data[0].linuxRPM.present = Present.YES;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["RPM Packages"]);
-		linuxSection.expectFeaturePresence("linux-rpm", "RPM Packages", ["yes", "no"]);
-	});
-
-	it("displays Container Images if features are different and differences only is on", () => {
-		data[0].linuxContainerImages.present = Present.PARTIALLY;
-
-		cy.mount(<LinuxSection productData={data} showDifferencesOnly={true} />);
-
-		linuxSection.expectFeatures(["Container Images"]);
-		linuxSection.expectFeaturePresence("linux-container-images", "Container Images", [
-			"partially",
-			"no",
-		]);
+			linuxSection.expectFeatures([label]);
+			linuxSection.expectFeaturePresence(`linux-${id}`, label, ["yes", "no"]);
+		});
 	});
 });
 

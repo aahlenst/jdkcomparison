@@ -20,8 +20,13 @@ import { ComparisonSection } from "@/components/comparison/comparisonSection";
 import { Feature } from "@/components/comparison/feature";
 import React from "react";
 
+export type PropertiesFeaturesSlice = Pick<
+	Model.FeatureComparison,
+	"id" | "version" | "virtualMachine" | "classLibraries"
+>;
+
 type PropertiesSectionProps = {
-	productData: Model.FeatureComparison[];
+	productData: PropertiesFeaturesSlice[];
 	showDifferencesOnly: boolean;
 };
 

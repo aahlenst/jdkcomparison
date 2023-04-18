@@ -20,8 +20,13 @@ import { ComparisonSection } from "@/components/comparison/comparisonSection";
 import { Feature } from "@/components/comparison/feature";
 import React from "react";
 
+export type LicensingFeaturesSlice = Pick<
+	Model.FeatureComparison,
+	"id" | "license" | "freeInDevelopment" | "freeInProduction"
+>;
+
 type LicensingSectionProps = {
-	productData: Model.FeatureComparison[];
+	productData: LicensingFeaturesSlice[];
 	showDifferencesOnly: boolean;
 };
 

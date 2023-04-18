@@ -298,7 +298,7 @@ describe("JDK Comparison", () => {
 			"Patches Until",
 			"Release Schedule",
 			"Release Delay",
-			"Paid support",
+			"Paid Support",
 		]);
 		comparisonPage.expectFeatureText("support-eol-date", "Patches Until", [
 			"2027-10",
@@ -315,7 +315,7 @@ describe("JDK Comparison", () => {
 			"none",
 			"0-3 days",
 		]);
-		comparisonPage.expectFeaturePresence("support-paid", "Paid support", ["no", "no", "no"]);
+		comparisonPage.expectFeaturePresence("support-paid", "Paid Support", ["no", "no", "no"]);
 
 		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 		comparisonPage.expectFeatureText("information-country-of-origin", "Country of Origin", [
@@ -417,7 +417,7 @@ describe("JDK Comparison", () => {
 			"Patches Until",
 			"Release Schedule",
 			"Release Delay",
-			"Paid support",
+			"Paid Support",
 		]);
 		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 
@@ -562,7 +562,7 @@ describe("JDK Comparison", () => {
 			"Patches Until",
 			"Release Schedule",
 			"Release Delay",
-			"Paid support",
+			"Paid Support",
 		]);
 		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 
@@ -636,7 +636,7 @@ describe("JDK Comparison", () => {
 			"Patches Until",
 			"Release Schedule",
 			"Release Delay",
-			"Paid support",
+			"Paid Support",
 		]);
 		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 	});

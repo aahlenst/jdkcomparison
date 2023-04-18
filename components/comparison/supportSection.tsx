@@ -20,8 +20,13 @@ import { Model } from "@/src/modelTypes";
 import { ComparisonSection } from "./comparisonSection";
 import { useShowDifferencesOnly } from "@/hooks/useShowDifferencesOnly";
 
+export type SupportFeaturesSlice = Pick<
+	Model.FeatureComparison,
+	"id" | "eolDate" | "releaseSchedule" | "releaseDelay" | "paidSupport"
+>;
+
 type SupportSectionProps = {
-	productData: Model.FeatureComparison[];
+	productData: SupportFeaturesSlice[];
 	showDifferencesOnly: boolean;
 };
 
@@ -75,7 +80,7 @@ export function SupportSection({ productData, showDifferencesOnly }: SupportSect
 				</Feature>
 			)}
 			{showFeatures.paidSupport && (
-				<Feature id="support-paid" name="Paid support" values={paidSupport} />
+				<Feature id="support-paid" name="Paid Support" values={paidSupport} />
 			)}
 		</ComparisonSection>
 	);

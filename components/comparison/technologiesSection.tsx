@@ -20,8 +20,13 @@ import { Model } from "@/src/modelTypes";
 import { ComparisonSection } from "./comparisonSection";
 import { useShowDifferencesOnly } from "@/hooks/useShowDifferencesOnly";
 
+export type TechnologiesFeaturesSlice = Pick<
+	Model.FeatureComparison,
+	"id" | "jfx" | "jfr" | "jaws"
+>;
+
 type TechnologiesSectionProps = {
-	productData: Model.FeatureComparison[];
+	productData: TechnologiesFeaturesSlice[];
 	showDifferencesOnly: boolean;
 };
 
