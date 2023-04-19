@@ -62,10 +62,11 @@ describe("Comparison in production", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectVendorCount(6);
+		comparisonPage.expectVendorCount(7);
 		comparisonPage.expectVendor("Amazon");
 		comparisonPage.expectVendor("Azul");
 		comparisonPage.expectVendor("Eclipse Foundation");
+		comparisonPage.expectVendor("IBM");
 		comparisonPage.expectVendor("Microsoft");
 		comparisonPage.expectVendor("Oracle");
 		comparisonPage.expectVendor("SAP");
@@ -195,6 +196,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFilterOption("vendors", "Amazon", false);
 		comparisonPage.expectFilterOption("vendors", "Azul", false);
 		comparisonPage.expectFilterOption("vendors", "Eclipse Foundation", false);
+		comparisonPage.expectFilterOption("vendors", "IBM", false);
 		comparisonPage.expectFilterOption("vendors", "Microsoft", false);
 		comparisonPage.expectFilterOption("vendors", "Oracle", false);
 		comparisonPage.expectFilterOption("vendors", "SAP", false);
@@ -202,6 +204,7 @@ describe("Comparison in production", () => {
 
 		comparisonPage.showFilter("vms");
 		comparisonPage.expectFilterOption("vms", "HotSpot", false);
+		comparisonPage.expectFilterOption("vms", "OpenJ9", false);
 		comparisonPage.closeFilter("vms");
 
 		comparisonPage.showFilter("technologies");
