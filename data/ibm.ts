@@ -17,7 +17,7 @@ export const data: Vendor = {
 			information: {
 				name: "Semeru CE 11",
 				version: 11,
-				downloadSite: "https://developer.ibm.com/languages/java/semeru-runtimes/",
+				downloadSite: "https://developer.ibm.com/languages/java/semeru-runtimes/downloads/",
 			},
 			features: {
 				virtualMachine: { text: "OpenJ9" },
@@ -77,7 +77,7 @@ export const data: Vendor = {
 				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: { text: "JRE" },
-				customisations: { text: "many" },
+				customisations: { text: "many", footnote: "5d8042eb-3fab-495b-b3ef-a3beeacb78e5" },
 				notableFeatures: {
 					text: "JITServer",
 					footnote: "3f9a7d34-9fca-465a-8502-406ca490ffe8",
@@ -104,7 +104,7 @@ export const data: Vendor = {
 			information: {
 				name: "Semeru CE 17",
 				version: 17,
-				downloadSite: "https://developer.ibm.com/languages/java/semeru-runtimes/",
+				downloadSite: "https://developer.ibm.com/languages/java/semeru-runtimes/downloads/",
 			},
 			features: {
 				virtualMachine: { text: "OpenJ9" },
@@ -164,7 +164,7 @@ export const data: Vendor = {
 				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: { text: "JRE" },
-				customisations: { text: "many" },
+				customisations: { text: "many", footnote: "5d8042eb-3fab-495b-b3ef-a3beeacb78e5" },
 				notableFeatures: {
 					text: "JITServer",
 					footnote: "3f9a7d34-9fca-465a-8502-406ca490ffe8",
@@ -222,6 +222,16 @@ export const data: Vendor = {
 			markdown:
 				"IBM loosely follows the OpenJDK schedule. Looking at the releases published in 2022, updates " +
 				"incorporating the latest changes from OpenJDK take at least a month to appear.",
+		},
+		{
+			id: "5d8042eb-3fab-495b-b3ef-a3beeacb78e5",
+			markdown:
+				"The OpenJ9 documentation gives a [high-level overview of the differences between OpenJ9 and " +
+				"OpenJDK's HotSpot virtual machine](https://www.eclipse.org/openj9/docs/openj9_newuser/). The source " +
+				"code can be found on GitHub: " +
+				"[8](https://github.com/ibmruntimes/semeru-openjdk-jdk8), " +
+				"[11](https://github.com/ibmruntimes/semeru-openjdk-jdk11), " +
+				"[17](https://github.com/ibmruntimes/semeru-openjdk-jdk17).",
 		},
 	],
 };
