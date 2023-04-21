@@ -79,7 +79,7 @@ export const data: Vendor = {
 				paidSupport: { present: Present.NO },
 				eolDate: { text: "2023-10" },
 				releaseSchedule: { text: "OpenJDK" },
-				releaseDelay: { text: "none" },
+				releaseDelay: { text: "0-3 days" },
 				remarks: { text: "none" },
 			},
 		},
