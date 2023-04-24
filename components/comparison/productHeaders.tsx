@@ -31,7 +31,9 @@ export function ProductHeaders({ headers }: ProductHeadersProps) {
 		return (
 			<div key={product.id} className="flex flex-col px-4 border-r last:border-r-transparent">
 				<div className="product-vendor text-sm text-gray-500">{product.vendor}</div>
-				<div className="product-name font-semibold">{product.name}</div>
+				<div className="product-name font-semibold">
+					<h1>{product.name}</h1>
+				</div>
 				<div className="product-download mt-4 text-xs">
 					<a
 						href={product.downloadUrl}
