@@ -36,6 +36,10 @@ export default function ComparisonPage({ data, footnotes }: ComparisonProps) {
 		<>
 			<Head>
 				<title>JDK Comparison</title>
+				<meta
+					name="description"
+					content="JDK Comparison allows you to compare JDKs of the most important vendors side-by-side. Filter and sort them by the features that interest you most, like garbage collectors or support."
+				/>
 			</Head>
 			<main>
 				<ComparisonProvider filters={filters} data={data} footnotes={footnotes}>
