@@ -30,8 +30,7 @@ No.
 
 More precisely, it might be the best, but not because it ticks all the boxes.
 
-The primary reason is that ticked boxes (or full circles, as they are currently displayed) **indicate presence, not
-quality**.
+The primary reason is that ticked boxes (or full circles, as they are currently displayed) **indicate presence, not quality**.
 
 ## How Do I Find the Best JDK for Me?
 
@@ -44,18 +43,12 @@ Examining each entry on the shortlist should include the following tasks:
 
 -   Try each JDK and all the functionality you need, at least on your machine and in your test environment.
 -   Watch whether you receive updates in time and whether the quality is acceptable.
--   If you require specific functionality (for example, a garbage collector) on an older JDK, ask the vendor whether
-    they maintain that functionality or at least backport patches. Areas notorious for widely varying levels of support
-    are garbage collectors, platform support (especially anything beyond x86, 64-bit, and ARM, 64-bit), and
-    functionality like JavaFX or Web Start that has been removed from OpenJDK.
--   If you require support, talk to the vendor about their offering and ask them to walk you through how they would
-    handle a specific issue you had in the past.
+-   If you require specific functionality (for example, a garbage collector) on an older JDK, ask the vendor whether they maintain that functionality or at least backport patches. Areas notorious for widely varying levels of support are garbage collectors, platform support (especially anything beyond x86, 64-bit, and ARM, 64-bit), and functionality like JavaFX or Web Start that has been removed from OpenJDK.
+-   If you require support, talk to the vendor about their offering and ask them to walk you through how they would handle a specific issue you had in the past.
 
 ## What JDKs Do You Plan on Adding? Why Are Some Missing?
 
-The plan is to include all JDKs that are intended for production use and target a broader audience. Therefore, builds
-that are supposed to facilitate the development of a JDK or are primarily used internally by a vendor will not make it
-on the list.
+The plan is to include all JDKs that are intended for production use and target a broader audience. Therefore, builds that are supposed to facilitate the development of a JDK or are primarily used internally by a vendor will not make it on the list.
 
 JDKs that we plan to add, sorted alphabetically:
 
@@ -68,28 +61,21 @@ JDKs that we plan to add, sorted alphabetically:
 JDKs that we do not plan on adding, sorted alphabetically:
 
 -   [AdoptOpenJDK](https://adoptopenjdk.net/): Renamed to Eclipse Temurin.
--   All JDKs included in Linux distributions: Those that are not already on the list like Amazon Corretto (in Amazon
-    Linux) are no stand-alone products. Furthermore, they would bloat the comparison even more.
--   [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime): Serves as platform for JetBrains' IntelliJ-based
-    IDE, only.
+-   All JDKs included in Linux distributions: Those that are not already on the list like Amazon Corretto (in Amazon Linux) are no stand-alone products. Furthermore, they would bloat the comparison even more.
+-   [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime): Serves as platform for JetBrains' IntelliJ-based IDE, only.
 -   [OJDKBuild](https://github.com/ojdkbuild/ojdkbuild): Discontinued.
 -   [Trava OpenJDK](https://github.com/TravaOpenJDK): Seems to primarily target developers, and to be dormant.
 
 JDKs we are not sure about, sorted alphabetically:
 
 -   [Axiom JDK](https://axiomjdk.ru/): Looks like a rebrand of BellSoft Liberica JDK for the Russian market.
--   [Huawei BiSheng](https://www.openeuler.org/en/other/projects/bishengjdk/): Unclear whether it is targeting an
-    audience outside of Huawei.
+-   [Huawei BiSheng](https://www.openeuler.org/en/other/projects/bishengjdk/): Unclear whether it is targeting an audience outside of Huawei.
 -   [Tencent Kona](https://github.com/Tencent/): Unclear whether it is targeting an audience outside of Tencent.
 
 ## Where Can I Learn More about Differences Between Versions?
 
-The comparison does not include language-level differences between versions because there are no language-level
-differences between vendors.
+The comparison does not include language-level differences between versions because there are no language-level differences between vendors.
 
-For a great overview of language-level differences between versions, see
-[The Java Version Almanac](https://javaalmanac.io/). Furthermore, the
-[list of JDK Enhancement Proposals](https://openjdk.org/jeps/0) (JEP) details both language-level differences and
-technological changes like ports or garbage collectors.
+For a great overview of language-level differences between versions, see [The Java Version Almanac](https://javaalmanac.io/). Furthermore, the [list of JDK Enhancement Proposals](https://openjdk.org/jeps/0) (JEP) details both language-level differences and technological changes like ports or garbage collectors.
 
 export default ({ children }) => <MDXPageLayout meta={meta}>{children}</MDXPageLayout>;
