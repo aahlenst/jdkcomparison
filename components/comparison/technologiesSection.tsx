@@ -19,6 +19,7 @@ import { Feature } from "@/components/comparison/feature";
 import { Model } from "@/src/modelTypes";
 import { ComparisonSection } from "./comparisonSection";
 import { useShowDifferencesOnly } from "@/hooks/useShowDifferencesOnly";
+import Link from "next/link";
 
 export type TechnologiesFeaturesSlice = Pick<
 	Model.FeatureComparison,
@@ -60,13 +61,12 @@ export function TechnologiesSection({
 		<ComparisonSection id="technologies" label="Technologies">
 			{showFeatures.jfx && (
 				<Feature id="technologies-jfx" name="JavaFX" values={jfx}>
-					JavaFX is a GUI toolkit that was part of Oracle JDK until Oracle JDK 10. Since
-					then, it was unbundled and the{" "}
-					<a href="https://blogs.oracle.com/java/post/the-future-of-javafx-and-other-java-client-roadmap-updates">
-						development has moved to the OpenJFX project
-					</a>
-					. <a href="https://openjfx.io/">OpenJFX</a> is available as a separate download.
-					Developers are supposed to ship it with their applications.
+					JavaFX is a GUI toolkit that was part of Oracle JDK until Oracle JDK 10. Please
+					see the{" "}
+					<Link href="/faq/#what-are-my-options-if-i-need-javafx">
+						FAQ entry about replacements for JavaFX
+					</Link>{" "}
+					for further information.
 				</Feature>
 			)}
 			{showFeatures.jfr && (
@@ -78,7 +78,15 @@ export function TechnologiesSection({
 				</Feature>
 			)}
 			{showFeatures.jaws && (
-				<Feature id="technologies-jaws" name="Java Web Start" values={jaws} />
+				<Feature id="technologies-jaws" name="Java Web Start" values={jaws}>
+					Java Web Start allows to start applications directly from the internet using
+					JNLP files. It was part of Oracle JDK. The last maintained version containing
+					Java Web Start is Oracle JDK 8. Please see the{" "}
+					<Link href="/faq/#what-are-my-options-if-i-need-java-web-start">
+						FAQ entry about replacements for Java Web Start
+					</Link>
+					.
+				</Feature>
 			)}
 		</ComparisonSection>
 	);

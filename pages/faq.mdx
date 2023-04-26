@@ -15,6 +15,8 @@ export const meta = {
     -   [What JDKs Do You Plan on Adding? Why Are Some Missing?](#what-jdks-do-you-plan-on-adding-why-are-some-missing)
 -   Further Information
     -   [Where Can I Learn More about Differences Between Versions?](#where-can-i-learn-more-about-differences-between-versions)
+    -   [What Are My Options If I Need JavaFX?](#what-are-my-options-if-i-need-javafx)
+    -   [What Are My Options If I Need Java Web Start?](#what-are-my-options-if-i-need-java-web-start)
 
 ## Which JDK Do You Recommend?
 
@@ -77,5 +79,23 @@ JDKs we are not sure about, sorted alphabetically:
 The comparison does not include language-level differences between versions because there are no language-level differences between vendors.
 
 For a great overview of language-level differences between versions, see [The Java Version Almanac](https://javaalmanac.io/). Furthermore, the [list of JDK Enhancement Proposals](https://openjdk.org/jeps/0) (JEP) details both language-level differences and technological changes like ports or garbage collectors.
+
+## What Are My Options If I Need JavaFX?
+
+JavaFX is a GUI toolkit that was part of Oracle JDK until version 10. Since then, [it has been unbundled from the JDK](https://blogs.oracle.com/java/post/the-future-of-javafx-and-other-java-client-roadmap-updates). The development has moved to the [OpenJFX](https://openjfx.io/) project
+
+OpenJFX is available as a separate download. Application developers should ship OpenJFX as part of their application and no longer rely on it being part of the JDK. [Gluon](https://gluonhq.com/) provides dedicated support for OpenJFX (see [JavaFX Long-Term Support](https://gluonhq.com/services/javafx-support/)).
+
+For compatibility reasons, some vendors offer newer or even the latest JDK bundled with OpenJFX. Those are mentioned in the comparison table under _Customisations_ → _Editions_.
+
+## What Are My Options If I Need Java Web Start?
+
+Java Web Start allows downloading and starting Java applications directly from the internet using JNLP files. It was part of Oracle JDK until version 10. The last maintained JDK containing Java Web Start is Oracle JDK 8. See Oracle's [Java Client Roadmap Update](https://www.oracle.com/technetwork/java/javase/javaclientroadmapupdatev2020may-6548840.pdf) for details.
+
+Users that rely on JNLP but require a newer JDK have some options. There is an open-source reimplementation of Web Start called [IcedTea-Web](https://github.com/AdoptOpenJDK/IcedTea-Web). It claims to be largely compatible with Web Start and should work with newer JDKs.
+
+-   [OpenWebStart](https://openwebstart.com/) bundles IcedTea-Web with updaters and a control panel. Paid support is available, too.
+-   [BellSoft](https://bell-sw.com/) provides [OpenWebStart](https://openwebstart.com/) as part of [BellSoft's support offering](https://bell-sw.com/support/).
+-   [Azul](https://azul.com/) provides builds of [IcedTea-Web](https://www.azul.com/products/components/icedtea-web/).
 
 export default ({ children }) => <MDXPageLayout meta={meta}>{children}</MDXPageLayout>;
