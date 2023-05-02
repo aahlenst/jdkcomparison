@@ -79,7 +79,7 @@ export const data: Vendor = {
 					footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf",
 				},
 				notableFeatures: { text: "none" },
-				license: { text: "GPLv2+CPE" },
+				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
 				sbom: {
@@ -174,7 +174,7 @@ export const data: Vendor = {
 					footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf",
 				},
 				notableFeatures: { text: "none" },
-				license: { text: "GPLv2+CPE" },
+				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
 				sbom: {
@@ -269,7 +269,7 @@ export const data: Vendor = {
 					footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf",
 				},
 				notableFeatures: { text: "none" },
-				license: { text: "GPLv2+CPE" },
+				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
 				sbom: {
@@ -355,7 +355,7 @@ export const data: Vendor = {
 					footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf",
 				},
 				notableFeatures: { text: "none" },
-				license: { text: "GPLv2+CPE" },
+				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
 				sbom: {

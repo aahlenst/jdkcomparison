@@ -19,6 +19,7 @@ import { useShowDifferencesOnly } from "@/hooks/useShowDifferencesOnly";
 import { ComparisonSection } from "@/components/comparison/comparisonSection";
 import { Feature } from "@/components/comparison/feature";
 import React from "react";
+import Link from "next/link";
 
 export type LicensingFeaturesSlice = Pick<
 	Model.FeatureComparison,
@@ -56,7 +57,13 @@ export function LicensingSection({ productData, showDifferencesOnly }: Licensing
 	return (
 		<ComparisonSection id="licensing" label="Licensing">
 			{showFeatures.license && (
-				<Feature id="licensing-license" name="License" values={license} />
+				<Feature id="licensing-license" name="License" values={license}>
+					The license that the JDK can be used under.{" "}
+					<Link href="/faq/#what-is-the-meaning-of-the-licenses">
+						To learn more about the licenses, see the FAQ
+					</Link>
+					.
+				</Feature>
 			)}
 			{showFeatures.freeInDev && (
 				<Feature

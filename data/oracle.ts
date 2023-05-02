@@ -72,7 +72,7 @@ export const data: Vendor = {
 				editions: { text: "none" },
 				customisations: { text: "none" },
 				notableFeatures: { text: "none" },
-				license: { text: "GPLv2+CPE" },
+				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },

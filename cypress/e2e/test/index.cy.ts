@@ -276,9 +276,9 @@ describe("JDK Comparison", () => {
 			"Free in Production",
 		]);
 		comparisonPage.expectFeatureText("licensing-license", "License", [
-			"GPLv2+CPE",
+			"GPLv2+CE",
 			"Proprietary",
-			"GPLv2+CPE",
+			"GPLv2+CE",
 		]);
 		comparisonPage.expectFeaturePresence(
 			"licensing-free-in-development",

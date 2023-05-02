@@ -70,13 +70,13 @@ describe("<LicensingSection/>", () => {
 	});
 
 	it("displays License if features are different and differences only is on", () => {
-		data[0].license.text = "GPLv2+CPE";
+		data[0].license.text = "GPLv2+CE";
 
 		cy.mount(<LicensingSection productData={data} showDifferencesOnly={true} />);
 
 		section.expectFeatures(["License"]);
 		section.expectFeatureDescription("licensing-license", "License", [
-			"GPLv2+CPE",
+			"GPLv2+CE",
 			"Proprietary",
 		]);
 	});
