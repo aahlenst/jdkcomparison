@@ -67,6 +67,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 		(await import("@/data/ibm")).default,
 		(await import("@/data/microsoft")).default,
 		(await import("@/data/oracle")).default,
+		(await import("@/data/redhat")).default,
 		(await import("@/data/sap")).default,
 	];
 
