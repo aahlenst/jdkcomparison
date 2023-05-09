@@ -62,7 +62,8 @@ describe("Comparison in production", () => {
 
 		navigationComponent.expectPageTitle("JDK Comparison");
 
-		comparisonPage.expectVendorCount(9);
+		comparisonPage.expectVendorCount(10);
+		comparisonPage.expectVendor("Alibaba");
 		comparisonPage.expectVendor("Amazon");
 		comparisonPage.expectVendor("Azul");
 		comparisonPage.expectVendor("BellSoft");
@@ -195,6 +196,7 @@ describe("Comparison in production", () => {
 		comparisonPage.closeFilter("versions");
 
 		comparisonPage.showFilter("vendors");
+		comparisonPage.expectFilterOption("vendors", "Alibaba", false);
 		comparisonPage.expectFilterOption("vendors", "Amazon", false);
 		comparisonPage.expectFilterOption("vendors", "Azul", false);
 		comparisonPage.expectFilterOption("vendors", "BellSoft", false);
