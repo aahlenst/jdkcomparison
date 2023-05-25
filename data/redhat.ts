@@ -301,7 +301,10 @@ export const data: Vendor = {
 	footnotes: [
 		{
 			id: "ddd0d680-8f33-4f7a-b89a-1b895c315848",
-			markdown: "IcedTea-Web is included in Red Hat Build of OpenJDK 8 for Windows.",
+			markdown:
+				"[Red Hat's migration guide for Java Web Start](https://access.redhat.com/solutions/5087601) states " +
+				"that IcedTea-Web is included in Red Hat Build of OpenJDK 8 for Windows and older versions of Red Hat " +
+				"Enterprise Linux.",
 		},
 		{
 			id: "5cc2a923-cca5-4984-93bb-861cb304b64b",
