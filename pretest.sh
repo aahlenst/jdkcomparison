@@ -31,8 +31,8 @@ npm run dev > "$TEMP_DIR/nextjs-dev.txt" 2>&1 &
 npm run e2e:headless
 cleanup
 
-npx @cloudflare/next-on-pages --experimental-minify
-npx wrangler pages dev --port 3000 .vercel/output/static > "$TEMP_DIR/wrangler.txt" 2>&1 &
+npx @cloudflare/next-on-pages
+npx wrangler pages dev --port 3000 .vercel/output/static --compatibility-flag=nodejs_compat > "$TEMP_DIR/wrangler.txt" 2>&1 &
 WRANGLER_PID=$!
 npm run acceptance
 cleanup
