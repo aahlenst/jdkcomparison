@@ -29,7 +29,7 @@ export type SearchParams = {
 
 export function useApplySearchParams(
 	comparison: ComparisonState,
-	dispatch: React.Dispatch<ComparisonAction[]>
+	dispatch: React.Dispatch<ComparisonAction[]>,
 ) {
 	const router = useRouter();
 
@@ -45,7 +45,7 @@ export function useApplySearchParams(
 export function applySearchParamsToState(
 	searchParams: SearchParams,
 	comparison: ComparisonState,
-	dispatch: React.Dispatch<ComparisonAction[]>
+	dispatch: React.Dispatch<ComparisonAction[]>,
 ) {
 	const pendingActions: ComparisonAction[] = [];
 

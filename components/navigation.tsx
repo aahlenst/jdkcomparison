@@ -77,7 +77,7 @@ export function Navigation() {
 										isActive(router, item.href)
 											? "border-red-600 text-gray-900"
 											: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-										`desktop-navigation-option desktop-navigation-option-${item.id} inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium`
+										`desktop-navigation-option desktop-navigation-option-${item.id} inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium`,
 									)}
 									aria-current={isActive(router, item.href) ? "page" : undefined}
 								>
@@ -191,7 +191,7 @@ export function Navigation() {
 														isActive(router, item.href)
 															? "border-red-600 bg-red-50 text-red-600"
 															: "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-														`mobile-navigation-option mobile-navigation-option-${item.id} group flex items-center border-l-4 px-3 py-2 text-sm font-medium`
+														`mobile-navigation-option mobile-navigation-option-${item.id} group flex items-center border-l-4 px-3 py-2 text-sm font-medium`,
 													)}
 													aria-current={
 														isActive(router, item.href)

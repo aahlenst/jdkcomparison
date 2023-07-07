@@ -23,7 +23,7 @@ describe("<CheckboxFilter/>", () => {
 		const filter = new DynamicSelectionFilter(
 			"vendors",
 			["Coffeecorp", "Dukecorp"],
-			(fc) => fc.vendor
+			(fc) => fc.vendor,
 		);
 
 		const onChangeHandler = function () {
@@ -31,7 +31,7 @@ describe("<CheckboxFilter/>", () => {
 		};
 
 		cy.mount(
-			<CheckboxFilter label="Vendors" filter={filter} onChangeHandler={onChangeHandler} />
+			<CheckboxFilter label="Vendors" filter={filter} onChangeHandler={onChangeHandler} />,
 		);
 
 		cy.get(".filter-name").should("have.text", "Vendors");
@@ -46,7 +46,7 @@ describe("<CheckboxFilter/>", () => {
 
 	it("enables and disables options on click", () => {
 		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) =>
-			fc.version.toString()
+			fc.version.toString(),
 		);
 
 		const onChangeHandler = function (action: ApplyFilter) {
@@ -58,7 +58,7 @@ describe("<CheckboxFilter/>", () => {
 		};
 
 		cy.mount(
-			<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler} />
+			<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler} />,
 		).then(({ rerender }) => {
 			cy.get(".filter-name").should("have.text", "Versions");
 			cy.get(".filter-name").click();
@@ -76,7 +76,7 @@ describe("<CheckboxFilter/>", () => {
 					label="Versions"
 					filter={filter}
 					onChangeHandler={onChangeHandler}
-				/>
+				/>,
 			);
 
 			cy.get("input[id=versions-0]").should("be.checked");
@@ -89,7 +89,7 @@ describe("<CheckboxFilter/>", () => {
 					label="Versions"
 					filter={filter}
 					onChangeHandler={onChangeHandler}
-				/>
+				/>,
 			);
 
 			cy.get("input[id=versions-0]").should("not.be.checked");
@@ -103,7 +103,7 @@ describe("<CheckboxFilter/>", () => {
 					label="Versions"
 					filter={filter}
 					onChangeHandler={onChangeHandler}
-				/>
+				/>,
 			);
 
 			cy.get("input[id=versions-0]").should("be.checked");
@@ -113,7 +113,7 @@ describe("<CheckboxFilter/>", () => {
 
 	it("retains selected state after reopening", () => {
 		const filter = new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) =>
-			fc.version.toString()
+			fc.version.toString(),
 		);
 
 		const onChangeHandler = function (action: ApplyFilter) {
@@ -125,7 +125,7 @@ describe("<CheckboxFilter/>", () => {
 		};
 
 		cy.mount(
-			<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler} />
+			<CheckboxFilter label="Versions" filter={filter} onChangeHandler={onChangeHandler} />,
 		).then(({ rerender }) => {
 			cy.get(".filter-name").should("have.text", "Versions");
 			cy.get(".filter-name").click();
@@ -144,7 +144,7 @@ describe("<CheckboxFilter/>", () => {
 					label="Versions"
 					filter={filter}
 					onChangeHandler={onChangeHandler}
-				/>
+				/>,
 			);
 
 			cy.get(".filter-name").click();

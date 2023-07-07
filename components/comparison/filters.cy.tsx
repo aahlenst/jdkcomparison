@@ -35,7 +35,7 @@ describe("<Filters/>", () => {
 		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString()),
 		new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor),
 		new DynamicSelectionFilter("vms", ["CoffeeVM", "DukeVM"], (fc) =>
-			fc.virtualMachine.toString()
+			fc.virtualMachine.toString(),
 		),
 	];
 
@@ -100,7 +100,7 @@ describe("<Filters/>", () => {
 		cy.get(".filter-name").eq(6).click();
 		cy.get("label[for=licensing-free-in-development]").should(
 			"have.text",
-			"Free in Development"
+			"Free in Development",
 		);
 		cy.get("input[id=licensing-free-in-development]").should("not.be.checked");
 		cy.get("label[for=licensing-free-in-production]").should("have.text", "Free in Production");

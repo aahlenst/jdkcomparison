@@ -24,7 +24,7 @@ export class AscendingVendorComparator
 
 	compare(
 		a: Pick<Model.FeatureComparison, "vendor">,
-		b: Pick<Model.FeatureComparison, "vendor">
+		b: Pick<Model.FeatureComparison, "vendor">,
 	): number {
 		return a.vendor.localeCompare(b.vendor, "en");
 	}
@@ -38,7 +38,7 @@ export class DescendingVendorComparator
 
 	compare(
 		a: Pick<Model.FeatureComparison, "vendor">,
-		b: Pick<Model.FeatureComparison, "vendor">
+		b: Pick<Model.FeatureComparison, "vendor">,
 	): number {
 		return a.vendor.localeCompare(b.vendor, "en") * -1;
 	}
@@ -52,7 +52,7 @@ export class AscendingVersionComparator
 
 	compare(
 		a: Pick<Model.FeatureComparison, "version">,
-		b: Pick<Model.FeatureComparison, "version">
+		b: Pick<Model.FeatureComparison, "version">,
 	): number {
 		return a.version - b.version;
 	}
@@ -66,7 +66,7 @@ export class DescendingVersionComparator
 
 	compare(
 		a: Pick<Model.FeatureComparison, "version">,
-		b: Pick<Model.FeatureComparison, "version">
+		b: Pick<Model.FeatureComparison, "version">,
 	): number {
 		return b.version - a.version;
 	}
@@ -80,7 +80,7 @@ export class AscendingNameComparator
 
 	compare(
 		a: Pick<Model.FeatureComparison, "name">,
-		b: Pick<Model.FeatureComparison, "name">
+		b: Pick<Model.FeatureComparison, "name">,
 	): number {
 		return a.name.localeCompare(b.name, "en");
 	}
@@ -94,7 +94,7 @@ export class DescendingNameComparator
 
 	compare(
 		a: Pick<Model.FeatureComparison, "name">,
-		b: Pick<Model.FeatureComparison, "name">
+		b: Pick<Model.FeatureComparison, "name">,
 	): number {
 		return b.name.localeCompare(a.name, "en");
 	}
@@ -113,7 +113,7 @@ export const AllComparators = [
 
 export function sortFeatureComparisons(
 	comparisons: Model.FeatureComparison[],
-	comparators: Model.Comparator<Model.FeatureComparison>[]
+	comparators: Model.Comparator<Model.FeatureComparison>[],
 ) {
 	comparisons.sort((a, b) => {
 		for (const comparator of comparators) {

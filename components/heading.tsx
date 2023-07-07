@@ -37,6 +37,6 @@ export function Heading(level: number, props: PropsWithChildren) {
 	return createElement(
 		`h${level}`,
 		{ id: generatedSlug, className: "group flex whitespace-pre-wrap items-center -ml-4 pl-4" },
-		innerElements
+		innerElements,
 	);
 }

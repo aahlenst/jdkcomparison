@@ -30,7 +30,7 @@ export function createFilters(comparisons: Model.FeatureComparison[]): Model.Fil
 
 export function applyFilters(
 	filters: Model.Filter[],
-	comparisons: Model.FeatureComparison[]
+	comparisons: Model.FeatureComparison[],
 ): Model.FeatureComparison[] {
 	const filteredComparisons = [];
 	for (const fc of comparisons) {
@@ -115,7 +115,7 @@ export class DynamicSelectionFilter extends AbstractFilter {
 
 	apply(fc: Model.FeatureComparison): boolean {
 		const selectedOptions = new Set(
-			this.options.filter((option) => option.selected).map((option) => option.label)
+			this.options.filter((option) => option.selected).map((option) => option.label),
 		);
 		return selectedOptions.size < 1 || selectedOptions.has(this.supplier(fc));
 	}
@@ -186,10 +186,10 @@ export class LicensingFilter extends AbstractFilter {
 
 	apply(fc: Model.FeatureComparison): boolean {
 		const freeInDev = this.options.some(
-			(o) => o.id === "licensing-free-in-development" && o.selected
+			(o) => o.id === "licensing-free-in-development" && o.selected,
 		);
 		const freeInProd = this.options.some(
-			(o) => o.id === "licensing-free-in-production" && o.selected
+			(o) => o.id === "licensing-free-in-production" && o.selected,
 		);
 		const acceptedPresences = new Set([Model.Present.YES, Model.Present.PARTIALLY]);
 		return (

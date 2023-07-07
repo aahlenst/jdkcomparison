@@ -42,7 +42,7 @@ describe("<InformationSection/>", () => {
 		informationSection.expectFeatureDescription(
 			"information-country-of-origin",
 			"Country of Origin",
-			["Dukeland", "Dukeland"]
+			["Dukeland", "Dukeland"],
 		);
 		informationSection.expectFeatureDescription("information-remarks", "Remarks", [
 			"Lorem ipsum",
@@ -59,7 +59,7 @@ describe("<InformationSection/>", () => {
 		informationSection.expectFeatureDescription(
 			"information-country-of-origin",
 			"Country of Origin",
-			["Dukeland"]
+			["Dukeland"],
 		);
 		informationSection.expectFeatureDescription("information-remarks", "Remarks", [
 			"Lorem ipsum",
@@ -81,7 +81,7 @@ describe("<InformationSection/>", () => {
 		informationSection.expectFeatureDescription(
 			"information-country-of-origin",
 			"Country of Origin",
-			["United States of Duke", "Dukeland"]
+			["United States of Duke", "Dukeland"],
 		);
 	});
 
@@ -109,7 +109,7 @@ const informationSection = {
 	expectFeatures: (featureNames: string[]) => {
 		cy.get("section[id='information'] .feature .feature-name").should(
 			"have.length",
-			featureNames.length
+			featureNames.length,
 		);
 
 		for (let i = 0; i < featureNames.length; i++) {

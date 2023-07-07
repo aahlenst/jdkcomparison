@@ -35,7 +35,7 @@ describe("extractComparisonData()", () => {
 		expect(footnotes[0].id).toEqual("6a296137-f4e4-4d34-b64e-3c95375f3db0");
 		expect(footnotes[0].number).toEqual(1);
 		expect(footnotes[0].html).toContain(
-			"<p>Some <strong>clarifications</strong> regarding JavaFX"
+			"<p>Some <strong>clarifications</strong> regarding JavaFX",
 		);
 		expect(footnotes[1].id).toEqual("f4b31750-2c0d-4332-bfe7-6d30daa959a1");
 		expect(footnotes[1].number).toEqual(2);
@@ -43,7 +43,7 @@ describe("extractComparisonData()", () => {
 		expect(footnotes[2].id).toEqual("31e01ff8-ff7b-4864-ab54-1b1e18663dcf");
 		expect(footnotes[2].number).toEqual(3);
 		expect(footnotes[2].html).toContain(
-			"<p>Some <em>comment</em> about the end of life date.</p>"
+			"<p>Some <em>comment</em> about the end of life date.</p>",
 		);
 	});
 

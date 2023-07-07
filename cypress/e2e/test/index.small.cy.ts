@@ -45,7 +45,7 @@ describe("Home on a iPhone 12-sized screen", { viewportWidth: 390, viewportHeigh
 		mobileNavigationComponent.expectSecondaryNavigationOption(
 			"github-link",
 			"Go to GitHub repository",
-			"https://github.com/aahlenst/jdkcomparison"
+			"https://github.com/aahlenst/jdkcomparison",
 		);
 	});
 
@@ -56,7 +56,7 @@ describe("Home on a iPhone 12-sized screen", { viewportWidth: 390, viewportHeigh
 		mobileNavigationComponent.expectSecondaryNavigationOption(
 			"e-mail-link",
 			"Send an e-mail",
-			"mailto:hello@jdkcomparison.com"
+			"mailto:hello@jdkcomparison.com",
 		);
 	});
 
@@ -144,7 +144,7 @@ describe("Home on a iPhone 12-sized screen", { viewportWidth: 390, viewportHeigh
 		mobileNavigationComponent.expectPageTitle("JDK Comparison");
 		mobileComparisonPage.showFeatureExplanation("technologies-jfr");
 		mobileComparisonPage.expectFeatureExplanation(
-			"Flight Recorder (JFR) is a low-overhead data collection framework"
+			"Flight Recorder (JFR) is a low-overhead data collection framework",
 		);
 		mobileComparisonPage.closeFeatureExplanation();
 	});
@@ -157,19 +157,19 @@ describe("Home on a iPhone 12-sized screen", { viewportWidth: 390, viewportHeigh
 			"technologies-jfx",
 			0,
 			1,
-			"Some clarifications regarding JavaFX"
+			"Some clarifications regarding JavaFX",
 		);
 		mobileComparisonPage.expectFootnote(
 			"support-paid",
 			1,
 			2,
-			"Some remark regarding paid support"
+			"Some remark regarding paid support",
 		);
 		mobileComparisonPage.expectFootnote(
 			"support-eol-date",
 			1,
 			3,
-			"Some comment about the end of life date"
+			"Some comment about the end of life date",
 		);
 	});
 });

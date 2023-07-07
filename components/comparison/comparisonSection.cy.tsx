@@ -39,7 +39,7 @@ describe("<ComparisonSection/>", () => {
 		cy.mount(
 			<ComparisonSection id="a-section" label="A section">
 				{children}
-			</ComparisonSection>
+			</ComparisonSection>,
 		);
 
 		comparisonSectionComponent.expectSectionLabel("a-section", "A section");
@@ -50,7 +50,7 @@ describe("<ComparisonSection/>", () => {
 		cy.mount(
 			<ComparisonSection id="a-section" label="A section">
 				{children}
-			</ComparisonSection>
+			</ComparisonSection>,
 		);
 
 		comparisonSectionComponent.expectFeaturesInSection("a-section", ["Feature A", "Feature B"]);
@@ -75,7 +75,7 @@ const comparisonSectionComponent = {
 	expectFeaturesInSection: (sectionId: string, names: string[]) => {
 		cy.get(`section[id='${sectionId}'] .feature .feature-name`).should(
 			"have.length",
-			names.length
+			names.length,
 		);
 
 		for (let i = 0; i < names.length; i++) {

@@ -85,7 +85,7 @@ const section = {
 	expectFeatures: (featureNames: string[]) => {
 		cy.get("section[id='certifications'] .feature .feature-name").should(
 			"have.length",
-			featureNames.length
+			featureNames.length,
 		);
 
 		for (let i = 0; i < featureNames.length; i++) {

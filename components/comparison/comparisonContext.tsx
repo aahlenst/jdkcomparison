@@ -130,7 +130,7 @@ export function useComparisonDispatch(): React.Dispatch<ComparisonAction[]> {
 
 export function comparisonReducer(
 	draft: ComparisonState,
-	actions: ComparisonAction[]
+	actions: ComparisonAction[],
 ): ComparisonState {
 	let refreshData = false;
 
@@ -177,7 +177,7 @@ function handleToggleFilter(draft: ComparisonState, action: ToggleFilter): void 
 
 function handleToggleShowDifferencesOnly(
 	draft: ComparisonState,
-	action: ToggleShowDifferencesOnly
+	action: ToggleShowDifferencesOnly,
 ): void {
 	draft.showDifferencesOnly = action.on;
 }

@@ -25,13 +25,13 @@ describe("handleApplyFilter()", () => {
 	const filterA: Model.Filter = new DynamicSelectionFilter(
 		"filterA",
 		["A", "B", "C"],
-		(fc) => fc.name
+		(fc) => fc.name,
 	);
 
 	const filterB: Model.Filter = new DynamicSelectionFilter(
 		"filterB",
 		["1", "2", "3"],
-		(fc) => fc.name
+		(fc) => fc.name,
 	);
 
 	const state: ComparisonState = {

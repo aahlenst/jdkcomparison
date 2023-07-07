@@ -53,7 +53,7 @@ export function extractComparisonData(vendors: Vendor[]): Model.Comparison {
 	const aggregatedFeatureComparisons: Model.FeatureComparison[] = [];
 	for (const vendor of vendors) {
 		aggregatedFeatureComparisons.push(
-			...extractFeatureComparisons(vendor, aggregatedFootnotes)
+			...extractFeatureComparisons(vendor, aggregatedFootnotes),
 		);
 	}
 
@@ -77,7 +77,7 @@ function extractFootnotes(vendor: Vendor, counter: FootnoteCounter) {
 
 function extractFeatureComparisons(
 	vendor: Vendor,
-	footnotes: Model.Footnote[]
+	footnotes: Model.Footnote[],
 ): Model.FeatureComparison[] {
 	return vendor.jdks.map((jdk) => {
 		return {
@@ -123,7 +123,7 @@ function extractFeatureComparisons(
 			windowsInstallers: mapFeaturePresence(jdk.features.windows.installers, footnotes),
 			windowsContainerImages: mapFeaturePresence(
 				jdk.features.windows.containerImages,
-				footnotes
+				footnotes,
 			),
 			aixPPC: mapFeaturePresence(jdk.features.otherPlatforms.aixPPC, footnotes),
 			solarisSPARC: mapFeaturePresence(jdk.features.otherPlatforms.solarisSPARC, footnotes),
@@ -148,7 +148,7 @@ function extractFeatureComparisons(
 
 function resolveFootnote(
 	id: string | undefined,
-	footnotes: Model.Footnote[]
+	footnotes: Model.Footnote[],
 ): FootnoteReference | undefined {
 	if (id === undefined) {
 		return undefined;
@@ -167,7 +167,7 @@ function resolveFootnote(
 
 function mapFeaturePresence(
 	presence: FeaturePresence,
-	footnotes: Model.Footnote[]
+	footnotes: Model.Footnote[],
 ): Model.FeaturePresence {
 	const retVal: Model.FeaturePresence = {
 		present: mapPresent(presence.present),
@@ -183,7 +183,7 @@ function mapFeaturePresence(
 
 function mapFeatureDescription(
 	description: FeatureDescription,
-	footnotes: Model.Footnote[]
+	footnotes: Model.Footnote[],
 ): Model.FeatureDescription {
 	const retVal: Model.FeatureDescription = {
 		text: description.text,

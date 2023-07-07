@@ -65,7 +65,7 @@ export const comparisonPage = {
 		} else {
 			cy.get(`#desktop-menu-filter-${filterId} .active-filter-options`).should(
 				"have.text",
-				count.toString()
+				count.toString(),
 			);
 		}
 	},
@@ -83,7 +83,7 @@ export const comparisonPage = {
 	expectFeaturesInSection: (sectionId: string, featureNames: string[]) => {
 		cy.get(`section[id='${sectionId}'] .feature .feature-name`).should(
 			"have.length",
-			featureNames.length
+			featureNames.length,
 		);
 
 		for (let i = 0; i < featureNames.length; i++) {

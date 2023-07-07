@@ -68,7 +68,7 @@ export function CheckboxFilterMobile({
 								<ChevronDownIcon
 									className={classNames(
 										open ? "-rotate-180" : "rotate-0",
-										"h-5 w-5 transform"
+										"h-5 w-5 transform",
 									)}
 									aria-hidden="true"
 								/>

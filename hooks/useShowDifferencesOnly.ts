@@ -47,7 +47,7 @@ function extractValue(feature: Model.FeaturePresence | Model.FeatureDescription)
 
 export const useShowDifferencesOnly = (
 	showDifferencesOnly: boolean,
-	data: SectionFeatures
+	data: SectionFeatures,
 ): DisplayStatus => {
 	const showFeatures: { [key: string]: boolean } = {};
 

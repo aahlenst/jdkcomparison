@@ -42,7 +42,7 @@ describe("Comparison in production", () => {
 		navigationComponent.expectSecondaryNavigationOption(
 			"github-link",
 			"Go to GitHub repository",
-			"https://github.com/aahlenst/jdkcomparison"
+			"https://github.com/aahlenst/jdkcomparison",
 		);
 	});
 
@@ -53,7 +53,7 @@ describe("Comparison in production", () => {
 		navigationComponent.expectSecondaryNavigationOption(
 			"e-mail-link",
 			"Send an e-mail",
-			"mailto:hello@jdkcomparison.com"
+			"mailto:hello@jdkcomparison.com",
 		);
 	});
 
@@ -241,7 +241,7 @@ describe("Comparison in production", () => {
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.showFeatureExplanation("technologies-jfr");
 		comparisonPage.expectFeatureExplanation(
-			"Flight Recorder (JFR) is a low-overhead data collection framework"
+			"Flight Recorder (JFR) is a low-overhead data collection framework",
 		);
 		comparisonPage.closeFeatureExplanation("technologies-jfr");
 	});

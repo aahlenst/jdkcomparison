@@ -42,7 +42,7 @@ describe("JDK Comparison", () => {
 		navigationComponent.expectSecondaryNavigationOption(
 			"github-link",
 			"Go to GitHub repository",
-			"https://github.com/aahlenst/jdkcomparison"
+			"https://github.com/aahlenst/jdkcomparison",
 		);
 	});
 
@@ -53,7 +53,7 @@ describe("JDK Comparison", () => {
 		navigationComponent.expectSecondaryNavigationOption(
 			"e-mail-link",
 			"Send an e-mail",
-			"mailto:hello@jdkcomparison.com"
+			"mailto:hello@jdkcomparison.com",
 		);
 	});
 
@@ -283,7 +283,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturePresence(
 			"licensing-free-in-development",
 			"Free in Development",
-			["yes", "yes", "yes"]
+			["yes", "yes", "yes"],
 		);
 		comparisonPage.expectFeaturePresence("licensing-free-in-production", "Free in Production", [
 			"yes",
@@ -748,7 +748,7 @@ describe("JDK Comparison", () => {
 		navigationComponent.expectPageTitle("JDK Comparison");
 		comparisonPage.showFeatureExplanation("technologies-jfr");
 		comparisonPage.expectFeatureExplanation(
-			"Flight Recorder (JFR) is a low-overhead data collection framework"
+			"Flight Recorder (JFR) is a low-overhead data collection framework",
 		);
 		comparisonPage.closeFeatureExplanation("technologies-jfr");
 	});
@@ -1025,14 +1025,14 @@ describe("JDK Comparison", () => {
 			"technologies-jfx",
 			0,
 			1,
-			"Some clarifications regarding JavaFX"
+			"Some clarifications regarding JavaFX",
 		);
 		comparisonPage.expectFootnote("support-paid", 1, 2, "Some remark regarding paid support");
 		comparisonPage.expectFootnote(
 			"support-eol-date",
 			1,
 			3,
-			"Some comment about the end of life date"
+			"Some comment about the end of life date",
 		);
 	});
 
@@ -1199,7 +1199,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectProductNames([]);
 
 		cy.visit(
-			"/?technologies=JavaFX&technologies=Flight%20Recorder&technologies=Java%20Web%20Start"
+			"/?technologies=JavaFX&technologies=Flight%20Recorder&technologies=Java%20Web%20Start",
 		);
 		comparisonPage.showFilter("technologies");
 		comparisonPage.expectFilterOption("technologies", "Flight Recorder", true);
