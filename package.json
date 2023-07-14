@@ -20,7 +20,7 @@
 		"github-slugger": "2.0.0",
 		"immer": "10.0.2",
 		"micromark": "4.0.0",
-		"next": "13.4.9",
+		"next": "13.4.10",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-popper": "2.3.0",
