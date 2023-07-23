@@ -392,9 +392,8 @@ export const data: Vendor = {
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 			markdown:
-				"Paid support is provided by some of the companies backing Eclipse Adoptium, for example, " +
-				"[Azul](https://www.azul.com/products/core/) and " +
-				"[IBM](https://www.ibm.com/support/pages/ibm-runtimes-business).",
+				"[Paid support for Eclipse Temurin](https://adoptium.net/temurin/commercial-support/) is provided by " +
+				"some of the companies backing Eclipse Adoptium.",
 		},
 		{
 			id: "62fd52c0-82d0-468a-a413-38277b35bd30",
