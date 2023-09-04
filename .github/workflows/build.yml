@@ -19,7 +19,7 @@ jobs:
     name: Run common checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Run shellcheck on shell scripts
         run: find . -name node_modules -prune -o -type f -name "*.sh" -exec shellcheck {} \;
@@ -41,7 +41,7 @@ jobs:
         # Use Node.js LTS and Current. Schedule: https://nodejs.org/en/about/releases/
         node-version: [18.x, 19.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -165,7 +165,7 @@ jobs:
     env:
       CYPRESS_BASE_URL: ${{ needs.deploy-preview.outputs.preview-url }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
