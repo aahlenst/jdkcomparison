@@ -90,7 +90,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "unknown" },
+				eolDate: { text: "2026-11", footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7" },
 				releaseSchedule: {
 					text: "Custom",
 					footnote: "c8c5c06c-4077-4e8e-9dce-f649eab66b45",
@@ -177,7 +177,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "unknown" },
+				eolDate: { text: "2027-10", footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7" },
 				releaseSchedule: {
 					text: "Custom",
 					footnote: "c8c5c06c-4077-4e8e-9dce-f649eab66b45",
@@ -232,6 +232,12 @@ export const data: Vendor = {
 				"[8](https://github.com/ibmruntimes/semeru-openjdk-jdk8), " +
 				"[11](https://github.com/ibmruntimes/semeru-openjdk-jdk11), " +
 				"[17](https://github.com/ibmruntimes/semeru-openjdk-jdk17).",
+		},
+		{
+			id: "0caa519b-a44e-449b-8d5b-879c640ebac7",
+			markdown:
+				"For details on the life cycle of IBM Semeru Runtimes, see IBM's " +
+				"[Semeru Runtimes Support](https://www.ibm.com/support/pages/semeru-runtimes-support/) document.",
 		},
 	],
 };
