@@ -319,11 +319,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "zulu-20",
+			id: "zulu-21",
 			information: {
-				name: "Zulu 20",
-				version: 20,
-				downloadSite: "https://www.azul.com/downloads/?version=java-20-lts#zulu",
+				name: "Zulu 21",
+				version: 21,
+				downloadSite: "https://www.azul.com/downloads/?version=java-21-lts#zulu",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -378,7 +378,7 @@ export const data: Vendor = {
 					solarisSPARC: { present: Present.NO },
 					solarisx64: { present: Present.NO },
 				},
-				aqavit: { present: Present.UNKNOWN },
+				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: {
 					text: "JRE, OpenJFX",
@@ -397,7 +397,7 @@ export const data: Vendor = {
 					present: Present.YES,
 				},
 				eolDate: {
-					text: "2023-09",
+					text: "2031-09",
 					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
 				},
 				releaseSchedule: { text: "OpenJDK" },
