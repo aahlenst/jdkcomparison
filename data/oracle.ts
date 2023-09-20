@@ -13,11 +13,11 @@ export const data: Vendor = {
 	website: "https://oracle.com/java",
 	jdks: [
 		{
-			id: "openjdk-20",
+			id: "openjdk-21",
 			information: {
-				name: "OpenJDK 20",
-				version: 20,
-				downloadSite: "https://jdk.java.net/20",
+				name: "OpenJDK 21",
+				version: 21,
+				downloadSite: "https://jdk.java.net/21",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -77,7 +77,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2023-10" },
+				eolDate: { text: "2024-03" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "0-3 days" },
 				remarks: { text: "none" },
@@ -234,7 +234,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.NO },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2026-09" },
+				eolDate: { text: "2031-12", footnote: "85941abe-619f-41be-8ae2-266abcd05580" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				remarks: { text: "none" },
@@ -316,18 +316,18 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2024-09" },
+				eolDate: { text: "2029-09", footnote: "85941abe-619f-41be-8ae2-266abcd05580" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				remarks: { text: "none" },
 			},
 		},
 		{
-			id: "oracle-jdk-20",
+			id: "oracle-jdk-21",
 			information: {
-				name: "Oracle JDK 20",
-				version: 20,
-				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java20",
+				name: "Oracle JDK 21",
+				version: 21,
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java21",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -398,7 +398,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2023-09" },
+				eolDate: { text: "2031-09", footnote: "85941abe-619f-41be-8ae2-266abcd05580" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				remarks: { text: "none" },
@@ -411,7 +411,10 @@ export const data: Vendor = {
 			markdown:
 				"Oracle plans to discontinue support for certain technologies like JavaFX at an earlier date. " +
 				"For details, see [Java Client Roadmap " +
-				"Update](https://www.oracle.com/technetwork/java/javase/javaclientroadmapupdatev2020may-6548840.pdf).",
+				"Update](https://www.oracle.com/technetwork/java/javase/javaclientroadmapupdatev2020may-6548840.pdf). " +
+				"Also, consult the [Java SE support " +
+				"roadmap](https://www.oracle.com/java/technologies/java-se-support-roadmap.html) for details on " +
+				"Oracle's tiered support.",
 		},
 		{
 			id: "6576d2d3-c547-4bb6-afea-be54dee845ac",
@@ -430,7 +433,18 @@ export const data: Vendor = {
 			markdown:
 				"Production use is governed under the [Oracle No-Fee Terms and " +
 				"Conditions](https://www.oracle.com/downloads/licenses/no-fee-license.html) that impose some " +
-				'limitations. For example, they restrict the free usage to "internal business operations".',
+				'limitations. For example, they restrict the free usage to "internal business operations". ' +
+				"Furthermore, the version that can be used free of charge only receives updates for three years " +
+				"after the initial release.",
+		},
+		{
+			id: "85941abe-619f-41be-8ae2-266abcd05580",
+			markdown:
+				"Oracle JDK has a tiered [support " +
+				"lifecycle](https://www.oracle.com/java/technologies/java-se-support-roadmap.html). While free " +
+				"updates are usually offered only three years after the initial release, paying customers can " +
+				"receive updates for much longer. The comparison lists the end-of-life date for the paid " +
+				"extended support.",
 		},
 	],
 };
