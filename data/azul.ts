@@ -294,7 +294,7 @@ export const data: Vendor = {
 				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: {
-					text: "JRE, OpenJFX",
+					text: "CRaC, JRE, OpenJFX",
 					footnote: "96bee46b-fcbb-4929-ad24-c0e94d2d2bed",
 				},
 				customisations: {
@@ -426,7 +426,10 @@ export const data: Vendor = {
 		},
 		{
 			id: "96bee46b-fcbb-4929-ad24-c0e94d2d2bed",
-			markdown: "Editions are only available for a subset of platforms.",
+			markdown:
+				"Editions are only available for a subset of platforms. [Coordinated Restore at " +
+				"Checkpoint](https://www.azul.com/products/components/crac/) (CRaC) is a future " +
+				"OpenJDK feature that drastically reduces start-up and warm-up time.",
 		},
 		{
 			id: "c8237922-a8c7-46f8-b913-ccf318ea3f96",
