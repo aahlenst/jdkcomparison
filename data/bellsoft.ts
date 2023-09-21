@@ -277,10 +277,10 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "liberica-jdk-20",
+			id: "liberica-jdk-21",
 			information: {
-				name: "Liberica JDK 20",
-				version: 20,
+				name: "Liberica JDK 21",
+				version: 21,
 				downloadSite: "https://bell-sw.com/pages/downloads/",
 			},
 			features: {
@@ -357,7 +357,7 @@ export const data: Vendor = {
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
 				eolDate: {
-					text: "2023-09",
+					text: "2032-03",
 					footnote: "e92c2876-d7c0-43f3-a441-b4f95ce940cb",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -382,7 +382,9 @@ export const data: Vendor = {
 		},
 		{
 			id: "f8b6d9fb-a935-4630-96fd-db3422421420",
-			markdown: "Container images are only offered for x86, 64-bit and ARM, 64-bit.",
+			markdown:
+				"Container images are only offered for x86, 64-bit, ARM, 64-bit, and ARM, 32-bit. Depending on the " +
+				"version and operating system, the selection may be smaller.",
 		},
 		{
 			id: "e92c2876-d7c0-43f3-a441-b4f95ce940cb",
