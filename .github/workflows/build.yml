@@ -12,7 +12,7 @@ permissions:
 
 env:
   ARTIFACT_NAME: jdkcomparison-site
-  NODE_VERSION: 19.x
+  NODE_VERSION: 20.x
 
 jobs:
   common-checks:
@@ -39,7 +39,7 @@ jobs:
     strategy:
       matrix:
         # Use Node.js LTS and Current. Schedule: https://nodejs.org/en/about/releases/
-        node-version: [18.x, 19.x]
+        node-version: [18.x, 20.x]
     steps:
       - uses: actions/checkout@v4
 
