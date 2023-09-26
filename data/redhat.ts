@@ -316,7 +316,7 @@ export const data: Vendor = {
 			id: "f4cfc6a3-190c-4266-96a5-76947275f457",
 			markdown:
 				"Red Hat Build of OpenJDK is only available as part of Red Hat Enterprise Linux, not as a " +
-				"stand-alone product. [Red Hat recommends to install Eclipse Temurin on other Linux distributions and" +
+				"stand-alone product. [Red Hat recommends to install Eclipse Temurin on other Linux distributions and " +
 				"operating systems like macOS](https://developers.redhat.com/products/openjdk/install).",
 		},
 		{
