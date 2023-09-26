@@ -57,10 +57,7 @@ export const data: Vendor = {
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
-					containerImages: {
-						present: Present.PARTIALLY,
-						footnote: "124b5cae-4563-4df5-aa71-020d2af224ff",
-					},
+					containerImages: { present: Present.YES },
 				},
 				windows: {
 					x32: { present: Present.YES },
@@ -94,7 +91,7 @@ export const data: Vendor = {
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
 				},
 				eolDate: {
-					text: "2026-06",
+					text: "2026-04",
 					footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -196,7 +193,7 @@ export const data: Vendor = {
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
 				},
 				eolDate: {
-					text: "2027-09",
+					text: "2027-07",
 					footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -241,11 +238,7 @@ export const data: Vendor = {
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
-					// No container images with Alpine Linux on aarch64.
-					containerImages: {
-						present: Present.PARTIALLY,
-						footnote: "124b5cae-4563-4df5-aa71-020d2af224ff",
-					},
+					containerImages: { present: Present.YES },
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -284,7 +277,7 @@ export const data: Vendor = {
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
 				},
 				eolDate: {
-					text: "2029-10",
+					text: "2028-07",
 					footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -293,12 +286,12 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "corretto-20",
+			id: "corretto-21",
 			information: {
-				name: "Corretto 20",
-				version: 20,
+				name: "Corretto 21",
+				version: 21,
 				downloadSite:
-					"https://docs.aws.amazon.com/corretto/latest/corretto-20-ug/downloads-list.html",
+					"https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/downloads-list.html",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -326,14 +319,11 @@ export const data: Vendor = {
 					ppc64: { present: Present.NO },
 					riscv64: { present: Present.NO },
 					s390x: { present: Present.NO },
+					// https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/generic-linux-install.html
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
-					// No container images with Alpine Linux on aarch64.
-					containerImages: {
-						present: Present.PARTIALLY,
-						footnote: "124b5cae-4563-4df5-aa71-020d2af224ff",
-					},
+					containerImages: { present: Present.YES },
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -354,7 +344,10 @@ export const data: Vendor = {
 				},
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
-				editions: { text: "none" },
+				editions: {
+					text: "JRE",
+					footnote: "5973218e-a5a5-4bac-b9c0-894d919e14bb",
+				},
 				customisations: {
 					text: "few",
 					footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d",
@@ -369,7 +362,7 @@ export const data: Vendor = {
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
 				},
 				eolDate: {
-					text: "2023-10",
+					text: "n/a",
 					footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -393,7 +386,7 @@ export const data: Vendor = {
 				"[8](https://github.com/corretto/corretto-8/blob/develop/CHANGELOG.md), " +
 				"[11](https://github.com/corretto/corretto-11/blob/develop/CHANGELOG.md), " +
 				"[17](https://github.com/corretto/corretto-17/blob/develop/CHANGELOG.md), " +
-				"[20](https://github.com/corretto/corretto-20/blob/develop/CHANGELOG.md).",
+				"[21](https://github.com/corretto/corretto-21/blob/develop/CHANGELOG.md).",
 		},
 		{
 			id: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
@@ -427,6 +420,10 @@ export const data: Vendor = {
 		{
 			id: "7c5df998-f73e-426f-8955-d6a6df6ab856",
 			markdown: "The JRE is only available on Amazon Linux 2.",
+		},
+		{
+			id: "5973218e-a5a5-4bac-b9c0-894d919e14bb",
+			markdown: "The JRE is only available on Amazon Linux 2023.",
 		},
 		{
 			id: "124b5cae-4563-4df5-aa71-020d2af224ff",
