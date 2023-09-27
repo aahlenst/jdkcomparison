@@ -227,9 +227,12 @@ export const data: Vendor = {
 					custom: { text: "none" },
 				},
 				mac: {
-					x64: { present: Present.NO },
-					aarch64: { present: Present.NO },
-					installers: { present: Present.NO },
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: {
+						present: Present.NO,
+						footnote: "2f3ac1c8-77cc-46a1-830f-18f9a19e991c",
+					},
 				},
 				linux: {
 					x32: { present: Present.NO },
@@ -290,7 +293,7 @@ export const data: Vendor = {
 					footnote: "0484cb17-6266-4d75-9e44-8021b75b7bb4",
 				},
 				eolDate: {
-					text: "n/a",
+					text: "2028-09",
 					footnote: "13ade37e-7160-4316-84f9-4dbdd5efa8df",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -318,9 +321,9 @@ export const data: Vendor = {
 		{
 			id: "13ade37e-7160-4316-84f9-4dbdd5efa8df",
 			markdown:
-				"See [Security Updates, Maintenance and " +
-				"Support](https://github.com/SAP/SapMachine/wiki/Security-Updates,-Maintenance-and-Support) for the " +
-				"complete release and support calendar.",
+				"See [Maintenance and Support]" +
+				"(https://github.com/SAP/SapMachine/wiki/Maintenance-and-Support) for the complete release and " +
+				"support calendar.",
 		},
 		{
 			id: "7449bc96-4cef-4e0a-bc49-d2ce256683bf",
