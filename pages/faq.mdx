@@ -14,6 +14,7 @@ export const meta = {
 -   Data and Features
     -   [What JDKs Do You Plan on Adding? Why Are Some Missing?](#what-jdks-do-you-plan-on-adding-why-are-some-missing)
     -   [What Is the Meaning of the Licenses?](#what-is-the-meaning-of-the-licenses)
+    -   [What Is the Difference Between the Update Types?](#what-is-the-difference-between-the-update-types)
 -   Further Information
     -   [Where Can I Learn More about Differences Between Versions?](#where-can-i-learn-more-about-differences-between-versions)
     -   [What Are My Options If I Need JavaFX?](#what-are-my-options-if-i-need-javafx)
@@ -83,6 +84,24 @@ The most common license is the GNU [General Public License Version 2 with Classp
 The GPLv2+CE is the most common JDK license because the OpenJDK source code is licensed under the GPLv2+CE.
 
 Some vendors offer their JDKs under different license terms. The provisions vary between vendors and sometimes even between versions. The comparison subsumes these licenses under the label "Proprietary". Usually, a footnote provides additional information.
+
+## What Is the Difference Between the Update Types?
+
+The comparison distinguishes between two types of updates that vendors publish quarterly for their JDKs: Critical Patch Updates (CPU) and Patch Set Updates (PSU). [Oracle introduced those terms](https://www.java.com/releases/), but other vendors have adopted them in the meantime.
+
+Patch Set Updates are the norm: They contain all security patches in addition to other bug fixes and enhancements that have been applied since the last quarterly PSU.
+
+Critical Patch Updates are only published by a subset of vendors. They contain only security patches and critical bug fixes that have been applied on top of the last quarterly PSU.
+
+Please note that the exact definition of those terms might vary between vendors.
+
+Possible values in the comparison table and their meaning:
+
+-   **no**: The vendor does not publish the type of update.
+-   **free**: The type of update is available free of charge.
+-   **paid**: The type of update is only available to paying customers.
+-   **tiered**: The availability of the type of update is somehow tiered. For example, it can be free of charge for a fixed timeframe since the initial release of the JDK. Further updates are only made available to paying customers.
+-   **unknown**: There is not enough information to assign any of the other values.
 
 ## Where Can I Learn More about Differences Between Versions?
 

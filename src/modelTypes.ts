@@ -78,6 +78,7 @@ export namespace Model {
 		eolDate: FeatureDescription;
 		releaseSchedule: FeatureDescription;
 		releaseDelay: FeatureDescription;
+		updateTypes: FeatureDescription;
 		remarks: FeatureDescription;
 	};
 

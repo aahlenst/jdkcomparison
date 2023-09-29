@@ -121,6 +121,7 @@ describe("extractComparisonData()", () => {
 		});
 		expect(jdk.releaseSchedule).toEqual({ text: "OpenJDK" });
 		expect(jdk.releaseDelay).toEqual({ text: "none" });
+		expect(jdk.updateTypes).toEqual({ text: "paid/tiered" });
 	});
 
 	test("returns JDKs sorted by descending version, ascending vendor name, ascending JDK name", () => {

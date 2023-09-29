@@ -95,6 +95,7 @@ export const data: Vendor = {
 				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
+				updateTypes: { text: "paid/tiered" },
 				remarks: { text: "none" },
 			},
 		},

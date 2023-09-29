@@ -141,6 +141,7 @@ function extractFeatureComparisons(
 			eolDate: mapFeatureDescription(jdk.features.eolDate, footnotes),
 			releaseSchedule: mapFeatureDescription(jdk.features.releaseSchedule, footnotes),
 			releaseDelay: mapFeatureDescription(jdk.features.releaseDelay, footnotes),
+			updateTypes: mapFeatureDescription(jdk.features.updateTypes, footnotes),
 			remarks: mapFeatureDescription(jdk.features.remarks, footnotes),
 		};
 	});

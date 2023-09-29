@@ -170,6 +170,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
+			"CPU/PSU",
 			"Release Schedule",
 			"Release Delay",
 			"Paid Support",

@@ -19,10 +19,11 @@ import { Feature } from "@/components/comparison/feature";
 import { Model } from "@/src/modelTypes";
 import { ComparisonSection } from "./comparisonSection";
 import { useShowDifferencesOnly } from "@/hooks/useShowDifferencesOnly";
+import Link from "next/link";
 
 export type SupportFeaturesSlice = Pick<
 	Model.FeatureComparison,
-	"id" | "eolDate" | "releaseSchedule" | "releaseDelay" | "paidSupport"
+	"id" | "eolDate" | "updateTypes" | "releaseSchedule" | "releaseDelay" | "paidSupport"
 >;
 
 type SupportSectionProps = {
@@ -33,6 +34,10 @@ type SupportSectionProps = {
 export function SupportSection({ productData, showDifferencesOnly }: SupportSectionProps) {
 	const eolDate = productData.map((product) => ({
 		...product.eolDate,
+		id: product.id,
+	}));
+	const updateTypes = productData.map((product) => ({
+		...product.updateTypes,
 		id: product.id,
 	}));
 	const schedule = productData.map((product) => ({
@@ -49,6 +54,7 @@ export function SupportSection({ productData, showDifferencesOnly }: SupportSect
 	}));
 	const [showSection, showFeatures] = useShowDifferencesOnly(showDifferencesOnly, {
 		eolDate: eolDate,
+		updateTypes: updateTypes,
 		schedule: schedule,
 		delay: delay,
 		paidSupport: paidSupport,
@@ -63,6 +69,17 @@ export function SupportSection({ productData, showDifferencesOnly }: SupportSect
 			{showFeatures.eolDate && (
 				<Feature id="support-eol-date" name="Patches Until" values={eolDate}>
 					Date (Year-Month) until the JDK receives patches from the vendor.
+				</Feature>
+			)}
+			{showFeatures.updateTypes && (
+				<Feature id="support-update-types" name="CPU/PSU" values={updateTypes}>
+					Indicates whether the vendor publishes Critical Patch Updates (CPU) and Patch
+					Set Updates (PSU) and whether those are free or only accessible to paying
+					customers. See the{" "}
+					<Link href="/faq/#what-is-the-difference-between-the-update-types">
+						FAQ entry about update types
+					</Link>{" "}
+					for further information.
 				</Feature>
 			)}
 			{showFeatures.schedule && (

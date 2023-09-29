@@ -26,6 +26,7 @@ describe("<SupportSection/>", () => {
 			return {
 				id: `jdk-${i}`,
 				eolDate: { text: "2038-01" },
+				updateTypes: { text: "no/tiered" },
 				releaseSchedule: { text: "Custom" },
 				releaseDelay: { text: "1-3 days" },
 				paidSupport: { present: Model.Present.PARTIALLY },
@@ -38,6 +39,7 @@ describe("<SupportSection/>", () => {
 
 		section.expectFeatures([
 			"Patches Until",
+			"CPU/PSU",
 			"Release Schedule",
 			"Release Delay",
 			"Paid Support",
@@ -45,6 +47,10 @@ describe("<SupportSection/>", () => {
 		section.expectFeatureDescription("support-eol-date", "Patches Until", [
 			"2038-01",
 			"2038-01",
+		]);
+		section.expectFeatureDescription("support-update-types", "CPU/PSU", [
+			"no/tiered",
+			"no/tiered",
 		]);
 		section.expectFeatureDescription("support-release-schedule", "Release Schedule", [
 			"Custom",
@@ -67,11 +73,13 @@ describe("<SupportSection/>", () => {
 
 		section.expectFeatures([
 			"Patches Until",
+			"CPU/PSU",
 			"Release Schedule",
 			"Release Delay",
 			"Paid Support",
 		]);
 		section.expectFeatureDescription("support-eol-date", "Patches Until", ["2038-01"]);
+		section.expectFeatureDescription("support-update-types", "CPU/PSU", ["no/tiered"]);
 		section.expectFeatureDescription("support-release-schedule", "Release Schedule", [
 			"Custom",
 		]);
@@ -94,6 +102,18 @@ describe("<SupportSection/>", () => {
 		section.expectFeatureDescription("support-eol-date", "Patches Until", [
 			"2030-12",
 			"2038-01",
+		]);
+	});
+
+	it("displays CPU/PSU if features are different and differences only is on", () => {
+		data[0].updateTypes.text = "no/free";
+
+		cy.mount(<SupportSection productData={data} showDifferencesOnly={true} />);
+
+		section.expectFeatures(["CPU/PSU"]);
+		section.expectFeatureDescription("support-update-types", "CPU/PSU", [
+			"no/free",
+			"no/tiered",
 		]);
 	});
 

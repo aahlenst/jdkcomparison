@@ -158,7 +158,12 @@ export type JDKFeatures = {
 	 * Treat JDKs with highly inconsistent release schedules (for example, IBM Semeru Runtime) as custom schedules.
 	 */
 	releaseDelay: FeatureDescription;
-
+	/**
+	 * Types of updates (CPU/PSU) published by the vendor, encoded as text. Valid values: `no`, `free`, `paid`,
+	 * `mixed` (initially free, then paid), `unknown`. Examples: `paid/free` (paid CPU, free PSU), `no/free`
+	 * (no CPU, free PSU).
+	 */
+	updateTypes: FeatureDescription;
 	/**
 	 * Field to add remarks and information that fits nowhere else.
 	 */

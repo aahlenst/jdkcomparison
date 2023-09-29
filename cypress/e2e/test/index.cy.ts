@@ -296,6 +296,7 @@ describe("JDK Comparison", () => {
 
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
+			"CPU/PSU",
 			"Release Schedule",
 			"Release Delay",
 			"Paid Support",
@@ -304,6 +305,11 @@ describe("JDK Comparison", () => {
 			"2027-10",
 			"2027-10[3]",
 			"2026-10",
+		]);
+		comparisonPage.expectFeatureText("support-update-types", "CPU/PSU", [
+			"no/free",
+			"paid/tiered",
+			"no/free",
 		]);
 		comparisonPage.expectFeatureText("support-release-schedule", "Release Schedule", [
 			"OpenJDK",
@@ -415,6 +421,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
+			"CPU/PSU",
 			"Release Schedule",
 			"Release Delay",
 			"Paid Support",
@@ -476,7 +483,11 @@ describe("JDK Comparison", () => {
 		]);
 		comparisonPage.expectFeaturesInSection("licensing", ["License", "Free in Production"]);
 		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
-		comparisonPage.expectFeaturesInSection("support", ["Patches Until", "Release Delay"]);
+		comparisonPage.expectFeaturesInSection("support", [
+			"Patches Until",
+			"CPU/PSU",
+			"Release Delay",
+		]);
 		comparisonPage.expectFeaturesInSection("information", ["Country of Origin", "Remarks"]);
 	});
 
@@ -560,6 +571,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
+			"CPU/PSU",
 			"Release Schedule",
 			"Release Delay",
 			"Paid Support",
@@ -634,6 +646,7 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectFeaturesInSection("security", ["SBOM"]);
 		comparisonPage.expectFeaturesInSection("support", [
 			"Patches Until",
+			"CPU/PSU",
 			"Release Schedule",
 			"Release Delay",
 			"Paid Support",
