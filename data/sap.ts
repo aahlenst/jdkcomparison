@@ -276,7 +276,8 @@ export const data: Vendor = {
 					solarisx64: { present: Present.NO },
 				},
 				aqavit: { present: Present.NO },
-				tck: { present: Present.YES },
+				// SAP is currently not on https://openjdk.org/groups/conformance/JckAccess/jck-access.html.
+				tck: { present: Present.UNKNOWN },
 				editions: { text: "JRE" },
 				customisations: {
 					text: "few",
