@@ -17,7 +17,7 @@ cleanup() {
 trap cleanup EXIT
 
 # Remove build output from previous runs.
-rm -rf .next .vercel
+rm -rf .next .vercel .wrangler
 
 # Check
 find . -name node_modules -prune -o -type f -name "*.sh" -exec shellcheck {} \;

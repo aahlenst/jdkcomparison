@@ -20,6 +20,7 @@ node_modules/
 out/
 *.tsbuildinfo
 next-env.d.ts
+.wrangler
 
 # Local configuration
 .env*.local
