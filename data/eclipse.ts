@@ -189,7 +189,7 @@ export const data: Vendor = {
 					footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 				},
 				eolDate: {
-					text: "2024-10",
+					text: "2027-10",
 					footnote: "62fd52c0-82d0-468a-a413-38277b35bd30",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -295,11 +295,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "eclipse-temurin-20",
+			id: "eclipse-temurin-21",
 			information: {
-				name: "Eclipse Temurin 20",
-				version: 20,
-				downloadSite: "https://adoptium.net/temurin/releases/?version=20",
+				name: "Eclipse Temurin 21",
+				version: 21,
+				downloadSite: "https://adoptium.net/temurin/releases/?version=21",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -313,8 +313,14 @@ export const data: Vendor = {
 					g1: { present: Present.YES },
 					parallel: { present: Present.YES },
 					serial: { present: Present.YES },
-					shenandoah: { present: Present.YES },
-					z: { present: Present.YES },
+					shenandoah: {
+						present: Present.PARTIALLY,
+						footnote: "7bdc2d88-3cb4-4879-830e-da51c7a662db",
+					},
+					z: {
+						present: Present.PARTIALLY,
+						footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f",
+					},
 					custom: { text: "none" },
 				},
 				linux: {
@@ -322,11 +328,11 @@ export const data: Vendor = {
 					x64: { present: Present.YES },
 					x64Musl: { present: Present.YES },
 					aarch64: { present: Present.YES },
-					aarch64Musl: { present: Present.NO },
+					aarch64Musl: { present: Present.YES },
 					aarch32: { present: Present.NO },
 					ppc64: { present: Present.YES },
 					riscv64: { present: Present.NO },
-					s390x: { present: Present.NO },
+					s390x: { present: Present.YES },
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
@@ -345,7 +351,7 @@ export const data: Vendor = {
 					containerImages: { present: Present.YES },
 				},
 				otherPlatforms: {
-					aixPPC: { present: Present.NO },
+					aixPPC: { present: Present.YES },
 					solarisSPARC: { present: Present.NO },
 					solarisx64: { present: Present.NO },
 				},
@@ -372,7 +378,7 @@ export const data: Vendor = {
 					footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 				},
 				eolDate: {
-					text: "2023-09",
+					text: "2029-12",
 					footnote: "62fd52c0-82d0-468a-a413-38277b35bd30",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -391,7 +397,7 @@ export const data: Vendor = {
 				"eclipse-temurin-bot: JDK [8](https://github.com/adoptium/jdk8u/compare/master...release), " +
 				"[11](https://github.com/adoptium/jdk11u/compare/master...release), " +
 				"[17](https://github.com/adoptium/jdk17u/compare/master...release), and " +
-				"[20](https://github.com/adoptium/jdk20/compare/master...release).",
+				"[21](https://github.com/adoptium/jdk21/compare/master...release).",
 		},
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",

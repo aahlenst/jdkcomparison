@@ -193,7 +193,6 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFilterOption("versions", "8", false);
 		comparisonPage.expectFilterOption("versions", "11", false);
 		comparisonPage.expectFilterOption("versions", "17", false);
-		comparisonPage.expectFilterOption("versions", "20", false);
 		comparisonPage.expectFilterOption("versions", "21", false);
 		comparisonPage.closeFilter("versions");
 
