@@ -12,6 +12,7 @@ permissions:
 
 env:
   ARTIFACT_NAME: jdkcomparison-site
+  # Use Node.js LTS. Schedule: https://nodejs.org/en/about/releases/
   NODE_VERSION: 20.x
 
 jobs:
@@ -36,17 +37,13 @@ jobs:
       contents: read
       checks: write
       pull-requests: write
-    strategy:
-      matrix:
-        # Use Node.js LTS and Current. Schedule: https://nodejs.org/en/about/releases/
-        node-version: [18.x, 20.x]
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Install dependencies
@@ -85,7 +82,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          check_name: Test Results of Node.js ${{ matrix.node-version }}
+          check_name: Test Results of Node.js ${{ env.NODE_VERSION }}
           files: |
             cypress/results/*.xml
             build/reports/*.xml
@@ -94,7 +91,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-tests-node.js-${{ matrix.node-version }}
+          name: cypress-tests-node.js-${{ env.NODE_VERSION }}
           path: |
             cypress/screenshots/
             cypress/videos/
