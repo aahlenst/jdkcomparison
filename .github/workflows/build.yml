@@ -69,7 +69,7 @@ jobs:
           lsof -t -i:3000 -sTCP:LISTEN | xargs -r kill -TERM
 
       - name: Build
-        run: npx @cloudflare/next-on-pages
+        run: npx @cloudflare/next-on-pages@`node -p -e "require('./package.json').devDependencies['@cloudflare/next-on-pages']"`
 
       # Upload build output before anything can alter it.
       - name: Upload artifact for deployment job
