@@ -93,7 +93,7 @@ export const data: Vendor = {
 					footnote: "da0cf3bb-e1dd-46e7-9e53-13a3fa74aa0d",
 				},
 				eolDate: {
-					text: "2024-09",
+					text: "2027-09",
 					footnote: "16f40a6c-3a23-4e94-bc72-d1286f835529",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -264,7 +264,7 @@ export const data: Vendor = {
 					footnote: "da0cf3bb-e1dd-46e7-9e53-13a3fa74aa0d",
 				},
 				eolDate: {
-					text: "n/a",
+					text: "2028-09",
 					footnote: "16f40a6c-3a23-4e94-bc72-d1286f835529",
 				},
 				releaseSchedule: { text: "OpenJDK" },
