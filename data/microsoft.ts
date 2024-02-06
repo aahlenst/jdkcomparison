@@ -67,7 +67,7 @@ export const data: Vendor = {
 				windows: {
 					x32: { present: Present.NO },
 					x64: { present: Present.YES },
-					aarch64: { present: Present.NO },
+					aarch64: { present: Present.YES },
 					installers: { present: Present.YES },
 					containerImages: { present: Present.NO },
 				},
