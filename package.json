@@ -37,7 +37,7 @@
 		"@tailwindcss/typography": "0.5.10",
 		"@types/node": "20.11.26",
 		"@types/react": "18.2.65",
-		"@types/react-dom": "18.2.21",
+		"@types/react-dom": "18.2.22",
 		"autoprefixer": "10.4.18",
 		"cypress": "13.6.6",
 		"cypress-multi-reporters": "1.6.4",
