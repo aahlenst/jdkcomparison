@@ -13,11 +13,11 @@ export const data: Vendor = {
 	website: "https://oracle.com/java",
 	jdks: [
 		{
-			id: "openjdk-21",
+			id: "openjdk-22",
 			information: {
-				name: "OpenJDK 21",
-				version: 21,
-				downloadSite: "https://jdk.java.net/21",
+				name: "OpenJDK 22",
+				version: 22,
+				downloadSite: "https://jdk.java.net/22",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -77,7 +77,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2024-03" },
+				eolDate: { text: "2024-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "0-3 days" },
 				updateTypes: { text: "no/free" },
