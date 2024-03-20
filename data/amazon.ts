@@ -374,6 +374,92 @@ export const data: Vendor = {
 				remarks: { text: "none" },
 			},
 		},
+		{
+			id: "corretto-22",
+			information: {
+				name: "Corretto 22",
+				version: 22,
+				downloadSite:
+					"https://docs.aws.amazon.com/corretto/latest/corretto-22-ug/downloads-list.html",
+			},
+			features: {
+				virtualMachine: { text: "HotSpot" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: { present: Present.YES },
+					z: { present: Present.YES },
+					custom: { text: "none" },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.YES },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					// https://docs.aws.amazon.com/corretto/latest/corretto-22-ug/generic-linux-install.html
+					apk: { present: Present.YES },
+					deb: { present: Present.YES },
+					rpm: { present: Present.YES },
+					containerImages: { present: Present.YES },
+				},
+				mac: {
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: { present: Present.YES },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.YES },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: { present: Present.YES },
+				editions: {
+					text: "JRE",
+					footnote: "5973218e-a5a5-4bac-b9c0-894d919e14bb",
+				},
+				customisations: {
+					text: "few",
+					footnote: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d",
+				},
+				notableFeatures: { text: "none" },
+				license: { text: "GPLv2+CE" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.PARTIALLY,
+					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
+				},
+				eolDate: {
+					text: "2024-09",
+					footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5",
+				},
+				releaseSchedule: { text: "OpenJDK" },
+				releaseDelay: { text: "0-3 days" },
+				updateTypes: { text: "no/free" },
+				remarks: { text: "none" },
+			},
+		},
 	],
 	footnotes: [
 		{
@@ -390,7 +476,8 @@ export const data: Vendor = {
 				"[8](https://github.com/corretto/corretto-8/blob/develop/CHANGELOG.md), " +
 				"[11](https://github.com/corretto/corretto-11/blob/develop/CHANGELOG.md), " +
 				"[17](https://github.com/corretto/corretto-17/blob/develop/CHANGELOG.md), " +
-				"[21](https://github.com/corretto/corretto-21/blob/develop/CHANGELOG.md).",
+				"[21](https://github.com/corretto/corretto-21/blob/develop/CHANGELOG.md), " +
+				"[22](https://github.com/corretto/corretto-22/blob/develop/CHANGELOG.md).",
 		},
 		{
 			id: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
