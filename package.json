@@ -3,13 +3,13 @@
 	"private": true,
 	"scripts": {
 		"build": "next build",
-		"component": "cypress open --component --browser firefox",
-		"component:headless": "cypress run --component --browser firefox",
+		"component": "cypress open --component --browser chrome",
+		"component:headless": "cypress run --component --browser chrome",
 		"cypress": "cypress open",
 		"dev": "next dev",
-		"e2e": "cypress open --e2e --browser firefox",
-		"e2e:headless": "cypress run --e2e --browser firefox --spec \"cypress/e2e/test/**/*\"",
-		"acceptance": "cypress run --e2e --browser firefox --spec \"cypress/e2e/acceptance/**/*\"",
+		"e2e": "cypress open --e2e --browser chrome",
+		"e2e:headless": "cypress run --e2e --browser chrome --spec \"cypress/e2e/test/**/*\"",
+		"acceptance": "cypress run --e2e --browser chrome --spec \"cypress/e2e/acceptance/**/*\"",
 		"jest": "jest --transformIgnorePatterns \"node_modules/(?!micromark)/\"",
 		"lint": "next lint",
 		"start": "next start"
