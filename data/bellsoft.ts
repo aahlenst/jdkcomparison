@@ -87,7 +87,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.YES,
+					footnote: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
+				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
 					text: "2031-03",
@@ -177,7 +180,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.YES,
+					footnote: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
+				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
 					text: "2027-03",
@@ -267,7 +273,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.YES,
+					footnote: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
+				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
 					text: "2030-03",
@@ -357,7 +366,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.YES,
+					footnote: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
+				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
 					text: "2032-03",
@@ -447,7 +459,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.YES,
+					footnote: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
+				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
 					text: "2024-09",
@@ -513,6 +528,12 @@ export const data: Vendor = {
 			id: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
 			markdown:
 				"JRE and JDKs with OpenJFX are not available on all platforms supported by BellSoft Liberica.",
+		},
+		{
+			id: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
+			markdown:
+				"The SBOM can be downloaded from [Liberica's GitHub " +
+				"Releases](https://github.com/bell-sw/Liberica/releases/).",
 		},
 	],
 };
