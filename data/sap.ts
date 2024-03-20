@@ -304,6 +304,108 @@ export const data: Vendor = {
 				remarks: { text: "none" },
 			},
 		},
+		{
+			id: "sapmachine-22",
+			information: {
+				name: "SapMachine 22",
+				version: 22,
+				downloadSite: "https://sap.github.io/SapMachine/",
+			},
+			features: {
+				virtualMachine: { text: "HotSpot" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: { present: Present.YES },
+					z: { present: Present.YES },
+					custom: { text: "none" },
+				},
+				mac: {
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: {
+						present: Present.NO,
+						footnote: "2f3ac1c8-77cc-46a1-830f-18f9a19e991c",
+					},
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.YES },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					// Official docs do not list all platforms. But the packages are used for the container images.
+					// http://dist.sapmachine.io/debian/amd64/Packages
+					// http://dist.sapmachine.io/debian/arm64/Packages
+					// http://dist.sapmachine.io/debian/ppc64el/Packages
+					deb: { present: Present.YES },
+					rpm: {
+						// Only x86, 64-bit
+						present: Present.PARTIALLY,
+						footnote: "2c2cc179-3ff9-4c15-a974-240cbf339c99",
+					},
+					// https://github.com/docker-library/official-images/blob/master/library/sapmachine
+					containerImages: {
+						present: Present.PARTIALLY,
+						footnote: "06887138-6947-4068-87d3-eb7d708afe86",
+					},
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.YES },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.YES },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: {
+					present: Present.PARTIALLY,
+					footnote: "822b32bd-e95a-4fb8-98e8-67bdd1e1b3f6",
+				},
+				editions: { text: "JRE" },
+				customisations: {
+					text: "few",
+					footnote: "69b47908-13e0-497c-b995-c0cf573f3f0f",
+				},
+				notableFeatures: {
+					text: "High Memory Reports, MallocTracer, Vitals",
+					footnote: "18e1d490-3582-46be-9340-271140e3ada5",
+				},
+				license: { text: "GPLv2+CE" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.PARTIALLY,
+					footnote: "0484cb17-6266-4d75-9e44-8021b75b7bb4",
+				},
+				eolDate: {
+					text: "2024-09",
+					footnote: "13ade37e-7160-4316-84f9-4dbdd5efa8df",
+				},
+				releaseSchedule: { text: "OpenJDK" },
+				releaseDelay: { text: "0-3 days" },
+				updateTypes: { text: "no/free" },
+				remarks: { text: "none" },
+			},
+		},
 	],
 	footnotes: [
 		{
