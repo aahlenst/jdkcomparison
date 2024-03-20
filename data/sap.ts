@@ -271,7 +271,7 @@ export const data: Vendor = {
 					containerImages: { present: Present.NO },
 				},
 				otherPlatforms: {
-					aixPPC: { present: Present.NO },
+					aixPPC: { present: Present.YES },
 					solarisSPARC: { present: Present.NO },
 					solarisx64: { present: Present.NO },
 				},
