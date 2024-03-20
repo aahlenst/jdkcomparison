@@ -495,7 +495,7 @@ export const data: Vendor = {
 			id: "84d39cc6-e2ef-4a32-9eea-da4ad9c1b274",
 			markdown:
 				"There is no public breakdown of differences. Apart from a custom keystore the main difference seems " +
-				"to be support bundling OpenJFX.",
+				"to be additional plumbing for the optionally bundled OpenJFX.",
 		},
 		{
 			id: "181deeee-c7ee-489b-8da9-a1976d7760e8",
