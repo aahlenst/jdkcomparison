@@ -438,8 +438,8 @@ export const data: Vendor = {
 		{
 			id: "c8237922-a8c7-46f8-b913-ccf318ea3f96",
 			markdown:
-				"The list of customisations is included in the release notes of each Azul Zulu release ([example " +
-				"from January 2023](https://docs.azul.com/core/zulu-openjdk/release-notes/january-2023)).",
+				"The list of customisations is included in the release notes of each Azul Zulu release, for example, " +
+				"[the January 2024 release notes](https://docs.azul.com/core/release/january-2024/release-notes.html).",
 		},
 		{
 			id: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
