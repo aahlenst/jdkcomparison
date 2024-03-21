@@ -384,7 +384,7 @@ export const data: Vendor = {
 				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: {
-					text: "JRE, OpenJFX",
+					text: "CRaC, JRE, OpenJFX",
 					footnote: "96bee46b-fcbb-4929-ad24-c0e94d2d2bed",
 				},
 				customisations: {
