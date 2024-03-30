@@ -213,6 +213,7 @@ describe("Comparison in production", () => {
 		comparisonPage.showFilter("vms");
 		comparisonPage.expectFilterOption("vms", "HotSpot", false);
 		comparisonPage.expectFilterOption("vms", "OpenJ9", false);
+		comparisonPage.expectFilterOption("vms", "Zing", false);
 		comparisonPage.closeFilter("vms");
 
 		comparisonPage.showFilter("technologies");

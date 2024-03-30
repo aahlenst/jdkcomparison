@@ -13,6 +13,366 @@ export const data: Vendor = {
 	website: "https://azul.com/",
 	jdks: [
 		{
+			id: "zing-8",
+			information: {
+				name: "Zing 8",
+				version: 8,
+				downloadSite: "https://www.azul.com/downloads/?version=java-8-lts#prime",
+			},
+			features: {
+				virtualMachine: { text: "Zing" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				// To check GC availability, run `java -XX:+UseSerialGC -Xnativevmflags:warn -version` (example with Serial GC)
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.NO },
+					parallel: { present: Present.NO },
+					serial: { present: Present.NO },
+					shenandoah: { present: Present.NO },
+					z: { present: Present.NO },
+					custom: { text: "C4", footnote: "ee106e4d-0f10-4944-8547-4d896386f61d" },
+				},
+				mac: {
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.NO },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					deb: { present: Present.YES },
+					rpm: { present: Present.YES },
+					containerImages: { present: Present.YES },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: { present: Present.YES },
+				editions: {
+					text: "JRE",
+					footnote: "3a460237-d12b-4ba4-b98e-8a6f081bcd9e",
+				},
+				customisations: {
+					text: "many",
+					footnote: "ace95bf5-c597-4ce2-b50e-94354610301a",
+				},
+				notableFeatures: {
+					text: "Cloud Native Compiler, Falcon JIT, ReadyNow",
+					footnote: "180b008e-82e9-47a8-8c4d-81f419b834da",
+				},
+				license: { text: "Proprietary" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.NO },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.YES,
+				},
+				eolDate: {
+					text: "2030-12",
+					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
+				},
+				releaseSchedule: {
+					text: "Custom",
+					footnote: "4bcf6deb-b4e0-4a38-bf27-121938b2768f",
+				},
+				releaseDelay: { text: "n/a" },
+				updateTypes: { text: "paid/paid" },
+				remarks: { text: "none" },
+			},
+		},
+		{
+			id: "zing-11",
+			information: {
+				name: "Zing 11",
+				version: 11,
+				downloadSite: "https://www.azul.com/downloads/?version=java-11-lts#prime",
+			},
+			features: {
+				virtualMachine: { text: "Zing" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				// To check GC availability, run `java -XX:+UseSerialGC -Xnativevmflags:warn -version` (example with Serial GC)
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.NO },
+					parallel: { present: Present.NO },
+					serial: { present: Present.NO },
+					shenandoah: { present: Present.NO },
+					z: { present: Present.NO },
+					custom: { text: "C4", footnote: "ee106e4d-0f10-4944-8547-4d896386f61d" },
+				},
+				mac: {
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.NO },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					deb: { present: Present.YES },
+					rpm: { present: Present.YES },
+					containerImages: { present: Present.YES },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: { present: Present.YES },
+				editions: {
+					text: "JRE",
+					footnote: "3a460237-d12b-4ba4-b98e-8a6f081bcd9e",
+				},
+				customisations: {
+					text: "many",
+					footnote: "ace95bf5-c597-4ce2-b50e-94354610301a",
+				},
+				notableFeatures: {
+					text: "Cloud Native Compiler, Falcon JIT, ReadyNow",
+					footnote: "180b008e-82e9-47a8-8c4d-81f419b834da",
+				},
+				license: { text: "Proprietary" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.NO },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.YES,
+				},
+				eolDate: {
+					text: "2032-01",
+					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
+				},
+				releaseSchedule: {
+					text: "Custom",
+					footnote: "4bcf6deb-b4e0-4a38-bf27-121938b2768f",
+				},
+				releaseDelay: { text: "n/a" },
+				updateTypes: { text: "paid/paid" },
+				remarks: { text: "none" },
+			},
+		},
+		{
+			id: "zing-17",
+			information: {
+				name: "Zing 17",
+				version: 17,
+				downloadSite: "https://www.azul.com/downloads/?version=java-17-lts#prime",
+			},
+			features: {
+				virtualMachine: { text: "Zing" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				// To check GC availability, run `java -XX:+UseSerialGC -Xnativevmflags:warn -version` (example with Serial GC)
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.NO },
+					parallel: { present: Present.NO },
+					serial: { present: Present.NO },
+					shenandoah: { present: Present.NO },
+					z: { present: Present.NO },
+					custom: { text: "C4", footnote: "ee106e4d-0f10-4944-8547-4d896386f61d" },
+				},
+				mac: {
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.NO },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					deb: { present: Present.YES },
+					rpm: { present: Present.YES },
+					containerImages: { present: Present.YES },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: { present: Present.YES },
+				editions: {
+					text: "JRE",
+					footnote: "3a460237-d12b-4ba4-b98e-8a6f081bcd9e",
+				},
+				customisations: {
+					text: "many",
+					footnote: "ace95bf5-c597-4ce2-b50e-94354610301a",
+				},
+				notableFeatures: {
+					text: "Cloud Native Compiler, Falcon JIT, ReadyNow",
+					footnote: "180b008e-82e9-47a8-8c4d-81f419b834da",
+				},
+				license: { text: "Proprietary" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.NO },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.YES,
+				},
+				eolDate: {
+					text: "2029-09",
+					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
+				},
+				releaseSchedule: {
+					text: "Custom",
+					footnote: "4bcf6deb-b4e0-4a38-bf27-121938b2768f",
+				},
+				releaseDelay: { text: "n/a" },
+				updateTypes: { text: "paid/paid" },
+				remarks: { text: "none" },
+			},
+		},
+		{
+			id: "zing-21",
+			information: {
+				name: "Zing 21",
+				version: 21,
+				downloadSite: "https://www.azul.com/downloads/?version=java-21-lts#prime",
+			},
+			features: {
+				virtualMachine: { text: "Zing" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				// To check GC availability, run `java -XX:+UseSerialGC -Xnativevmflags:warn -version` (example with Serial GC)
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.NO },
+					parallel: { present: Present.NO },
+					serial: { present: Present.NO },
+					shenandoah: { present: Present.NO },
+					z: { present: Present.NO },
+					custom: { text: "C4", footnote: "ee106e4d-0f10-4944-8547-4d896386f61d" },
+				},
+				mac: {
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.NO },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					deb: { present: Present.YES },
+					rpm: { present: Present.YES },
+					containerImages: { present: Present.YES },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: { present: Present.YES },
+				editions: {
+					text: "JRE",
+					footnote: "3a460237-d12b-4ba4-b98e-8a6f081bcd9e",
+				},
+				customisations: {
+					text: "many",
+					footnote: "ace95bf5-c597-4ce2-b50e-94354610301a",
+				},
+				notableFeatures: {
+					text: "Cloud Native Compiler, Falcon JIT, ReadyNow",
+					footnote: "180b008e-82e9-47a8-8c4d-81f419b834da",
+				},
+				license: { text: "Proprietary" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.NO },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.YES,
+				},
+				eolDate: {
+					text: "2031-09",
+					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
+				},
+				releaseSchedule: {
+					text: "Custom",
+					footnote: "4bcf6deb-b4e0-4a38-bf27-121938b2768f",
+				},
+				releaseDelay: { text: "n/a" },
+				updateTypes: { text: "paid/paid" },
+				remarks: { text: "none" },
+			},
+		},
+		{
 			id: "zulu-8",
 			information: {
 				name: "Zulu 8",
@@ -495,6 +855,36 @@ export const data: Vendor = {
 		},
 	],
 	footnotes: [
+		{
+			id: "ee106e4d-0f10-4944-8547-4d896386f61d",
+			markdown:
+				"[C4](https://docs.azul.com/prime/what-to-expect#garbage-collection) is a proprietary, concurrent, " +
+				"low latency garbage collector.",
+		},
+		{
+			id: "3a460237-d12b-4ba4-b98e-8a6f081bcd9e",
+			markdown: "The JRE is only available on x86, 64-bit.",
+		},
+		{
+			id: "ace95bf5-c597-4ce2-b50e-94354610301a",
+			markdown:
+				"The Azul Zing documentation gives a [high-level overview of the differences between OpenJDK and " +
+				"Azul Zing](https://docs.azul.com/prime/what-to-expect).",
+		},
+		{
+			id: "180b008e-82e9-47a8-8c4d-81f419b834da",
+			markdown:
+				"To learn more, see Azul's documentation about [Cloud Native " +
+				"Compiler](https://docs.azul.com/optimizer-hub/about/cloud-native-compiler.html)," +
+				"[Falcon JIT](https://docs.azul.com/prime/Falcon-Compiler), and " +
+				"[ReadyNow](https://docs.azul.com/prime/Use-ReadyNow.html).",
+		},
+		{
+			id: "4bcf6deb-b4e0-4a38-bf27-121938b2768f",
+			markdown:
+				"Azul Zing comes as monthly stream builds for development and trial purposes as well as stable builds. See " +
+				"the [Azul Zing Release Notes](https://docs.azul.com/prime/release-notes) for details.",
+		},
 		{
 			id: "0d62b486-9052-4a0c-b2b0-0b318c461be5",
 			markdown:
