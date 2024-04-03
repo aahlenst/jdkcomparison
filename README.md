@@ -39,3 +39,13 @@ starts the Next.js development server on port 3000 and provides a live preview o
 ```
 
 runs all checks and tests. If you want to run individual checks and tests, run `npm run` to get a list of available commands.
+
+### Logo, Favicon
+
+The logo and the favicon can be found in `logo.sketch` (requires [Sketch](https://www.sketch.com/) to edit).
+
+To generate the favicon in ICO format, export the favicon and SVG and then use ImageMagick to convert it to ICO:
+
+```shell
+magick convert favicon.svg -define icon:auto-resize=256,128,48,32,16 favicon.ico
+```
