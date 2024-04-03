@@ -132,7 +132,10 @@ export const data: Vendor = {
 					apk: { present: Present.NO },
 					deb: { present: Present.NO },
 					rpm: { present: Present.NO },
-					containerImages: { present: Present.NO },
+					containerImages: {
+						present: Present.YES,
+						footnote: "40d1ed1a-f40d-41a8-9a79-f8a82aece8f2",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -208,7 +211,10 @@ export const data: Vendor = {
 						present: Present.PARTIALLY,
 						footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f",
 					},
-					containerImages: { present: Present.NO },
+					containerImages: {
+						present: Present.YES,
+						footnote: "19645a97-1e0e-40ba-a9ae-4e2a8c938402",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -291,7 +297,10 @@ export const data: Vendor = {
 					},
 					// No repository.
 					rpm: { present: Present.PARTIALLY },
-					containerImages: { present: Present.NO },
+					containerImages: {
+						present: Present.YES,
+						footnote: "19645a97-1e0e-40ba-a9ae-4e2a8c938402",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -371,7 +380,10 @@ export const data: Vendor = {
 						present: Present.PARTIALLY,
 						footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f",
 					},
-					containerImages: { present: Present.NO },
+					containerImages: {
+						present: Present.YES,
+						footnote: "19645a97-1e0e-40ba-a9ae-4e2a8c938402",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -454,7 +466,10 @@ export const data: Vendor = {
 						present: Present.PARTIALLY,
 						footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f",
 					},
-					containerImages: { present: Present.NO },
+					containerImages: {
+						present: Present.YES,
+						footnote: "19645a97-1e0e-40ba-a9ae-4e2a8c938402",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -537,7 +552,10 @@ export const data: Vendor = {
 						present: Present.PARTIALLY,
 						footnote: "2cef6afe-7ba7-43bb-b282-a9121992742f",
 					},
-					containerImages: { present: Present.NO },
+					containerImages: {
+						present: Present.YES,
+						footnote: "19645a97-1e0e-40ba-a9ae-4e2a8c938402",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -602,6 +620,16 @@ export const data: Vendor = {
 				"Production use is governed under the [GraalVM Free Terms and and Conditions](https://www.oracle.com/downloads/licenses/graal-free-license.html) that impose some limitations. " +
 				'For example, they restrict the free usage to "internal business operations".' +
 				"Furthermore, the version that can be used free of charge only receives updates for three years after the initial release.",
+		},
+		{
+			id: "40d1ed1a-f40d-41a8-9a79-f8a82aece8f2",
+			markdown:
+				"[OCI images with OpenJDK](https://container-registry.oracle.com/ords/ocr/ba/java/openjdk) are hosted on the Oracle Container Registry.",
+		},
+		{
+			id: "19645a97-1e0e-40ba-a9ae-4e2a8c938402",
+			markdown:
+				"[OCI images with Oracle JDK](https://container-registry.oracle.com/ords/ocr/ba/java/jdk) are hosted on the Oracle Container Registry.",
 		},
 		{
 			id: "e51a53a9-3309-4cbe-8bde-39b652246385",
