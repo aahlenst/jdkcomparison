@@ -42,10 +42,11 @@ runs all checks and tests. If you want to run individual checks and tests, run `
 
 ### Logo, Favicon
 
-The logo and the favicon can be found in `logo.sketch` (requires [Sketch](https://www.sketch.com/) to edit).
+The logo and the favicon can be found in `logo.sketch` (requires [Sketch](https://www.sketch.com/) to edit it).
 
-To generate the favicon in ICO format, export the favicon and SVG and then use ImageMagick to convert it to ICO:
+To generate the favicon in ICO format, export the favicon as PNG with a size of 256 x 256 px.
+Then, use ImageMagick to convert it to ICO:
 
 ```shell
-magick convert favicon.svg -define icon:auto-resize=256,128,48,32,16 favicon.ico
+magick convert favicon.png -define icon:auto-resize=256,128,48,32,16 favicon.ico
 ```
