@@ -341,7 +341,7 @@ export const data: Vendor = {
 				eolDate: { text: "2024-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
-				updateTypes: { text: "paid/tiered" },
+				updateTypes: { text: "no/free" },
 				remarks: {
 					text: "Lacks features of the enterprise edition",
 					footnote: "b03a6480-3303-40ac-bd45-e94c050f7528",
