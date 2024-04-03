@@ -13,6 +13,88 @@ export const data: Vendor = {
 	website: "https://oracle.com/java",
 	jdks: [
 		{
+			id: "graalvm-17",
+			information: {
+				name: "GraalVM for JDK 17",
+				version: 17,
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#graalvmjava17",
+			},
+			features: {
+				virtualMachine: {
+					text: "HotSpot",
+					footnote: "bb5765d8-59d9-4ce4-9d47-d89b3a66ef82",
+				},
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.NO },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: { present: Present.NO },
+					z: { present: Present.YES },
+					custom: { text: "none" },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.NO },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					deb: { present: Present.NO },
+					rpm: { present: Present.NO },
+					// https://container-registry.oracle.com/ords/ocr/ba/graalvm
+					containerImages: { present: Present.YES },
+				},
+				mac: {
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: { present: Present.NO },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: { present: Present.YES },
+				editions: { text: "none" },
+				customisations: { text: "many" },
+				notableFeatures: {
+					text: "Graal Compiler, Native Image, Truffle",
+					footnote: "905a8e5e-8104-4d2b-aaf6-7e56ec4e9072",
+				},
+				license: { text: "Proprietary" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: {
+					present: Present.PARTIALLY,
+					footnote: "89192778-e781-40bd-ad67-3ba06f958de3",
+				},
+				sbom: { present: Present.NO },
+				paidSupport: { present: Present.YES },
+				eolDate: { text: "2029-09", footnote: "85941abe-619f-41be-8ae2-266abcd05580" },
+				releaseSchedule: { text: "OpenJDK" },
+				releaseDelay: { text: "none" },
+				updateTypes: { text: "paid/tiered" },
+				remarks: { text: "none" },
+			},
+		},
+		{
 			id: "openjdk-22",
 			information: {
 				name: "OpenJDK 22",
@@ -495,6 +577,26 @@ export const data: Vendor = {
 	],
 	footnotes: [
 		{
+			id: "bb5765d8-59d9-4ce4-9d47-d89b3a66ef82",
+			markdown:
+				"GraalVM runs applications normally on the HotSpot VM, in Native Image, or on Truffle." +
+				"See the [GraalVM Architecture Overview](https://docs.oracle.com/en/graalvm/enterprise/21/docs/overview/architecture/) for more information.",
+		},
+		{
+			id: "905a8e5e-8104-4d2b-aaf6-7e56ec4e9072",
+			markdown:
+				"[Graal Compiler](https://docs.oracle.com/en/graalvm/enterprise/21/docs/reference-manual/java/compiler/) is an advanced JIT for HotSpot. " +
+				"[Native Image](https://docs.oracle.com/en/graalvm/enterprise/21/docs/reference-manual/native-image/) compiles Java applications down to native executables for faster start-up (only Serial GC plus G1 GC on Linux). " +
+				"[Truffle](https://docs.oracle.com/en/graalvm/jdk/21/docs/reference-manual/java-on-truffle/) is a separate VM that allows direct interoperability with other languages, such as Python.",
+		},
+		{
+			id: "89192778-e781-40bd-ad67-3ba06f958de3",
+			markdown:
+				"Production use is governed under the [GraalVM Free Terms and and Conditions](https://www.oracle.com/downloads/licenses/graal-free-license.html) that impose some limitations. " +
+				'For example, they restrict the free usage to "internal business operations".' +
+				"Furthermore, the version that can be used free of charge only receives updates for three years after the initial release.",
+		},
+		{
 			id: "e51a53a9-3309-4cbe-8bde-39b652246385",
 			markdown:
 				"Oracle plans to discontinue support for certain technologies like JavaFX at an earlier date. " +
@@ -528,9 +630,9 @@ export const data: Vendor = {
 		{
 			id: "85941abe-619f-41be-8ae2-266abcd05580",
 			markdown:
-				"Oracle JDK has a tiered [support " +
+				"Oracle JDK and GraalVM have a tiered [support " +
 				"lifecycle](https://www.oracle.com/java/technologies/java-se-support-roadmap.html). While free " +
-				"updates are usually offered only three years after the initial release, paying customers can " +
+				"updates are usually offered for only three years after the initial release, paying customers can " +
 				"receive updates for much longer. The comparison lists the end-of-life date for the paid " +
 				"extended support.",
 		},
