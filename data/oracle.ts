@@ -265,6 +265,90 @@ export const data: Vendor = {
 			},
 		},
 		{
+			id: "graalvm-ce-22",
+			information: {
+				name: "GraalVM CE 22",
+				version: 22,
+				downloadSite: "https://github.com/graalvm/graalvm-ce-builds/releases/",
+			},
+			features: {
+				virtualMachine: {
+					text: "HotSpot",
+					footnote: "bb5765d8-59d9-4ce4-9d47-d89b3a66ef82",
+				},
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: { present: Present.NO },
+					z: { present: Present.YES },
+					custom: { text: "none" },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.NO },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					deb: { present: Present.NO },
+					rpm: { present: Present.NO },
+					containerImages: {
+						present: Present.YES,
+						footnote: "b0d2bc5c-970f-4947-97f8-0f012aa6b25a",
+					},
+				},
+				mac: {
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: { present: Present.NO },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: { present: Present.YES },
+				editions: { text: "none" },
+				customisations: { text: "many" },
+				notableFeatures: {
+					text: "Graal Compiler, Native Image, Truffle",
+					footnote: "5dc0ea32-c111-46a3-97ed-ccce4672770f",
+				},
+				license: { text: "GPLv2+CE" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
+				paidSupport: { present: Present.NO },
+				eolDate: { text: "2024-09" },
+				releaseSchedule: { text: "OpenJDK" },
+				releaseDelay: { text: "none" },
+				updateTypes: { text: "paid/tiered" },
+				remarks: {
+					text: "Lacks features of the enterprise edition",
+					footnote: "b03a6480-3303-40ac-bd45-e94c050f7528",
+				},
+			},
+		},
+		{
 			id: "openjdk-22",
 			information: {
 				name: "OpenJDK 22",
@@ -767,7 +851,7 @@ export const data: Vendor = {
 		{
 			id: "bb5765d8-59d9-4ce4-9d47-d89b3a66ef82",
 			markdown:
-				"GraalVM runs applications normally on the HotSpot VM, in Native Image, or on Truffle." +
+				"GraalVM runs applications normally on the HotSpot VM, in Native Image, or on Truffle. " +
 				"See the [GraalVM Architecture Overview](https://docs.oracle.com/en/graalvm/enterprise/21/docs/overview/architecture/) for more information.",
 		},
 		{
@@ -788,6 +872,23 @@ export const data: Vendor = {
 				"Production use is governed under the [GraalVM Free Terms and and Conditions](https://www.oracle.com/downloads/licenses/graal-free-license.html) that impose some limitations. " +
 				'For example, they restrict the free usage to "internal business operations".' +
 				"Furthermore, the version that can be used free of charge only receives updates for three years after the initial release.",
+		},
+		{
+			id: "b0d2bc5c-970f-4947-97f8-0f012aa6b25a",
+			markdown:
+				"[OCI images with GraalVM CE](https://github.com/graalvm/container/pkgs/container/graalvm-community) are hosted on the GitHub Container Registry.",
+		},
+		{
+			id: "5dc0ea32-c111-46a3-97ed-ccce4672770f",
+			markdown:
+				"[Graal Compiler](https://www.graalvm.org/latest/reference-manual/java/compiler/) is an advanced JIT for HotSpot. " +
+				"[Native Image](https://www.graalvm.org/latest/reference-manual/native-image/) compiles Java applications down to native executables for faster start-up (only Serial GC, no PGO). " +
+				"[Truffle](https://www.graalvm.org/latest/reference-manual/java-on-truffle/) is a separate VM that allows direct interoperability with other languages, such as Python.",
+		},
+		{
+			id: "b03a6480-3303-40ac-bd45-e94c050f7528",
+			markdown:
+				"See the [Feature and Benefit Comparison](https://www.oracle.com/a/ocom/docs/graalvm_enterprise_community_comparison_2021.pdf) provided by Oracle for details.",
 		},
 		{
 			id: "40d1ed1a-f40d-41a8-9a79-f8a82aece8f2",
