@@ -51,8 +51,10 @@ export const data: Vendor = {
 					apk: { present: Present.NO },
 					deb: { present: Present.NO },
 					rpm: { present: Present.NO },
-					// https://container-registry.oracle.com/ords/ocr/ba/graalvm
-					containerImages: { present: Present.YES },
+					containerImages: {
+						present: Present.YES,
+						footnote: "691e17bb-4ca9-4716-8ab2-cb2647d6ac942",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -581,6 +583,11 @@ export const data: Vendor = {
 			markdown:
 				"GraalVM runs applications normally on the HotSpot VM, in Native Image, or on Truffle." +
 				"See the [GraalVM Architecture Overview](https://docs.oracle.com/en/graalvm/enterprise/21/docs/overview/architecture/) for more information.",
+		},
+		{
+			id: "691e17bb-4ca9-4716-8ab2-cb2647d6ac942",
+			markdown:
+				"[OCI images with GraalVM](https://container-registry.oracle.com/ords/ocr/ba/graalvm) are hosted on the Oracle Container Registry.",
 		},
 		{
 			id: "905a8e5e-8104-4d2b-aaf6-7e56ec4e9072",
