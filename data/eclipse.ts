@@ -425,10 +425,7 @@ export const data: Vendor = {
 					aarch32: { present: Present.NO },
 					ppc64: { present: Present.YES },
 					riscv64: { present: Present.YES },
-					s390x: {
-						present: Present.NO,
-						footnote: "ff69868d-d4d2-4d05-80f9-3c4b944534ec",
-					},
+					s390x: { present: Present.YES },
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
@@ -542,7 +539,7 @@ export const data: Vendor = {
 			id: "ff69868d-d4d2-4d05-80f9-3c4b944534ec",
 			markdown:
 				"[There are plans](https://adoptium.net/blog/2024/03/march-2024-jdk22-release/) to make Temurin 22 " +
-				"available on Linux on S390, 64-bit and AIX on PPC at a later date.",
+				"available on AIX on PPC at a later date.",
 		},
 	],
 };
