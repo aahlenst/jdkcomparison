@@ -15,7 +15,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@headlessui/react": "1.7.19",
+		"@headlessui/react": "2.0.3",
 		"@popperjs/core": "2.11.8",
 		"github-slugger": "2.0.0",
 		"immer": "10.1.1",
