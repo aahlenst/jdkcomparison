@@ -14,7 +14,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { ChevronDownIcon } from "../icons";
 import { Model } from "@/src/modelTypes";
 import { ApplyFilter } from "@/hooks/usePropagateToSearchParams";
@@ -59,7 +59,7 @@ export function CheckboxFilterMobile({
 			{({ open }) => (
 				<>
 					<h3 className="-mx-2 -my-3 flow-root">
-						<Disclosure.Button
+						<DisclosureButton
 							id={`mobile-menu-filter-${filter.id}`}
 							className="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400"
 						>
@@ -73,13 +73,13 @@ export function CheckboxFilterMobile({
 									aria-hidden="true"
 								/>
 							</span>
-						</Disclosure.Button>
+						</DisclosureButton>
 					</h3>
-					<Disclosure.Panel className="pt-6">
+					<DisclosurePanel className="pt-6">
 						<div id={`filter-${filter.id}`} className="space-y-6">
 							{fields}
 						</div>
-					</Disclosure.Panel>
+					</DisclosurePanel>
 				</>
 			)}
 		</Disclosure>

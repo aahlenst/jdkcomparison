@@ -153,23 +153,20 @@ describe("Home on a iPhone 12-sized screen", { viewportWidth: 390, viewportHeigh
 		cy.visit("/");
 
 		mobileNavigationComponent.expectPageTitle("JDK Comparison");
-		mobileComparisonPage.expectFootnote(
-			"technologies-jfx",
-			0,
-			1,
-			"Some clarifications regarding JavaFX",
-		);
-		mobileComparisonPage.expectFootnote(
-			"support-paid",
-			1,
-			2,
-			"Some remark regarding paid support",
-		);
-		mobileComparisonPage.expectFootnote(
-			"support-eol-date",
-			1,
-			3,
-			"Some comment about the end of life date",
-		);
+
+		mobileComparisonPage.expectFootnote("technologies-jfx", 0, 1);
+		mobileComparisonPage.showFootnote("technologies-jfx", 0);
+		mobileComparisonPage.expectFootnoteContent("Some clarifications regarding JavaFX");
+		mobileComparisonPage.closeFootnote();
+
+		mobileComparisonPage.expectFootnote("support-paid", 1, 2);
+		mobileComparisonPage.showFootnote("support-paid", 1);
+		mobileComparisonPage.expectFootnoteContent("Some remark regarding paid support");
+		mobileComparisonPage.closeFootnote();
+
+		mobileComparisonPage.expectFootnote("support-eol-date", 1, 3);
+		mobileComparisonPage.showFootnote("support-eol-date", 1);
+		mobileComparisonPage.expectFootnoteContent("Some comment about the end of life date");
+		mobileComparisonPage.closeFootnote();
 	});
 });

@@ -8,35 +8,3 @@
 		@apply font-sans;
 	}
 }
-
-@layer components {
-	.popper-tooltip[data-popper-placement^="top"] > .popper-tooltip-arrow {
-		bottom: -5px;
-	}
-
-	.popper-tooltip[data-popper-placement^="bottom"] > .popper-tooltip-arrow {
-		top: -5px;
-	}
-
-	.popper-tooltip[data-popper-placement^="left"] > .popper-tooltip-arrow {
-		right: -5px;
-	}
-
-	.popper-tooltip[data-popper-placement^="right"] > .popper-tooltip-arrow {
-		left: -5px;
-	}
-
-	.popper-tooltip-arrow,
-	.popper-tooltip-arrow::before {
-		position: absolute;
-		width: 10px;
-		height: 10px;
-		z-index: -1;
-	}
-
-	.popper-tooltip-arrow::before {
-		content: "";
-		transform: rotate(45deg);
-		background: #333;
-	}
-}

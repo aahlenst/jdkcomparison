@@ -17,7 +17,7 @@
 import { useComparison } from "./comparisonContext";
 import { Model } from "../../src/modelTypes";
 import { Fragment, useState } from "react";
-import { Dialog, Popover, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, PopoverGroup, Transition, TransitionChild } from "@headlessui/react";
 import { CheckboxFilter } from "./checkboxFilter";
 import { Sort } from "./sort";
 import { XMarkIcon } from "../icons";
@@ -72,9 +72,9 @@ export function Filters() {
 			className="fixed left-0 top-16 right-0 h-12 z-30 flex items-center bg-white border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8"
 		>
 			{/* Mobile filters */}
-			<Transition.Root show={open} as={Fragment}>
+			<Transition show={open} as={Fragment}>
 				<Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
-					<Transition.Child
+					<TransitionChild
 						as={Fragment}
 						enter="transition-opacity ease-linear duration-300"
 						enterFrom="opacity-0"
@@ -84,10 +84,10 @@ export function Filters() {
 						leaveTo="opacity-0"
 					>
 						<div className="fixed inset-0 bg-black bg-opacity-25" />
-					</Transition.Child>
+					</TransitionChild>
 
 					<div className="fixed inset-0 z-40 flex">
-						<Transition.Child
+						<TransitionChild
 							as={Fragment}
 							enter="transition ease-in-out duration-300 transform"
 							enterFrom="translate-x-full"
@@ -96,7 +96,7 @@ export function Filters() {
 							leaveFrom="translate-x-0"
 							leaveTo="translate-x-full"
 						>
-							<Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
+							<DialogPanel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
 								<div className="flex items-center justify-between px-4">
 									<h2 className="text-lg font-medium text-gray-900">Filters</h2>
 									<button
@@ -110,11 +110,11 @@ export function Filters() {
 									</button>
 								</div>
 								<form className="mt-4">{mobileFilters}</form>
-							</Dialog.Panel>
-						</Transition.Child>
+							</DialogPanel>
+						</TransitionChild>
 					</div>
 				</Dialog>
-			</Transition.Root>
+			</Transition>
 
 			{/* Desktop filters */}
 			<section aria-labelledby="filter-heading" className="w-full mx-auto text-center">
@@ -131,9 +131,9 @@ export function Filters() {
 					>
 						Filters
 					</button>
-					<Popover.Group className="hidden divide-x divide-gray-200 lg:flex lg:items-baseline">
+					<PopoverGroup className="hidden divide-x divide-gray-200 lg:flex lg:items-baseline">
 						{desktopFilters}
-					</Popover.Group>
+					</PopoverGroup>
 				</div>
 			</section>
 		</div>

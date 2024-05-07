@@ -14,7 +14,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { Menu, Transition } from "@headlessui/react";
+import { Menu, MenuButton, MenuItems, MenuItem, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "../icons";
 import { Fragment } from "react";
 import { AllComparators } from "@/src/sorting";
@@ -34,12 +34,12 @@ export function Sort() {
 	}
 
 	const sortOptions = AllComparators.map((comparator) => (
-		<Menu.Item key={comparator.label}>
-			{({ active }) => (
+		<MenuItem key={comparator.label}>
+			{({ focus }) => (
 				<button
 					onClick={() => onClickHandler(comparator.id)}
 					className={classNames(
-						active ? "bg-gray-100" : "",
+						focus ? "bg-gray-100" : "",
 						comparator.id === comparison.activeComparator?.id
 							? "sort-option-active border-red-600 bg-red-50 text-red-700"
 							: "sort-option-inactive border-transparent",
@@ -49,13 +49,13 @@ export function Sort() {
 					{comparator.label}
 				</button>
 			)}
-		</Menu.Item>
+		</MenuItem>
 	));
 
 	return (
 		<Menu as="div" id="sort-options" className="relative inline-block text-left">
 			<div>
-				<Menu.Button
+				<MenuButton
 					id="sort-options-button"
 					className="group inline-flex items-baseline justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
 				>
@@ -64,7 +64,7 @@ export function Sort() {
 						className="-mr-1 ml-1 h-3 w-3 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
 						aria-hidden="true"
 					/>
-				</Menu.Button>
+				</MenuButton>
 			</div>
 
 			<Transition
@@ -76,12 +76,12 @@ export function Sort() {
 				leaveFrom="transform opacity-100 scale-100"
 				leaveTo="transform opacity-0 scale-95"
 			>
-				<Menu.Items
+				<MenuItems
 					id="sort-options-menu"
 					className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
 				>
 					<div className="py-1">{sortOptions}</div>
-				</Menu.Items>
+				</MenuItems>
 			</Transition>
 		</Menu>
 	);

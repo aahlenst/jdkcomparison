@@ -15,15 +15,13 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@headlessui/react": "1.7.19",
-		"@popperjs/core": "2.11.8",
+		"@headlessui/react": "2.0.3",
 		"github-slugger": "2.0.0",
 		"immer": "10.1.1",
 		"micromark": "4.0.0",
 		"next": "14.2.3",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
-		"react-popper": "2.3.0",
 		"use-immer": "0.9.0"
 	},
 	"devDependencies": {

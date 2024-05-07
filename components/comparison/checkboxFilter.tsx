@@ -17,7 +17,7 @@
 import { Model } from "../../src/modelTypes";
 import { ChevronDownIcon } from "../icons";
 import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverButton, PopoverPanel, Transition } from "@headlessui/react";
 import { ApplyFilter } from "@/hooks/usePropagateToSearchParams";
 
 type CheckboxFilterProps = {
@@ -59,7 +59,7 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 			className="relative inline-block text-left px-4 last:pr-0"
 		>
 			<div>
-				<Popover.Button className="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+				<PopoverButton className="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
 					<span className="filter-name">{label}</span>
 					{numberOfSelectedOptions > 0 && (
 						<span className="active-filter-options ml-1.5 rounded bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700">
@@ -70,7 +70,7 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 						className="-mr-1 last:mr-0 ml-1 h-3 w-3 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
 						aria-hidden="true"
 					/>
-				</Popover.Button>
+				</PopoverButton>
 			</div>
 
 			<Transition
@@ -82,11 +82,11 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 				leaveFrom="transform opacity-100 scale-100"
 				leaveTo="transform opacity-0 scale-95"
 			>
-				<Popover.Panel className="absolute max-h-72 overflow-auto right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+				<PopoverPanel className="absolute max-h-72 overflow-auto right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
 					<form id={`filter-${filter.id}`} className="space-y-4">
 						{fields}
 					</form>
-				</Popover.Panel>
+				</PopoverPanel>
 			</Transition>
 		</Popover>
 	);

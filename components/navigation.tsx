@@ -14,7 +14,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import { BarsIcon, EnvelopeIcon, GitHubIcon, XMarkIcon } from "@/components/icons";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
@@ -123,9 +123,9 @@ export function Navigation() {
 				</nav>
 			</div>
 
-			<Transition.Root show={open} as={Fragment}>
+			<Transition show={open} as={Fragment}>
 				<Dialog as="div" className="relative z-40 lg:hidden" onClose={() => setOpen(false)}>
-					<Transition.Child
+					<TransitionChild
 						as={Fragment}
 						enter="transition-opacity ease-linear duration-300"
 						enterFrom="opacity-0"
@@ -135,10 +135,10 @@ export function Navigation() {
 						leaveTo="opacity-0"
 					>
 						<div className="fixed inset-0 bg-gray-600 bg-opacity-75" />
-					</Transition.Child>
+					</TransitionChild>
 
 					<div className="fixed inset-0 z-40 flex">
-						<Transition.Child
+						<TransitionChild
 							as={Fragment}
 							enter="transition ease-in-out duration-300 transform"
 							enterFrom="-translate-x-full"
@@ -147,8 +147,8 @@ export function Navigation() {
 							leaveFrom="translate-x-0"
 							leaveTo="-translate-x-full"
 						>
-							<Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white focus:outline-none">
-								<Transition.Child
+							<DialogPanel className="relative flex w-full max-w-xs flex-1 flex-col bg-white focus:outline-none">
+								<TransitionChild
 									as={Fragment}
 									enter="ease-in-out duration-300"
 									enterFrom="opacity-0"
@@ -171,7 +171,7 @@ export function Navigation() {
 											/>
 										</button>
 									</div>
-								</Transition.Child>
+								</TransitionChild>
 								<div className="h-0 flex-1 overflow-y-auto pb-4 pt-5">
 									<div className="flex flex-shrink-0 items-center px-4">
 										<Image
@@ -205,14 +205,14 @@ export function Navigation() {
 										</div>
 									</nav>
 								</div>
-							</Dialog.Panel>
-						</Transition.Child>
+							</DialogPanel>
+						</TransitionChild>
 						<div className="w-14 flex-shrink-0" aria-hidden="true">
 							{/* Force sidebar to shrink to fit close icon */}
 						</div>
 					</div>
 				</Dialog>
-			</Transition.Root>
+			</Transition>
 		</div>
 	);
 }

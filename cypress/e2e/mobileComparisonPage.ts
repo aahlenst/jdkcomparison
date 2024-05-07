@@ -42,6 +42,9 @@ export const mobileComparisonPage = {
 	closeFilters: () => {
 		cy.get("#mobile-filters-close").click();
 	},
+	closeFootnote: () => {
+		cy.get("#comparison-modals .mobile-footnote-overlay").click();
+	},
 	expectFeatureExplanation: (excerpt: string) => {
 		cy.get(".mobile-feature-explanation").should("contain.text", excerpt);
 	},
@@ -68,14 +71,14 @@ export const mobileComparisonPage = {
 			});
 		});
 	},
-	expectFootnote: (featureId: string, column: number, number: number, excerpt: string) => {
+	expectFootnote: (featureId: string, column: number, number: number) => {
 		cy.get(`#${featureId} .feature-value`)
 			.eq(column)
 			.find("sup")
 			.should("have.text", `[${number}]`);
-		cy.get(`#${featureId} .feature-value`).eq(column).find("sup a").trigger("click");
+	},
+	expectFootnoteContent: (excerpt: string) => {
 		cy.get(".mobile-footnote").should("contain.text", excerpt);
-		cy.get("#comparison-modals .mobile-footnote-overlay").trigger("click");
 	},
 	showFeatureExplanation: (id: string) => {
 		cy.get(`#${id} .feature-explanation-toggle`).click();
@@ -85,5 +88,8 @@ export const mobileComparisonPage = {
 	},
 	showFilters: () => {
 		cy.get("#mobile-filters-open").click();
+	},
+	showFootnote: (featureId: string, column: number) => {
+		cy.get(`#${featureId} .feature-value`).eq(column).find("sup a").trigger("click");
 	},
 };
