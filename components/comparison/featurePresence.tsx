@@ -23,7 +23,7 @@ type FeaturePresenceProps = {
 };
 
 export function FeaturePresence({ present }: FeaturePresenceProps) {
-	let presenceIcon: JSX.Element;
+	let presenceIcon: React.JSX.Element;
 	switch (present) {
 		case Model.Present.YES:
 			presenceIcon = (

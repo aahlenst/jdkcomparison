@@ -1,5 +1,11 @@
 {
-	"extends": ["next/core-web-vitals", "eslint-config-prettier"],
+	"extends": ["next/core-web-vitals", "eslint-config-prettier", "plugin:deprecation/recommended"],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
 	"rules": {
 		"no-console": ["error"]
 	}
