@@ -196,7 +196,7 @@ export const data: Vendor = {
 				},
 				eolDate: {
 					text: "2024-10",
-					footnote: "2ce6dbb8-bba6-4012-99f1-970796ba79f9",
+					footnote: "0e105f79-2677-4ecc-a8c4-26b787dde3f5",
 				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "0-3 days" },
@@ -429,6 +429,12 @@ export const data: Vendor = {
 			id: "2ce6dbb8-bba6-4012-99f1-970796ba79f9",
 			markdown:
 				"See Red Hat's [OpenJDK Life Cycle and Support " +
+				"Policy](https://access.redhat.com/articles/1299013#OpenJDK_Life_Cycle) for details.",
+		},
+		{
+			id: "0e105f79-2677-4ecc-a8c4-26b787dde3f5",
+			markdown:
+				"For a fee, updates can be received until 2027-10. See Red Hat's [OpenJDK Life Cycle and Support " +
 				"Policy](https://access.redhat.com/articles/1299013#OpenJDK_Life_Cycle) for details.",
 		},
 		{

@@ -186,7 +186,7 @@ export const data: Vendor = {
 				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
-					text: "2027-03",
+					text: "2032-03",
 					footnote: "e92c2876-d7c0-43f3-a441-b4f95ce940cb",
 				},
 				releaseSchedule: { text: "OpenJDK" },

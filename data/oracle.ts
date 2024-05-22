@@ -581,7 +581,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.NO },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2031-12", footnote: "85941abe-619f-41be-8ae2-266abcd05580" },
+				eolDate: { text: "2032-01", footnote: "85941abe-619f-41be-8ae2-266abcd05580" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "paid/tiered" },
