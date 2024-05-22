@@ -195,7 +195,7 @@ export const data: Vendor = {
 					footnote: "16864047-89f2-4d27-af78-2233b8b10960",
 				},
 				eolDate: {
-					text: "2024-10",
+					text: "2027-10",
 					footnote: "0e105f79-2677-4ecc-a8c4-26b787dde3f5",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -434,7 +434,7 @@ export const data: Vendor = {
 		{
 			id: "0e105f79-2677-4ecc-a8c4-26b787dde3f5",
 			markdown:
-				"For a fee, updates can be received until 2027-10. See Red Hat's [OpenJDK Life Cycle and Support " +
+				"Free updates are only available until 2024-10. See Red Hat's [OpenJDK Life Cycle and Support " +
 				"Policy](https://access.redhat.com/articles/1299013#OpenJDK_Life_Cycle) for details.",
 		},
 		{
