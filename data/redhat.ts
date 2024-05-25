@@ -196,11 +196,14 @@ export const data: Vendor = {
 				},
 				eolDate: {
 					text: "2027-10",
-					footnote: "0e105f79-2677-4ecc-a8c4-26b787dde3f5",
+					footnote: "2ce6dbb8-bba6-4012-99f1-970796ba79f9",
 				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "0-3 days" },
-				updateTypes: { text: "no/free" },
+				updateTypes: {
+					text: "no/tiered",
+					footnote: "c72abe89-1bad-4edf-9dd7-6bfa60724c47",
+				},
 				remarks: { text: "none" },
 			},
 		},
@@ -432,12 +435,6 @@ export const data: Vendor = {
 				"Policy](https://access.redhat.com/articles/1299013#OpenJDK_Life_Cycle) for details.",
 		},
 		{
-			id: "0e105f79-2677-4ecc-a8c4-26b787dde3f5",
-			markdown:
-				"Free updates are only available until 2024-10. See Red Hat's [OpenJDK Life Cycle and Support " +
-				"Policy](https://access.redhat.com/articles/1299013#OpenJDK_Life_Cycle) for details.",
-		},
-		{
 			id: "17cf5639-7d55-4800-8c17-62950b37420c",
 			markdown:
 				"[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that Red Hat Build of " +
@@ -452,6 +449,12 @@ export const data: Vendor = {
 				"[11](https://access.redhat.com/documentation/en-us/openjdk/11), " +
 				"[17](https://access.redhat.com/documentation/en-us/openjdk/17), " +
 				"[21](https://access.redhat.com/documentation/en-us/openjdk/21).",
+		},
+		{
+			id: "c72abe89-1bad-4edf-9dd7-6bfa60724c47",
+			markdown:
+				"Free updates are made available until 2024-10. For more information, see Red Hat's [OpenJDK Life " +
+				"Cycle and Support Policy](https://access.redhat.com/articles/1299013#OpenJDK_Life_Cycle)",
 		},
 	],
 };
