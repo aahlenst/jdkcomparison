@@ -14,9 +14,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { Menu, MenuButton, MenuItems, MenuItem, Transition } from "@headlessui/react";
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { ChevronDownIcon } from "../icons";
-import { Fragment } from "react";
 import { AllComparators } from "@/src/sorting";
 import {
 	SetActiveComparator,
@@ -67,22 +66,13 @@ export function Sort() {
 				</MenuButton>
 			</div>
 
-			<Transition
-				as={Fragment}
-				enter="transition ease-out duration-100"
-				enterFrom="transform opacity-0 scale-95"
-				enterTo="transform opacity-100 scale-100"
-				leave="transition ease-in duration-75"
-				leaveFrom="transform opacity-100 scale-100"
-				leaveTo="transform opacity-0 scale-95"
+			<MenuItems
+				id="sort-options-menu"
+				transition
+				className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-out data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75"
 			>
-				<MenuItems
-					id="sort-options-menu"
-					className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
-				>
-					<div className="py-1">{sortOptions}</div>
-				</MenuItems>
-			</Transition>
+				<div className="py-1">{sortOptions}</div>
+			</MenuItems>
 		</Menu>
 	);
 }

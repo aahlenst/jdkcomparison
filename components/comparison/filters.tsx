@@ -16,8 +16,8 @@
  */
 import { useComparison } from "./comparisonContext";
 import { Model } from "../../src/modelTypes";
-import { Fragment, useState } from "react";
-import { Dialog, DialogPanel, PopoverGroup, Transition, TransitionChild } from "@headlessui/react";
+import { useState } from "react";
+import { Dialog, DialogBackdrop, DialogPanel, PopoverGroup } from "@headlessui/react";
 import { CheckboxFilter } from "./checkboxFilter";
 import { Sort } from "./sort";
 import { XMarkIcon } from "../icons";
@@ -72,49 +72,33 @@ export function Filters() {
 			className="fixed left-0 top-16 right-0 h-12 z-30 flex items-center bg-white border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8"
 		>
 			{/* Mobile filters */}
-			<Transition show={open} as={Fragment}>
-				<Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
-					<TransitionChild
-						as={Fragment}
-						enter="transition-opacity ease-linear duration-300"
-						enterFrom="opacity-0"
-						enterTo="opacity-100"
-						leave="transition-opacity ease-linear duration-300"
-						leaveFrom="opacity-100"
-						leaveTo="opacity-0"
-					>
-						<div className="fixed inset-0 bg-black bg-opacity-25" />
-					</TransitionChild>
+			<Dialog className="relative z-40 lg:hidden" open={open} onClose={setOpen}>
+				<DialogBackdrop
+					transition
+					className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
+				/>
 
-					<div className="fixed inset-0 z-40 flex">
-						<TransitionChild
-							as={Fragment}
-							enter="transition ease-in-out duration-300 transform"
-							enterFrom="translate-x-full"
-							enterTo="translate-x-0"
-							leave="transition ease-in-out duration-300 transform"
-							leaveFrom="translate-x-0"
-							leaveTo="translate-x-full"
-						>
-							<DialogPanel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
-								<div className="flex items-center justify-between px-4">
-									<h2 className="text-lg font-medium text-gray-900">Filters</h2>
-									<button
-										id="mobile-filters-close"
-										type="button"
-										className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
-										onClick={() => setOpen(false)}
-									>
-										<span className="sr-only">Close menu</span>
-										<XMarkIcon className="h-6 w-6" aria-hidden="true" />
-									</button>
-								</div>
-								<form className="mt-4">{mobileFilters}</form>
-							</DialogPanel>
-						</TransitionChild>
-					</div>
-				</Dialog>
-			</Transition>
+				<div className="fixed inset-0 z-40 flex">
+					<DialogPanel
+						transition
+						className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl transition duration-300 ease-in-out data-[closed]:translate-x-full"
+					>
+						<div className="flex items-center justify-between px-4">
+							<h2 className="text-lg font-medium text-gray-900">Filters</h2>
+							<button
+								id="mobile-filters-close"
+								type="button"
+								className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+								onClick={() => setOpen(false)}
+							>
+								<span className="sr-only">Close menu</span>
+								<XMarkIcon className="h-6 w-6" aria-hidden="true" />
+							</button>
+						</div>
+						<form className="mt-4">{mobileFilters}</form>
+					</DialogPanel>
+				</div>
+			</Dialog>
 
 			{/* Desktop filters */}
 			<section aria-labelledby="filter-heading" className="w-full mx-auto text-center">

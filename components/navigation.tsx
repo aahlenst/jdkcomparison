@@ -14,14 +14,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { BarsIcon, EnvelopeIcon, GitHubIcon, XMarkIcon } from "@/components/icons";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import logo from "../public/logo.svg";
 import Image from "next/image";
 import { classNames } from "@/src/utils";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 
 function isActive(router: NextRouter, path: string): boolean {
 	return router.pathname === path;
@@ -123,96 +123,65 @@ export function Navigation() {
 				</nav>
 			</div>
 
-			<Transition show={open} as={Fragment}>
-				<Dialog as="div" className="relative z-40 lg:hidden" onClose={() => setOpen(false)}>
-					<TransitionChild
-						as={Fragment}
-						enter="transition-opacity ease-linear duration-300"
-						enterFrom="opacity-0"
-						enterTo="opacity-100"
-						leave="transition-opacity ease-linear duration-300"
-						leaveFrom="opacity-100"
-						leaveTo="opacity-0"
-					>
-						<div className="fixed inset-0 bg-gray-600 bg-opacity-75" />
-					</TransitionChild>
+			<Dialog className="relative z-40 lg:hidden" open={open} onClose={setOpen}>
+				<DialogBackdrop
+					transition
+					className="fixed inset-0 bg-gray-600 bg-opacity-75 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
+				/>
 
-					<div className="fixed inset-0 z-40 flex">
-						<TransitionChild
-							as={Fragment}
-							enter="transition ease-in-out duration-300 transform"
-							enterFrom="-translate-x-full"
-							enterTo="translate-x-0"
-							leave="transition ease-in-out duration-300 transform"
-							leaveFrom="translate-x-0"
-							leaveTo="-translate-x-full"
-						>
-							<DialogPanel className="relative flex w-full max-w-xs flex-1 flex-col bg-white focus:outline-none">
-								<TransitionChild
-									as={Fragment}
-									enter="ease-in-out duration-300"
-									enterFrom="opacity-0"
-									enterTo="opacity-100"
-									leave="ease-in-out duration-300"
-									leaveFrom="opacity-100"
-									leaveTo="opacity-0"
-								>
-									<div className="absolute right-0 top-0 -mr-12 pt-2">
-										<button
-											id="mobile-menu-close"
-											type="button"
-											className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-											onClick={() => setOpen(false)}
-										>
-											<span className="sr-only">Close sidebar</span>
-											<XMarkIcon
-												className="h-6 w-6 text-white"
-												aria-hidden="true"
-											/>
-										</button>
-									</div>
-								</TransitionChild>
-								<div className="h-0 flex-1 overflow-y-auto pb-4 pt-5">
-									<div className="flex flex-shrink-0 items-center px-4">
-										<Image
-											id="logo"
-											src={logo}
-											alt="JDK Comparison logo"
-											className="h-8 w-auto"
-										/>
-									</div>
-									<nav aria-label="Sidebar navigation" className="mt-5">
-										<div className="space-y-1">
-											{mainNavigation.map((item) => (
-												<Link
-													key={item.id}
-													href={item.href}
-													className={classNames(
-														isActive(router, item.href)
-															? "border-red-600 bg-red-50 text-red-600"
-															: "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-														`mobile-navigation-option mobile-navigation-option-${item.id} group flex items-center border-l-4 px-3 py-2 text-sm font-medium`,
-													)}
-													aria-current={
-														isActive(router, item.href)
-															? "page"
-															: undefined
-													}
-												>
-													{item.label}
-												</Link>
-											))}
-										</div>
-									</nav>
-								</div>
-							</DialogPanel>
-						</TransitionChild>
-						<div className="w-14 flex-shrink-0" aria-hidden="true">
-							{/* Force sidebar to shrink to fit close icon */}
+				<div className="fixed inset-0 z-40 flex">
+					<DialogPanel
+						transition
+						className="relative flex w-full max-w-xs flex-1 flex-col bg-white focus:outline-none transition duration-300 ease-in-out data-[closed]:-translate-x-full"
+					>
+						<div className="absolute right-0 top-0 -mr-12 pt-2">
+							<button
+								id="mobile-menu-close"
+								type="button"
+								className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+								onClick={() => setOpen(false)}
+							>
+								<span className="sr-only">Close sidebar</span>
+								<XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+							</button>
 						</div>
+						<div className="h-0 flex-1 overflow-y-auto pb-4 pt-5">
+							<div className="flex flex-shrink-0 items-center px-4">
+								<Image
+									id="logo"
+									src={logo}
+									alt="JDK Comparison logo"
+									className="h-8 w-auto"
+								/>
+							</div>
+							<nav aria-label="Sidebar navigation" className="mt-5">
+								<div className="space-y-1">
+									{mainNavigation.map((item) => (
+										<Link
+											key={item.id}
+											href={item.href}
+											className={classNames(
+												isActive(router, item.href)
+													? "border-red-600 bg-red-50 text-red-600"
+													: "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+												`mobile-navigation-option mobile-navigation-option-${item.id} group flex items-center border-l-4 px-3 py-2 text-sm font-medium`,
+											)}
+											aria-current={
+												isActive(router, item.href) ? "page" : undefined
+											}
+										>
+											{item.label}
+										</Link>
+									))}
+								</div>
+							</nav>
+						</div>
+					</DialogPanel>
+					<div className="w-14 flex-shrink-0" aria-hidden="true">
+						{/* Force sidebar to shrink to fit close icon */}
 					</div>
-				</Dialog>
-			</Transition>
+				</div>
+			</Dialog>
 		</div>
 	);
 }

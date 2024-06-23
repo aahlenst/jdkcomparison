@@ -16,8 +16,7 @@
  */
 import { Model } from "../../src/modelTypes";
 import { ChevronDownIcon } from "../icons";
-import { Fragment } from "react";
-import { Popover, PopoverButton, PopoverPanel, Transition } from "@headlessui/react";
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { ApplyFilter } from "@/hooks/usePropagateToSearchParams";
 
 type CheckboxFilterProps = {
@@ -73,21 +72,14 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 				</PopoverButton>
 			</div>
 
-			<Transition
-				as={Fragment}
-				enter="transition ease-out duration-100"
-				enterFrom="transform opacity-0 scale-95"
-				enterTo="transform opacity-100 scale-100"
-				leave="transition ease-in duration-75"
-				leaveFrom="transform opacity-100 scale-100"
-				leaveTo="transform opacity-0 scale-95"
+			<PopoverPanel
+				transition
+				className="absolute max-h-72 overflow-auto right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none transition data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
 			>
-				<PopoverPanel className="absolute max-h-72 overflow-auto right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-					<form id={`filter-${filter.id}`} className="space-y-4">
-						{fields}
-					</form>
-				</PopoverPanel>
-			</Transition>
+				<form id={`filter-${filter.id}`} className="space-y-4">
+					{fields}
+				</form>
+			</PopoverPanel>
 		</Popover>
 	);
 }

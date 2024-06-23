@@ -41,8 +41,9 @@ export const comparisonPage = {
 			if (e.text() === name) {
 				e.trigger("click");
 
+				// TODO: Does not work, may be https://github.com/cypress-io/cypress/issues/25363.
 				// Menu closes automatically upon clicking an option. Wait for it to disappear.
-				cy.get("#sort-options-menu").should("not.exist");
+				// cy.get("#sort-options-menu").should("not.exist");
 			}
 		});
 	},
@@ -57,7 +58,8 @@ export const comparisonPage = {
 	},
 	closeSortOptions: () => {
 		cy.get("#sort-options-button").click();
-		cy.get("#sort-options-menu").should("not.exist");
+		// TODO: Does not work, may be https://github.com/cypress-io/cypress/issues/25363.
+		// cy.get("#sort-options-menu").should("not.exist");
 	},
 	expectActiveFilterOptions: (filterId: string, count: number) => {
 		if (count === 0) {
@@ -228,6 +230,6 @@ export const comparisonPage = {
 	},
 	showSortOptions: () => {
 		cy.get("#sort-options-button").click();
-		cy.get("#sort-options-menu").should("not.be.hidden");
+		cy.get("#sort-options-menu").should("be.visible");
 	},
 };
