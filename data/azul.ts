@@ -460,7 +460,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.PARTIALLY,
+					footnote: "edfe91f1-4538-4455-bea8-0568572b05b6",
+				},
 				paidSupport: {
 					present: Present.YES,
 				},
@@ -562,7 +565,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.PARTIALLY,
+					footnote: "edfe91f1-4538-4455-bea8-0568572b05b6",
+				},
 				paidSupport: {
 					present: Present.YES,
 				},
@@ -667,7 +673,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.PARTIALLY,
+					footnote: "edfe91f1-4538-4455-bea8-0568572b05b6",
+				},
 				paidSupport: {
 					present: Present.YES,
 				},
@@ -732,7 +741,7 @@ export const data: Vendor = {
 				windows: {
 					x32: { present: Present.NO },
 					x64: { present: Present.YES },
-					aarch64: { present: Present.NO },
+					aarch64: { present: Present.YES },
 					installers: { present: Present.YES },
 					containerImages: { present: Present.NO },
 				},
@@ -755,7 +764,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.PARTIALLY,
+					footnote: "edfe91f1-4538-4455-bea8-0568572b05b6",
+				},
 				paidSupport: {
 					present: Present.YES,
 				},
@@ -839,7 +851,10 @@ export const data: Vendor = {
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
-				sbom: { present: Present.NO },
+				sbom: {
+					present: Present.PARTIALLY,
+					footnote: "edfe91f1-4538-4455-bea8-0568572b05b6",
+				},
 				paidSupport: {
 					present: Present.YES,
 				},
@@ -943,6 +958,10 @@ export const data: Vendor = {
 		{
 			id: "5e73b813-c473-4a41-bcdb-001e6e2b97a1",
 			markdown: "No installer available for Windows on ARM, 64-bit.",
+		},
+		{
+			id: "edfe91f1-4538-4455-bea8-0568572b05b6",
+			markdown: "SBOMs are provided to Azul customers via the Azul support team.",
 		},
 	],
 };
