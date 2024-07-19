@@ -51,6 +51,6 @@
 		"prettier": "3.3.3",
 		"tailwindcss": "3.4.6",
 		"typescript": "5.5.3",
-		"wrangler": "3.65.0"
+		"wrangler": "3.65.1"
 	}
 }
