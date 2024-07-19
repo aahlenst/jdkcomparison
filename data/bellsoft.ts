@@ -262,7 +262,7 @@ export const data: Vendor = {
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
 				editions: {
-					text: "JRE, OpenJFX",
+					text: "CRaC, JRE, OpenJFX",
 					footnote: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
 				},
 				customisations: {
@@ -355,7 +355,7 @@ export const data: Vendor = {
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
 				editions: {
-					text: "JRE, OpenJFX",
+					text: "CRaC, JRE, OpenJFX",
 					footnote: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
 				},
 				customisations: {
@@ -526,8 +526,7 @@ export const data: Vendor = {
 		},
 		{
 			id: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
-			markdown:
-				"JRE and JDKs with OpenJFX are not available on all platforms supported by BellSoft Liberica.",
+			markdown: "Editions are not available on all platforms supported by BellSoft Liberica.",
 		},
 		{
 			id: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
