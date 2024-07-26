@@ -453,10 +453,7 @@ export const data: Vendor = {
 					containerImages: { present: Present.YES },
 				},
 				otherPlatforms: {
-					aixPPC: {
-						present: Present.NO,
-						footnote: "ff69868d-d4d2-4d05-80f9-3c4b944534ec",
-					},
+					aixPPC: { present: Present.YES },
 					solarisSPARC: { present: Present.NO },
 					solarisx64: { present: Present.NO },
 				},
@@ -543,12 +540,6 @@ export const data: Vendor = {
 				"[17](https://github.com/adoptium/temurin17-binaries/releases/), " +
 				"[21](https://github.com/adoptium/temurin21-binaries/releases/), " +
 				"[22](https://github.com/adoptium/temurin22-binaries/releases/).",
-		},
-		{
-			id: "ff69868d-d4d2-4d05-80f9-3c4b944534ec",
-			markdown:
-				"[There are plans](https://adoptium.net/blog/2024/03/march-2024-jdk22-release/) to make Temurin 22 " +
-				"available on AIX on PPC at a later date.",
 		},
 		{
 			id: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
