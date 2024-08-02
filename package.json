@@ -36,7 +36,7 @@
 		"@types/node": "20.14.14",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",
-		"autoprefixer": "10.4.19",
+		"autoprefixer": "10.4.20",
 		"cypress": "13.13.0",
 		"cypress-multi-reporters": "1.6.4",
 		"eslint": "8.57.0",
