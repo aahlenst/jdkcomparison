@@ -32,7 +32,7 @@
 		"@next/mdx": "14.2.7",
 		"@tailwindcss/aspect-ratio": "0.4.2",
 		"@tailwindcss/forms": "0.5.8",
-		"@tailwindcss/typography": "0.5.14",
+		"@tailwindcss/typography": "0.5.15",
 		"@types/node": "20.16.2",
 		"@types/react": "18.3.4",
 		"@types/react-dom": "18.3.0",
