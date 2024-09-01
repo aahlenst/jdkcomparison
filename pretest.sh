@@ -1,17 +1,12 @@
 #! /usr/bin/env bash
 set -Eeuo pipefail
 
-# Linux/macOS compatibility shim, see https://unix.stackexchange.com/a/84980.
-TEMP_DIR=$(mktemp -d 2>/dev/null || mktemp -d -t "jdkcomparison")
-WRANGLER_PID=
+SERVER_PID=
 
 cleanup() {
-	if [ -n "$WRANGLER_PID" ] && ps -p "$WRANGLER_PID" > /dev/null ; then
-    	kill -TERM "$WRANGLER_PID"
+	if [ -n "$SERVER_PID" ] && ps -p "$SERVER_PID" > /dev/null ; then
+    	kill -TERM "$SERVER_PID"
     fi
-
-	# xargs handles 0..n running processes correctly.
-	lsof -t -i:3000 -sTCP:LISTEN | xargs -r kill -TERM
 }
 
 trap cleanup EXIT
@@ -27,12 +22,13 @@ npm run lint
 # Test
 npm run jest
 npm run component:headless
-npm run dev > "$TEMP_DIR/nextjs-dev.txt" 2>&1 &
+npm run dev > /dev/null 2>&1 &
+SERVER_PID=$!
 npm run e2e:headless
 cleanup
 
 npx @cloudflare/next-on-pages
-npx wrangler pages dev --port 3000 .vercel/output/static --compatibility-flag=nodejs_compat > "$TEMP_DIR/wrangler.txt" 2>&1 &
-WRANGLER_PID=$!
+npx wrangler pages dev --port 3000 .vercel/output/static --compatibility-flag=nodejs_compat > /dev/null 2>&1 &
+SERVER_PID=$!
 npm run acceptance
 cleanup
