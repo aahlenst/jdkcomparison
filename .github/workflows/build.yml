@@ -58,15 +58,14 @@ jobs:
       - name: Run component tests
         run: npm run component:headless
 
-      # Starts the Next.js development server and puts it into the background before running the tests and stopping the
-      # development server by looking for the PID of the process that listens on port 3000. Capturing the PID with $! is
-      # not possible because `next` seems to spawn a separate process, even if invoked directly. xargs handles 0..n
-      # matching processes correctly.
+      # Starts the Next.js development server and puts it into the background before running the tests. Afterwards, the
+      # development server is stopped.
       - name: Run E2E tests
         run: |
-          npm run dev > /tmp/nextjs-dev.txt 2>&1 &
+          npm run dev > /dev/null 2>&1 &
+          PID=$!
           npm run e2e:headless
-          lsof -t -i:3000 -sTCP:LISTEN | xargs -r kill -TERM
+          kill "$PID"
 
       - name: Build
         run: npx @cloudflare/next-on-pages@`node -p -e "require('./package.json').devDependencies['@cloudflare/next-on-pages']"`
