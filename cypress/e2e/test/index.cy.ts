@@ -755,6 +755,42 @@ describe("JDK Comparison", () => {
 		comparisonPage.expectActiveFilterOptions("versions", 0);
 	});
 
+	it("allows to open and close filters repeatedly", () => {
+		cy.visit("/");
+
+		comparisonPage.expectFilter("Versions");
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterVisible("versions");
+		comparisonPage.closeFilter("versions");
+		comparisonPage.expectFilterHidden("versions");
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterVisible("versions");
+		comparisonPage.closeFilter("versions");
+		comparisonPage.expectFilterHidden("versions");
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterVisible("versions");
+		comparisonPage.closeFilter("versions");
+		comparisonPage.expectFilterHidden("versions");
+	});
+
+	it("opening second filter closes first", () => {
+		cy.visit("/");
+
+		comparisonPage.expectFilter("Versions");
+		comparisonPage.expectFilter("Vendors");
+
+		comparisonPage.showFilter("versions");
+		comparisonPage.expectFilterVisible("versions");
+		comparisonPage.expectFilterHidden("vendors");
+
+		comparisonPage.showFilter("vendors");
+		comparisonPage.expectFilterVisible("vendors");
+		comparisonPage.expectFilterHidden("versions");
+	});
+
 	it("shows feature explanation", () => {
 		cy.visit("/");
 

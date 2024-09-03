@@ -119,6 +119,9 @@ export const comparisonPage = {
 			expect(foundNames).to.contain(name);
 		});
 	},
+	expectFilterHidden(filterId: string) {
+		cy.get(`form[id='filter-${filterId}']`).should("not.exist");
+	},
 	expectFilterOption: (id: string, label: string, active: boolean) => {
 		cy.get(`#filter-${id} > div`).should(($opt) => {
 			const foundOptions = $opt
@@ -135,6 +138,9 @@ export const comparisonPage = {
 				checked: active,
 			});
 		});
+	},
+	expectFilterVisible(filterId: string) {
+		cy.get(`form[id='filter-${filterId}']`).should("exist");
 	},
 	expectFootnote: (featureId: string, column: number, number: number, excerpt: string) => {
 		cy.get(`#${featureId} .feature-value`)
