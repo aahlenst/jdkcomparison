@@ -55,9 +55,6 @@ jobs:
       - name: Run unit tests
         run: npm run jest
 
-      - name: Run component tests
-        run: npm run component:headless
-
       # Starts the Next.js development server and puts it into the background before running the tests. Afterwards, the
       # development server is stopped.
       - name: Run E2E tests

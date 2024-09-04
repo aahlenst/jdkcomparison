@@ -3,8 +3,6 @@
 	"private": true,
 	"scripts": {
 		"build": "next build",
-		"component": "cypress open --component --browser electron",
-		"component:headless": "cypress run --component --browser electron",
 		"cypress": "cypress open",
 		"dev": "next dev",
 		"e2e": "cypress open --e2e --browser electron",

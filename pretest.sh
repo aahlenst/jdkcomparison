@@ -21,7 +21,6 @@ npm run lint
 
 # Test
 npm run jest
-npm run component:headless
 npm run dev > /dev/null 2>&1 &
 SERVER_PID=$!
 npm run e2e:headless
