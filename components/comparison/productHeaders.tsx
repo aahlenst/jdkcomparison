@@ -30,7 +30,9 @@ export function ProductHeaders({ headers }: ProductHeadersProps) {
 	const productHeaders = headers.map((product) => {
 		return (
 			<div key={product.id} className="flex flex-col px-4 border-r last:border-r-transparent">
-				<div className="product-vendor text-sm text-gray-500">{product.vendor}</div>
+				<div data-testid="product-vendor" className="product-vendor text-sm text-gray-500">
+					{product.vendor}
+				</div>
 				<div className="product-name font-semibold">
 					<h1>{product.name}</h1>
 				</div>

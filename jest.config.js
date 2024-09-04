@@ -14,6 +14,7 @@ const customJestConfig = {
 		"default",
 		["jest-junit", { outputDirectory: "build/reports", outputName: "jest.xml" }],
 	],
+	testEnvironment: "jsdom",
 };
 
 module.exports = createJestConfig(customJestConfig);

@@ -32,6 +32,7 @@ export function Feature({ id, name, values, children }: PropsWithChildren<Featur
 	const features = values.map((value) => {
 		return (
 			<div
+				role="cell"
 				key={value.id}
 				className="feature-value py-2 px-4 content-center border-r text-sm last:border-r-transparent"
 			>
@@ -46,6 +47,7 @@ export function Feature({ id, name, values, children }: PropsWithChildren<Featur
 
 	return (
 		<div
+			role="row"
 			id={id}
 			className="feature grid overflow-visible"
 			style={{
@@ -53,7 +55,9 @@ export function Feature({ id, name, values, children }: PropsWithChildren<Featur
 			}}
 		>
 			<div className="sticky left-0 z-10 inline-flex items-center bg-white py-2 px-4 border-r">
-				<span className="feature-name mr-1 text-sm font-medium">{name}</span>
+				<span role="rowheader" className="feature-name mr-1 text-sm font-medium">
+					{name}
+				</span>
 				{children && <FeatureExplanation>{children}</FeatureExplanation>}
 			</div>
 			{features}

@@ -31,29 +31,32 @@ export function ComparisonSection({
 
 	return (
 		<section id={id}>
-			<h2 className="toggle-section cursor-pointer py-2" onClick={() => setOpen(!open)}>
-				<button className="sticky left-0 flex inline-flex items-center px-4">
-					<span className="section-label font-semibold">{label}</span>
+			<div
+				className="toggle-section sticky left-0 inline-flex items-center py-2 px-4 cursor-pointer"
+				onClick={() => setOpen(!open)}
+			>
+				<h2 className="section-label font-semibold">{label}</h2>
+				<button>
 					{open && (
 						<SquareMinusIcon
 							className="ml-2 h-4 w-4"
 							role="img"
-							aria-label="Hide section"
+							aria-label={`Hide section ${label}`}
 						>
-							<title>Hide section</title>
+							<title>{`Hide section ${label}`}</title>
 						</SquareMinusIcon>
 					)}
 					{!open && (
 						<SquarePlusIcon
 							className="ml-2 h-4 w-4"
 							role="img"
-							aria-label="Show section"
+							aria-label={`Show section ${label}`}
 						>
-							<title>Show section</title>
+							<title>{`Show section ${label}`}</title>
 						</SquarePlusIcon>
 					)}
 				</button>
-			</h2>
+			</div>
 			{open && children}
 		</section>
 	);

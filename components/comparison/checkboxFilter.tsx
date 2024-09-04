@@ -76,7 +76,11 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 				transition
 				className="absolute max-h-72 overflow-auto right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none transition data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
 			>
-				<form id={`filter-${filter.id}`} className="space-y-4">
+				<form
+					id={`filter-${filter.id}`}
+					aria-label={`Selectable ${label}`}
+					className="space-y-4"
+				>
 					{fields}
 				</form>
 			</PopoverPanel>
