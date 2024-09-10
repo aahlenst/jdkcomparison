@@ -7,7 +7,9 @@
 		"dev": "next dev",
 		"e2e": "cypress open --e2e --browser electron",
 		"e2e:headless": "cypress run --e2e --browser electron --spec \"cypress/e2e/test/**/*\"",
+		"e2e:playwright": "playwright test e2e",
 		"acceptance": "cypress run --e2e --browser electron --spec \"cypress/e2e/acceptance/**/*\"",
+		"acceptance:playwright": "playwright test acceptance",
 		"jest": "jest --transformIgnorePatterns \"node_modules/(?!micromark)/\"",
 		"lint": "next lint",
 		"start": "next start"
@@ -28,6 +30,7 @@
 		"@mdx-js/loader": "3.0.1",
 		"@mdx-js/react": "3.0.1",
 		"@next/mdx": "14.2.8",
+		"@playwright/test": "1.46.1",
 		"@tailwindcss/aspect-ratio": "0.4.2",
 		"@tailwindcss/forms": "0.5.9",
 		"@tailwindcss/typography": "0.5.15",

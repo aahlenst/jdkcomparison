@@ -41,7 +41,12 @@ export function ComparisonTable() {
 
 	return (
 		<>
-			<div className="relative top-12 w-max px-2 sm:px-6 lg:px-8 [&>section:not(:last-child)]:border-b [&>section]:py-2">
+			<div
+				role="grid"
+				aria-label="Comparison table"
+				aria-colcount={comparison.filteredData.length}
+				className="relative top-12 w-max px-2 sm:px-6 lg:px-8 [&>section:not(:last-child)]:border-b [&>section]:py-2"
+			>
 				<ProductHeaders headers={comparison.filteredData} />
 				<PropertiesSection
 					productData={comparison.filteredData}

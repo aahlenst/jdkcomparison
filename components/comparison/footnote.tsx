@@ -65,6 +65,7 @@ export function Footnote({ footnoteReference }: FootnoteProps) {
 				ref={refs.setReference}
 				{...getReferenceProps()}
 				href={`#fn-${footnoteReference.number}`}
+				title={`Show footnote ${footnote.number}`}
 				className="footnote-ref underline hover:no-underline text-blue-600 visited:text-violet-600"
 			>
 				{footnote.number}
@@ -77,6 +78,8 @@ export function Footnote({ footnoteReference }: FootnoteProps) {
 					{/* Popover for smaller screens. Appears at the bottom of the screen. */}
 					<div className="mobile-footnote sm:hidden fixed z-40 bottom-0 inset-x-0">
 						<div
+							role="note"
+							aria-label={`Footnote ${footnote.number}`}
 							className="overflow-hidden bg-white p-3 prose prose-sm max-w-none"
 							dangerouslySetInnerHTML={{ __html: footnote.html }}
 						/>
@@ -90,6 +93,8 @@ export function Footnote({ footnoteReference }: FootnoteProps) {
 					>
 						<FloatingArrow ref={arrowRef} context={context} />
 						<div
+							role="note"
+							aria-label={`Footnote ${footnote.number}`}
 							className="p-3 prose prose-sm max-w-sm"
 							dangerouslySetInnerHTML={{ __html: footnote.html }}
 						/>

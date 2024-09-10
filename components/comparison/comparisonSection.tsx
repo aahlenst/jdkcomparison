@@ -30,12 +30,14 @@ export function ComparisonSection({
 	const [open, setOpen] = useState(true);
 
 	return (
-		<section id={id}>
+		<section id={id} aria-labelledby={`${id}-heading`} role="rowgroup">
 			<div
 				className="toggle-section sticky left-0 inline-flex items-center py-2 px-4 cursor-pointer"
 				onClick={() => setOpen(!open)}
 			>
-				<h2 className="section-label font-semibold">{label}</h2>
+				<h2 id={`${id}-heading`} className="section-label font-semibold">
+					{label}
+				</h2>
 				<button>
 					{open && (
 						<SquareMinusIcon

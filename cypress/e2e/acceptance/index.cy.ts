@@ -237,7 +237,7 @@ describe("Comparison in production", () => {
 		comparisonPage.expectFilterOption("licensing", "Free in Production", false);
 		comparisonPage.closeFilter("licensing");
 	});
-
+	// HERE
 	it("shows feature explanation", () => {
 		cy.visit("/");
 

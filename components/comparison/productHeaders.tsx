@@ -27,13 +27,19 @@ type ProductHeadersProps = {
 };
 
 export function ProductHeaders({ headers }: ProductHeadersProps) {
-	const productHeaders = headers.map((product) => {
+	const productHeaders = headers.map((product, index) => {
 		return (
-			<div key={product.id} className="flex flex-col px-4 border-r last:border-r-transparent">
+			<div
+				key={product.id}
+				className="flex flex-col px-4 border-r last:border-r-transparent"
+				role="columnheader"
+				aria-colindex={index + 1}
+				aria-labelledby={`${product.id}-heading`}
+			>
 				<div data-testid="product-vendor" className="product-vendor text-sm text-gray-500">
 					{product.vendor}
 				</div>
-				<div className="product-name font-semibold">
+				<div id={`${product.id}-heading`} className="product-name font-semibold">
 					<h1>{product.name}</h1>
 				</div>
 				<div className="product-download mt-4 text-xs">
@@ -57,7 +63,12 @@ export function ProductHeaders({ headers }: ProductHeadersProps) {
 	});
 
 	return (
-		<section id="product-header" className="sticky top-28 z-20 bg-white">
+		<section
+			id="product-header"
+			className="sticky top-28 z-20 bg-white"
+			role="row"
+			aria-label="JDK names"
+		>
 			<div
 				className="feature grid"
 				style={{

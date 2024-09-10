@@ -91,7 +91,7 @@ export function Navigation() {
 							href="mailto:hello@jdkcomparison.com"
 							type="button"
 							id="e-mail-link"
-							className="rounded-full bg-white p-1 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+							className="secondary-navigation-option rounded-full bg-white p-1 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 						>
 							<span className="sr-only">Send an e-mail</span>
 							<EnvelopeIcon
@@ -107,7 +107,7 @@ export function Navigation() {
 							href="https://github.com/aahlenst/jdkcomparison"
 							type="button"
 							id="github-link"
-							className="rounded-full bg-white p-1 ml-3 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+							className="secondary-navigation-option rounded-full bg-white p-1 ml-3 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 						>
 							<span className="sr-only">Go to GitHub repository</span>
 							<GitHubIcon

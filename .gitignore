@@ -16,6 +16,10 @@ cypress/downloads/
 cypress/results/
 cypress/screenshots/
 cypress/videos/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
 node_modules/
 out/
 *.tsbuildinfo

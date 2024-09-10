@@ -49,6 +49,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - name: Lint
         run: npm run lint
 
@@ -62,6 +65,7 @@ jobs:
           npm run dev > /dev/null 2>&1 &
           PID=$!
           npm run e2e:headless
+          npm run e2e:playwright
           kill "$PID"
 
       - name: Build
@@ -152,6 +156,7 @@ jobs:
       pull-requests: write
     env:
       CYPRESS_BASE_URL: ${{ needs.deploy-preview.outputs.preview-url }}
+      PLAYWRIGHT_BASE_URL: ${{ needs.deploy-preview.outputs.preview-url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -164,10 +169,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run acceptance tests
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run acceptance tests with Cypress
         run: |
           echo "Run acceptance tests against ${{ env.CYPRESS_BASE_URL }}"
           npm run acceptance
+
+      - name: Run acceptance tests
+        run: |
+          echo "Run acceptance tests against ${{ env.PLAYWRIGHT_BASE_URL }}"
+          npm run acceptance:playwright
 
       - name: Publish Acceptance Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2

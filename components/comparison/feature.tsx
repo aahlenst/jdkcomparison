@@ -29,10 +29,11 @@ type FeatureProps = {
 };
 
 export function Feature({ id, name, values, children }: PropsWithChildren<FeatureProps>) {
-	const features = values.map((value) => {
+	const features = values.map((value, index) => {
 		return (
 			<div
-				role="cell"
+				aria-colindex={index + 1}
+				role="gridcell"
 				key={value.id}
 				className="feature-value py-2 px-4 content-center border-r text-sm last:border-r-transparent"
 			>
@@ -54,11 +55,12 @@ export function Feature({ id, name, values, children }: PropsWithChildren<Featur
 				gridTemplateColumns: `repeat(${features.length + 1}, 12rem)`,
 			}}
 		>
-			<div className="sticky left-0 z-10 inline-flex items-center bg-white py-2 px-4 border-r">
-				<span role="rowheader" className="feature-name mr-1 text-sm font-medium">
-					{name}
-				</span>
-				{children && <FeatureExplanation>{children}</FeatureExplanation>}
+			<div
+				role="rowheader"
+				className="sticky left-0 z-10 inline-flex items-center bg-white py-2 px-4 border-r"
+			>
+				<span className="feature-name mr-1 text-sm font-medium">{name}</span>
+				{children && <FeatureExplanation name={name}>{children}</FeatureExplanation>}
 			</div>
 			{features}
 		</div>

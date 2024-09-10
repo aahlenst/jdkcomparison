@@ -27,8 +27,13 @@ import {
 	useInteractions,
 } from "@floating-ui/react";
 import { InfoIcon } from "../icons";
+import { Model } from "@/src/modelTypes";
 
-export function FeatureExplanation({ children }: PropsWithChildren) {
+type FeatureExplanationProps = {
+	name: string;
+};
+
+export function FeatureExplanation({ name, children }: PropsWithChildren<FeatureExplanationProps>) {
 	const arrowRef = useRef(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const { refs, floatingStyles, context } = useFloating({
@@ -64,7 +69,11 @@ export function FeatureExplanation({ children }: PropsWithChildren) {
 					<FloatingOverlay className="mobile-feature-explanation-overlay sm:hidden fixed z-40 inset-0 bg-black opacity-30" />
 					{/* Popover for smaller screens. Appears at the bottom of the screen. */}
 					<div className="mobile-feature-explanation sm:hidden fixed z-40 bottom-0 inset-x-0">
-						<div className="overflow-hidden bg-white p-3 prose prose-sm max-w-none">
+						<div
+							role="note"
+							aria-label={`Explanation for ${name}`}
+							className="overflow-hidden bg-white p-3 prose prose-sm max-w-none"
+						>
 							{children}
 						</div>
 					</div>
@@ -76,7 +85,13 @@ export function FeatureExplanation({ children }: PropsWithChildren) {
 						className="desktop-feature-explanation hidden sm:block z-10 bg-white rounded-lg shadow-lg ring-1 ring-black"
 					>
 						<FloatingArrow ref={arrowRef} context={context} />
-						<div className="p-3 prose prose-sm max-w-sm">{children}</div>
+						<div
+							role="note"
+							aria-label={`Explanation for ${name}`}
+							className="p-3 prose prose-sm max-w-sm"
+						>
+							{children}
+						</div>
 					</div>
 				</FloatingPortal>
 			)}
