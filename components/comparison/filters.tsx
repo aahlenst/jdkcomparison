@@ -72,7 +72,12 @@ export function Filters() {
 			className="fixed left-0 top-16 right-0 h-12 z-30 flex items-center bg-white border-t border-b border-gray-200 py-3 px-2 sm:px-6 lg:px-8"
 		>
 			{/* Mobile filters */}
-			<Dialog className="relative z-40 lg:hidden" open={open} onClose={setOpen}>
+			<Dialog
+				className="relative z-40 lg:hidden"
+				open={open}
+				onClose={setOpen}
+				aria-label="Menu Filters"
+			>
 				<DialogBackdrop
 					transition
 					className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
@@ -91,7 +96,7 @@ export function Filters() {
 								className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
 								onClick={() => setOpen(false)}
 							>
-								<span className="sr-only">Close menu</span>
+								<span className="sr-only">Close menu Filters</span>
 								<XMarkIcon className="h-6 w-6" aria-hidden="true" />
 							</button>
 						</div>

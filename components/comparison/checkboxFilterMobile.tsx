@@ -63,7 +63,12 @@ export function CheckboxFilterMobile({
 							id={`mobile-menu-filter-${filter.id}`}
 							className="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400"
 						>
-							<span className="filter-name font-medium text-gray-900">{label}</span>
+							<legend
+								id={`legend-${filter.id}`}
+								className="filter-name font-medium text-gray-900"
+							>
+								{label}
+							</legend>
 							<span className="ml-6 flex items-center">
 								<ChevronDownIcon
 									className={classNames(
@@ -76,9 +81,13 @@ export function CheckboxFilterMobile({
 						</DisclosureButton>
 					</h3>
 					<DisclosurePanel className="pt-6">
-						<div id={`filter-${filter.id}`} className="space-y-6">
+						<fieldset
+							id={`filter-${filter.id}`}
+							aria-labelledby={`legend-${filter.id}`}
+							className="space-y-6"
+						>
 							{fields}
-						</div>
+						</fieldset>
 					</DisclosurePanel>
 				</>
 			)}
