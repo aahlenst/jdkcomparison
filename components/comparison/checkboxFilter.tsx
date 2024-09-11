@@ -31,7 +31,7 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 		return (
 			<div key={option.id} className="flex items-center">
 				<input
-					id={option.id}
+					id={`filter-${option.id}`}
 					name={filter.id}
 					type="checkbox"
 					checked={option.selected}
@@ -41,7 +41,7 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 					}}
 				/>
 				<label
-					htmlFor={option.id}
+					htmlFor={`filter-${option.id}`}
 					className="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-gray-900"
 				>
 					{option.label}

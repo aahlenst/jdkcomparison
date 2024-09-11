@@ -38,7 +38,7 @@ export function CheckboxFilterMobile({
 		return (
 			<div key={option.id} className="flex items-center">
 				<input
-					id={option.id}
+					id={`filter-${option.id}`}
 					name={filter.id}
 					type="checkbox"
 					checked={option.selected}
@@ -47,7 +47,7 @@ export function CheckboxFilterMobile({
 						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
 					}}
 				/>
-				<label htmlFor={option.id} className="ml-3 text-sm text-gray-500">
+				<label htmlFor={`filter-${option.id}`} className="ml-3 text-sm text-gray-500">
 					{option.label}
 				</label>
 			</div>
