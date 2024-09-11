@@ -64,8 +64,7 @@ jobs:
         run: |
           npm run dev > /dev/null 2>&1 &
           PID=$!
-          npm run e2e:headless
-          npm run e2e:playwright
+          npm run e2e
           kill "$PID"
 
       - name: Build
@@ -84,18 +83,7 @@ jobs:
         with:
           check_name: Test Results of Node.js ${{ env.NODE_VERSION }}
           files: |
-            cypress/results/*.xml
             build/reports/*.xml
-
-      - name: Upload Cypress Screenshots and Videos on Failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-tests-node.js-${{ env.NODE_VERSION }}
-          path: |
-            cypress/screenshots/
-            cypress/videos/
-          if-no-files-found: ignore
 
   deploy-preview:
     name: Deploy preview
@@ -155,7 +143,6 @@ jobs:
       checks: write
       pull-requests: write
     env:
-      CYPRESS_BASE_URL: ${{ needs.deploy-preview.outputs.preview-url }}
       PLAYWRIGHT_BASE_URL: ${{ needs.deploy-preview.outputs.preview-url }}
     steps:
       - uses: actions/checkout@v4
@@ -172,34 +159,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run acceptance tests with Cypress
-        run: |
-          echo "Run acceptance tests against ${{ env.CYPRESS_BASE_URL }}"
-          npm run acceptance
-
       - name: Run acceptance tests
         run: |
           echo "Run acceptance tests against ${{ env.PLAYWRIGHT_BASE_URL }}"
-          npm run acceptance:playwright
-
-      - name: Publish Acceptance Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          check_name: Acceptance Test Results
-          files: |
-            cypress/results/*.xml
-            build/reports/*.xml
-
-      - name: Upload Cypress Screenshots and Videos on Failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-acceptance-tests
-          path: |
-            cypress/screenshots/
-            cypress/videos/
-          if-no-files-found: ignore
+          npm run acceptance
 
   deploy-to-production:
     name: Deploy to production

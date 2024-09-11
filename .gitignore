@@ -12,10 +12,6 @@ build/
 .next/
 .vercel/
 coverage/
-cypress/downloads/
-cypress/results/
-cypress/screenshots/
-cypress/videos/
 test-results/
 playwright-report/
 blob-report/

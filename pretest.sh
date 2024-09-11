@@ -23,8 +23,7 @@ npm run lint
 npm run jest
 npm run dev > /dev/null 2>&1 &
 SERVER_PID=$!
-npm run e2e:playwright
-npm run e2e:headless
+npm run e2e
 cleanup
 
 npx @cloudflare/next-on-pages
