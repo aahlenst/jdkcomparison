@@ -602,6 +602,7 @@ test.describe("JDK Comparison", () => {
 
 		const options = ["8", "17"];
 		const form = page.getByRole("form", { name: "Selectable Versions" });
+		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {
 			await expect(form.getByRole("checkbox").nth(i)).toHaveAccessibleName(options[i]);
 		}
@@ -612,6 +613,7 @@ test.describe("JDK Comparison", () => {
 
 		const options = ["Coffeecorp", "Dukecorp"];
 		const form = page.getByRole("form", { name: "Selectable Vendors" });
+		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {
 			await expect(form.getByRole("checkbox").nth(i)).toHaveAccessibleName(options[i]);
 		}
@@ -622,6 +624,7 @@ test.describe("JDK Comparison", () => {
 
 		const options = ["CoffeeVM", "DukeVM"];
 		const form = page.getByRole("form", { name: "Selectable VMs" });
+		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {
 			await expect(form.getByRole("checkbox").nth(i)).toHaveAccessibleName(options[i]);
 		}
@@ -632,6 +635,7 @@ test.describe("JDK Comparison", () => {
 
 		const options = ["Flight Recorder", "JavaFX", "Java Web Start"];
 		const form = page.getByRole("form", { name: "Selectable Technologies" });
+		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {
 			await expect(form.getByRole("checkbox").nth(i)).toHaveAccessibleName(options[i]);
 		}
@@ -642,6 +646,7 @@ test.describe("JDK Comparison", () => {
 
 		const options = ["CMS", "Epsilon", "G1", "Parallel", "Serial", "Shenandoah", "Z"];
 		const form = page.getByRole("form", { name: "Selectable GCs" });
+		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {
 			await expect(form.getByRole("checkbox").nth(i)).toHaveAccessibleName(options[i]);
 		}
@@ -667,8 +672,10 @@ test.describe("JDK Comparison", () => {
 			"Solaris, x86, 64-bit",
 			"Windows, ARM, 64-bit",
 			"Windows, x86, 32-bit",
+			"Windows, x86, 64-bit",
 		];
 		const form = page.getByRole("form", { name: "Selectable Platforms" });
+		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {
 			await expect(form.getByRole("checkbox").nth(i)).toHaveAccessibleName(options[i]);
 		}
