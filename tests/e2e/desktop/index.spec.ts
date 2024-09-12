@@ -1003,6 +1003,32 @@ test.describe("JDK Comparison", () => {
 		await expect(page.getByRole("note", { name: "Explanation for JavaFX" })).not.toBeVisible();
 	});
 
+	test("opens and closes feature explanation repeatedly", async ({ page }) => {
+		const row = page.getByRole("row", { name: "JavaFX Show explanation no[1] no yes[1]" });
+		await row.getByRole("img", { name: "Show explanation" }).click();
+
+		await expect(page.getByRole("note", { name: "Explanation for JavaFX" })).toBeVisible();
+		await expect(page.getByRole("note", { name: "Explanation for JavaFX" })).toContainText(
+			"JavaFX is a GUI toolkit that was part of Oracle JDK until Oracle JDK 10.",
+		);
+
+		await page.keyboard.press("Escape");
+
+		await expect(page.getByRole("note", { name: "Explanation for JavaFX" })).not.toBeVisible();
+
+		await row.getByRole("img", { name: "Show explanation" }).click();
+
+		await expect(page.getByRole("note", { name: "Explanation for JavaFX" })).toBeVisible();
+
+		await page.keyboard.press("Escape");
+
+		await expect(page.getByRole("note", { name: "Explanation for JavaFX" })).not.toBeVisible();
+
+		await row.getByRole("img", { name: "Show explanation" }).click();
+
+		await expect(page.getByRole("note", { name: "Explanation for JavaFX" })).toBeVisible();
+	});
+
 	test("clicking a second feature explanation closes the first", async ({ page }) => {
 		const jfx = page.getByRole("row", { name: "JavaFX Show explanation no[1] no yes[1]" });
 		await jfx.getByRole("img", { name: "Show explanation" }).click();
