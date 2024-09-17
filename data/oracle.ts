@@ -74,7 +74,10 @@ export const data: Vendor = {
 					solarisx64: { present: Present.NO },
 				},
 				aqavit: { present: Present.NO },
-				tck: { present: Present.YES },
+				tck: {
+					present: Present.PARTIALLY,
+					footnote: "7de93e18-1715-4337-8f45-35e1786c59ca",
+				},
 				editions: { text: "none" },
 				customisations: { text: "many" },
 				notableFeatures: {
@@ -158,7 +161,10 @@ export const data: Vendor = {
 					solarisx64: { present: Present.NO },
 				},
 				aqavit: { present: Present.NO },
-				tck: { present: Present.YES },
+				tck: {
+					present: Present.PARTIALLY,
+					footnote: "7de93e18-1715-4337-8f45-35e1786c59ca",
+				},
 				editions: { text: "none" },
 				customisations: { text: "many" },
 				notableFeatures: {
@@ -242,7 +248,10 @@ export const data: Vendor = {
 					solarisx64: { present: Present.NO },
 				},
 				aqavit: { present: Present.NO },
-				tck: { present: Present.YES },
+				tck: {
+					present: Present.PARTIALLY,
+					footnote: "7de93e18-1715-4337-8f45-35e1786c59ca",
+				},
 				editions: { text: "none" },
 				customisations: { text: "many" },
 				notableFeatures: {
@@ -326,7 +335,10 @@ export const data: Vendor = {
 					solarisx64: { present: Present.NO },
 				},
 				aqavit: { present: Present.NO },
-				tck: { present: Present.YES },
+				tck: {
+					present: Present.PARTIALLY,
+					footnote: "7de93e18-1715-4337-8f45-35e1786c59ca",
+				},
 				editions: { text: "none" },
 				customisations: { text: "many" },
 				notableFeatures: {
@@ -939,6 +951,11 @@ export const data: Vendor = {
 				"updates are usually offered for only three years after the initial release, paying customers can " +
 				"receive updates for much longer. The comparison lists the end-of-life date for the paid " +
 				"extended support.",
+		},
+		{
+			id: "7de93e18-1715-4337-8f45-35e1786c59ca",
+			markdown:
+				"While GraalVM is a fully conformant implementation of the Java Platform, Native Image is not.",
 		},
 	],
 };
