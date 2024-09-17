@@ -375,12 +375,12 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "corretto-22",
+			id: "corretto-23",
 			information: {
-				name: "Corretto 22",
-				version: 22,
+				name: "Corretto 23",
+				version: 23,
 				downloadSite:
-					"https://docs.aws.amazon.com/corretto/latest/corretto-22-ug/downloads-list.html",
+					"https://docs.aws.amazon.com/corretto/latest/corretto-23-ug/downloads-list.html",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -408,7 +408,7 @@ export const data: Vendor = {
 					ppc64: { present: Present.NO },
 					riscv64: { present: Present.NO },
 					s390x: { present: Present.NO },
-					// https://docs.aws.amazon.com/corretto/latest/corretto-22-ug/generic-linux-install.html
+					// https://docs.aws.amazon.com/corretto/latest/corretto-23-ug/generic-linux-install.html
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
@@ -451,7 +451,7 @@ export const data: Vendor = {
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
 				},
 				eolDate: {
-					text: "2024-09",
+					text: "2025-03",
 					footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -477,7 +477,7 @@ export const data: Vendor = {
 				"[11](https://github.com/corretto/corretto-11/blob/develop/CHANGELOG.md), " +
 				"[17](https://github.com/corretto/corretto-17/blob/develop/CHANGELOG.md), " +
 				"[21](https://github.com/corretto/corretto-21/blob/develop/CHANGELOG.md), " +
-				"[22](https://github.com/corretto/corretto-22/blob/develop/CHANGELOG.md).",
+				"[23](https://github.com/corretto/corretto-23/blob/develop/CHANGELOG.md).",
 		},
 		{
 			id: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
