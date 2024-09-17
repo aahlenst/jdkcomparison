@@ -181,11 +181,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "graalvm-22",
+			id: "graalvm-23",
 			information: {
-				name: "GraalVM for JDK 22",
-				version: 22,
-				downloadSite: "https://www.oracle.com/java/technologies/downloads/#graalvmjava22",
+				name: "GraalVM for JDK 23",
+				version: 23,
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#graalvmjava23",
 			},
 			features: {
 				virtualMachine: {
@@ -257,7 +257,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2024-09" },
+				eolDate: { text: "2025-03" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "paid/tiered" },
@@ -349,11 +349,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "openjdk-22",
+			id: "openjdk-23",
 			information: {
-				name: "OpenJDK 22",
-				version: 22,
-				downloadSite: "https://jdk.java.net/22",
+				name: "OpenJDK 23",
+				version: 23,
+				downloadSite: "https://jdk.java.net/23",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -416,7 +416,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2024-09" },
+				eolDate: { text: "2025-03" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "no/free" },
@@ -761,11 +761,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "oracle-jdk-22",
+			id: "oracle-jdk-23",
 			information: {
-				name: "Oracle JDK 22",
-				version: 22,
-				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java22",
+				name: "Oracle JDK 23",
+				version: 23,
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java23",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -839,7 +839,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2024-09" },
+				eolDate: { text: "2025-03" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "paid/tiered" },

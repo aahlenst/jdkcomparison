@@ -75,7 +75,7 @@ test.describe("JDK Comparison", () => {
 
 	test("should display some known products", async ({ page }) => {
 		const products = new Set(await page.getByRole("heading", { level: 1 }).allTextContents());
-		expect(products).toContain("OpenJDK 22");
+		expect(products).toContain("OpenJDK 23");
 		expect(products).toContain("Eclipse Temurin 17");
 		expect(products).toContain("Eclipse Temurin 8");
 	});
