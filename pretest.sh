@@ -29,5 +29,6 @@ cleanup
 npx @cloudflare/next-on-pages
 npx wrangler pages dev --port 3000 .vercel/output/static --compatibility-flag=nodejs_compat > /dev/null 2>&1 &
 SERVER_PID=$!
+sleep 1  # Wrangler needs some time to get ready which can cause Playwright timeouts.
 npm run acceptance
 cleanup
