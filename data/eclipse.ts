@@ -394,11 +394,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "eclipse-temurin-22",
+			id: "eclipse-temurin-23",
 			information: {
-				name: "Eclipse Temurin 22",
-				version: 22,
-				downloadSite: "https://adoptium.net/temurin/releases/?version=22",
+				name: "Eclipse Temurin 23",
+				version: 23,
+				downloadSite: "https://adoptium.net/temurin/releases/?version=23",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -480,7 +480,7 @@ export const data: Vendor = {
 					footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 				},
 				eolDate: {
-					text: "2024-09",
+					text: "2025-03",
 					footnote: "62fd52c0-82d0-468a-a413-38277b35bd30",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -499,8 +499,9 @@ export const data: Vendor = {
 				"eclipse-temurin-bot: JDK [8](https://github.com/adoptium/jdk8u/compare/master...release), " +
 				"[11](https://github.com/adoptium/jdk11u/compare/master...release), " +
 				"[17](https://github.com/adoptium/jdk17u/compare/master...release), " +
-				"[21](https://github.com/adoptium/jdk21u/compare/master...release), and " +
-				"[22](https://github.com/adoptium/jdk22/compare/master...release).",
+				"[21](https://github.com/adoptium/jdk21u/compare/master...release). From JDK 23 onwards, " +
+				"compare the `jdkXX` with the `release_jdkXX` branch instead: " +
+				"[23](https://github.com/adoptium/jdk/compare/jdk23...release_jdk23).",
 		},
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
@@ -539,7 +540,7 @@ export const data: Vendor = {
 				"[11](https://github.com/adoptium/temurin11-binaries/releases/), " +
 				"[17](https://github.com/adoptium/temurin17-binaries/releases/), " +
 				"[21](https://github.com/adoptium/temurin21-binaries/releases/), " +
-				"[22](https://github.com/adoptium/temurin22-binaries/releases/).",
+				"[23](https://github.com/adoptium/temurin23-binaries/releases/).",
 		},
 		{
 			id: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
