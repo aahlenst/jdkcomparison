@@ -382,11 +382,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "liberica-jdk-22",
+			id: "liberica-jdk-23",
 			information: {
-				name: "Liberica JDK 22",
-				version: 22,
-				downloadSite: "https://bell-sw.com/pages/downloads/",
+				name: "Liberica JDK 23",
+				version: 23,
+				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-23",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -416,12 +416,12 @@ export const data: Vendor = {
 					installers: { present: Present.YES },
 				},
 				linux: {
-					x32: { present: Present.YES },
+					x32: { present: Present.NO },
 					x64: { present: Present.YES },
 					x64Musl: { present: Present.YES },
 					aarch64: { present: Present.YES },
 					aarch64Musl: { present: Present.YES },
-					aarch32: { present: Present.YES },
+					aarch32: { present: Present.NO },
 					ppc64: { present: Present.YES },
 					riscv64: { present: Present.YES },
 					s390x: { present: Present.NO },
@@ -434,7 +434,7 @@ export const data: Vendor = {
 					},
 				},
 				windows: {
-					x32: { present: Present.YES },
+					x32: { present: Present.NO },
 					x64: { present: Present.YES },
 					aarch64: { present: Present.YES },
 					installers: { present: Present.YES },
@@ -465,7 +465,7 @@ export const data: Vendor = {
 				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
-					text: "2024-09",
+					text: "2025-03",
 					footnote: "e92c2876-d7c0-43f3-a441-b4f95ce940cb",
 				},
 				releaseSchedule: { text: "OpenJDK" },
