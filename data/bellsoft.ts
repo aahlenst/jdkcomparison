@@ -17,7 +17,7 @@ export const data: Vendor = {
 			information: {
 				name: "Liberica JDK 8",
 				version: 8,
-				downloadSite: "https://bell-sw.com/pages/downloads/",
+				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-8-lts",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -107,7 +107,7 @@ export const data: Vendor = {
 			information: {
 				name: "Liberica JDK 11",
 				version: 11,
-				downloadSite: "https://bell-sw.com/pages/downloads/",
+				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-11-lts",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -200,7 +200,7 @@ export const data: Vendor = {
 			information: {
 				name: "Liberica JDK 17",
 				version: 17,
-				downloadSite: "https://bell-sw.com/pages/downloads/",
+				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-17-lts",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -293,7 +293,7 @@ export const data: Vendor = {
 			information: {
 				name: "Liberica JDK 21",
 				version: 21,
-				downloadSite: "https://bell-sw.com/pages/downloads/",
+				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-21-lts",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
