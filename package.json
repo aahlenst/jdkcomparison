@@ -11,7 +11,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@headlessui/react": "2.1.10",
+		"@headlessui/react": "2.2.0",
 		"github-slugger": "2.0.0",
 		"immer": "10.1.1",
 		"micromark": "4.0.0",
