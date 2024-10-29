@@ -13,7 +13,7 @@ permissions:
 env:
   ARTIFACT_NAME: jdkcomparison-site
   # Use Node.js LTS. Schedule: https://nodejs.org/en/about/releases/
-  NODE_VERSION: 20.x
+  NODE_VERSION: 22.x
 
 jobs:
   common-checks:
