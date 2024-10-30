@@ -352,9 +352,12 @@ export const data: Vendor = {
 				windows: {
 					x32: { present: Present.NO },
 					x64: { present: Present.YES },
-					aarch64: { present: Present.NO },
+					aarch64: { present: Present.YES },
 					installers: { present: Present.YES },
-					containerImages: { present: Present.YES },
+					containerImages: {
+						present: Present.PARTIALLY,
+						footnote: "0246d8bd-6ec5-467e-800c-c5c503c74fec",
+					},
 				},
 				otherPlatforms: {
 					aixPPC: { present: Present.YES },
@@ -448,9 +451,12 @@ export const data: Vendor = {
 				windows: {
 					x32: { present: Present.NO },
 					x64: { present: Present.YES },
-					aarch64: { present: Present.NO },
+					aarch64: { present: Present.YES },
 					installers: { present: Present.YES },
-					containerImages: { present: Present.YES },
+					containerImages: {
+						present: Present.PARTIALLY,
+						footnote: "0246d8bd-6ec5-467e-800c-c5c503c74fec",
+					},
 				},
 				otherPlatforms: {
 					aixPPC: { present: Present.YES },
@@ -545,6 +551,10 @@ export const data: Vendor = {
 		{
 			id: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
 			markdown: "There are no container images for RISC-V, 64-bit with Eclipse Temurin.",
+		},
+		{
+			id: "0246d8bd-6ec5-467e-800c-c5c503c74fec",
+			markdown: "Container images are only available for Windows on x86, 64-bit",
 		},
 	],
 };
