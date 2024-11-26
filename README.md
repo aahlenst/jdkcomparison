@@ -20,9 +20,9 @@ The data (in the folder [data/](data)) is licensed under the [Creative Commons A
 
 ### Prerequisites
 
--   Linux or macOS
--   [Node.js](https://nodejs.org/) LTS with npm
--   [Firefox](https://www.mozilla.org/firefox/)
+- Linux or macOS
+- [Node.js](https://nodejs.org/) LTS with npm
+- [Firefox](https://www.mozilla.org/firefox/)
 
 ### Development Mode
 

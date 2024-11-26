@@ -7,18 +7,18 @@ export const meta = {
 
 ## Overview
 
--   Understanding the Comparison
-    -   [Which JDK Do You Recommend?](#which-jdk-do-you-recommend)
-    -   [Is the JDK That Ticks All the Boxes the Best?](#is-the-jdk-that-ticks-all-the-boxes-the-best)
-    -   [How Do I Find the Best JDK for Me?](#how-do-i-find-the-best-jdk-for-me)
--   Data and Features
-    -   [What JDKs Do You Plan on Adding? Why Are Some Missing?](#what-jdks-do-you-plan-on-adding-why-are-some-missing)
-    -   [What Is the Meaning of the Licenses?](#what-is-the-meaning-of-the-licenses)
-    -   [What Is the Difference Between the Update Types?](#what-is-the-difference-between-the-update-types)
--   Further Information
-    -   [Where Can I Learn More about Differences Between Versions?](#where-can-i-learn-more-about-differences-between-versions)
-    -   [What Are My Options If I Need JavaFX?](#what-are-my-options-if-i-need-javafx)
-    -   [What Are My Options If I Need Java Web Start?](#what-are-my-options-if-i-need-java-web-start)
+- Understanding the Comparison
+    - [Which JDK Do You Recommend?](#which-jdk-do-you-recommend)
+    - [Is the JDK That Ticks All the Boxes the Best?](#is-the-jdk-that-ticks-all-the-boxes-the-best)
+    - [How Do I Find the Best JDK for Me?](#how-do-i-find-the-best-jdk-for-me)
+- Data and Features
+    - [What JDKs Do You Plan on Adding? Why Are Some Missing?](#what-jdks-do-you-plan-on-adding-why-are-some-missing)
+    - [What Is the Meaning of the Licenses?](#what-is-the-meaning-of-the-licenses)
+    - [What Is the Difference Between the Update Types?](#what-is-the-difference-between-the-update-types)
+- Further Information
+    - [Where Can I Learn More about Differences Between Versions?](#where-can-i-learn-more-about-differences-between-versions)
+    - [What Are My Options If I Need JavaFX?](#what-are-my-options-if-i-need-javafx)
+    - [What Are My Options If I Need Java Web Start?](#what-are-my-options-if-i-need-java-web-start)
 
 ## Which JDK Do You Recommend?
 
@@ -45,10 +45,10 @@ The primary reason is that ticked boxes (or full circles, as they are currently 
 
 Examining each entry on the shortlist should include the following tasks:
 
--   Try each JDK and all the functionality you need, at least on your machine and in your test environment.
--   Watch whether you receive updates in time and whether the quality is acceptable.
--   If you require specific functionality (for example, a garbage collector) on an older JDK, ask the vendor whether they maintain that functionality or at least backport patches. Areas notorious for widely varying levels of support are garbage collectors, platform support (especially anything beyond x86, 64-bit, and ARM, 64-bit), and functionality like JavaFX or Web Start that has been removed from OpenJDK.
--   If you require support, talk to the vendor about their offering and ask them to walk you through how they would handle a specific issue you had in the past.
+- Try each JDK and all the functionality you need, at least on your machine and in your test environment.
+- Watch whether you receive updates in time and whether the quality is acceptable.
+- If you require specific functionality (for example, a garbage collector) on an older JDK, ask the vendor whether they maintain that functionality or at least backport patches. Areas notorious for widely varying levels of support are garbage collectors, platform support (especially anything beyond x86, 64-bit, and ARM, 64-bit), and functionality like JavaFX or Web Start that has been removed from OpenJDK.
+- If you require support, talk to the vendor about their offering and ask them to walk you through how they would handle a specific issue you had in the past.
 
 ## What JDKs Do You Plan on Adding? Why Are Some Missing?
 
@@ -56,23 +56,23 @@ The plan is to include all JDKs that are intended for production use and target 
 
 JDKs that we plan to add, sorted alphabetically:
 
--   [IBM Semeru Runtime Open Edition](https://developer.ibm.com/languages/java/semeru-runtimes/)
--   [OpenLogic OpenJDK](https://www.openlogic.com/openjdk-downloads)
+- [IBM Semeru Runtime Open Edition](https://developer.ibm.com/languages/java/semeru-runtimes/)
+- [OpenLogic OpenJDK](https://www.openlogic.com/openjdk-downloads)
 
 JDKs that we do not plan on adding, sorted alphabetically:
 
--   [AdoptOpenJDK](https://adoptopenjdk.net/): Renamed to Eclipse Temurin.
--   All JDKs included in Linux distributions: Those that are not already on the list like Amazon Corretto (in Amazon Linux) are no stand-alone products. Furthermore, they would bloat the comparison even more.
--   [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime): Serves as platform for JetBrains' IntelliJ-based IDE, only.
--   [Red Hat Mandrel](https://github.com/graalvm/mandrel): Stripped down version of GraalVM Community Edition containing only the GraalVM Native Image builder. Its purpose is to support [Quarkus](https://quarkus.io/).
--   [OJDKBuild](https://github.com/ojdkbuild/ojdkbuild): Discontinued.
--   [Trava OpenJDK](https://github.com/TravaOpenJDK): Seems to primarily target developers, and to be dormant.
+- [AdoptOpenJDK](https://adoptopenjdk.net/): Renamed to Eclipse Temurin.
+- All JDKs included in Linux distributions: Those that are not already on the list like Amazon Corretto (in Amazon Linux) are no stand-alone products. Furthermore, they would bloat the comparison even more.
+- [JetBrains Runtime](https://github.com/JetBrains/JetBrainsRuntime): Serves as platform for JetBrains' IntelliJ-based IDE, only.
+- [Red Hat Mandrel](https://github.com/graalvm/mandrel): Stripped down version of GraalVM Community Edition containing only the GraalVM Native Image builder. Its purpose is to support [Quarkus](https://quarkus.io/).
+- [OJDKBuild](https://github.com/ojdkbuild/ojdkbuild): Discontinued.
+- [Trava OpenJDK](https://github.com/TravaOpenJDK): Seems to primarily target developers, and to be dormant.
 
 JDKs we are not sure about, sorted alphabetically:
 
--   [Axiom JDK](https://axiomjdk.ru/): Looks like a rebrand of BellSoft Liberica JDK for the Russian market.
--   [Huawei BiSheng](https://www.openeuler.org/en/other/projects/bishengjdk/): Unclear whether it is targeting an audience outside of Huawei.
--   [Tencent Kona](https://github.com/Tencent/): Unclear whether it is targeting an audience outside of Tencent.
+- [Axiom JDK](https://axiomjdk.ru/): Looks like a rebrand of BellSoft Liberica JDK for the Russian market.
+- [Huawei BiSheng](https://www.openeuler.org/en/other/projects/bishengjdk/): Unclear whether it is targeting an audience outside of Huawei.
+- [Tencent Kona](https://github.com/Tencent/): Unclear whether it is targeting an audience outside of Tencent.
 
 ## What Is the Meaning of the Licenses?
 
@@ -97,11 +97,11 @@ However, the exact definition may vary from vendor to vendor.
 
 Possible values in the comparison table and their meaning:
 
--   **no**: The vendor does not publish the type of update.
--   **free**: The type of update is available free of charge.
--   **paid**: The type of update is only available to paying customers.
--   **tiered**: The availability of the type of update is somehow tiered. For example, it can be free of charge for a certain period after the initial release of the JDK. Further updates will only be made available to paying customers.
--   **unknown**: There is not enough information to assign any of the other values.
+- **no**: The vendor does not publish the type of update.
+- **free**: The type of update is available free of charge.
+- **paid**: The type of update is only available to paying customers.
+- **tiered**: The availability of the type of update is somehow tiered. For example, it can be free of charge for a certain period after the initial release of the JDK. Further updates will only be made available to paying customers.
+- **unknown**: There is not enough information to assign any of the other values.
 
 ## Where Can I Learn More about Differences Between Versions?
 
@@ -123,9 +123,9 @@ Java Web Start allows downloading and starting Java applications directly from t
 
 Users that rely on JNLP but require a newer JDK have some options. There is an open-source reimplementation of Web Start called [IcedTea-Web](https://github.com/AdoptOpenJDK/IcedTea-Web). It claims to be largely compatible with Web Start and should work with newer JDKs.
 
--   [Azul](https://azul.com/) provides builds of [IcedTea-Web](https://www.azul.com/products/components/icedtea-web/).
--   [BellSoft](https://bell-sw.com/) provides [OpenWebStart](https://openwebstart.com/) as part of [BellSoft's support offering](https://bell-sw.com/support/).
--   [OpenWebStart](https://openwebstart.com/) bundles IcedTea-Web with updaters and a control panel. Paid support is available, too.
--   [Red Hat](https://redhat.com/) provides [IcedTea-Web on Windows and some older versions of Red Hat Enterprise Linux](https://access.redhat.com/solutions/5087601).
+- [Azul](https://azul.com/) provides builds of [IcedTea-Web](https://www.azul.com/products/components/icedtea-web/).
+- [BellSoft](https://bell-sw.com/) provides [OpenWebStart](https://openwebstart.com/) as part of [BellSoft's support offering](https://bell-sw.com/support/).
+- [OpenWebStart](https://openwebstart.com/) bundles IcedTea-Web with updaters and a control panel. Paid support is available, too.
+- [Red Hat](https://redhat.com/) provides [IcedTea-Web on Windows and some older versions of Red Hat Enterprise Linux](https://access.redhat.com/solutions/5087601).
 
 export default ({ children }) => <MDXPageLayout meta={meta}>{children}</MDXPageLayout>;

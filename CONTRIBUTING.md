@@ -17,6 +17,6 @@ The rules should ensure that you do not waste your time on PRs that we ultimatel
 
 Do you not know what to fill into a field?
 
--   There is JSDoc on every field that should provide guidance.
--   Ask for assistance, either on GitHub or by sending an e-mail (address can be found on jdkcomparison.com)
--   There is no shame in putting down "unknown".
+- There is JSDoc on every field that should provide guidance.
+- Ask for assistance, either on GitHub or by sending an e-mail (address can be found on jdkcomparison.com)
+- There is no shame in putting down "unknown".
