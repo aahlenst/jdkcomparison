@@ -842,7 +842,10 @@ export const data: Vendor = {
 				tck: { present: Present.YES },
 				editions: { text: "none" },
 				customisations: { text: "unknown" },
-				notableFeatures: { text: "none" },
+				notableFeatures: {
+					text: "Graal Compiler",
+					footnote: "c06ac534-5179-4d72-afd7-f64c0da69fd8",
+				},
 				license: { text: "Proprietary" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: {
@@ -877,6 +880,11 @@ export const data: Vendor = {
 				"[Graal Compiler](https://docs.oracle.com/en/graalvm/enterprise/21/docs/reference-manual/java/compiler/) is an advanced JIT for HotSpot. " +
 				"[Native Image](https://docs.oracle.com/en/graalvm/enterprise/21/docs/reference-manual/native-image/) compiles Java applications down to native executables for faster start-up (only Serial GC plus G1 GC on Linux). " +
 				"[Truffle](https://docs.oracle.com/en/graalvm/jdk/21/docs/reference-manual/java-on-truffle/) is a separate VM that allows direct interoperability with other languages, such as Python.",
+		},
+		{
+			id: "c06ac534-5179-4d72-afd7-f64c0da69fd8",
+			markdown:
+				"[Graal Compiler](https://docs.oracle.com/en/graalvm/enterprise/21/docs/reference-manual/java/compiler/) is an advanced JIT for HotSpot and available as [experimental feature since Oracle JDK 23](https://blogs.oracle.com/java/post/including-the-graal-jit-in-oracle-jdk-23).",
 		},
 		{
 			id: "89192778-e781-40bd-ad67-3ba06f958de3",
