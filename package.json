@@ -34,7 +34,7 @@
 		"@testing-library/jest-dom": "6.6.3",
 		"@testing-library/react": "16.1.0",
 		"@types/node": "22.10.5",
-		"@types/react": "19.0.6",
+		"@types/react": "19.0.7",
 		"@types/react-dom": "19.0.3",
 		"autoprefixer": "10.4.20",
 		"eslint": "8.57.1",
@@ -54,7 +54,7 @@
 		"wrangler": "3.101.0"
 	},
 	"overrides": {
-		"@types/react": "19.0.6",
+		"@types/react": "19.0.7",
 		"@types/react-dom": "19.0.3"
 	}
 }
