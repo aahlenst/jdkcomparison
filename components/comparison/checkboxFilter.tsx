@@ -35,7 +35,7 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 					name={filter.id}
 					type="checkbox"
 					checked={option.selected}
-					className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
+					className="h-4 w-4 rounded-sm border-gray-300 text-red-600 focus:ring-red-500"
 					onChange={(e) => {
 						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
 					}}
@@ -61,12 +61,12 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 				<PopoverButton className="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
 					<span className="filter-name">{label}</span>
 					{numberOfSelectedOptions > 0 && (
-						<span className="active-filter-options ml-1.5 rounded bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700">
+						<span className="active-filter-options ml-1.5 rounded-sm bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700">
 							{numberOfSelectedOptions}
 						</span>
 					)}
 					<ChevronDownIcon
-						className="-mr-1 last:mr-0 ml-1 h-3 w-3 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+						className="-mr-1 last:mr-0 ml-1 h-3 w-3 shrink-0 text-gray-400 group-hover:text-gray-500"
 						aria-hidden="true"
 					/>
 				</PopoverButton>
@@ -74,7 +74,7 @@ export function CheckboxFilter({ label, filter, onChangeHandler }: CheckboxFilte
 
 			<PopoverPanel
 				transition
-				className="absolute max-h-72 overflow-auto right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none transition data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+				className="absolute max-h-72 overflow-auto right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black/5 focus:outline-hidden transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-leave:duration-75 data-enter:ease-out data-leave:ease-in"
 			>
 				<form
 					id={`filter-${filter.id}`}

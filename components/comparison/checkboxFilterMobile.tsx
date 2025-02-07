@@ -42,7 +42,7 @@ export function CheckboxFilterMobile({
 					name={filter.id}
 					type="checkbox"
 					checked={option.selected}
-					className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
+					className="h-4 w-4 rounded-sm border-gray-300 text-red-600 focus:ring-red-500"
 					onChange={(e) => {
 						onChangeHandler(new ApplyFilter(filter.id, option.label, e.target.checked));
 					}}

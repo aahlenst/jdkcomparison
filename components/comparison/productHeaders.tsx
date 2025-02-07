@@ -31,7 +31,7 @@ export function ProductHeaders({ headers }: ProductHeadersProps) {
 		return (
 			<div
 				key={product.id}
-				className="flex flex-col px-4 border-r last:border-r-transparent"
+				className="flex flex-col px-4 border-r border-gray-200 last:border-r-transparent"
 				role="columnheader"
 				aria-colindex={index + 1}
 				aria-labelledby={`${product.id}-heading`}
@@ -75,7 +75,7 @@ export function ProductHeaders({ headers }: ProductHeadersProps) {
 					gridTemplateColumns: `repeat(${productHeaders.length + 1}, 12rem)`,
 				}}
 			>
-				<div className="sticky left-0 flex flex-col place-content-end bg-white px-4 border-r">
+				<div className="sticky left-0 flex flex-col place-content-end bg-white px-4 border-r border-gray-200">
 					<DifferencesOnlyToggle />
 				</div>
 				{productHeaders}

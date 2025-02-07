@@ -35,7 +35,7 @@ export function Feature({ id, name, values, children }: PropsWithChildren<Featur
 				aria-colindex={index + 1}
 				role="gridcell"
 				key={value.id}
-				className="feature-value py-2 px-4 content-center border-r text-sm last:border-r-transparent"
+				className="feature-value py-2 px-4 content-center border-r border-gray-200 text-sm last:border-r-transparent"
 			>
 				{"present" in value && <FeaturePresence present={value.present} />}
 				{"text" in value && value.text}
@@ -57,7 +57,7 @@ export function Feature({ id, name, values, children }: PropsWithChildren<Featur
 		>
 			<div
 				role="rowheader"
-				className="sticky left-0 z-10 inline-flex items-center bg-white py-2 px-4 border-r"
+				className="sticky left-0 z-10 inline-flex items-center bg-white py-2 px-4 border-r border-gray-200"
 			>
 				<span className="feature-name mr-1 text-sm font-medium">{name}</span>
 				{children && <FeatureExplanation name={name}>{children}</FeatureExplanation>}

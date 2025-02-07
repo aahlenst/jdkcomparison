@@ -60,7 +60,7 @@ export function Sort() {
 				>
 					Sort
 					<ChevronDownIcon
-						className="-mr-1 ml-1 h-3 w-3 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+						className="-mr-1 ml-1 h-3 w-3 shrink-0 text-gray-400 group-hover:text-gray-500"
 						aria-hidden="true"
 					/>
 				</MenuButton>
@@ -69,7 +69,7 @@ export function Sort() {
 			<MenuItems
 				id="sort-options-menu"
 				transition
-				className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-out data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75"
+				className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black/5 focus:outline-hidden transition ease-out data-closed:scale-95 data-closed:opacity-0 data-enter:duration-100 data-leave:duration-75"
 			>
 				<div className="py-1">{sortOptions}</div>
 			</MenuItems>

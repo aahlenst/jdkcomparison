@@ -37,14 +37,14 @@ export function Navigation() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<div className="fixed left-0 top-0 right-0 h-16 z-30 bg-white shadow">
+		<div className="fixed left-0 top-0 right-0 h-16 z-30 bg-white shadow-sm">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<nav className="relative flex h-16 justify-between" aria-label="Main navigation">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 						{/* Mobile menu button */}
 						<button
 							id="mobile-menu-open"
-							className="inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500"
+							className="inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-red-500"
 							onClick={() => setOpen(true)}
 						>
 							<span className="sr-only">Open main menu</span>
@@ -57,7 +57,7 @@ export function Navigation() {
 						</button>
 					</div>
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-						<div className="flex flex-shrink-0 items-center">
+						<div className="flex shrink-0 items-center">
 							<Link href="/">
 								<span className="sr-only">Back to homepage.</span>
 								<Image
@@ -91,7 +91,7 @@ export function Navigation() {
 							href="mailto:hello@jdkcomparison.com"
 							type="button"
 							id="e-mail-link"
-							className="secondary-navigation-option rounded-full bg-white p-1 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+							className="secondary-navigation-option rounded-full bg-white p-1 text-gray-600 hover:text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 						>
 							<span className="sr-only">Send an e-mail</span>
 							<EnvelopeIcon
@@ -107,7 +107,7 @@ export function Navigation() {
 							href="https://github.com/aahlenst/jdkcomparison"
 							type="button"
 							id="github-link"
-							className="secondary-navigation-option rounded-full bg-white p-1 ml-3 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+							className="secondary-navigation-option rounded-full bg-white p-1 ml-3 text-gray-600 hover:text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 						>
 							<span className="sr-only">Go to GitHub repository</span>
 							<GitHubIcon
@@ -126,19 +126,19 @@ export function Navigation() {
 			<Dialog className="relative z-40 lg:hidden" open={open} onClose={setOpen}>
 				<DialogBackdrop
 					transition
-					className="fixed inset-0 bg-gray-600 bg-opacity-75 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
+					className="fixed inset-0 bg-gray-600 bg-opacity-75 transition-opacity duration-300 ease-linear data-closed:opacity-0"
 				/>
 
 				<div className="fixed inset-0 z-40 flex">
 					<DialogPanel
 						transition
-						className="relative flex w-full max-w-xs flex-1 flex-col bg-white focus:outline-none transition duration-300 ease-in-out data-[closed]:-translate-x-full"
+						className="relative flex w-full max-w-xs flex-1 flex-col bg-white focus:outline-hidden transition duration-300 ease-in-out data-closed:-translate-x-full"
 					>
 						<div className="absolute right-0 top-0 -mr-12 pt-2">
 							<button
 								id="mobile-menu-close"
 								type="button"
-								className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+								className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-white"
 								onClick={() => setOpen(false)}
 							>
 								<span className="sr-only">Close sidebar</span>
@@ -146,7 +146,7 @@ export function Navigation() {
 							</button>
 						</div>
 						<div className="h-0 flex-1 overflow-y-auto pb-4 pt-5">
-							<div className="flex flex-shrink-0 items-center px-4">
+							<div className="flex shrink-0 items-center px-4">
 								<Image
 									id="logo"
 									src={logo}
@@ -177,7 +177,7 @@ export function Navigation() {
 							</nav>
 						</div>
 					</DialogPanel>
-					<div className="w-14 flex-shrink-0" aria-hidden="true">
+					<div className="w-14 shrink-0" aria-hidden="true">
 						{/* Force sidebar to shrink to fit close icon */}
 					</div>
 				</div>
