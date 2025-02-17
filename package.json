@@ -35,8 +35,8 @@
 		"@testing-library/jest-dom": "6.6.3",
 		"@testing-library/react": "16.2.0",
 		"@types/node": "22.13.4",
-		"@types/react": "19.0.9",
-		"@types/react-dom": "19.0.3",
+		"@types/react": "19.0.10",
+		"@types/react-dom": "19.0.4",
 		"eslint": "8.57.1",
 		"eslint-config-next": "15.1.7",
 		"eslint-config-prettier": "10.0.1",
@@ -54,7 +54,7 @@
 		"wrangler": "3.109.1"
 	},
 	"overrides": {
-		"@types/react": "19.0.9",
-		"@types/react-dom": "19.0.3"
+		"@types/react": "19.0.10",
+		"@types/react-dom": "19.0.4"
 	}
 }
