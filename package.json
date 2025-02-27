@@ -14,7 +14,7 @@
 		"@headlessui/react": "2.2.0",
 		"github-slugger": "2.0.0",
 		"immer": "10.1.1",
-		"micromark": "4.0.1",
+		"micromark": "4.0.2",
 		"next": "15.2.0",
 		"react": "19.0.0",
 		"react-dom": "19.0.0",
