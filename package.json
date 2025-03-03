@@ -47,7 +47,7 @@
 		"mocha-junit-reporter": "2.2.1",
 		"next-router-mock": "0.9.13",
 		"postcss": "8.5.3",
-		"prettier": "3.5.2",
+		"prettier": "3.5.3",
 		"resize-observer-polyfill": "1.5.1",
 		"tailwindcss": "4.0.9",
 		"typescript": "5.8.2",
