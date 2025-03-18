@@ -400,7 +400,6 @@ test.describe("JDK Comparison", () => {
 			"Build of OpenJDK 11",
 			"Oracle JDK 11",
 			"Build of OpenJDK 11",
-			"SapMachine 11",
 		]);
 	});
 
