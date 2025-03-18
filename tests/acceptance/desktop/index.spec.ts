@@ -75,7 +75,7 @@ test.describe("JDK Comparison", () => {
 
 	test("should display some known products", async ({ page }) => {
 		const products = new Set(await page.getByRole("heading", { level: 1 }).allTextContents());
-		expect(products).toContain("OpenJDK 23");
+		expect(products).toContain("OpenJDK 24");
 		expect(products).toContain("Eclipse Temurin 17");
 		expect(products).toContain("Eclipse Temurin 8");
 	});
@@ -285,7 +285,7 @@ test.describe("JDK Comparison", () => {
 	test("all options of filter Versions are displayed", async ({ page }) => {
 		await page.getByRole("button", { name: "Versions", exact: true }).click();
 
-		const options = ["8", "11", "17", "21", "23"];
+		const options = ["8", "11", "17", "21", "23", "24"];
 		const form = page.getByRole("form", { name: "Selectable Versions" });
 		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {

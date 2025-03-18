@@ -187,11 +187,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "graalvm-23",
+			id: "graalvm-24",
 			information: {
-				name: "GraalVM for JDK 23",
-				version: 23,
-				downloadSite: "https://www.oracle.com/java/technologies/downloads/#graalvmjava23",
+				name: "GraalVM for JDK 24",
+				version: 24,
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#graalvmjava24",
 			},
 			features: {
 				virtualMachine: {
@@ -266,7 +266,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2025-03" },
+				eolDate: { text: "2025-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "paid/tiered" },
@@ -274,10 +274,10 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "graalvm-ce-23",
+			id: "graalvm-ce-24",
 			information: {
-				name: "GraalVM CE 23",
-				version: 23,
+				name: "GraalVM CE 24",
+				version: 24,
 				downloadSite: "https://github.com/graalvm/graalvm-ce-builds/releases/",
 			},
 			features: {
@@ -350,7 +350,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2025-03" },
+				eolDate: { text: "2025-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "no/free" },
@@ -361,11 +361,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "openjdk-23",
+			id: "openjdk-24",
 			information: {
-				name: "OpenJDK 23",
-				version: 23,
-				downloadSite: "https://jdk.java.net/23",
+				name: "OpenJDK 24",
+				version: 24,
+				downloadSite: "https://jdk.java.net/24",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -428,7 +428,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2025-03" },
+				eolDate: { text: "2025-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "no/free" },
@@ -773,11 +773,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "oracle-jdk-23",
+			id: "oracle-jdk-24",
 			information: {
-				name: "Oracle JDK 23",
-				version: 23,
-				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java23",
+				name: "Oracle JDK 24",
+				version: 24,
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java24",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -854,7 +854,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2025-03" },
+				eolDate: { text: "2025-09" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "paid/tiered" },
