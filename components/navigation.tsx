@@ -38,7 +38,7 @@ export function Navigation() {
 
 	return (
 		<div className="fixed left-0 top-0 right-0 h-16 z-30 bg-white shadow-sm">
-			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+			<div className="mx-auto px-2 sm:px-6 lg:px-8">
 				<nav className="relative flex h-16 justify-between" aria-label="Main navigation">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 						{/* Mobile menu button */}
