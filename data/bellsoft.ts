@@ -237,7 +237,7 @@ export const data: Vendor = {
 					aarch64Musl: { present: Present.YES },
 					aarch32: { present: Present.YES },
 					ppc64: { present: Present.YES },
-					riscv64: { present: Present.NO },
+					riscv64: { present: Present.YES },
 					s390x: { present: Present.NO },
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
