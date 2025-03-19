@@ -210,10 +210,10 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "sapmachine-23",
+			id: "sapmachine-24",
 			information: {
-				name: "SapMachine 23",
-				version: 23,
+				name: "SapMachine 24",
+				version: 24,
 				downloadSite: "https://sap.github.io/SapMachine/",
 			},
 			features: {
@@ -302,7 +302,7 @@ export const data: Vendor = {
 					footnote: "0484cb17-6266-4d75-9e44-8021b75b7bb4",
 				},
 				eolDate: {
-					text: "2025-03",
+					text: "2025-09",
 					footnote: "13ade37e-7160-4316-84f9-4dbdd5efa8df",
 				},
 				releaseSchedule: { text: "OpenJDK" },
