@@ -285,7 +285,7 @@ test.describe("JDK Comparison", () => {
 	test("all options of filter Versions are displayed", async ({ page }) => {
 		await page.getByRole("button", { name: "Versions", exact: true }).click();
 
-		const options = ["8", "11", "17", "21", "23", "24"];
+		const options = ["8", "11", "17", "21", "24"];
 		const form = page.getByRole("form", { name: "Selectable Versions" });
 		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {

@@ -397,11 +397,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "eclipse-temurin-23",
+			id: "eclipse-temurin-24",
 			information: {
-				name: "Eclipse Temurin 23",
-				version: 23,
-				downloadSite: "https://adoptium.net/temurin/releases/?version=23",
+				name: "Eclipse Temurin 24",
+				version: 24,
+				downloadSite: "https://adoptium.net/temurin/releases/?version=24",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -459,14 +459,17 @@ export const data: Vendor = {
 					},
 				},
 				otherPlatforms: {
-					aixPPC: { present: Present.YES },
+					aixPPC: {
+						present: Present.NO,
+						footnote: "b87f19f1-06cf-4bde-9d7c-d8af632e3266",
+					},
 					solarisSPARC: { present: Present.NO },
 					solarisx64: { present: Present.NO },
 				},
 				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: { text: "JRE" },
-				// No customisations apart from a few extra backports and a custom trust store.
+				// No customizations apart from a few extra backports and a custom trust store.
 				customisations: {
 					text: "few",
 					footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf",
@@ -486,7 +489,7 @@ export const data: Vendor = {
 					footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 				},
 				eolDate: {
-					text: "2025-03",
+					text: "2025-09",
 					footnote: "62fd52c0-82d0-468a-a413-38277b35bd30",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -507,7 +510,7 @@ export const data: Vendor = {
 				"[17](https://github.com/adoptium/jdk17u/compare/master...release), " +
 				"[21](https://github.com/adoptium/jdk21u/compare/master...release). From JDK 23 onwards, " +
 				"compare the `jdkXX` with the `release_jdkXX` branch instead: " +
-				"[23](https://github.com/adoptium/jdk/compare/jdk23...release_jdk23).",
+				"[24](https://github.com/adoptium/jdk/compare/jdk24...release_jdk24).",
 		},
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
@@ -546,7 +549,7 @@ export const data: Vendor = {
 				"[11](https://github.com/adoptium/temurin11-binaries/releases/), " +
 				"[17](https://github.com/adoptium/temurin17-binaries/releases/), " +
 				"[21](https://github.com/adoptium/temurin21-binaries/releases/), " +
-				"[23](https://github.com/adoptium/temurin23-binaries/releases/).",
+				"[24](https://github.com/adoptium/temurin24-binaries/releases/).",
 		},
 		{
 			id: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
@@ -555,6 +558,12 @@ export const data: Vendor = {
 		{
 			id: "0246d8bd-6ec5-467e-800c-c5c503c74fec",
 			markdown: "Container images are only available for Windows on x86, 64-bit",
+		},
+		{
+			id: "b87f19f1-06cf-4bde-9d7c-d8af632e3266",
+			markdown:
+				"The Eclipse Foundation [plans to release a version of Eclipse Temurin 24 for AIX on PPC at a " +
+				"later date](https://adoptium.net/blog/2025/03/eclipse-temurin-24-available/).",
 		},
 	],
 };
