@@ -451,7 +451,10 @@ export const data: Vendor = {
 				windows: {
 					x32: { present: Present.NO },
 					x64: { present: Present.YES },
-					aarch64: { present: Present.YES },
+					aarch64: {
+						present: Present.NO,
+						footnote: "533d35e5-cb91-4dbb-8e5d-c85aa18e7c25",
+					},
 					installers: { present: Present.YES },
 					containerImages: {
 						present: Present.PARTIALLY,
@@ -564,6 +567,12 @@ export const data: Vendor = {
 			markdown:
 				"The Eclipse Foundation [plans to release a version of Eclipse Temurin 24 for AIX on PPC at a " +
 				"later date](https://adoptium.net/blog/2025/03/eclipse-temurin-24-available/).",
+		},
+		{
+			id: "533d35e5-cb91-4dbb-8e5d-c85aa18e7c25",
+			markdown:
+				"The Eclipse Foundation [plans to release a version of Eclipse Temurin 24 for Windows on ARM, 64-bit " +
+				"at a later date](https://github.com/adoptium/temurin/issues/76#issuecomment-2766368095).",
 		},
 	],
 };
