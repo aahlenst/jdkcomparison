@@ -376,12 +376,13 @@ test.describe("JDK Comparison", () => {
 	test("shows single product entirely even if differences only on", async ({ page }) => {
 		await page.getByRole("checkbox", { name: "Show differences only" }).click();
 		await page.getByRole("button", { name: "Versions" }).click();
-		await page
-			.getByRole("form", { name: "Selectable Versions" })
-			.getByRole("checkbox", { name: "8" })
-			.click();
+
+		const form = page.getByRole("form", { name: "Selectable Versions" });
+		await form.getByRole("checkbox", { name: "8" }).click();
+		await expect(form.getByRole("checkbox", { name: "8" })).toBeChecked();
+
 		await page.keyboard.press("Escape");
-		await expect(page.getByRole("form", { name: "Selectable Versions" })).not.toBeVisible();
+		await expect(form).not.toBeVisible();
 
 		await expect(page.getByRole("grid").getByRole("heading", { level: 2 })).toHaveText([
 			"Properties",
@@ -723,21 +724,21 @@ test.describe("JDK Comparison", () => {
 		let form = page.getByRole("form", { name: "Selectable GCs" });
 
 		await form.getByRole("checkbox", { name: "Epsilon", exact: true }).click();
-		await form.getByRole("checkbox", { name: "G1", exact: true }).click();
-		await form.getByRole("checkbox", { name: "Shenandoah", exact: true }).click();
+		await expect(filters.getByRole("button").nth(5)).toHaveAccessibleName("GCs 1");
 
+		await form.getByRole("checkbox", { name: "G1", exact: true }).click();
+		await expect(filters.getByRole("button").nth(5)).toHaveAccessibleName("GCs 2");
+
+		await form.getByRole("checkbox", { name: "Shenandoah", exact: true }).click();
 		await expect(filters.getByRole("button").nth(5)).toHaveAccessibleName("GCs 3");
 
 		await form.getByRole("checkbox", { name: "Epsilon", exact: true }).click();
-
 		await expect(filters.getByRole("button").nth(5)).toHaveAccessibleName("GCs 2");
 
 		await form.getByRole("checkbox", { name: "G1", exact: true }).click();
-
 		await expect(filters.getByRole("button").nth(5)).toHaveAccessibleName("GCs 1");
 
 		await form.getByRole("checkbox", { name: "Shenandoah", exact: true }).click();
-
 		await expect(filters.getByRole("button").nth(5)).toHaveAccessibleName("GCs");
 	});
 
@@ -846,11 +847,15 @@ test.describe("JDK Comparison", () => {
 		const form = page.getByRole("form", { name: "Selectable Technologies" });
 
 		await form.getByRole("checkbox", { name: "JavaFX" }).click();
+		await expect(form.getByRole("checkbox", { name: "JavaFX" })).toBeChecked();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText(["Coffeecorp JDK 8"]);
 
 		await form.getByRole("checkbox", { name: "JavaFX" }).click();
+		await expect(form.getByRole("checkbox", { name: "JavaFX" })).not.toBeChecked();
+
 		await form.getByRole("checkbox", { name: "Flight Recorder" }).click();
+		await expect(form.getByRole("checkbox", { name: "Flight Recorder" })).toBeChecked();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText([
 			"Coffeecorp JDK 17",
@@ -858,7 +863,10 @@ test.describe("JDK Comparison", () => {
 		]);
 
 		await form.getByRole("checkbox", { name: "Java Web Start" }).click();
+		await expect(form.getByRole("checkbox", { name: "Java Web Start" })).toBeChecked();
+
 		await form.getByRole("checkbox", { name: "Flight Recorder" }).click();
+		await expect(form.getByRole("checkbox", { name: "Flight Recorder" })).not.toBeChecked();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText(
 			"No JDKs match your selection.",
@@ -878,6 +886,13 @@ test.describe("JDK Comparison", () => {
 		]);
 
 		await form.getByRole("checkbox", { name: "CoffeeVM" }).click();
+
+		await expect(page.getByRole("heading", { level: 1 })).toHaveText([
+			"Coffeecorp JDK 17",
+			"Dukecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
 		await form.getByRole("checkbox", { name: "DukeVM" }).click();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText(["Dukecorp JDK 17"]);
@@ -908,6 +923,12 @@ test.describe("JDK Comparison", () => {
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText(["Coffeecorp JDK 8"]);
 
 		await form.getByRole("checkbox", { name: "CMS" }).click();
+
+		await expect(page.getByRole("heading", { level: 1 })).toHaveText([
+			"Coffeecorp JDK 17",
+			"Coffeecorp JDK 8",
+		]);
+
 		await form.getByRole("checkbox", { name: "Shenandoah" }).click();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText([
