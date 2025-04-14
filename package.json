@@ -35,7 +35,7 @@
 		"@testing-library/jest-dom": "6.6.3",
 		"@testing-library/react": "16.3.0",
 		"@types/node": "22.14.1",
-		"@types/react": "19.1.1",
+		"@types/react": "19.1.2",
 		"@types/react-dom": "19.1.2",
 		"eslint": "8.57.1",
 		"eslint-config-next": "15.3.0",
@@ -54,7 +54,7 @@
 		"wrangler": "4.10.0"
 	},
 	"overrides": {
-		"@types/react": "19.1.1",
+		"@types/react": "19.1.2",
 		"@types/react-dom": "19.1.2"
 	}
 }
