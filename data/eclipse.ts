@@ -462,10 +462,7 @@ export const data: Vendor = {
 					},
 				},
 				otherPlatforms: {
-					aixPPC: {
-						present: Present.NO,
-						footnote: "b87f19f1-06cf-4bde-9d7c-d8af632e3266",
-					},
+					aixPPC: { present: Present.YES },
 					solarisSPARC: { present: Present.NO },
 					solarisx64: { present: Present.NO },
 				},
@@ -561,12 +558,6 @@ export const data: Vendor = {
 		{
 			id: "0246d8bd-6ec5-467e-800c-c5c503c74fec",
 			markdown: "Container images are only available for Windows on x86, 64-bit",
-		},
-		{
-			id: "b87f19f1-06cf-4bde-9d7c-d8af632e3266",
-			markdown:
-				"The Eclipse Foundation [plans to release a version of Eclipse Temurin 24 for AIX on PPC at a " +
-				"later date](https://adoptium.net/blog/2025/03/eclipse-temurin-24-available/).",
 		},
 		{
 			id: "533d35e5-cb91-4dbb-8e5d-c85aa18e7c25",
