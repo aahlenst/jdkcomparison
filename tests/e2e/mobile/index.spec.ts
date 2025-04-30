@@ -222,7 +222,7 @@ test.describe("JDK Comparison", () => {
 	});
 
 	test("retains filter state when opening and closing", async ({ page }) => {
-		await page.getByRole("button", { name: "Filters" }).click();
+		await page.getByRole("button", { name: "Filters", exact: true }).click();
 
 		const d = page.getByRole("dialog", { name: "Menu Filters" });
 
@@ -234,17 +234,21 @@ test.describe("JDK Comparison", () => {
 		await expect(g.getByRole("checkbox", { name: "DukeVM" })).not.toBeChecked();
 
 		await g.getByRole("checkbox", { name: "DukeVM" }).click();
+		await expect(g.getByRole("checkbox", { name: "DukeVM" })).toBeChecked();
+
 		await d.getByRole("button", { name: "Close menu Filters" }).click();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText("Dukecorp JDK 17");
 
-		await page.getByRole("button", { name: "Filters" }).click();
+		await page.getByRole("button", { name: "Filters", exact: true }).click();
 		await d.getByRole("button", { name: "VMs" }).click();
 
 		await expect(g.getByRole("checkbox", { name: "CoffeeVM" })).not.toBeChecked();
 		await expect(g.getByRole("checkbox", { name: "DukeVM" })).toBeChecked();
 
 		await g.getByRole("checkbox", { name: "CoffeeVM" }).click();
+		await expect(g.getByRole("checkbox", { name: "CoffeeVM" })).toBeChecked();
+
 		await d.getByRole("button", { name: "Close menu Filters" }).click();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText([
@@ -253,7 +257,7 @@ test.describe("JDK Comparison", () => {
 			"Coffeecorp JDK 8",
 		]);
 
-		await page.getByRole("button", { name: "Filters" }).click();
+		await page.getByRole("button", { name: "Filters", exact: true }).click();
 		await d.getByRole("button", { name: "VMs" }).click();
 
 		await expect(g.getByRole("checkbox", { name: "CoffeeVM" })).toBeChecked();

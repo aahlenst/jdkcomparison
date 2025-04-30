@@ -700,18 +700,25 @@ test.describe("JDK Comparison", () => {
 		await expect(form.getByRole("checkbox", { name: "17" })).not.toBeChecked();
 
 		await form.getByRole("checkbox", { name: "8" }).click();
+		await expect(form.getByRole("checkbox", { name: "8" })).toBeChecked();
 
 		await page.getByRole("button", { name: "Versions 1", exact: true }).click();
-		await page.getByRole("button", { name: "Versions 1", exact: true }).click();
+		await expect(form).not.toBeVisible();
 
-		form = page.getByRole("form", { name: "Selectable Versions" });
+		await page.getByRole("button", { name: "Versions 1", exact: true }).click();
+		await expect(form).toBeVisible();
+
 		await expect(form.getByRole("checkbox", { name: "8" })).toBeChecked();
 		await expect(form.getByRole("checkbox", { name: "17" })).not.toBeChecked();
 
 		await form.getByRole("checkbox", { name: "8" }).click();
+		await expect(form.getByRole("checkbox", { name: "8" })).not.toBeChecked();
 
 		await page.getByRole("button", { name: "Versions", exact: true }).click();
+		await expect(form).not.toBeVisible();
+
 		await page.getByRole("button", { name: "Versions", exact: true }).click();
+		await expect(form).toBeVisible();
 
 		await expect(form.getByRole("checkbox", { name: "8" })).not.toBeChecked();
 		await expect(form.getByRole("checkbox", { name: "17" })).not.toBeChecked();
@@ -944,6 +951,7 @@ test.describe("JDK Comparison", () => {
 		const form = page.getByRole("form", { name: "Selectable Platforms" });
 
 		await form.getByRole("checkbox", { name: "AIX, PPC" }).click();
+		await expect(form.getByRole("checkbox", { name: "AIX, PPC" })).toBeChecked();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText([
 			"Coffeecorp JDK 17",
@@ -951,11 +959,15 @@ test.describe("JDK Comparison", () => {
 		]);
 
 		await form.getByRole("checkbox", { name: "Solaris, SPARC" }).click();
+		await expect(form.getByRole("checkbox", { name: "Solaris, SPARC" })).toBeChecked();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText(["Coffeecorp JDK 8"]);
 
 		await form.getByRole("checkbox", { name: "AIX, PPC" }).click();
+		await expect(form.getByRole("checkbox", { name: "AIX, PPC" })).not.toBeChecked();
+
 		await form.getByRole("checkbox", { name: "Solaris, SPARC" }).click();
+		await expect(form.getByRole("checkbox", { name: "Solaris, SPARC" })).not.toBeChecked();
 
 		await expect(page.getByRole("heading", { level: 1 })).toHaveText([
 			"Coffeecorp JDK 17",
