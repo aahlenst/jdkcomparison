@@ -51,7 +51,7 @@
 		"resize-observer-polyfill": "1.5.1",
 		"tailwindcss": "4.1.10",
 		"typescript": "5.8.3",
-		"wrangler": "4.20.5"
+		"wrangler": "4.21.0"
 	},
 	"overrides": {
 		"@types/react": "19.1.8",
