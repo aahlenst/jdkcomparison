@@ -90,7 +90,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2026-11", footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7" },
+				eolDate: { text: "2027-10", footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7" },
 				releaseSchedule: {
 					text: "Custom",
 					footnote: "c8c5c06c-4077-4e8e-9dce-f649eab66b45",
@@ -178,7 +178,10 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "n/a", footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7" },
+				eolDate: {
+					text: "2027-10",
+					footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7",
+				},
 				releaseSchedule: {
 					text: "Custom",
 					footnote: "c8c5c06c-4077-4e8e-9dce-f649eab66b45",
@@ -266,7 +269,10 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "n/a", footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7" },
+				eolDate: {
+					text: "2029-12",
+					footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7"
+				},
 				releaseSchedule: {
 					text: "Custom",
 					footnote: "c8c5c06c-4077-4e8e-9dce-f649eab66b45",
@@ -317,11 +323,12 @@ export const data: Vendor = {
 			id: "5d8042eb-3fab-495b-b3ef-a3beeacb78e5",
 			markdown:
 				"The OpenJ9 documentation gives a [high-level overview of the differences between OpenJ9 and " +
-				"OpenJDK's HotSpot virtual machine](https://www.eclipse.org/openj9/docs/openj9_newuser/). The source " +
-				"code can be found on GitHub: " +
-				"[8](https://github.com/ibmruntimes/semeru-openjdk-jdk8), " +
-				"[11](https://github.com/ibmruntimes/semeru-openjdk-jdk11), " +
-				"[17](https://github.com/ibmruntimes/semeru-openjdk-jdk17).",
+				"OpenJDK's HotSpot virtual machine](https://www.eclipse.org/openj9/docs/openj9_newuser/). IBM does " +
+				"not publish the source code of the Certified Edition, but is supposed to be identical to OpenJ9 " +
+				"apart from the licenses. The OpenJ9 code can be found on GitHub: " +
+				"[11](https://github.com/ibmruntimes/openj9-openjdk-jdk11), " +
+				"[17](https://github.com/ibmruntimes/openj9-openjdk-jdk17), " +
+				"[21](https://github.com/ibmruntimes/openj9-openjdk-jdk21).",
 		},
 		{
 			id: "0caa519b-a44e-449b-8d5b-879c640ebac7",
