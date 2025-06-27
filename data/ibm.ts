@@ -271,7 +271,7 @@ export const data: Vendor = {
 				paidSupport: { present: Present.YES },
 				eolDate: {
 					text: "2029-12",
-					footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7"
+					footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7",
 				},
 				releaseSchedule: {
 					text: "Custom",
