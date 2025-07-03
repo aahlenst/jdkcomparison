@@ -323,10 +323,7 @@ export const data: Vendor = {
 		{
 			id: "0484cb17-6266-4d75-9e44-8021b75b7bb4",
 			markdown:
-				"According to [Security Updates, Maintenance and " +
-				"Support](https://github.com/SAP/SapMachine/wiki/Security-Updates,-Maintenance-and-Support) on the" +
-				'SapMachine Wiki, SAP only "offers professional support to all SAP customers who use SapMachine in ' +
-				'the context of SAP supported products".',
+				'According to [Security Updates, Maintenance and Support](https://github.com/SAP/SapMachine/wiki/Security-Updates,-Maintenance-and-Support) on the SapMachine Wiki, SAP only "offers professional support to all SAP customers who use SapMachine in the context of SAP supported products".',
 		},
 		{
 			id: "13ade37e-7160-4316-84f9-4dbdd5efa8df",

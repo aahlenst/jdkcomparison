@@ -889,9 +889,7 @@ export const data: Vendor = {
 		{
 			id: "89192778-e781-40bd-ad67-3ba06f958de3",
 			markdown:
-				"Production use is governed under the [GraalVM Free Terms and and Conditions](https://www.oracle.com/downloads/licenses/graal-free-license.html) that impose some limitations. " +
-				'For example, they restrict the free usage to "internal business operations".' +
-				"Furthermore, the version that can be used free of charge only receives updates for three years after the initial release.",
+				'Production use is governed under the [GraalVM Free Terms and and Conditions](https://www.oracle.com/downloads/licenses/graal-free-license.html) that impose some limitations. For example, they restrict the free usage to "internal business operations". Furthermore, the version that can be used free of charge only receives updates for three years after the initial release.',
 		},
 		{
 			id: "b0d2bc5c-970f-4947-97f8-0f012aa6b25a",
