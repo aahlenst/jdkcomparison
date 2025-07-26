@@ -482,21 +482,17 @@ export const data: Vendor = {
 		{
 			id: "74d575ab-4ae8-4910-b286-fbe32158aa1c",
 			markdown:
-				"JavaFX is only available on macOS, Linux, and Windows on x86, 32-bit and 64-bit, and macOS, ARM, " +
-				"64-bit.",
+				"JavaFX is only available on macOS, Linux, and Windows on x86, 32-bit and 64-bit, and macOS, ARM, 64-bit.",
 		},
 		{
 			id: "db9ec2f8-0b09-4516-86d0-62af336838ab",
 			markdown:
-				"Customers [purchasing paid support receive access to OpenWebStart](https://bell-sw.com/support/) " +
-				"binaries made by BellSoft. [OpenWebStart](https://openwebstart.com/) is an open-source " +
-				"reimplementation of Java Web Start.",
+				"Customers [purchasing paid support receive access to OpenWebStart](https://bell-sw.com/support/) binaries made by BellSoft. [OpenWebStart](https://openwebstart.com/) is an open-source reimplementation of Java Web Start.",
 		},
 		{
 			id: "f8b6d9fb-a935-4630-96fd-db3422421420",
 			markdown:
-				"Container images are only offered for x86, 64-bit, ARM, 64-bit, and ARM, 32-bit. Depending on the " +
-				"version and operating system, the selection may be smaller.",
+				"Container images are only offered for x86, 64-bit, ARM, 64-bit, and ARM, 32-bit. Depending on the version and operating system, the selection may be smaller.",
 		},
 		{
 			id: "e92c2876-d7c0-43f3-a441-b4f95ce940cb",
@@ -506,26 +502,22 @@ export const data: Vendor = {
 		{
 			id: "7c1300e2-2a3f-4f6c-b929-9fa464d35216",
 			markdown:
-				"There is no public breakdown of differences. Apart from a custom keystore the main difference seems " +
-				"to be support for macOS on ARM, 64-bit.",
+				"There is no public breakdown of differences. Apart from a custom keystore the main difference seems to be support for macOS on ARM, 64-bit.",
 		},
 		{
 			id: "84d39cc6-e2ef-4a32-9eea-da4ad9c1b274",
 			markdown:
-				"There is no public breakdown of differences. Apart from a custom keystore the main difference seems " +
-				"to be additional plumbing for the optionally bundled OpenJFX.",
+				"There is no public breakdown of differences. Apart from a custom keystore the main difference seems to be additional plumbing for the optionally bundled OpenJFX.",
 		},
 		{
 			id: "181deeee-c7ee-489b-8da9-a1976d7760e8",
 			markdown:
-				"[Shenandoah GC is not available on all " +
-				"platforms](https://wiki.openjdk.org/display/shenandoah) that BellSoft Liberica is offered for.",
+				"[Shenandoah GC is not available on all platforms](https://wiki.openjdk.org/display/shenandoah) that BellSoft Liberica is offered for.",
 		},
 		{
 			id: "89da95e6-16d8-4729-873f-f635cdd00b97",
 			markdown:
-				"[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that BellSoft " +
-				"Liberica is offered for. Furthermore, it is experimental on some platforms depending on the version.",
+				"[ZGC is not available on all platforms](https://wiki.openjdk.org/display/zgc) that BellSoft Liberica is offered for. Furthermore, it is experimental on some platforms depending on the version.",
 		},
 		{
 			id: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
@@ -535,8 +527,7 @@ export const data: Vendor = {
 		{
 			id: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
 			markdown:
-				"The SBOM can be downloaded from [Liberica's GitHub " +
-				"Releases](https://github.com/bell-sw/Liberica/releases/).",
+				"The SBOM can be downloaded from [Liberica's GitHub Releases](https://github.com/bell-sw/Liberica/releases/).",
 		},
 		{
 			id: "9f0b07df-a5cb-479b-8aa5-161dcf30d7c8",
