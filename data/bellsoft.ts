@@ -78,7 +78,10 @@ export const data: Vendor = {
 				},
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
-				editions: { text: "JRE" },
+				editions: {
+					text: "JRE, Lite, Performance",
+					footnote: "9f0b07df-a5cb-479b-8aa5-161dcf30d7c8",
+				},
 				customisations: {
 					text: "few",
 					footnote: "7c1300e2-2a3f-4f6c-b929-9fa464d35216",
@@ -169,8 +172,8 @@ export const data: Vendor = {
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
 				editions: {
-					text: "JRE, OpenJFX",
-					footnote: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
+					text: "JRE, Lite, OpenJFX, Performance",
+					footnote: "9f0b07df-a5cb-479b-8aa5-161dcf30d7c8",
 				},
 				customisations: {
 					text: "few",
@@ -355,7 +358,7 @@ export const data: Vendor = {
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
 				editions: {
-					text: "CRaC, JRE, OpenJFX",
+					text: "CRaC, JRE, Lite, OpenJFX",
 					footnote: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
 				},
 				customisations: {
@@ -448,8 +451,8 @@ export const data: Vendor = {
 				aqavit: { present: Present.NO },
 				tck: { present: Present.YES },
 				editions: {
-					text: "JRE, OpenJFX",
-					footnote: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
+					text: "JRE, Lite, OpenJFX",
+					footnote: "dca9ae94-6f6c-4415-8ab3-f9e64cd098c5",
 				},
 				customisations: {
 					text: "few",
@@ -526,13 +529,24 @@ export const data: Vendor = {
 		},
 		{
 			id: "c48248b3-d416-44a3-95a2-6e8f158c6d6a",
-			markdown: "Editions are not available on all platforms supported by BellSoft Liberica.",
+			markdown:
+				"[Coordinated Restore at Checkpoint](https://bell-sw.com/libericajdk-with-crac/) (CRaC) is a potential future OpenJDK feature that drastically reduces start-up and warm-up time. [Lite](https://docs.bell-sw.com/liberica-jdk/latest/how-to/choosing-flavor/#liberica-jdk-lite) is a version with a reduced footprint. The CRaC and OpenJFX editions are not available on all platforms otherwise supported by Liberica JDK.",
 		},
 		{
 			id: "c77e51f7-d243-4628-91cd-bd2fb8a92193",
 			markdown:
 				"The SBOM can be downloaded from [Liberica's GitHub " +
 				"Releases](https://github.com/bell-sw/Liberica/releases/).",
+		},
+		{
+			id: "9f0b07df-a5cb-479b-8aa5-161dcf30d7c8",
+			markdown:
+				"[Lite](https://docs.bell-sw.com/liberica-jdk/latest/how-to/choosing-flavor/#liberica-jdk-lite) is a version with a reduced footprint. [Performance](https://bell-sw.com/libericajdk-performance-edition/) combines the class libraries of JDK 8 and 11, respectively, with the JVM from OpenJDK 21, offering higher performance for legacy applications. Performance and OpenJFK editions are not available on all platforms otherwise supported by Liberica JDK.",
+		},
+		{
+			id: "dca9ae94-6f6c-4415-8ab3-f9e64cd098c5",
+			markdown:
+				"[Lite](https://docs.bell-sw.com/liberica-jdk/latest/how-to/choosing-flavor/#liberica-jdk-lite) is a version with a reduced footprint. The OpenJFK edition is not available on all platforms otherwise supported by Liberica JDK.",
 		},
 	],
 };
