@@ -108,7 +108,7 @@ jobs:
           echo "PREVIEW_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Download artifact from build job
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: site
@@ -177,7 +177,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: site
