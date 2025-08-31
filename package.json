@@ -21,7 +21,7 @@
 		"use-immer": "0.11.0"
 	},
 	"devDependencies": {
-		"@cloudflare/next-on-pages": "1.13.14",
+		"@cloudflare/next-on-pages": "1.13.15",
 		"@jest/globals": "30.1.1",
 		"@mdx-js/loader": "3.1.0",
 		"@mdx-js/react": "3.1.0",
