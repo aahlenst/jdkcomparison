@@ -76,10 +76,13 @@ test.describe("JDK Comparison", () => {
 	});
 
 	test("should display some known products", async ({ page }) => {
-		const products = new Set(await page.getByRole("heading", { level: 1 }).allTextContents());
-		expect(products).toContain("OpenJDK 24");
-		expect(products).toContain("Eclipse Temurin 17");
-		expect(products).toContain("Eclipse Temurin 8");
+		await expect(page.getByRole("heading", { level: 1, name: "OpenJDK 24" })).toBeVisible();
+		await expect(
+			page.getByRole("heading", { level: 1, name: "Eclipse Temurin 17" }),
+		).toBeVisible();
+		await expect(
+			page.getByRole("heading", { level: 1, name: "Eclipse Temurin 8" }),
+		).toBeVisible();
 	});
 
 	test("should display all sections", async ({ page }) => {
