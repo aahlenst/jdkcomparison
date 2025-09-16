@@ -187,10 +187,10 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "graalvm-ce-24",
+			id: "graalvm-ce-25",
 			information: {
-				name: "GraalVM CE 24",
-				version: 24,
+				name: "GraalVM CE 25",
+				version: 25,
 				downloadSite: "https://github.com/graalvm/graalvm-ce-builds/releases/",
 			},
 			features: {
@@ -263,7 +263,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2025-09" },
+				eolDate: { text: "2026-03" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "no/free" },
