@@ -773,11 +773,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "oracle-jdk-24",
+			id: "oracle-jdk-25",
 			information: {
-				name: "Oracle JDK 24",
-				version: 24,
-				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java24",
+				name: "Oracle JDK 25",
+				version: 25,
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java25",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -842,10 +842,7 @@ export const data: Vendor = {
 				tck: { present: Present.YES },
 				editions: { text: "none" },
 				customisations: { text: "unknown" },
-				notableFeatures: {
-					text: "Graal Compiler",
-					footnote: "c06ac534-5179-4d72-afd7-f64c0da69fd8",
-				},
+				notableFeatures: { text: "none" },
 				license: { text: "Proprietary" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: {
@@ -854,7 +851,10 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: { text: "2025-09" },
+				eolDate: {
+					text: "2033-09",
+					footnote: "85941abe-619f-41be-8ae2-266abcd05580",
+				},
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "paid/tiered" },
@@ -880,11 +880,6 @@ export const data: Vendor = {
 				"[Graal Compiler](https://docs.oracle.com/en/graalvm/enterprise/21/docs/reference-manual/java/compiler/) is an advanced JIT for HotSpot. " +
 				"[Native Image](https://docs.oracle.com/en/graalvm/enterprise/21/docs/reference-manual/native-image/) compiles Java applications down to native executables for faster start-up (only Serial GC plus G1 GC on Linux). " +
 				"[Truffle](https://docs.oracle.com/en/graalvm/jdk/21/docs/reference-manual/java-on-truffle/) is a separate VM that allows direct interoperability with other languages, such as Python.",
-		},
-		{
-			id: "c06ac534-5179-4d72-afd7-f64c0da69fd8",
-			markdown:
-				"[Graal Compiler](https://docs.oracle.com/en/graalvm/enterprise/21/docs/reference-manual/java/compiler/) is an advanced JIT for HotSpot and available as [experimental feature since Oracle JDK 23](https://blogs.oracle.com/java/post/including-the-graal-jit-in-oracle-jdk-23).",
 		},
 		{
 			id: "89192778-e781-40bd-ad67-3ba06f958de3",
