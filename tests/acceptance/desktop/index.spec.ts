@@ -76,7 +76,7 @@ test.describe("JDK Comparison", () => {
 	});
 
 	test("should display some known products", async ({ page }) => {
-		await expect(page.getByRole("heading", { level: 1, name: "OpenJDK 24" })).toBeVisible();
+		await expect(page.getByRole("heading", { level: 1, name: "OpenJDK 25" })).toBeVisible();
 		await expect(
 			page.getByRole("heading", { level: 1, name: "Eclipse Temurin 17" }),
 		).toBeVisible();
@@ -290,7 +290,7 @@ test.describe("JDK Comparison", () => {
 	test("all options of filter Versions are displayed", async ({ page }) => {
 		await page.getByRole("button", { name: "Versions", exact: true }).click();
 
-		const options = ["8", "11", "17", "21", "24"];
+		const options = ["8", "11", "17", "21", "24", "25"];
 		const form = page.getByRole("form", { name: "Selectable Versions" });
 		await expect(form.getByRole("checkbox")).toHaveCount(options.length);
 		for (let i = 0; i < options.length; i++) {

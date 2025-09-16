@@ -361,11 +361,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "openjdk-24",
+			id: "openjdk-25",
 			information: {
-				name: "OpenJDK 24",
-				version: 24,
-				downloadSite: "https://jdk.java.net/24",
+				name: "OpenJDK 25",
+				version: 25,
+				downloadSite: "https://jdk.java.net/25",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -428,7 +428,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2025-09" },
+				eolDate: { text: "2026-03" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "no/free" },
