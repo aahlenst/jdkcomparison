@@ -59,11 +59,7 @@ export const data: Vendor = {
 					apk: { present: Present.NO },
 					// Official docs do not list all platforms. But the packages are used for the container images.
 					deb: { present: Present.YES },
-					rpm: {
-						// Only x86, 64-bit
-						present: Present.PARTIALLY,
-						footnote: "2c2cc179-3ff9-4c15-a974-240cbf339c99",
-					},
+					rpm: { present: Present.NO },
 					containerImages: {
 						present: Present.PARTIALLY,
 						footnote: "06887138-6947-4068-87d3-eb7d708afe86",
@@ -88,10 +84,7 @@ export const data: Vendor = {
 					text: "few",
 					footnote: "69b47908-13e0-497c-b995-c0cf573f3f0f",
 				},
-				notableFeatures: {
-					text: "High Memory Reports, MallocTracer, Vitals",
-					footnote: "18e1d490-3582-46be-9340-271140e3ada5",
-				},
+				notableFeatures: { text: "none" },
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
@@ -157,11 +150,7 @@ export const data: Vendor = {
 					// http://dist.sapmachine.io/debian/arm64/Packages
 					// http://dist.sapmachine.io/debian/ppc64el/Packages
 					deb: { present: Present.YES },
-					rpm: {
-						// Only x86, 64-bit
-						present: Present.PARTIALLY,
-						footnote: "2c2cc179-3ff9-4c15-a974-240cbf339c99",
-					},
+					rpm: { present: Present.NO },
 					// https://github.com/docker-library/official-images/blob/master/library/sapmachine
 					containerImages: {
 						present: Present.PARTIALLY,
@@ -187,10 +176,7 @@ export const data: Vendor = {
 					text: "few",
 					footnote: "69b47908-13e0-497c-b995-c0cf573f3f0f",
 				},
-				notableFeatures: {
-					text: "High Memory Reports, MallocTracer, Vitals",
-					footnote: "18e1d490-3582-46be-9340-271140e3ada5",
-				},
+				notableFeatures: { text: "none" },
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
@@ -210,10 +196,10 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "sapmachine-24",
+			id: "sapmachine-25",
 			information: {
-				name: "SapMachine 24",
-				version: 24,
+				name: "SapMachine 25",
+				version: 25,
 				downloadSite: "https://sap.github.io/SapMachine/",
 			},
 			features: {
@@ -233,7 +219,7 @@ export const data: Vendor = {
 					custom: { text: "none" },
 				},
 				mac: {
-					x64: { present: Present.YES },
+					x64: { present: Present.NO },
 					aarch64: { present: Present.YES },
 					installers: {
 						present: Present.NO,
@@ -256,11 +242,7 @@ export const data: Vendor = {
 					// http://dist.sapmachine.io/debian/arm64/Packages
 					// http://dist.sapmachine.io/debian/ppc64el/Packages
 					deb: { present: Present.YES },
-					rpm: {
-						// Only x86, 64-bit
-						present: Present.PARTIALLY,
-						footnote: "2c2cc179-3ff9-4c15-a974-240cbf339c99",
-					},
+					rpm: { present: Present.NO },
 					// https://github.com/docker-library/official-images/blob/master/library/sapmachine
 					containerImages: {
 						present: Present.PARTIALLY,
@@ -280,19 +262,13 @@ export const data: Vendor = {
 					solarisx64: { present: Present.NO },
 				},
 				aqavit: { present: Present.NO },
-				tck: {
-					present: Present.PARTIALLY,
-					footnote: "822b32bd-e95a-4fb8-98e8-67bdd1e1b3f6",
-				},
+				tck: { present: Present.YES },
 				editions: { text: "JRE" },
 				customisations: {
 					text: "few",
 					footnote: "69b47908-13e0-497c-b995-c0cf573f3f0f",
 				},
-				notableFeatures: {
-					text: "High Memory Reports, MallocTracer, Vitals",
-					footnote: "18e1d490-3582-46be-9340-271140e3ada5",
-				},
+				notableFeatures: { text: "none" },
 				license: { text: "GPLv2+CE" },
 				freeInDevelopment: { present: Present.YES },
 				freeInProduction: { present: Present.YES },
@@ -302,7 +278,7 @@ export const data: Vendor = {
 					footnote: "0484cb17-6266-4d75-9e44-8021b75b7bb4",
 				},
 				eolDate: {
-					text: "2025-09",
+					text: "2030-09",
 					footnote: "13ade37e-7160-4316-84f9-4dbdd5efa8df",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -343,12 +319,6 @@ export const data: Vendor = {
 			markdown: "SapMachine only offers disk images (DMG), but no installers (PKG).",
 		},
 		{
-			id: "2c2cc179-3ff9-4c15-a974-240cbf339c99",
-			markdown:
-				"RPM packages are only available for Linux on x86, 64-bit. They can be obtained on [SapMachine's " +
-				"GitHub Releases](https://github.com/SAP/SapMachine/releases).",
-		},
-		{
 			id: "06887138-6947-4068-87d3-eb7d708afe86",
 			markdown:
 				"[Container images featuring SapMachine](https://hub.docker.com/_/sapmachine) are only offered with " +
@@ -360,15 +330,6 @@ export const data: Vendor = {
 				"According to [SapMachine's " +
 				"FAQ](https://github.com/SAP/SapMachine/wiki/Frequently-Asked-Questions#Are-SapMachine-builds-verified-by-the-Java-Compatibility-Kit-JCK), " +
 				"TCK certification of short-term releases is only performed on some platforms.",
-		},
-		{
-			id: "18e1d490-3582-46be-9340-271140e3ada5",
-			markdown:
-				"To learn more, see " +
-				"[High Memory Reports](https://github.com/SAP/SapMachine/wiki/SapMachine-High-Memory-Reports), " +
-				"[MallocTracer](https://github.com/SAP/SapMachine/wiki/SapMachine-MallocTracer), " +
-				"[Vitals](https://github.com/SAP/SapMachine/wiki/SapMachine-Vitals). " +
-				"Please note that not all features are available on all platforms.",
 		},
 	],
 };
