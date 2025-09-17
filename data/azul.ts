@@ -736,13 +736,19 @@ export const data: Vendor = {
 					apk: { present: Present.NO },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
-					containerImages: { present: Present.YES },
+					containerImages: {
+						present: Present.YES,
+						footnote: "55ecb0d4-a4e9-48db-ba56-00507fce0c3f",
+					},
 				},
 				windows: {
 					x32: { present: Present.NO },
 					x64: { present: Present.YES },
 					aarch64: { present: Present.YES },
-					installers: { present: Present.YES },
+					installers: {
+						present: Present.PARTIALLY,
+						footnote: "5e73b813-c473-4a41-bcdb-001e6e2b97a1",
+					},
 					containerImages: { present: Present.NO },
 				},
 				otherPlatforms: {
@@ -782,11 +788,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "zulu-24",
+			id: "zulu-25",
 			information: {
-				name: "Zulu 24",
-				version: 24,
-				downloadSite: "https://www.azul.com/downloads/?version=java-24#zulu",
+				name: "Zulu 25",
+				version: 25,
+				downloadSite: "https://www.azul.com/downloads/?version=java-25#zulu",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -804,7 +810,7 @@ export const data: Vendor = {
 					z: { present: Present.YES },
 					custom: { text: "none" },
 				},
-				// Azul support matrix: https://docs.azul.com/core/zulu-openjdk/supported-platforms
+				// Azul support matrix: https://docs.azul.com/core/supported-platforms
 				mac: {
 					x64: { present: Present.YES },
 					aarch64: { present: Present.YES },
@@ -823,13 +829,19 @@ export const data: Vendor = {
 					apk: { present: Present.NO },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
-					containerImages: { present: Present.YES },
+					containerImages: {
+						present: Present.YES,
+						footnote: "55ecb0d4-a4e9-48db-ba56-00507fce0c3f",
+					},
 				},
 				windows: {
 					x32: { present: Present.NO },
 					x64: { present: Present.YES },
-					aarch64: { present: Present.NO },
-					installers: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: {
+						present: Present.PARTIALLY,
+						footnote: "5e73b813-c473-4a41-bcdb-001e6e2b97a1",
+					},
 					containerImages: { present: Present.NO },
 				},
 				otherPlatforms: {
@@ -837,7 +849,7 @@ export const data: Vendor = {
 					solarisSPARC: { present: Present.NO },
 					solarisx64: { present: Present.NO },
 				},
-				aqavit: { present: Present.UNKNOWN },
+				aqavit: { present: Present.YES },
 				tck: { present: Present.YES },
 				editions: {
 					text: "CRaC, JRE, OpenJFX",
@@ -859,7 +871,7 @@ export const data: Vendor = {
 					present: Present.YES,
 				},
 				eolDate: {
-					text: "2025-09",
+					text: "2033-09",
 					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -914,15 +926,12 @@ export const data: Vendor = {
 		{
 			id: "fdc63639-fa45-489e-9264-6419a212f398",
 			markdown:
-				"Container images are only published for a subset of platforms: x86, 64-bit and ARM, 64-bit. For " +
-				"details, see [Azul's Docker Hub page](https://hub.docker.com/r/azul/zulu-openjdk).",
+				"Container images are only published for a subset of platforms: x86, 64-bit and ARM, 64-bit. For details, see [Azul Zulu Docker Image Tags](https://docs.azul.com/core/docker-image-tags).",
 		},
 		{
 			id: "96bee46b-fcbb-4929-ad24-c0e94d2d2bed",
 			markdown:
-				"Editions are only available for a subset of platforms. [Coordinated Restore at " +
-				"Checkpoint](https://www.azul.com/products/components/crac/) (CRaC) is a future " +
-				"OpenJDK feature that drastically reduces start-up and warm-up time.",
+				"Editions are only available for a subset of platforms. Installers might not be available. [Coordinated Restore at Checkpoint](https://www.azul.com/products/components/crac/) (CRaC) is a potential future OpenJDK feature that reduces start-up and warm-up time.",
 		},
 		{
 			id: "c8237922-a8c7-46f8-b913-ccf318ea3f96",
@@ -933,8 +942,7 @@ export const data: Vendor = {
 		{
 			id: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
 			markdown:
-				"For details, see Azul's site [Support lifecycle for existing and planned JDK " +
-				"releases](https://www.azul.com/products/azul-support-roadmap/).",
+				"For details, see Azul's site [Support lifecycle for existing and planned JDK releases](https://www.azul.com/products/azul-support-roadmap/).",
 		},
 		{
 			id: "da467d88-e856-4d41-bf9b-d8a678b05262",
@@ -962,6 +970,11 @@ export const data: Vendor = {
 		{
 			id: "edfe91f1-4538-4455-bea8-0568572b05b6",
 			markdown: "SBOMs are provided to Azul customers via the Azul support team.",
+		},
+		{
+			id: "55ecb0d4-a4e9-48db-ba56-00507fce0c3f",
+			markdown:
+				"See [Azul Zulu Docker Image Tags](https://docs.azul.com/core/docker-image-tags) for a full list of available container images.",
 		},
 	],
 };
