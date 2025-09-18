@@ -375,12 +375,12 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "corretto-24",
+			id: "corretto-25",
 			information: {
-				name: "Corretto 24",
-				version: 24,
+				name: "Corretto 25",
+				version: 25,
 				downloadSite:
-					"https://docs.aws.amazon.com/corretto/latest/corretto-24-ug/downloads-list.html",
+					"https://docs.aws.amazon.com/corretto/latest/corretto-25-ug/downloads-list.html",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -451,7 +451,7 @@ export const data: Vendor = {
 					footnote: "b1a00daa-5bea-4f3d-a0c9-72f800b5a9fb",
 				},
 				eolDate: {
-					text: "2025-09",
+					text: "n/a",
 					footnote: "a8bdffe4-8de9-4d31-9a7e-726a5b5157e5",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -465,8 +465,7 @@ export const data: Vendor = {
 		{
 			id: "9960d648-de3a-42ab-85c7-462cc82a7932",
 			markdown:
-				"See the [Amazon Corretto FAQ](https://aws.amazon.com/corretto/faqs/) for a list of platforms " +
-				"where JavaFX is available.",
+				"See the [Amazon Corretto FAQ](https://aws.amazon.com/corretto/faqs/) for a list of platforms where JavaFX is available. Note that Amazon will stop including JavaFX after 31 March 2026.",
 		},
 		{
 			id: "07cba2f3-0251-48ea-a5da-f76b1bdfff1d",
