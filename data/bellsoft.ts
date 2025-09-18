@@ -385,11 +385,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "liberica-jdk-24",
+			id: "liberica-jdk-25",
 			information: {
-				name: "Liberica JDK 24",
-				version: 24,
-				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-24",
+				name: "Liberica JDK 25",
+				version: 25,
+				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-25-lts",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -468,7 +468,7 @@ export const data: Vendor = {
 				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
-					text: "2025-09",
+					text: "2034-03",
 					footnote: "e92c2876-d7c0-43f3-a441-b4f95ce940cb",
 				},
 				releaseSchedule: { text: "OpenJDK" },
