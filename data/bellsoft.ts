@@ -571,8 +571,114 @@ export const data: Vendor = {
 					text: "2026-06",
 					footnote: "160fbf87-fa1c-4c36-adec-2e989c143cda",
 				},
-				releaseSchedule: { text: "OpenJDK" },
-				releaseDelay: { text: "0-3 days" },
+				releaseSchedule: {
+					text: "Custom",
+					footnote: "920f585f-29c3-4b88-9708-006a087571ad",
+				},
+				releaseDelay: { text: "n/a" },
+				updateTypes: { text: "no/free" },
+				remarks: { text: "GraalVM CE with additional patches" },
+			},
+		},
+		{
+			id: "liberica-nik-25",
+			information: {
+				name: "Liberica NIK 25",
+				version: 25,
+				downloadSite:
+					"https://bell-sw.com/pages/downloads/native-image-kit/#nik-25-(jdk-25)",
+			},
+			features: {
+				virtualMachine: {
+					text: "HotSpot",
+					footnote: "cb33ec69-32c3-49ef-b5ab-75977199700c",
+				},
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: { present: Present.YES },
+					z: { present: Present.YES },
+					custom: { text: "none" },
+				},
+				mac: {
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: { present: Present.YES },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.YES },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.YES },
+					deb: {
+						present: Present.PARTIALLY,
+						footnote: "677d6419-e21d-44ff-9d95-f63b33f33ae9",
+					},
+					rpm: {
+						present: Present.PARTIALLY,
+						footnote: "677d6419-e21d-44ff-9d95-f63b33f33ae9",
+					},
+					containerImages: {
+						present: Present.YES,
+						footnote: "ae5dc2f4-d8d9-4f37-be2f-f4bf343c273c",
+					},
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.YES },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.NO },
+				tck: {
+					present: Present.PARTIALLY,
+					footnote: "4ae7e59d-1edd-4c52-93f4-6779bc77ee44",
+				},
+				editions: {
+					text: "OpenJFX, Core",
+					footnote: "f00b7e86-e9bc-4ab1-b652-60fc719c0d1a",
+				},
+				customisations: {
+					text: "many",
+					footnote: "b6949ccb-4a08-4252-b8ca-6bed454d9059",
+				},
+				notableFeatures: {
+					text: "Graal Compiler, Native Image, Truffle",
+					footnote: "ee9076da-7f75-44dd-a8d2-1aa519d034e6",
+				},
+				license: { text: "GPLv2+CE" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
+				paidSupport: { present: Present.YES },
+				eolDate: {
+					text: "2027-09",
+					footnote: "160fbf87-fa1c-4c36-adec-2e989c143cda",
+				},
+				releaseSchedule: {
+					text: "Custom",
+					footnote: "920f585f-29c3-4b88-9708-006a087571ad",
+				},
+				releaseDelay: { text: "n/a" },
 				updateTypes: { text: "no/free" },
 				remarks: { text: "GraalVM CE with additional patches" },
 			},
@@ -673,6 +779,11 @@ export const data: Vendor = {
 			id: "160fbf87-fa1c-4c36-adec-2e989c143cda",
 			markdown:
 				"See the [Support Roadmap for Liberica NIK](https://bell-sw.com/nik-support/).",
+		},
+		{
+			id: "920f585f-29c3-4b88-9708-006a087571ad",
+			markdown:
+				"Liberica NIK follows the release schedule of GraalVM Community Edition. Binary builds are usually available within a week after the corresponding GraalVM CE release.",
 		},
 	],
 };
