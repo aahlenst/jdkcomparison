@@ -76,7 +76,7 @@ test.describe("JDK Comparison", () => {
 	});
 
 	test("should display some known products", async ({ page }) => {
-		await expect(page.getByRole("heading", { level: 1, name: "OpenJDK 25" })).toBeVisible();
+		await expect(page.getByRole("heading", { level: 1, name: "Oracle JDK 25" })).toBeVisible();
 		await expect(
 			page.getByRole("heading", { level: 1, name: "Eclipse Temurin 17" }),
 		).toBeVisible();
@@ -405,7 +405,7 @@ test.describe("JDK Comparison", () => {
 			"OpenJDK 11",
 			"Eclipse Temurin 11",
 			"Semeru CE 11",
-			"Build of OpenJDK 11",
+			"OpenJDK 11",
 			"Oracle JDK 11",
 			"Build of OpenJDK 11",
 		]);

@@ -15,9 +15,9 @@ export const data: Vendor = {
 		{
 			id: "ms-build-of-openjdk-11",
 			information: {
-				name: "Build of OpenJDK 11",
+				name: "OpenJDK 11",
 				version: 11,
-				downloadSite: "https://microsoft.com/openjdk/",
+				downloadSite: "https://learn.microsoft.com/java/openjdk/download#openjdk-11",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -55,10 +55,7 @@ export const data: Vendor = {
 					s390x: { present: Present.NO },
 					apk: { present: Present.NO },
 					deb: { present: Present.YES },
-					rpm: {
-						present: Present.PARTIALLY,
-						footnote: "edcc7c9a-671d-4547-a5a7-8f1271fd8c4a",
-					},
+					rpm: { present: Present.YES },
 					containerImages: {
 						present: Present.PARTIALLY,
 						footnote: "8fb6356a-0057-43ea-9372-443fb576145b",
@@ -97,7 +94,7 @@ export const data: Vendor = {
 					footnote: "16f40a6c-3a23-4e94-bc72-d1286f835529",
 				},
 				releaseSchedule: { text: "OpenJDK" },
-				releaseDelay: { text: "0-3 days" },
+				releaseDelay: { text: "1 week" },
 				updateTypes: { text: "no/free" },
 				remarks: { text: "none" },
 			},
@@ -105,9 +102,9 @@ export const data: Vendor = {
 		{
 			id: "ms-build-of-openjdk-17",
 			information: {
-				name: "Build of OpenJDK 17",
+				name: "OpenJDK 17",
 				version: 17,
-				downloadSite: "https://microsoft.com/openjdk/",
+				downloadSite: "https://learn.microsoft.com/java/openjdk/download#openjdk-17",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -142,10 +139,7 @@ export const data: Vendor = {
 					s390x: { present: Present.NO },
 					apk: { present: Present.NO },
 					deb: { present: Present.YES },
-					rpm: {
-						present: Present.PARTIALLY,
-						footnote: "edcc7c9a-671d-4547-a5a7-8f1271fd8c4a",
-					},
+					rpm: { present: Present.YES },
 					containerImages: {
 						present: Present.PARTIALLY,
 						footnote: "8fb6356a-0057-43ea-9372-443fb576145b",
@@ -184,7 +178,7 @@ export const data: Vendor = {
 					footnote: "16f40a6c-3a23-4e94-bc72-d1286f835529",
 				},
 				releaseSchedule: { text: "OpenJDK" },
-				releaseDelay: { text: "0-3 days" },
+				releaseDelay: { text: "1 week" },
 				updateTypes: { text: "no/free" },
 				remarks: { text: "none" },
 			},
@@ -192,9 +186,9 @@ export const data: Vendor = {
 		{
 			id: "ms-build-of-openjdk-21",
 			information: {
-				name: "Build of OpenJDK 21",
+				name: "OpenJDK 21",
 				version: 21,
-				downloadSite: "https://microsoft.com/openjdk/",
+				downloadSite: "https://learn.microsoft.com/java/openjdk/download#openjdk-21",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -229,10 +223,7 @@ export const data: Vendor = {
 					s390x: { present: Present.NO },
 					apk: { present: Present.NO },
 					deb: { present: Present.YES },
-					rpm: {
-						present: Present.PARTIALLY,
-						footnote: "edcc7c9a-671d-4547-a5a7-8f1271fd8c4a",
-					},
+					rpm: { present: Present.YES },
 					containerImages: { present: Present.YES },
 				},
 				windows: {
@@ -268,7 +259,91 @@ export const data: Vendor = {
 					footnote: "16f40a6c-3a23-4e94-bc72-d1286f835529",
 				},
 				releaseSchedule: { text: "OpenJDK" },
-				releaseDelay: { text: "0-3 days" },
+				releaseDelay: { text: "1 week" },
+				updateTypes: { text: "no/free" },
+				remarks: { text: "none" },
+			},
+		},
+		{
+			id: "ms-build-of-openjdk-25",
+			information: {
+				name: "OpenJDK 25",
+				version: 25,
+				downloadSite: "https://learn.microsoft.com/java/openjdk/download#openjdk-25",
+			},
+			features: {
+				virtualMachine: { text: "HotSpot" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: { present: Present.YES },
+					z: { present: Present.YES },
+					custom: { text: "none" },
+				},
+				mac: {
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: { present: Present.YES },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.NO },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.NO },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.NO },
+					apk: { present: Present.NO },
+					deb: { present: Present.YES },
+					rpm: { present: Present.YES },
+					containerImages: { present: Present.YES },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					aarch64: {
+						present: Present.NO,
+						footnote: "349f84f8-fd01-47e2-a4b7-8e894f7ee4e1",
+					},
+					installers: { present: Present.YES },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.YES },
+				tck: { present: Present.YES },
+				editions: { text: "none" },
+				customisations: {
+					text: "few",
+					footnote: "b6ae3d23-382f-40e7-832b-c7068b380e06",
+				},
+				notableFeatures: { text: "none" },
+				license: { text: "GPLv2+CE" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.PARTIALLY,
+					footnote: "da0cf3bb-e1dd-46e7-9e53-13a3fa74aa0d",
+				},
+				eolDate: {
+					text: "n/a",
+					footnote: "16f40a6c-3a23-4e94-bc72-d1286f835529",
+				},
+				releaseSchedule: { text: "OpenJDK" },
+				releaseDelay: { text: "1 week" },
 				updateTypes: { text: "no/free" },
 				remarks: { text: "none" },
 			},
@@ -286,14 +361,14 @@ export const data: Vendor = {
 			id: "8fb6356a-0057-43ea-9372-443fb576145b",
 			markdown:
 				"Microsoft does not produce container images with Alpine Linux. See [Container images for the " +
-				"Microsoft Build of OpenJDK](https://learn.microsoft.com/java/openjdk/containers) for a complete " +
+				"Microsoft OpenJDK](https://learn.microsoft.com/java/openjdk/containers) for a complete " +
 				"list of available container images.",
 		},
 		{
 			id: "b6ae3d23-382f-40e7-832b-c7068b380e06",
 			markdown:
 				"The [release notes](https://learn.microsoft.com/en-us/java/openjdk/release-notes) for " +
-				"Microsoft Build of OpenJDK list additional changes made by Microsoft.",
+				"Microsoft OpenJDK list additional changes made by Microsoft.",
 		},
 		{
 			id: "da0cf3bb-e1dd-46e7-9e53-13a3fa74aa0d",
@@ -310,10 +385,9 @@ export const data: Vendor = {
 				"OpenJDK.",
 		},
 		{
-			id: "edcc7c9a-671d-4547-a5a7-8f1271fd8c4a",
+			id: "349f84f8-fd01-47e2-a4b7-8e894f7ee4e1",
 			markdown:
-				"The RPMs published by Microsoft are [not compatible with " +
-				"SUSE](https://github.com/microsoft/openjdk/issues/389).",
+				"Microsoft [plans to publish](https://learn.microsoft.com/en-us/java/openjdk/download#openjdk-25) its Build of OpenJDK 25 for Windows on ARM, 64-bit at a later date.",
 		},
 	],
 };
