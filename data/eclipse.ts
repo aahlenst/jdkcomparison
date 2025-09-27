@@ -48,7 +48,10 @@ export const data: Vendor = {
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
-					containerImages: { present: Present.YES },
+					containerImages: {
+						present: Present.YES,
+						footnote: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -93,7 +96,7 @@ export const data: Vendor = {
 					footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 				},
 				eolDate: {
-					text: "2026-11",
+					text: "2030-12",
 					footnote: "62fd52c0-82d0-468a-a413-38277b35bd30",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -144,7 +147,10 @@ export const data: Vendor = {
 					apk: { present: Present.YES },
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
-					containerImages: { present: Present.YES },
+					containerImages: {
+						present: Present.YES,
+						footnote: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
+					},
 				},
 				mac: {
 					x64: { present: Present.YES },
@@ -241,7 +247,7 @@ export const data: Vendor = {
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
 					containerImages: {
-						present: Present.PARTIALLY,
+						present: Present.YES,
 						footnote: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
 					},
 				},
@@ -340,7 +346,7 @@ export const data: Vendor = {
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
 					containerImages: {
-						present: Present.PARTIALLY,
+						present: Present.YES,
 						footnote: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
 					},
 				},
@@ -397,11 +403,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "eclipse-temurin-24",
+			id: "eclipse-temurin-25",
 			information: {
-				name: "Eclipse Temurin 24",
-				version: 24,
-				downloadSite: "https://adoptium.net/temurin/releases/?version=24",
+				name: "Eclipse Temurin 25",
+				version: 25,
+				downloadSite: "https://adoptium.net/temurin/releases/?version=25",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -439,7 +445,7 @@ export const data: Vendor = {
 					deb: { present: Present.YES },
 					rpm: { present: Present.YES },
 					containerImages: {
-						present: Present.PARTIALLY,
+						present: Present.YES,
 						footnote: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
 					},
 				},
@@ -489,7 +495,7 @@ export const data: Vendor = {
 					footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 				},
 				eolDate: {
-					text: "2025-09",
+					text: "2031-09",
 					footnote: "62fd52c0-82d0-468a-a413-38277b35bd30",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -510,7 +516,7 @@ export const data: Vendor = {
 				"[17](https://github.com/adoptium/jdk17u/compare/master...release), " +
 				"[21](https://github.com/adoptium/jdk21u/compare/master...release). From JDK 23 onwards, " +
 				"compare the `jdkXX` with the `release_jdkXX` branch instead: " +
-				"[24](https://github.com/adoptium/jdk/compare/jdk24...release_jdk24).",
+				"[25](https://github.com/adoptium/jdk/compare/jdk25...release_jdk25).",
 		},
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
@@ -538,8 +544,7 @@ export const data: Vendor = {
 		{
 			id: "f1849822-ba83-43eb-b541-f952d1ac7a48",
 			markdown:
-				"For a list of container images with Eclipse Temurin, see the [list of tags published on Docker" +
-				"Hub](https://github.com/docker-library/docs/blob/master/eclipse-temurin/README.md#supported-tags-and-respective-dockerfile-links).",
+				"For a list of container images with Eclipse Temurin, see the [list of tags published on Docker Hub](https://hub.docker.com/_/eclipse-temurin/tags).",
 		},
 		{
 			id: "d2ecefd1-6d2a-4621-a5a7-f425acae6973",
@@ -549,11 +554,12 @@ export const data: Vendor = {
 				"[11](https://github.com/adoptium/temurin11-binaries/releases/), " +
 				"[17](https://github.com/adoptium/temurin17-binaries/releases/), " +
 				"[21](https://github.com/adoptium/temurin21-binaries/releases/), " +
-				"[24](https://github.com/adoptium/temurin24-binaries/releases/).",
+				"[25](https://github.com/adoptium/temurin25-binaries/releases/).",
 		},
 		{
 			id: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
-			markdown: "There are no container images for RISC-V, 64-bit with Eclipse Temurin.",
+			markdown:
+				"For a list of container images with Eclipse Temurin, see the [list of tags published on Docker Hub](https://hub.docker.com/_/eclipse-temurin/tags).",
 		},
 		{
 			id: "0246d8bd-6ec5-467e-800c-c5c503c74fec",
@@ -562,8 +568,7 @@ export const data: Vendor = {
 		{
 			id: "533d35e5-cb91-4dbb-8e5d-c85aa18e7c25",
 			markdown:
-				"The Eclipse Foundation [plans to release a version of Eclipse Temurin 24 for Windows on ARM, 64-bit " +
-				"at a later date](https://github.com/adoptium/temurin/issues/76#issuecomment-2766368095).",
+				"The Eclipse Foundation [plans to release a version of Eclipse Temurin 25 for Windows on ARM, 64-bit at a later date](https://github.com/adoptium/temurin/issues/96#issuecomment-3340733133).",
 		},
 	],
 };
