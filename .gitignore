@@ -10,7 +10,6 @@ Thumbs.db
 # Build output
 build/
 .next/
-.vercel/
 coverage/
 test-results/
 playwright-report/
@@ -20,7 +19,6 @@ node_modules/
 out/
 *.tsbuildinfo
 next-env.d.ts
-.wrangler
 
 # Local configuration
 .env*.local

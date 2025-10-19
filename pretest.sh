@@ -12,7 +12,7 @@ cleanup() {
 trap cleanup EXIT
 
 # Remove build output from previous runs.
-rm -rf .next .vercel .wrangler
+rm -rf out
 
 # Check
 find . -name node_modules -prune -o -type f -name "*.sh" -exec shellcheck {} \;
@@ -21,14 +21,17 @@ npm run lint
 
 # Test
 npm run jest
-npm run dev > /dev/null 2>&1 &
+
+# Run E2E tests
+DATA_SOURCE=testdata npm run build
+npx http-server -p 3000 out > /dev/null 2>&1 &
 SERVER_PID=$!
 npm run e2e
 cleanup
 
-npx @cloudflare/next-on-pages
-npx wrangler pages dev --port 3000 .vercel/output/static --compatibility-flag=nodejs_compat > /dev/null 2>&1 &
+# Run acceptance tests
+npm run build
+npx http-server -p 3000 out > /dev/null 2>&1 &
 SERVER_PID=$!
-sleep 1  # Wrangler needs some time to get ready which can cause Playwright timeouts.
 npm run acceptance
 cleanup

@@ -58,24 +58,32 @@ jobs:
       - name: Run unit tests
         run: npm run jest
 
-      # Starts the Next.js development server and puts it into the background before running the tests. Afterwards, the
-      # development server is stopped.
+      - name: Build page with test data
+        env:
+          DATA_SOURCE: testdata
+        run: npm run build
+
+      # Start http-server to serve `out`, put it in the background, and run the tests. Stop http-server once the tests
+      # are run.
       - name: Run E2E tests
         run: |
-          npm run dev > /dev/null 2>&1 &
+          npx http-server -p 3000 out > /dev/null 2>&1 &
           PID=$!
           npm run e2e
           kill "$PID"
 
+      - name: Remove page with test data
+        run: rm -rf out
+
       - name: Build
-        run: npx @cloudflare/next-on-pages@`node -p -e "require('./package.json').devDependencies['@cloudflare/next-on-pages']"`
+        run: npm run build
 
       # Upload build output before anything can alter it.
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ARTIFACT_NAME }}
-          path: .vercel/output/static
+          path: out
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
