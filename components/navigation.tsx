@@ -151,11 +151,12 @@ export function Navigation() {
 							<div className="flex shrink-0 items-center px-4">
 								<Image
 									id="logo"
-									src="/logo"
+									src="/logo.svg"
 									width={76.133}
 									height={32}
 									alt="JDK Comparison logo"
 									className="h-8 w-auto"
+									unoptimized
 								/>
 							</div>
 							<nav aria-label="Sidebar navigation" className="mt-5">
