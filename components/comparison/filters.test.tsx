@@ -27,12 +27,12 @@ import {
 	LicensingFilter,
 	PlatformsFilter,
 	TechnologiesFilter,
-} from "../../src/filter";
+} from "@/src/filter";
 import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider";
 
 describe("<Filters/>", () => {
 	// @headlessui/react needs ResizeObserver which is not available in the test environment.
-	(global as any).ResizeObserver = ResizeObserver;
+	(global as unknown).ResizeObserver = ResizeObserver;
 
 	const filters = [
 		new TechnologiesFilter(),
@@ -41,9 +41,7 @@ describe("<Filters/>", () => {
 		new GarbageCollectorsFilter(),
 		new DynamicSelectionFilter("versions", ["8", "11", "17"], (fc) => fc.version.toString()),
 		new DynamicSelectionFilter("vendors", ["Coffeecorp", "Dukecorp"], (fc) => fc.vendor),
-		new DynamicSelectionFilter("vms", ["CoffeeVM", "DukeVM"], (fc) =>
-			fc.virtualMachine.toString(),
-		),
+		new DynamicSelectionFilter("vms", ["CoffeeVM", "DukeVM"], (fc) => fc.virtualMachine.text),
 	];
 
 	const component = (
@@ -111,7 +109,7 @@ describe("<Filters/>", () => {
 		expect(licensing.getByRole("checkbox", { name: "Free in Production" })).not.toBeChecked();
 	});
 
-	test("updates filters on click", async () => {
+	test("updates filters on click", () => {
 		render(component);
 
 		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Filters");

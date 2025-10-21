@@ -14,7 +14,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { beforeAll, describe, expect } from "@jest/globals";
+import { beforeAll, describe, expect, test } from "@jest/globals";
 import { Vendor } from "@/src/vendorDataTypes";
 import { extractComparisonData } from "@/src/comparison";
 import { Model } from "@/src/modelTypes";

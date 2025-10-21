@@ -16,7 +16,7 @@
  */
 import { useRouter } from "next/router";
 import { ComparisonState, useComparison } from "@/components/comparison/comparisonContext";
-import { remove } from "../src/utils";
+import { remove } from "@/src/utils";
 
 export type SearchParams = {
 	[key: string]: undefined | string | string[];
@@ -56,8 +56,6 @@ export function usePropagateToSearchParams() {
 			case SearchParamsActionType.ApplyFilter:
 				searchParams = handleApplyFilter(action as ApplyFilter, comparison);
 				break;
-			default:
-				throw new Error(`Unknown action: ${action}`);
 		}
 
 		async function handleRouterChange() {

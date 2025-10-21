@@ -695,7 +695,7 @@ test.describe("JDK Comparison", () => {
 	test("retains filter state when opening and closing", async ({ page }) => {
 		await page.getByRole("button", { name: "Versions", exact: true }).click();
 
-		let form = page.getByRole("form", { name: "Selectable Versions" });
+		const form = page.getByRole("form", { name: "Selectable Versions" });
 		await expect(form.getByRole("checkbox", { name: "8" })).not.toBeChecked();
 		await expect(form.getByRole("checkbox", { name: "17" })).not.toBeChecked();
 
@@ -728,7 +728,7 @@ test.describe("JDK Comparison", () => {
 		await page.getByRole("button", { name: "GCs", exact: true }).click();
 
 		const filters = page.getByRole("region", { name: "Filters" });
-		let form = page.getByRole("form", { name: "Selectable GCs" });
+		const form = page.getByRole("form", { name: "Selectable GCs" });
 
 		await form.getByRole("checkbox", { name: "Epsilon", exact: true }).click();
 		await expect(filters.getByRole("button").nth(5)).toHaveAccessibleName("GCs 1");
@@ -1459,7 +1459,7 @@ test.describe("JDK Comparison", () => {
 		];
 		const menu = page.getByRole("menu", { name: "Sort" });
 		await expect(menu.getByRole("menuitem")).toHaveCount(options.length);
-		for (let i = 0; i < i; i++) {
+		for (let i = 0; i < options.length; i++) {
 			await expect(menu.getByRole("menuitem").nth(i)).toHaveAccessibleName(options[i]);
 		}
 	});

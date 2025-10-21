@@ -14,14 +14,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { describe, expect, test } from "@jest/globals";
+import { beforeEach, describe, expect, test } from "@jest/globals";
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
 import { render, screen } from "@testing-library/react";
 import { LinuxFeaturesSlice, LinuxSection } from "@/components/comparison/linuxSection";
 import { Model } from "@/src/modelTypes";
 import Present = Model.Present;
-import { remove } from "../../src/utils";
+import { remove } from "@/src/utils";
 
 describe("<LinuxSection/>", () => {
 	const features: [string, string | null, (s: LinuxFeaturesSlice) => Model.FeaturePresence][] = [
@@ -69,7 +69,7 @@ describe("<LinuxSection/>", () => {
 		expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Platforms: Linux");
 		expect(screen.getAllByRole("row")).toHaveLength(features.length);
 
-		features.forEach(([label, tooltip, _]) => {
+		features.forEach(([label, tooltip]) => {
 			const name = tooltip ? `${label} ${tooltip} no no` : `${label} no no`;
 			expect(screen.getByRole("row", { name: name })).toBeInTheDocument();
 		});
@@ -80,7 +80,7 @@ describe("<LinuxSection/>", () => {
 
 		render(<LinuxSection productData={data} showDifferencesOnly={false} />);
 
-		features.forEach(([label, tooltip, _]) => {
+		features.forEach(([label, tooltip]) => {
 			const name = tooltip ? `${label} ${tooltip} no` : `${label} no`;
 			expect(screen.getByRole("row", { name: name })).toBeInTheDocument();
 		});

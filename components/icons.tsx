@@ -17,7 +17,7 @@
 import { PropsWithChildren } from "react";
 
 type IconProps = {
-	[key: string]: any;
+	[key: string]: unknown;
 };
 
 export function ChevronDownIcon(props: PropsWithChildren<IconProps>) {

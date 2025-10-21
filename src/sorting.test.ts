@@ -67,7 +67,7 @@ describe("AscendingVendorComparator", () => {
 		const comparator = new AscendingVendorComparator();
 
 		const vendors = [{ vendor: "B" }, { vendor: "C" }, { vendor: "A" }];
-		vendors.sort(comparator.compare);
+		vendors.sort(comparator.compare.bind(comparator));
 
 		expect(vendors).toHaveLength(3);
 		expect(vendors[0]).toEqual({ vendor: "A" });
@@ -81,7 +81,7 @@ describe("DescendingVendorComparator", () => {
 		const comparator = new DescendingVendorComparator();
 
 		const vendors = [{ vendor: "B" }, { vendor: "C" }, { vendor: "A" }];
-		vendors.sort(comparator.compare);
+		vendors.sort(comparator.compare.bind(comparator));
 
 		expect(vendors).toHaveLength(3);
 		expect(vendors[0]).toEqual({ vendor: "C" });
@@ -95,7 +95,7 @@ describe("AscendingVersionComparator", () => {
 		const comparator = new AscendingVersionComparator();
 
 		const versions = [{ version: 17 }, { version: 18 }, { version: 8 }];
-		versions.sort(comparator.compare);
+		versions.sort(comparator.compare.bind(comparator));
 
 		expect(versions).toHaveLength(3);
 		expect(versions[0]).toEqual({ version: 8 });
@@ -109,7 +109,7 @@ describe("DescendingVersionComparator", () => {
 		const comparator = new DescendingVersionComparator();
 
 		const versions = [{ version: 17 }, { version: 18 }, { version: 8 }];
-		versions.sort(comparator.compare);
+		versions.sort(comparator.compare.bind(comparator));
 
 		expect(versions).toHaveLength(3);
 		expect(versions[0]).toEqual({ version: 18 });
@@ -127,7 +127,7 @@ describe("AscendingNameComparator", () => {
 			{ name: "Dukecorp JDK 16" },
 			{ name: "Coffeecorp JDK 17" },
 		];
-		names.sort(comparator.compare);
+		names.sort(comparator.compare.bind(comparator));
 
 		expect(names).toHaveLength(3);
 		expect(names[0]).toEqual({ name: "Coffeecorp JDK 17" });
@@ -145,7 +145,7 @@ describe("DescendingNameComparator", () => {
 			{ name: "Dukecorp JDK 16" },
 			{ name: "Coffeecorp JDK 17" },
 		];
-		names.sort(comparator.compare);
+		names.sort(comparator.compare.bind(comparator));
 
 		expect(names).toHaveLength(3);
 		expect(names[0]).toEqual({ name: "Dukecorp JDK 17" });

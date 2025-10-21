@@ -14,7 +14,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { beforeEach, describe, expect } from "@jest/globals";
+import { beforeEach, describe, expect, test } from "@jest/globals";
 import { ComparisonState } from "@/components/comparison/comparisonContext";
 import { Model } from "@/src/modelTypes";
 import { DynamicSelectionFilter } from "@/src/filter";

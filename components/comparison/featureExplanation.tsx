@@ -27,7 +27,6 @@ import {
 	useInteractions,
 } from "@floating-ui/react";
 import { InfoIcon } from "../icons";
-import { Model } from "@/src/modelTypes";
 
 type FeatureExplanationProps = {
 	name: string;

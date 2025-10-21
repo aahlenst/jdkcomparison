@@ -18,7 +18,6 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { BarsIcon, EnvelopeIcon, GitHubIcon, XMarkIcon } from "@/components/icons";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
-import logo from "../public/logo.svg";
 import Image from "next/image";
 import { classNames } from "@/src/utils";
 import React, { useState } from "react";
@@ -62,9 +61,12 @@ export function Navigation() {
 								<span className="sr-only">Back to homepage.</span>
 								<Image
 									id="logo"
-									src={logo}
+									src="/logo.svg"
+									width={76.133}
+									height={32}
 									alt="JDK Comparison logo"
 									className="block h-8 w-auto"
+									unoptimized
 								/>
 							</Link>
 						</div>
@@ -149,7 +151,9 @@ export function Navigation() {
 							<div className="flex shrink-0 items-center px-4">
 								<Image
 									id="logo"
-									src={logo}
+									src="/logo"
+									width={76.133}
+									height={32}
 									alt="JDK Comparison logo"
 									className="h-8 w-auto"
 								/>

@@ -1,7 +1,11 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+import defaultTheme from "tailwindcss/defaultTheme";
+
+import aspectRatio from "@tailwindcss/aspect-ratio";
+import forms from "@tailwindcss/forms";
+import typography from "@tailwindcss/typography";
 
 /** @type {import("tailwindcss").Config} */
-module.exports = {
+export default {
 	content: ["./components/**/*.{js,ts,jsx,tsx,mdx}", "./pages/**/*.{js,ts,jsx,tsx,mdx}"],
 	theme: {
 		extend: {
@@ -25,9 +29,5 @@ module.exports = {
 			}),
 		},
 	},
-	plugins: [
-		require("@tailwindcss/aspect-ratio"),
-		require("@tailwindcss/forms"),
-		require("@tailwindcss/typography"),
-	],
+	plugins: [aspectRatio, forms, typography],
 };

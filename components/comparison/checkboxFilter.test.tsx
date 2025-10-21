@@ -20,12 +20,12 @@ import "@testing-library/jest-dom/jest-globals";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import ResizeObserver from "resize-observer-polyfill";
 import { CheckboxFilter } from "./checkboxFilter";
-import { DynamicSelectionFilter } from "../../src/filter";
+import { DynamicSelectionFilter } from "@/src/filter";
 import { ApplyFilter } from "@/hooks/usePropagateToSearchParams";
 
 describe("<CheckboxFilter/>", () => {
 	// @headlessui/react needs ResizeObserver which is not available in the test environment.
-	(global as any).ResizeObserver = ResizeObserver;
+	(global as unknown).ResizeObserver = ResizeObserver;
 
 	test("renders all options", () => {
 		const filter = new DynamicSelectionFilter(

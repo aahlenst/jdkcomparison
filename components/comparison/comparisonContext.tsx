@@ -16,8 +16,8 @@
  */
 import React, { createContext, PropsWithChildren, useContext } from "react";
 import { useImmerReducer } from "use-immer";
-import { Model } from "../../src/modelTypes";
-import { applyFilters } from "../../src/filter";
+import { Model } from "@/src/modelTypes";
+import { applyFilters } from "@/src/filter";
 import { useApplySearchParams } from "@/hooks/useApplySearchParams";
 import { AllComparators, DefaultComparator, sortFeatureComparisons } from "@/src/sorting";
 import { produce } from "immer";
@@ -147,8 +147,6 @@ export function comparisonReducer(
 			case ComparisonActionType.ToggleShowDifferencesOnly:
 				handleToggleShowDifferencesOnly(draft, action as ToggleShowDifferencesOnly);
 				break;
-			default:
-				throw new Error(`Unknown action: ${action}`);
 		}
 	}
 

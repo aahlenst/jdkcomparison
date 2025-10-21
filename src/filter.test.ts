@@ -14,7 +14,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
-import { beforeAll, describe, expect, test } from "@jest/globals";
+import { beforeAll, beforeEach, describe, expect, test } from "@jest/globals";
 import { extractComparisonData } from "@/src/comparison";
 import {
 	applyFilters,
@@ -678,7 +678,7 @@ describe("TechnologiesFilter", () => {
 	test("filters by presence of Java Web Start", () => {
 		const technologiesFilter = new TechnologiesFilter();
 
-		let foundProducts = comparisonData.map((c) => ({
+		const foundProducts = comparisonData.map((c) => ({
 			vendor: c.vendor,
 			version: c.version,
 			jaws: c.jaws.present,
@@ -700,7 +700,7 @@ describe("TechnologiesFilter", () => {
 		});
 
 		technologiesFilter.setOptionSelectedByLabel("Java Web Start", true);
-		let filteredData = applyFilters([technologiesFilter], comparisonData);
+		const filteredData = applyFilters([technologiesFilter], comparisonData);
 
 		expect(filteredData.length).toBe(0);
 	});

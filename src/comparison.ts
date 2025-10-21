@@ -44,7 +44,7 @@ class FootnoteCounter {
 export function extractComparisonData(vendors: Vendor[]): Model.Comparison {
 	vendors.sort((a, b) => a.vendor.localeCompare(b.vendor, "en"));
 
-	let footnoteCounter: FootnoteCounter = new FootnoteCounter();
+	const footnoteCounter = new FootnoteCounter();
 	const aggregatedFootnotes: Model.Footnote[] = [];
 	for (const vendor of vendors) {
 		aggregatedFootnotes.push(...extractFootnotes(vendor, footnoteCounter));
@@ -208,7 +208,5 @@ function mapPresent(present: Present): Model.Present {
 			return Model.Present.NO;
 		case Present.UNKNOWN:
 			return Model.Present.UNKNOWN;
-		default:
-			throw new Error(`Unknown presence: ${present}`);
 	}
 }

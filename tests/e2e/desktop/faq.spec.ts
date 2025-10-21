@@ -97,7 +97,7 @@ test.describe("JDK Comparison", () => {
 			expect(text).not.toBeNull();
 
 			// Check if there is a matching entry with link in "Overview".
-			let selector = `h2:nth-of-type(1) + ul li a[href='#${id}']`;
+			const selector = `h2:nth-of-type(1) + ul li a[href='#${id}']`;
 			await expect(page.locator(selector)).toBeVisible();
 			await expect(page.locator(selector)).toHaveText(text!);
 		}

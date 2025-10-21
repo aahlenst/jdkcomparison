@@ -21,7 +21,7 @@ import { render, screen } from "@testing-library/react";
 import { WindowsFeaturesSlice, WindowsSection } from "@/components/comparison/windowsSection";
 import { Model } from "@/src/modelTypes";
 import Present = Model.Present;
-import { remove } from "../../src/utils";
+import { remove } from "@/src/utils";
 
 describe("<WindowsSection/>", () => {
 	let data: WindowsFeaturesSlice[] = [];
@@ -112,7 +112,7 @@ describe("<WindowsSection/>", () => {
 		expect(screen.getByRole("row", { name: "Installers yes no" })).toBeInTheDocument();
 	});
 
-	it("displays Container Images if features are different and differences only is on", () => {
+	test("displays Container Images if features are different and differences only is on", () => {
 		data[0].windowsContainerImages.present = Present.PARTIALLY;
 
 		render(<WindowsSection productData={data} showDifferencesOnly={true} />);
