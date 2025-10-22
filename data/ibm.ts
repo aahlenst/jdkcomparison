@@ -282,6 +282,97 @@ export const data: Vendor = {
 				remarks: { text: "none" },
 			},
 		},
+		{
+			id: "semeru-runtime-ce-25",
+			information: {
+				name: "Semeru CE 25",
+				version: 25,
+				downloadSite: "https://developer.ibm.com/languages/java/semeru-runtimes/downloads/",
+			},
+			features: {
+				virtualMachine: { text: "OpenJ9" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.NO },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.NO },
+					g1: { present: Present.NO },
+					parallel: { present: Present.NO },
+					serial: { present: Present.NO },
+					shenandoah: { present: Present.NO },
+					z: { present: Present.NO },
+					custom: {
+						text: "OpenJ9 GC",
+						footnote: "0b653527-60bc-4612-9835-f12a89651f96",
+					},
+				},
+				mac: {
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.NO },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.NO },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.YES },
+					riscv64: { present: Present.NO },
+					s390x: { present: Present.YES },
+					apk: { present: Present.NO },
+					deb: { present: Present.NO },
+					rpm: {
+						present: Present.PARTIALLY,
+						footnote: "e1a3240d-12c4-4460-a80f-bad756fbb3ef",
+					},
+					// Only available with Semeru Open Edition.
+					containerImages: { present: Present.NO },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.YES },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.YES },
+				tck: { present: Present.YES },
+				editions: { text: "JRE" },
+				customisations: { text: "many", footnote: "5d8042eb-3fab-495b-b3ef-a3beeacb78e5" },
+				notableFeatures: {
+					text: "JITServer",
+					footnote: "3f9a7d34-9fca-465a-8502-406ca490ffe8",
+				},
+				license: { text: "Proprietary" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: {
+					present: Present.PARTIALLY,
+					footnote: "a75e6237-3ddc-4c86-a475-78e16ac8e7d4",
+				},
+				sbom: { present: Present.NO },
+				paidSupport: { present: Present.YES },
+				eolDate: {
+					text: "n/a",
+					footnote: "0caa519b-a44e-449b-8d5b-879c640ebac7",
+				},
+				releaseSchedule: {
+					text: "Custom",
+					footnote: "c8c5c06c-4077-4e8e-9dce-f649eab66b45",
+				},
+				releaseDelay: { text: "n/a" },
+				updateTypes: { text: "no/free" },
+				remarks: { text: "none" },
+			},
+		},
 	],
 	footnotes: [
 		{
@@ -328,7 +419,8 @@ export const data: Vendor = {
 				"apart from the licenses. The OpenJ9 code can be found on GitHub: " +
 				"[11](https://github.com/ibmruntimes/openj9-openjdk-jdk11), " +
 				"[17](https://github.com/ibmruntimes/openj9-openjdk-jdk17), " +
-				"[21](https://github.com/ibmruntimes/openj9-openjdk-jdk21).",
+				"[21](https://github.com/ibmruntimes/openj9-openjdk-jdk21), " +
+				"[25](https://github.com/ibmruntimes/openj9-openjdk-jdk25).",
 		},
 		{
 			id: "0caa519b-a44e-449b-8d5b-879c640ebac7",
