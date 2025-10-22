@@ -474,6 +474,126 @@ export const data: Vendor = {
 				remarks: { text: "none" },
 			},
 		},
+		{
+			id: "canonical-openjdk-25",
+			information: {
+				name: "OpenJDK 25",
+				version: 25,
+				downloadSite: "https://ubuntu.com/download",
+			},
+			features: {
+				virtualMachine: { text: "HotSpot" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: {
+						present: Present.PARTIALLY,
+						footnote: "8b2af03b-78c0-4a3a-93ff-fba56db0db55",
+					},
+					z: {
+						present: Present.PARTIALLY,
+						footnote: "ce313436-3f36-4c78-be2c-3d0af1359619",
+					},
+					custom: { text: "none" },
+				},
+				mac: {
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+				},
+				linux: {
+					x32: { present: Present.NO, footnote: "a55cc074-5991-456b-a7d4-98cf65c08ded" },
+					x64: {
+						present: Present.PARTIALLY,
+						footnote: "d3e8a715-ce60-4b24-8e69-e8938cef5e57",
+					},
+					x64Musl: { present: Present.NO },
+					aarch64: {
+						present: Present.PARTIALLY,
+						footnote: "d3e8a715-ce60-4b24-8e69-e8938cef5e57",
+					},
+					aarch64Musl: { present: Present.NO },
+					aarch32: {
+						present: Present.NO,
+						footnote: "a55cc074-5991-456b-a7d4-98cf65c08ded",
+					},
+					ppc64: {
+						present: Present.PARTIALLY,
+						footnote: "d3e8a715-ce60-4b24-8e69-e8938cef5e57",
+					},
+					riscv64: {
+						present: Present.PARTIALLY,
+						footnote: "d3e8a715-ce60-4b24-8e69-e8938cef5e57",
+					},
+					s390x: {
+						present: Present.PARTIALLY,
+						footnote: "d3e8a715-ce60-4b24-8e69-e8938cef5e57",
+					},
+					apk: { present: Present.NO },
+					deb: {
+						present: Present.PARTIALLY,
+						footnote: "d3e8a715-ce60-4b24-8e69-e8938cef5e57",
+					},
+					rpm: { present: Present.NO },
+					containerImages: {
+						present: Present.PARTIALLY,
+						footnote: "d8b4748a-7f59-41ba-9a8d-20e22ad4eb9a",
+					},
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.NO },
+					aarch64: { present: Present.NO },
+					installers: { present: Present.NO },
+					containerImages: { present: Present.NO },
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.NO },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: {
+					present: Present.YES,
+					footnote: "26e0e603-d744-4fcf-aeb9-cd66d7e39f2e",
+				},
+				tck: {
+					present: Present.YES,
+					footnote: "26e0e603-d744-4fcf-aeb9-cd66d7e39f2e",
+				},
+				editions: { text: "JRE, CRaC", footnote: "89f11427-8da6-41dd-be71-d742e98511e6" },
+				customisations: {
+					text: "few",
+					footnote: "19a3adda-e046-4db7-aedf-7a864a640bbb",
+				},
+				notableFeatures: { text: "none" },
+				license: { text: "GPLv2+CE" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.YES },
+				sbom: { present: Present.NO },
+				paidSupport: {
+					present: Present.PARTIALLY,
+					footnote: "c51bc74b-47aa-48c2-a577-9e8dd2752569",
+				},
+				eolDate: {
+					text: "2034-04",
+					footnote: "1c10af1e-7669-4223-81ea-899de5e9399b",
+				},
+				releaseSchedule: { text: "OpenJDK" },
+				releaseDelay: { text: "1-2 weeks" },
+				updateTypes: {
+					text: "no/tiered",
+					footnote: "bd76aec7-2985-4d16-a058-cf2c4fbf919a",
+				},
+				remarks: { text: "none" },
+			},
+		},
 	],
 	footnotes: [
 		{
@@ -519,7 +639,7 @@ export const data: Vendor = {
 		{
 			id: "19a3adda-e046-4db7-aedf-7a864a640bbb",
 			markdown:
-				"Customizations applied by version: [8](https://git.launchpad.net/ubuntu/+source/openjdk-8/tree/debian/patches), [11](https://git.launchpad.net/ubuntu/+source/openjdk-11/tree/debian/patches), [17](https://git.launchpad.net/ubuntu/+source/openjdk-17/tree/debian/patches), [21](https://git.launchpad.net/ubuntu/+source/openjdk-21/tree/debian/patches)",
+				"Customizations applied by version: [8](https://git.launchpad.net/ubuntu/+source/openjdk-8/tree/debian/patches), [11](https://git.launchpad.net/ubuntu/+source/openjdk-11/tree/debian/patches), [17](https://git.launchpad.net/ubuntu/+source/openjdk-17/tree/debian/patches), [21](https://git.launchpad.net/ubuntu/+source/openjdk-21/tree/debian/patches), [25](https://git.launchpad.net/ubuntu/+source/openjdk-25/tree/debian/patches)",
 		},
 		{
 			id: "8b2af03b-78c0-4a3a-93ff-fba56db0db55",
