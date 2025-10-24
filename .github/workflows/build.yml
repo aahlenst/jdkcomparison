@@ -80,7 +80,7 @@ jobs:
 
       # Upload build output before anything can alter it.
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: out
@@ -116,7 +116,7 @@ jobs:
           echo "PREVIEW_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Download artifact from build job
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: site
@@ -185,7 +185,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: site
