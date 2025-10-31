@@ -22,7 +22,7 @@
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "3.3.1",
-		"@eslint/js": "9.38.0",
+		"@eslint/js": "9.39.0",
 		"@jest/globals": "30.2.0",
 		"@mdx-js/loader": "3.1.1",
 		"@mdx-js/react": "3.1.1",
@@ -38,7 +38,7 @@
 		"@types/node": "24.9.2",
 		"@types/react": "19.2.2",
 		"@types/react-dom": "19.2.2",
-		"eslint": "9.38.0",
+		"eslint": "9.39.0",
 		"eslint-config-next": "16.0.1",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-prettier": "5.5.4",
