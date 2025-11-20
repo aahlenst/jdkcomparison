@@ -20,7 +20,7 @@ jobs:
     name: Run common checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Run shellcheck on shell scripts
         run: find . -name node_modules -prune -o -type f -name "*.sh" -exec shellcheck {} \;
@@ -38,7 +38,7 @@ jobs:
       checks: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v6
@@ -153,7 +153,7 @@ jobs:
     env:
       PLAYWRIGHT_BASE_URL: ${{ needs.deploy-preview.outputs.preview-url }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v6
