@@ -16,9 +16,9 @@
  */
 import { Model } from "@/src/modelTypes";
 
-export class AscendingVendorComparator
-	implements Model.Comparator<Pick<Model.FeatureComparison, "vendor">>
-{
+export class AscendingVendorComparator implements Model.Comparator<
+	Pick<Model.FeatureComparison, "vendor">
+> {
 	id: string = "v-a";
 	label: string = "Vendor, A-Z";
 
@@ -30,9 +30,9 @@ export class AscendingVendorComparator
 	}
 }
 
-export class DescendingVendorComparator
-	implements Model.Comparator<Pick<Model.FeatureComparison, "vendor">>
-{
+export class DescendingVendorComparator implements Model.Comparator<
+	Pick<Model.FeatureComparison, "vendor">
+> {
 	id: string = "v-d";
 	label: string = "Vendor, Z-A";
 
@@ -44,9 +44,9 @@ export class DescendingVendorComparator
 	}
 }
 
-export class AscendingVersionComparator
-	implements Model.Comparator<Pick<Model.FeatureComparison, "version">>
-{
+export class AscendingVersionComparator implements Model.Comparator<
+	Pick<Model.FeatureComparison, "version">
+> {
 	id: string = "v-o";
 	label: string = "Oldest";
 
@@ -58,9 +58,9 @@ export class AscendingVersionComparator
 	}
 }
 
-export class DescendingVersionComparator
-	implements Model.Comparator<Pick<Model.FeatureComparison, "version">>
-{
+export class DescendingVersionComparator implements Model.Comparator<
+	Pick<Model.FeatureComparison, "version">
+> {
 	id: string = "v-n";
 	label: string = "Newest";
 
@@ -72,9 +72,9 @@ export class DescendingVersionComparator
 	}
 }
 
-export class AscendingNameComparator
-	implements Model.Comparator<Pick<Model.FeatureComparison, "name">>
-{
+export class AscendingNameComparator implements Model.Comparator<
+	Pick<Model.FeatureComparison, "name">
+> {
 	id: string = "n-a";
 	label: string = "JDK Name, A-Z";
 
@@ -86,9 +86,9 @@ export class AscendingNameComparator
 	}
 }
 
-export class DescendingNameComparator
-	implements Model.Comparator<Pick<Model.FeatureComparison, "name">>
-{
+export class DescendingNameComparator implements Model.Comparator<
+	Pick<Model.FeatureComparison, "name">
+> {
 	id: string = "n-d";
 	label: string = "JDK Name, Z-A";
 
