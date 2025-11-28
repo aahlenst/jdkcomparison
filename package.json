@@ -13,7 +13,7 @@
 	"dependencies": {
 		"@headlessui/react": "2.2.9",
 		"github-slugger": "2.0.0",
-		"immer": "10.2.0",
+		"immer": "11.0.1",
 		"micromark": "4.0.2",
 		"next": "16.0.5",
 		"react": "19.2.0",
