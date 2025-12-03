@@ -16,8 +16,8 @@
 		"immer": "11.0.1",
 		"micromark": "4.0.2",
 		"next": "16.0.7",
-		"react": "19.2.0",
-		"react-dom": "19.2.0",
+		"react": "19.2.1",
+		"react-dom": "19.2.1",
 		"use-immer": "0.11.0"
 	},
 	"devDependencies": {
