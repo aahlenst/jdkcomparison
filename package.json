@@ -52,7 +52,7 @@
 		"resize-observer-polyfill": "1.5.1",
 		"tailwindcss": "4.1.18",
 		"typescript": "5.9.3",
-		"typescript-eslint": "8.50.0"
+		"typescript-eslint": "8.50.1"
 	},
 	"overrides": {
 		"@types/react": "19.2.7",
