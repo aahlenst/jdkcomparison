@@ -128,7 +128,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site --project-name=jdkcomparison --branch=${{ env.PREVIEW_NAME }}
-      - uses: mshick/add-pr-comment@v2
+      - uses: mshick/add-pr-comment@v3
         with:
           message: |
             ### <span aria-hidden="true">✅</span> Your deployment is ready!
