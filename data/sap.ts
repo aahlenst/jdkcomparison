@@ -10,14 +10,14 @@ import { Present, Vendor } from "@/src/vendorDataTypes";
 export const data: Vendor = {
 	vendor: "SAP",
 	countryOfOrigin: "Germany",
-	website: "https://sap.github.io/SapMachine/",
+	website: "https://sapmachine.io/",
 	jdks: [
 		{
 			id: "sapmachine-17",
 			information: {
 				name: "SapMachine 17",
 				version: 17,
-				downloadSite: "https://sap.github.io/SapMachine/",
+				downloadSite: "https://sapmachine.io/",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -108,7 +108,7 @@ export const data: Vendor = {
 			information: {
 				name: "SapMachine 21",
 				version: 21,
-				downloadSite: "https://sap.github.io/SapMachine/",
+				downloadSite: "https://sapmachine.io/",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -200,7 +200,7 @@ export const data: Vendor = {
 			information: {
 				name: "SapMachine 25",
 				version: 25,
-				downloadSite: "https://sap.github.io/SapMachine/",
+				downloadSite: "https://sapmachine.io/",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -219,7 +219,7 @@ export const data: Vendor = {
 					custom: { text: "none" },
 				},
 				mac: {
-					x64: { present: Present.NO },
+					x64: { present: Present.YES },
 					aarch64: { present: Present.YES },
 					installers: {
 						present: Present.NO,
