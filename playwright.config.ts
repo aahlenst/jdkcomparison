@@ -42,13 +42,11 @@ export default defineConfig({
 			testIgnore: /mobile/,
 			use: { ...devices["Desktop Firefox"] },
 		},
-		/*
 		{
 			name: "webkit",
 			testIgnore: /mobile/,
 			use: { ...devices["Desktop Safari"] },
 		},
-		 */
 		{
 			name: "Mobile Chrome",
 			testIgnore: /desktop/,
