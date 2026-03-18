@@ -931,10 +931,7 @@ export const data: Vendor = {
 					x32: { present: Present.NO },
 					x64: { present: Present.YES },
 					aarch64: { present: Present.NO },
-					installers: {
-						present: Present.YES,
-						footnote: "5e73b813-c473-4a41-bcdb-001e6e2b97a1",
-					},
+					installers: { present: Present.YES },
 					containerImages: { present: Present.NO },
 				},
 				otherPlatforms: {
