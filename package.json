@@ -47,7 +47,7 @@
 		"jest-junit": "16.0.0",
 		"mocha-junit-reporter": "2.2.1",
 		"next-router-mock": "1.0.5",
-		"postcss": "8.5.8",
+		"postcss": "8.5.9",
 		"prettier": "3.8.1",
 		"resize-observer-polyfill": "1.5.1",
 		"tailwindcss": "4.2.2",
