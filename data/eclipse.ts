@@ -504,6 +504,108 @@ export const data: Vendor = {
 				remarks: { text: "none" },
 			},
 		},
+		{
+			id: "eclipse-temurin-26",
+			information: {
+				name: "Eclipse Temurin 26",
+				version: 26,
+				downloadSite: "https://adoptium.net/temurin/releases/?version=26",
+			},
+			features: {
+				virtualMachine: { text: "HotSpot" },
+				classLibraries: { text: "OpenJDK" },
+				javaFX: { present: Present.NO },
+				flightRecorder: { present: Present.YES },
+				javaWS: { present: Present.NO },
+				gc: {
+					cms: { present: Present.NO },
+					epsilon: { present: Present.YES },
+					g1: { present: Present.YES },
+					parallel: { present: Present.YES },
+					serial: { present: Present.YES },
+					shenandoah: {
+						present: Present.PARTIALLY,
+						footnote: "7bdc2d88-3cb4-4879-830e-da51c7a662db",
+					},
+					z: {
+						present: Present.PARTIALLY,
+						footnote: "21ef23f8-3cc2-45e9-b6b3-5e278a43c51f",
+					},
+					custom: { text: "none" },
+				},
+				linux: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					x64Musl: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					aarch64Musl: { present: Present.YES },
+					aarch32: { present: Present.NO },
+					ppc64: { present: Present.YES },
+					riscv64: { present: Present.YES },
+					s390x: { present: Present.YES },
+					apk: { present: Present.YES },
+					deb: { present: Present.YES },
+					rpm: { present: Present.YES },
+					containerImages: {
+						present: Present.YES,
+						footnote: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
+					},
+				},
+				mac: {
+					x64: { present: Present.YES },
+					aarch64: { present: Present.YES },
+					installers: { present: Present.YES },
+				},
+				windows: {
+					x32: { present: Present.NO },
+					x64: { present: Present.YES },
+					aarch64: {
+						present: Present.NO,
+						footnote: "533d35e5-cb91-4dbb-8e5d-c85aa18e7c25",
+					},
+					installers: { present: Present.YES },
+					containerImages: {
+						present: Present.PARTIALLY,
+						footnote: "0246d8bd-6ec5-467e-800c-c5c503c74fec",
+					},
+				},
+				otherPlatforms: {
+					aixPPC: { present: Present.YES },
+					solarisSPARC: { present: Present.NO },
+					solarisx64: { present: Present.NO },
+				},
+				aqavit: { present: Present.YES },
+				tck: { present: Present.YES },
+				editions: { text: "JRE" },
+				// No customizations apart from a few extra backports and a custom trust store.
+				customisations: {
+					text: "few",
+					footnote: "b85fc239-060a-4008-ade1-cff1f029ebaf",
+				},
+				notableFeatures: { text: "none" },
+				license: { text: "GPLv2+CE" },
+				freeInDevelopment: { present: Present.YES },
+				freeInProduction: { present: Present.YES },
+				sbom: {
+					present: Present.YES,
+					footnote: "d2ecefd1-6d2a-4621-a5a7-f425acae6973",
+				},
+				// Some Eclipse Adoptium members provide support for Temurin. So they are not third parties
+				// (rating "no") but also not first parties ("yes"). As a compromise, rate it as "partially".
+				paidSupport: {
+					present: Present.PARTIALLY,
+					footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
+				},
+				eolDate: {
+					text: "2026-09",
+					footnote: "62fd52c0-82d0-468a-a413-38277b35bd30",
+				},
+				releaseSchedule: { text: "OpenJDK" },
+				releaseDelay: { text: "1-2 weeks" },
+				updateTypes: { text: "no/free" },
+				remarks: { text: "none" },
+			},
+		},
 	],
 	footnotes: [
 		{
@@ -516,7 +618,8 @@ export const data: Vendor = {
 				"[17](https://github.com/adoptium/jdk17u/compare/master...release), " +
 				"[21](https://github.com/adoptium/jdk21u/compare/master...release). From JDK 23 onwards, " +
 				"compare the `jdkXX` with the `release_jdkXX` branch instead: " +
-				"[25](https://github.com/adoptium/jdk/compare/jdk25...release_jdk25).",
+				"[25](https://github.com/adoptium/jdk/compare/jdk25...release_jdk25), " +
+				"[26](https://github.com/adoptium/jdk/compare/jdk26...release_jdk26).",
 		},
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
@@ -554,7 +657,8 @@ export const data: Vendor = {
 				"[11](https://github.com/adoptium/temurin11-binaries/releases/), " +
 				"[17](https://github.com/adoptium/temurin17-binaries/releases/), " +
 				"[21](https://github.com/adoptium/temurin21-binaries/releases/), " +
-				"[25](https://github.com/adoptium/temurin25-binaries/releases/).",
+				"[25](https://github.com/adoptium/temurin25-binaries/releases/), " +
+				"[26](https://github.com/adoptium/temurin26-binaries/releases/).",
 		},
 		{
 			id: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
@@ -568,7 +672,7 @@ export const data: Vendor = {
 		{
 			id: "533d35e5-cb91-4dbb-8e5d-c85aa18e7c25",
 			markdown:
-				"The Eclipse Foundation [plans to release a version of Eclipse Temurin 25 for Windows on ARM, 64-bit at a later date](https://github.com/adoptium/temurin/issues/96#issuecomment-3340733133).",
+				"The Eclipse Foundation [plans to release a version of Eclipse Temurin 25 and 26 for Windows on ARM, 64-bit at a later date](https://github.com/adoptium/temurin/issues/96#issuecomment-3340733133).",
 		},
 	],
 };
