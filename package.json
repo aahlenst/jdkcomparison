@@ -42,7 +42,7 @@
 		"eslint-config-next": "16.2.6",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-prettier": "5.5.5",
-		"jest": "30.4.1",
+		"jest": "30.4.2",
 		"jest-environment-jsdom": "30.4.1",
 		"jest-junit": "17.0.0",
 		"mocha-junit-reporter": "2.2.1",
