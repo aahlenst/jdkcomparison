@@ -15,7 +15,7 @@
 		"github-slugger": "2.0.0",
 		"immer": "11.1.8",
 		"micromark": "4.0.2",
-		"next": "16.2.6",
+		"next": "16.2.11",
 		"react": "19.2.6",
 		"react-dom": "19.2.6",
 		"use-immer": "0.11.0"
