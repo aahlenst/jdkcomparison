@@ -24,8 +24,7 @@ type FeatureProps = {
 	id: string;
 	name: string;
 	values:
-		| (Model.FeaturePresence & Model.Keyable)[]
-		| (Model.FeatureDescription & Model.Keyable)[];
+		(Model.FeaturePresence & Model.Keyable)[] | (Model.FeatureDescription & Model.Keyable)[];
 };
 
 export function Feature({ id, name, values, children }: PropsWithChildren<FeatureProps>) {
