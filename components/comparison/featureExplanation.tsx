@@ -53,7 +53,7 @@ export function FeatureExplanation({ name, children }: PropsWithChildren<Feature
 	return (
 		<div className="relative">
 			<div
-				ref={refs.setReference}
+				ref={(node) => refs.setReference(node)}
 				{...getReferenceProps()}
 				className="feature-explanation-toggle"
 			>
@@ -78,7 +78,7 @@ export function FeatureExplanation({ name, children }: PropsWithChildren<Feature
 					</div>
 					{/* Tooltip for larger screens. Appears as a tooltip next to the button. */}
 					<div
-						ref={refs.setFloating}
+						ref={(node) => refs.setFloating(node)}
 						{...getFloatingProps()}
 						style={{ ...floatingStyles }}
 						className="desktop-feature-explanation hidden sm:block z-10 bg-white rounded-lg shadow-lg ring-1 ring-black"

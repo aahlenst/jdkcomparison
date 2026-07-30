@@ -62,7 +62,7 @@ export function Footnote({ footnoteReference }: FootnoteProps) {
 		<sup className="ml-0.5">
 			[
 			<a
-				ref={refs.setReference}
+				ref={(node) => refs.setReference(node)}
 				{...getReferenceProps()}
 				href={`#fn-${footnoteReference.number}`}
 				title={`Show footnote ${footnote.number}`}
@@ -86,7 +86,7 @@ export function Footnote({ footnoteReference }: FootnoteProps) {
 					</div>
 					{/* Popover for larger screens. Appears as a tooltip next to the button. */}
 					<div
-						ref={refs.setFloating}
+						ref={(node) => refs.setFloating(node)}
 						{...getFloatingProps()}
 						style={{ ...floatingStyles }}
 						className="desktop-footnote hidden sm:block z-10 bg-white rounded-lg shadow-lg ring-1 ring-black"
