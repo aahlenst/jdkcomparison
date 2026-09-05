@@ -37,7 +37,7 @@
 		"@testing-library/react": "16.3.3",
 		"@types/node": "24.13.3",
 		"@types/react": "19.2.18",
-		"@types/react-dom": "19.2.6",
+		"@types/react-dom": "19.2.7",
 		"eslint": "9.39.5",
 		"eslint-config-next": "16.2.12",
 		"eslint-config-prettier": "10.1.8",
@@ -56,6 +56,6 @@
 	},
 	"overrides": {
 		"@types/react": "19.2.18",
-		"@types/react-dom": "19.2.6"
+		"@types/react-dom": "19.2.7"
 	}
 }
