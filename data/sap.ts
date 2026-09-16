@@ -17,7 +17,7 @@ export const data: Vendor = {
 			information: {
 				name: "SapMachine 17",
 				version: 17,
-				downloadSite: "https://sapmachine.io/",
+				downloadSite: "https://sapmachine.io/download?major=17",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -108,7 +108,7 @@ export const data: Vendor = {
 			information: {
 				name: "SapMachine 21",
 				version: 21,
-				downloadSite: "https://sapmachine.io/",
+				downloadSite: "https://sapmachine.io/download?major=21",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -200,7 +200,7 @@ export const data: Vendor = {
 			information: {
 				name: "SapMachine 25",
 				version: 25,
-				downloadSite: "https://sapmachine.io/",
+				downloadSite: "https://sapmachine.io/download?major=25",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -288,11 +288,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "sapmachine-26",
+			id: "sapmachine-27",
 			information: {
-				name: "SapMachine 26",
-				version: 26,
-				downloadSite: "https://sapmachine.io/",
+				name: "SapMachine 27",
+				version: 27,
+				downloadSite: "https://sapmachine.io/download?major=27",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -370,7 +370,7 @@ export const data: Vendor = {
 					footnote: "0484cb17-6266-4d75-9e44-8021b75b7bb4",
 				},
 				eolDate: {
-					text: "2026-09",
+					text: "2027-03",
 					footnote: "13ade37e-7160-4316-84f9-4dbdd5efa8df",
 				},
 				releaseSchedule: { text: "OpenJDK" },
