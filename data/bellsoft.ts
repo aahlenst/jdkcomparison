@@ -478,11 +478,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "liberica-jdk-26",
+			id: "liberica-jdk-27",
 			information: {
-				name: "Liberica JDK 26",
-				version: 26,
-				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-26-lts",
+				name: "Liberica JDK 27",
+				version: 27,
+				downloadSite: "https://bell-sw.com/pages/downloads/#jdk-27",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -561,7 +561,7 @@ export const data: Vendor = {
 				},
 				paidSupport: { present: Present.YES },
 				eolDate: {
-					text: "2026-09",
+					text: "2027-03",
 					footnote: "e92c2876-d7c0-43f3-a441-b4f95ce940cb",
 				},
 				releaseSchedule: { text: "OpenJDK" },
