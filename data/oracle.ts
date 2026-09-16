@@ -263,7 +263,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2026-03" },
+				eolDate: { text: "n/a" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "no/free" },
