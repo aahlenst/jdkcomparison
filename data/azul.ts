@@ -792,7 +792,7 @@ export const data: Vendor = {
 			information: {
 				name: "Zulu 25",
 				version: 25,
-				downloadSite: "https://www.azul.com/downloads/?version=java-25#zulu",
+				downloadSite: "https://www.azul.com/downloads/?version=java-25-lts#zulu",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -881,11 +881,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "zulu-26",
+			id: "zulu-27",
 			information: {
-				name: "Zulu 26",
-				version: 26,
-				downloadSite: "https://www.azul.com/downloads/?version=java-26#zulu",
+				name: "Zulu 27",
+				version: 27,
+				downloadSite: "https://www.azul.com/downloads/?version=java-27-sts#zulu",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -961,7 +961,7 @@ export const data: Vendor = {
 					present: Present.YES,
 				},
 				eolDate: {
-					text: "2026-09",
+					text: "2027-03",
 					footnote: "0bb09fec-66c9-4e10-b9a6-c981d9d6861b",
 				},
 				releaseSchedule: { text: "OpenJDK" },
