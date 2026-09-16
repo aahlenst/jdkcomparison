@@ -15,7 +15,7 @@
 		"github-slugger": "2.0.0",
 		"immer": "11.1.18",
 		"micromark": "4.0.2",
-		"next": "16.2.12",
+		"next": "16.3.5",
 		"react": "19.3.0",
 		"react-dom": "19.3.0",
 		"use-immer": "0.11.0"
@@ -49,7 +49,6 @@
 		"next-router-mock": "1.0.5",
 		"postcss": "8.5.28",
 		"prettier": "3.9.6",
-		"resize-observer-polyfill": "1.5.1",
 		"tailwindcss": "4.3.3",
 		"typescript": "6.0.3",
 		"typescript-eslint": "8.70.0"

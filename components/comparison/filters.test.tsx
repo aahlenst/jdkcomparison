@@ -18,7 +18,6 @@ import { describe, expect, test } from "@jest/globals";
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import ResizeObserver from "resize-observer-polyfill";
 import { ComparisonProvider } from "./comparisonContext";
 import { Filters } from "./filters";
 import {
@@ -31,9 +30,6 @@ import {
 import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider";
 
 describe("<Filters/>", () => {
-	// @headlessui/react needs ResizeObserver which is not available in the test environment.
-	(global as unknown).ResizeObserver = ResizeObserver;
-
 	const filters = [
 		new TechnologiesFilter(),
 		new LicensingFilter(),
