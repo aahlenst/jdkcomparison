@@ -274,11 +274,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "openjdk-26",
+			id: "openjdk-27",
 			information: {
-				name: "OpenJDK 26",
-				version: 26,
-				downloadSite: "https://jdk.java.net/26",
+				name: "OpenJDK 27",
+				version: 27,
+				downloadSite: "https://jdk.java.net/27",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -315,7 +315,7 @@ export const data: Vendor = {
 					},
 				},
 				mac: {
-					x64: { present: Present.YES },
+					x64: { present: Present.NO },
 					aarch64: { present: Present.YES },
 					installers: { present: Present.NO },
 				},
@@ -341,7 +341,7 @@ export const data: Vendor = {
 				freeInProduction: { present: Present.YES },
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.NO },
-				eolDate: { text: "2026-09" },
+				eolDate: { text: "2027-03" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "no/free" },
@@ -775,11 +775,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "oracle-jdk-26",
+			id: "oracle-jdk-27",
 			information: {
-				name: "Oracle JDK 26",
-				version: 26,
-				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java26",
+				name: "Oracle JDK 27",
+				version: 27,
+				downloadSite: "https://www.oracle.com/java/technologies/downloads/#java27",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -824,7 +824,7 @@ export const data: Vendor = {
 					},
 				},
 				mac: {
-					x64: { present: Present.YES },
+					x64: { present: Present.NO },
 					aarch64: { present: Present.YES },
 					installers: { present: Present.YES },
 				},
@@ -853,10 +853,7 @@ export const data: Vendor = {
 				},
 				sbom: { present: Present.NO },
 				paidSupport: { present: Present.YES },
-				eolDate: {
-					text: "2026-09",
-					footnote: "85941abe-619f-41be-8ae2-266abcd05580",
-				},
+				eolDate: { text: "2027-03" },
 				releaseSchedule: { text: "OpenJDK" },
 				releaseDelay: { text: "none" },
 				updateTypes: { text: "paid/tiered" },
