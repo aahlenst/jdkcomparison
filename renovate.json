@@ -1,4 +1,6 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:base", ":semanticCommitsDisabled"]
+	"extends": ["config:base", ":semanticCommitsDisabled"],
+	"npmrc": "allow-remote=all",
+	"npmrcMerge": true
 }
