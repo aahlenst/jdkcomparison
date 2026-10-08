@@ -505,11 +505,11 @@ export const data: Vendor = {
 			},
 		},
 		{
-			id: "eclipse-temurin-26",
+			id: "eclipse-temurin-27",
 			information: {
-				name: "Eclipse Temurin 26",
-				version: 26,
-				downloadSite: "https://adoptium.net/temurin/releases/?version=26",
+				name: "Eclipse Temurin 27",
+				version: 27,
+				downloadSite: "https://adoptium.net/temurin/releases/?version=27",
 			},
 			features: {
 				virtualMachine: { text: "HotSpot" },
@@ -597,7 +597,7 @@ export const data: Vendor = {
 					footnote: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
 				},
 				eolDate: {
-					text: "2026-09",
+					text: "2027-03",
 					footnote: "62fd52c0-82d0-468a-a413-38277b35bd30",
 				},
 				releaseSchedule: { text: "OpenJDK" },
@@ -619,7 +619,7 @@ export const data: Vendor = {
 				"[21](https://github.com/adoptium/jdk21u/compare/master...release). From JDK 23 onwards, " +
 				"compare the `jdkXX` with the `release_jdkXX` branch instead: " +
 				"[25](https://github.com/adoptium/jdk/compare/jdk25...release_jdk25), " +
-				"[26](https://github.com/adoptium/jdk/compare/jdk26...release_jdk26).",
+				"[27](https://github.com/adoptium/jdk/compare/jdk27...release_jdk27).",
 		},
 		{
 			id: "08a6428c-6fba-4617-8f9b-55b3ddb4afeb",
@@ -658,7 +658,7 @@ export const data: Vendor = {
 				"[17](https://github.com/adoptium/temurin17-binaries/releases/), " +
 				"[21](https://github.com/adoptium/temurin21-binaries/releases/), " +
 				"[25](https://github.com/adoptium/temurin25-binaries/releases/), " +
-				"[26](https://github.com/adoptium/temurin26-binaries/releases/).",
+				"[27](https://github.com/adoptium/temurin27-binaries/releases/).",
 		},
 		{
 			id: "29c58238-905e-4d25-b3a5-fbafc9f1d434",
